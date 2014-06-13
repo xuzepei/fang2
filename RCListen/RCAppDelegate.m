@@ -17,28 +17,6 @@
 
 - (void)dealloc
 {
-//    [_window release];
-//    [_managedObjectContext release];
-//    [_managedObjectModel release];
-//    [_persistentStoreCoordinator release];
-//    
-//    self.homeViewController = nil;
-//    self.searchViewController = nil;
-//    self.meViewController = nil;
-//    self.moreViewController = nil;
-//    
-//    self.homeNavigationController = nil;
-//    self.searchNavigationController = nil;
-//    self.meNavigationController = nil;
-//    self.moreNavigationController = nil;
-//    
-//    self.tabBarController = nil;
-//    
-//    self.lauchAdView = nil;
-//    
-//    self.updateUrlString = nil;
-//    
-//    [super dealloc];
 }
 
 @synthesize managedObjectContext = _managedObjectContext;
