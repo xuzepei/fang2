@@ -1,0 +1,82 @@
+//
+// Prefix header for all source files of the 'RCFang' target in the 'RCFang' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_3_0
+#warning "This project uses features only available in iOS SDK 3.0 and later."
+#endif
+
+#ifdef __OBJC__
+    #import <UIKit/UIKit.h>
+    #import <Foundation/Foundation.h>
+    #import <CoreData/CoreData.h>
+    #import "RCTool.h"
+#endif
+
+
+#ifndef DEBUG
+#define NSLog //
+#endif
+
+#define TIME_OUT 20
+
+#define CT_UNKNOWN 0
+#define CT_XML 1
+#define CT_JSON 2
+
+//TAB TAG
+typedef enum {
+	TT_HOMEPAGE = 0,
+	TT_GROUP,
+	TT_ME,
+    TT_MORE
+} TAB_TAG;
+
+//搜索类别
+typedef enum {
+	STT_UNKNOWN = -1,
+	STT_0,
+	STT_1,
+    STT_2
+} SearchTabType;
+
+
+typedef enum{
+    SHT_UNKNOWN = -1,
+    SHT_MESSAGE,
+    SHT_QQ,
+    SHT_SINA
+}SHARE_TYPE;
+
+
+typedef enum{
+    HT_UNKNOWN = 0,
+    HT_XINFANG,
+    HT_ERSHOU,
+    HT_ZUFANG
+}HOUSE_TYPE;
+
+#define NAVIGATION_BAR_COLOR [UIColor colorWithRed:1/255.0 green:164/255.0 blue:241/255.0 alpha:1.0]
+#define TAB_BAR_TEXT_COLOR [UIColor colorWithRed:2/255.0 green:164/255.0 blue:239/255.0 alpha:1.0]
+#define TAB_BAR_COLOR [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]
+#define BG_COLOR [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0]
+
+#define STATUS_BAR_HEIGHT 20.0
+#define NAVIGATION_BAR_HEIGHT 64.0
+#define TAB_BAR_HEIGHT 50.0
+
+#define PICKER_VIEW_HEIGHT 256.0
+
+#define VERSION @"1.1"
+
+//#define BASE_URL @"http://demo.by111.com/fxggapp/Api"
+#define BASE_URL @"http://app.lsfxgg.com/Api"
+#define APIID @"GmtaLHag"
+#define PWD @"kaWxTRZYM5hsIdi4"
+
+#define SHOW_COMMENT_NOTIFICATION @"SHOW_COMMENT_NOTIFICATION"
+#define CLICKED_APPLY_BUTTON_NOTIFICATION @"CLICKED_APPLY_BUTTON_NOTIFICATION"
+
+#define SHARE_TEXT @"嘉州房管家，乐山人自己的房产管理专家，为您提供最新最全的乐山房地产信息！ http://app.lsfxgg.com/down.php"
