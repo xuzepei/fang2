@@ -195,7 +195,10 @@
     {
         self.loginButton = [UIButton buttonWithType:UIButtonTypeCustom];
         _loginButton.frame = CGRectMake(70, [RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - 220, 180, 33);
-        _loginButton.titleLabel.font = [UIFont systemFontOfSize:16];
+        
+        self.loginButton.frame = CGRectMake(0, 0, 226, 35);
+        self.loginButton.center = CGPointMake([RCTool getScreenSize].width/2.0, 260);
+        
         [_loginButton setTitle:@"登录" forState:UIControlStateNormal];
         [_loginButton setBackgroundImage:[UIImage imageNamed:@"button_bg"] forState:UIControlStateNormal];
         [_loginButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -225,7 +228,7 @@
     
     NSString* urlString = [NSString stringWithFormat:@"%@/user_login.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
     
-    NSString* token = [NSString stringWithFormat:@"username=%@&password=%@",_accountTF.text,_passwordTF.text];
+    NSString* token = [NSString stringWithFormat:@"type=2&username=%@&password=%@",_accountTF.text,_passwordTF.text];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:token];
@@ -262,8 +265,6 @@
                 [[iToast makeText:[NSString stringWithFormat:@"欢迎:%@用户登录",username]] show];
                 
                 [self.navigationController popToRootViewControllerAnimated:YES];
-                
-                //[RCTool showAlert:@"提示" message:@"登录成功！"];
             }
             
             return;

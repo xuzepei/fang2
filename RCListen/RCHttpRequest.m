@@ -206,7 +206,10 @@
         
         if(_resultSelector && [_delegate respondsToSelector:_resultSelector])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [_delegate performSelector:_resultSelector withObject:jsonString];
+#pragma clang diagnostic pop
         }
         
         
@@ -219,7 +222,10 @@
 		
         if(_resultSelector && [_delegate respondsToSelector:_resultSelector])
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
             [_delegate performSelector:_resultSelector withObject:nil];
+#pragma clang diagnostic pop
         }
 	}
 }
@@ -227,7 +233,7 @@
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
-	NSLog(@"didFailWithError");
+	NSLog(@"didFailWithError:%d",_statusCode);
     
 	_isConnecting = NO;
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
@@ -235,7 +241,10 @@
     
     if(_resultSelector && [_delegate respondsToSelector:_resultSelector])
     {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
         [_delegate performSelector:_resultSelector withObject:nil];
+#pragma clang diagnostic pop
     }
 }
 

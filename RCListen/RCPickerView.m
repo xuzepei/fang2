@@ -9,6 +9,8 @@
 #import "RCPickerView.h"
 #import "RCTool.h"
 
+#define TOOLBAR_HEIGHT 36.0f
+
 @implementation RCPickerView
 
 - (id)initWithFrame:(CGRect)frame
@@ -18,10 +20,11 @@
         
         [self initToolbar];
 
-        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, 320, 216)];
+        _pickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, 40, [RCTool getScreenSize].width, PICKER_VIEW_HEIGHT)];
         _pickerView.delegate = self;
         _pickerView.dataSource = self;
         _pickerView.showsSelectionIndicator = YES;
+        self.pickerView.backgroundColor = [UIColor whiteColor];
         [self addSubview:_pickerView];
         
         _itemArray = [[NSMutableArray alloc] init];
@@ -73,16 +76,16 @@
 {
     if(nil == _toolbar)
     {
-        _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
-        _toolbar.tintColor = NAVIGATION_BAR_COLOR;
+        _toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 4, [RCTool getScreenSize].width, TOOLBAR_HEIGHT)];
+        //_toolbar.tintColor = NAVIGATION_BAR_COLOR;
         
         _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(60, 10, 200, 20)];
         _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.textColor = [UIColor whiteColor];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:18];
-        _titleLabel.textAlignment = UITextAlignmentCenter;
-        _titleLabel.shadowColor = [UIColor blackColor];
-        _titleLabel.shadowOffset = CGSizeMake(1.0, 1.0);
+        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.font = [UIFont systemFontOfSize:18];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        //_titleLabel.shadowColor = [UIColor blackColor];
+        //_titleLabel.shadowOffset = CGSizeMake(1.0, 1.0);
         
         [_toolbar addSubview: _titleLabel];
     }
@@ -167,7 +170,7 @@
             if(value && [value isKindOfClass:[NSDictionary class]])
                 return [value objectForKey:@"name"];
             else if([value isKindOfClass:[NSString class]])
-                return value;
+                return (NSString*)value;
                 
         }
     }
@@ -190,7 +193,7 @@
     if(nil == _protectView)
     {
         _protectView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, [RCTool getScreenSize].height)];
-        _protectView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.6];
+        _protectView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
     }
     
     [[RCTool frontWindow] addSubview: _protectView];

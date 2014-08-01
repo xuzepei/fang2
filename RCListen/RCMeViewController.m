@@ -117,6 +117,7 @@
     NSLog(@"clickedLoginButton");
     
     RCLoginViewController* temp = [[RCLoginViewController alloc] initWithNibName:nil bundle:nil];
+    temp.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:temp
                                          animated:YES];
  

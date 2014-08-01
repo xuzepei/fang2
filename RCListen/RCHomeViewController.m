@@ -82,7 +82,7 @@
     
     [self updateAd];
     
-    //[self initTableView];
+    [self updateInfo];
     
     //[self initButtons];
 }
@@ -176,6 +176,26 @@
     }
 }
 
+- (void)updateInfo
+{
+    NSString* urlString = [NSString stringWithFormat:@"%@/index_project.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+
+    RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
+    [temp request:urlString delegate:self resultSelector:@selector(finishedInfoRequest:) token:nil];
+}
+
+- (void)finishedInfoRequest:(NSString*)jsonString
+{
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+
+    }
+}
+
 #pragma mark - Menu
 
 - (IBAction)clickedBJButton:(id)sender
@@ -183,6 +203,7 @@
     NSLog(@"clickedBJButton");
     
     RCBJViewController* temp = [[RCBJViewController alloc] initWithNibName:nil bundle:nil];
+    temp.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:temp animated:YES];
 
 }

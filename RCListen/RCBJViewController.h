@@ -10,4 +10,13 @@
 
 @interface RCBJViewController : UIViewController
 
+@property(nonatomic,weak)IBOutlet UIButton* button0;
+@property(nonatomic,weak)IBOutlet UIButton* button1;
+@property(nonatomic,weak)IBOutlet UIButton* button2;
+
+
+- (IBAction)clickedButton0:(id)sender;
+- (IBAction)clickedButton1:(id)sender;
+- (IBAction)clickedButton2:(id)sender;
+
 @end

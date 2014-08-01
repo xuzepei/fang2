@@ -16,13 +16,13 @@
 
 @interface RCPickerView : UIView<UIPickerViewDelegate,UIPickerViewDataSource>
 
-@property(assign)id delegate;
-@property(nonatomic,retain)UIPickerView* pickerView;
-@property(nonatomic,retain)NSMutableArray* itemArray;
-@property(nonatomic,retain)UIToolbar* toolbar;
-@property(nonatomic,retain)UILabel* titleLabel;
-@property(nonatomic,retain)UIView* protectView;
-@property(nonatomic,retain)NSDictionary* item;
+@property(nonatomic,weak)id delegate;
+@property(nonatomic,strong)UIPickerView* pickerView;
+@property(nonatomic,strong)NSMutableArray* itemArray;
+@property(nonatomic,strong)UIToolbar* toolbar;
+@property(nonatomic,strong)UILabel* titleLabel;
+@property(nonatomic,strong)UIView* protectView;
+@property(nonatomic,strong)NSDictionary* item;
 
 - (void)updateContent:(NSDictionary*)item;
 - (void)show;

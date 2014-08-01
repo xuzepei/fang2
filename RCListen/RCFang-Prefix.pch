@@ -69,12 +69,12 @@ typedef enum{
 
 #define PICKER_VIEW_HEIGHT 256.0
 
-#define VERSION @"1.1"
+#define VERSION @"1.0"
 
 //#define BASE_URL @"http://demo.by111.com/fxggapp/Api"
-#define BASE_URL @"http://app.lsfxgg.com/Api"
-#define APIID @"GmtaLHag"
-#define PWD @"kaWxTRZYM5hsIdi4"
+#define BASE_URL @"http://demo.by111.com/demo_fang2/Api"
+#define APIID @"irHYwaUG"
+#define PWD @"FMj57tQYtrYmZwEQ"
 
 #define SHOW_COMMENT_NOTIFICATION @"SHOW_COMMENT_NOTIFICATION"
 #define CLICKED_APPLY_BUTTON_NOTIFICATION @"CLICKED_APPLY_BUTTON_NOTIFICATION"

@@ -16,9 +16,9 @@
 
 @interface RCButtonView : UIView
 
-@property(nonatomic,retain)UIImage* image;
-@property(nonatomic,retain)NSString* text;
-@property(assign)id delegate;
+@property(nonatomic,strong)UIImage* image;
+@property(nonatomic,strong)NSString* text;
+@property(nonatomic,weak)id delegate;
 
 - (void)updateContent:(NSString*)text;
 

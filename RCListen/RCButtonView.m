@@ -16,9 +16,9 @@
     if (self) {
         // Initialization code
         
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [UIColor whiteColor];
         
-        self.image = [UIImage imageNamed:@"button_view_bg"];
+        self.image = [UIImage imageNamed:@"jiantouxia"];
     }
     return self;
 }
@@ -38,32 +38,35 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    if(_image)
+    if([_text length])
     {
-        [_image drawInRect:self.bounds];
+        CGSize size = [_text drawInRect:CGRectMake(0, (self.bounds.size.height - 14)/2.0, self.bounds.size.width - 16, self.bounds.size.height) withFont:[UIFont boldSystemFontOfSize:14]
+            lineBreakMode:NSLineBreakByWordWrapping
+                alignment:NSTextAlignmentCenter];
+        
+        if(self.image)
+        {
+            [self.image drawInRect:CGRectMake(self.bounds.size.width/2 + size.width/2.0 + 4.0, (self.bounds.size.height - 2)/2.0, self.image.size.width,  self.image.size.height)];
+        }
+        
     }
     
-    if([_text length] < 4)
+    
+    UIColor* lineColor = [RCTool colorWithHex:0xdddddd];
+    [lineColor set];
+    CGRect lineRect = CGRectMake(0, self.bounds.size.height - 1, self.bounds.size.width, 1);
+    UIRectFill(lineRect);
+    
+    if(0 == self.frame.origin.x)
     {
-        [_text drawInRect:CGRectMake(0, 9, self.bounds.size.width - 16, self.bounds.size.height) withFont:[UIFont boldSystemFontOfSize:14]
-         lineBreakMode:NSLineBreakByWordWrapping
-         alignment:NSTextAlignmentCenter];
+        CGRect lineRect = CGRectMake(self.bounds.size.width - 1, 5, 1, self.bounds.size.height - 10);
+        UIRectFill(lineRect);
     }
-    else
-    {
-        [_text drawInRect:CGRectMake(0, 2, self.bounds.size.width - 16, self.bounds.size.height) withFont:[UIFont boldSystemFontOfSize:13]
-            lineBreakMode:NSLineBreakByWordWrapping
-                alignment:NSTextAlignmentLeft];
-    }
-
-
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];
-    
-    //UITouch* touch = [touches anyObject];
 
     if(_delegate && [_delegate respondsToSelector:@selector(clickedHeaderButton:token:)])
     {

@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "NSAttributedString+Attributes.h"
 #import "OHAttributedLabel.h"
+#import "RCSignUpView.h"
 
 @interface RCSignupViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,OHAttributedLabelDelegate>
 
