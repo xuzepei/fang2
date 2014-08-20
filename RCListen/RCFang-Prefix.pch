@@ -64,7 +64,7 @@ typedef enum{
 #define BG_COLOR [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0]
 
 #define STATUS_BAR_HEIGHT 20.0
-#define NAVIGATION_BAR_HEIGHT 64.0
+#define NAVIGATION_BAR_HEIGHT 44.0
 #define TAB_BAR_HEIGHT 50.0
 
 #define PICKER_VIEW_HEIGHT 256.0
@@ -78,5 +78,8 @@ typedef enum{
 
 #define SHOW_COMMENT_NOTIFICATION @"SHOW_COMMENT_NOTIFICATION"
 #define CLICKED_APPLY_BUTTON_NOTIFICATION @"CLICKED_APPLY_BUTTON_NOTIFICATION"
+#define UPDATED_LOCATION_NOTIFICATION @"UPDATED_LOCATION_NOTIFICATION"
 
 #define SHARE_TEXT @"嘉州房管家，乐山人自己的房产管理专家，为您提供最新最全的乐山房地产信息！ http://app.lsfxgg.com/down.php"
+
+#define BAIDUMAP_KEY @"Rd1wtveADUuk6EWwbb4BruGT"

@@ -625,6 +625,13 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
 	return NO;
 }
 
++ (CGFloat)systemVersion
+{
+    CGFloat systemVersion = [[[UIDevice currentDevice] systemVersion] floatValue];
+    
+    return systemVersion;
+}
+
 #pragma mark - 搜索条件缓存
 
 + (BOOL)setSearchCondition:(NSArray*)conditionArray type:(int)type
@@ -1170,6 +1177,27 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
         return YES;
     
     return NO;
+}
+
++ (NSString*)getUserLocation
+{
+    RCAppDelegate* appDelegate = (RCAppDelegate*)[[UIApplication sharedApplication] delegate];
+    if(appDelegate.userLocation)
+    {
+        return [NSString stringWithFormat:@"%lf,%lf",appDelegate.userLocation.location.coordinate.longitude,appDelegate.userLocation.location.coordinate.latitude];
+    }
+    
+    return @"";
+}
+
++ (NSString*)getUserLocationName
+{
+    RCAppDelegate* appDelegate = (RCAppDelegate*)[[UIApplication sharedApplication] delegate];
+    NSString* temp = appDelegate.locationName;
+    if(0 == [temp length])
+        return @"";
+    
+    return temp;
 }
 
 @end

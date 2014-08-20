@@ -43,7 +43,7 @@
 // An empty implementation adversely affects performance during animation.
 - (void)drawRect:(CGRect)rect
 {
-    CGFloat offset_y = 100.0f;
+    CGFloat offset_y = 100 - 64.0f;
     
     UIImage* image = [UIImage imageNamed:@"1"];
     if(image)
@@ -117,7 +117,7 @@
     {
         [COMMON_COLOR set];
         text = @"我已阅读并同意";
-        [text drawInRect:CGRectMake(44, 275, 120, 20) withFont:[UIFont systemFontOfSize:15] lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentLeft];
+        [text drawInRect:CGRectMake(44, 275 - 64, 120, 20) withFont:[UIFont systemFontOfSize:15] lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentLeft];
     }
     
 }
@@ -130,7 +130,7 @@
     {
         self.button = [UIButton buttonWithType:UIButtonTypeCustom];
         self.button.frame = CGRectMake(0, 0, 226, 35);
-        self.button.center = CGPointMake([RCTool getScreenSize].width/2.0, 260);
+        self.button.center = CGPointMake([RCTool getScreenSize].width/2.0, 260 - 32);
         [self.button setBackgroundImage:[UIImage imageNamed:@"button_bg"] forState:UIControlStateNormal];
         [self.button setTitle:@"获取验证码" forState:UIControlStateNormal];
         [self.button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -143,7 +143,7 @@
     {
         if(nil == _phoneTF)
         {
-            _phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170, [RCTool getScreenSize].width - 32, 40)];
+            _phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170 - 64, [RCTool getScreenSize].width - 32, 40)];
             _phoneTF.tag = PHONE_TAG;
             _phoneTF.borderStyle = UITextBorderStyleLine;
             _phoneTF.layer.borderColor = [RCTool colorWithHex:0xdadada].CGColor;
@@ -161,11 +161,11 @@
         self.step1Token = token;
         [_phoneTF removeFromSuperview];
         [self.button setTitle:@"下一步" forState:UIControlStateNormal];
-        self.button.center = CGPointMake([RCTool getScreenSize].width/2.0, 300);
+        self.button.center = CGPointMake([RCTool getScreenSize].width/2.0, 300 - 32);
         
         if(nil == _yanzhengmaTF)
         {
-            _yanzhengmaTF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170, [RCTool getScreenSize].width - 32, 40)];
+            _yanzhengmaTF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170 - 64, [RCTool getScreenSize].width - 32, 40)];
             _yanzhengmaTF.tag = YANZHENG_TAG;
             _yanzhengmaTF.borderStyle = UITextBorderStyleLine;
             _yanzhengmaTF.layer.borderColor = [RCTool colorWithHex:0xdadada].CGColor;
@@ -180,10 +180,8 @@
         
         if(nil == _resendButton)
         {
-
-            
             self.resendButton = [UIButton buttonWithType:UIButtonTypeSystem];
-            self.resendButton.frame = CGRectMake(190, 226,120, 30);
+            self.resendButton.frame = CGRectMake(190, 226 - 64,120, 30);
             //[self.resendButton setTitleColor:HIGHTLIGHT_COLOR forState:UIControlStateNormal];
             [self.resendButton setTitle:@"重新获取验证码" forState:UIControlStateNormal];
             [self.resendButton addTarget:self action:@selector(clickedResendButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -203,11 +201,11 @@
         [_yanzhengmaTF removeFromSuperview];
         [_resendButton removeFromSuperview];
         
-        self.button.center = CGPointMake([RCTool getScreenSize].width/2.0, 340);
+        self.button.center = CGPointMake([RCTool getScreenSize].width/2.0, 340 - 32);
         
         if(nil == _mima0TF)
         {
-            _mima0TF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170, [RCTool getScreenSize].width - 32, 40)];
+            _mima0TF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170 - 64, [RCTool getScreenSize].width - 32, 40)];
             _mima0TF.tag = PASS_TAG;
             _mima0TF.borderStyle = UITextBorderStyleLine;
             _mima0TF.layer.borderColor = [RCTool colorWithHex:0xdadada].CGColor;
@@ -222,7 +220,7 @@
         
         if(nil == _mima1TF)
         {
-            _mima1TF = [[UITextField alloc] initWithFrame:CGRectMake(16, 220, [RCTool getScreenSize].width - 32, 40)];
+            _mima1TF = [[UITextField alloc] initWithFrame:CGRectMake(16, 220 - 64, [RCTool getScreenSize].width - 32, 40)];
             _mima1TF.tag = REPASS_TAG;
             _mima1TF.borderStyle = UITextBorderStyleLine;
             _mima1TF.layer.borderColor = [RCTool colorWithHex:0xdadada].CGColor;
@@ -238,7 +236,7 @@
         if(nil == _checkButton)
         {
             _checkButton = [RCCheckButton buttonWithType:UIButtonTypeCustom];
-            _checkButton.frame = CGRectMake(16, 270, 30, 30);
+            _checkButton.frame = CGRectMake(16, 270 - 64, 30, 30);
             _checkButton.normalImageName = @"wugou";
             _checkButton.selectedImageName = @"yougou";
             [_checkButton setChecked:NO];
@@ -248,7 +246,7 @@
         [self addSubview:_checkButton];
         
         UIButton* treatyButton = [UIButton buttonWithType:UIButtonTypeSystem];
-        treatyButton.frame = CGRectMake(140, 269,100, 30);
+        treatyButton.frame = CGRectMake(140, 269 - 64,100, 30);
         [treatyButton setTitle:@"《用户协议》" forState:UIControlStateNormal];
         [treatyButton setTitleColor:HIGHTLIGHT_COLOR forState:UIControlStateNormal];
         [treatyButton addTarget:self action:@selector(clickedTreatyButton:) forControlEvents:UIControlEventTouchUpInside];

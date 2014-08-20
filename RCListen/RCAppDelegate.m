@@ -33,6 +33,15 @@
     
     [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
     
+    
+    _mapManager = [[BMKMapManager alloc]init];
+    BOOL ret = [_mapManager start:BAIDUMAP_KEY  generalDelegate:nil];
+    if (!ret) {
+        NSLog(@"manager start failed!");
+    }
+
+    [self updateUserLocation];
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     //homepage
@@ -58,6 +67,7 @@
 	_meNavigationController = [[UINavigationController alloc]
                                initWithRootViewController:_meViewController];
     _meNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
+    _meNavigationController.navigationBar.translucent = NO;
     
     //more
     _moreViewController = [[RCMoreViewController alloc] initWithNibName:nil bundle:nil];
@@ -164,6 +174,12 @@
     [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                            [UIColor whiteColor], NSForegroundColorAttributeName,
                [UIFont boldSystemFontOfSize:21], NSFontAttributeName, nil]];
+    
+    
+    //获取当前位置
+    BMKMapView* mapView = [[BMKMapView alloc] init];
+    //mapView.delegate  = self;
+    [mapView setShowsUserLocation:YES];
     
     
     return YES;
@@ -472,5 +488,63 @@
 	}
 }
 
+#pragma mark - Location
+
+- (void)updateUserLocation
+{
+    if(nil == _locationService)
+    {
+        _locationService = [[BMKLocationService alloc]init];
+        _locationService.delegate = self;
+    }
+    
+    [_locationService stopUserLocationService];
+    [_locationService startUserLocationService];
+}
+
+- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
+{
+    //NSLog(@"heading is %@,title:%@",userLocation.heading,[userLocation.location description]);
+    
+    self.userLocation = userLocation;
+    
+    [_locationService stopUserLocationService];
+    
+    //获取位置名称
+    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
+    CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
+        
+        for (CLPlacemark *placemark in place) {
+            
+            NSString* cityStr=placemark.thoroughfare;
+            
+            NSString* cityName=placemark.locality;
+            
+            if([cityStr length] && [cityName length])
+                self.locationName = [NSString stringWithFormat:@"%@,%@",cityName,cityStr];
+            
+            break;
+        }
+        
+    };
+    
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
+    
+    [geocoder reverseGeocodeLocation:loc completionHandler:handler];
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_LOCATION_NOTIFICATION object:nil];
+}
+
+//处理位置坐标更新
+- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
+{
+    //NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+}
+
+- (void)didFailToLocateUserWithError:(NSError *)error
+{
+        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_LOCATION_NOTIFICATION object:nil];
+}
 
 @end

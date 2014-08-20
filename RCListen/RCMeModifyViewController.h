@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RCMeModifyViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
+@interface RCMeModifyViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate,UITextFieldDelegate>
 
 @property(nonatomic,retain)UITableView* tableView;
 @property(nonatomic,retain)NSMutableArray* itemArray;
 @property(nonatomic,retain)UIButton* logoutButton;
+@property(nonatomic,strong)UITextField* nicknameTF;
 
 
 - (void)initTableView;

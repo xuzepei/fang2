@@ -13,8 +13,11 @@
 #import "RCMoreViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "RCLaunchAdView.h"
+#import "BMKMapManager.h"
+#import "BMKLocationService.h"
+#import "BMKMapView.h"
 
-@interface RCAppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate>
+@interface RCAppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate,BMKLocationServiceDelegate>
 {
     UIBackgroundTaskIdentifier _bgTask;
 }
@@ -39,9 +42,14 @@
 
 @property (nonatomic,retain)RCLaunchAdView* lauchAdView;
 @property (nonatomic,retain)NSString* updateUrlString;
+@property (nonatomic,retain)BMKMapManager* mapManager;
+@property (nonatomic,strong)BMKLocationService* locationService;
+@property (nonatomic,strong)BMKUserLocation* userLocation;
+@property (nonatomic,strong)NSString* locationName;
 
 
 - (void)saveContext;
 - (NSURL *)applicationDocumentsDirectory;
+- (void)updateUserLocation;
 
 @end

@@ -79,7 +79,7 @@
 {
     if(nil == _topView)
     {
-        _topView = [[RCMeTopView alloc] initWithFrame:CGRectMake(0, NAVIGATION_BAR_HEIGHT, [RCTool getScreenSize].width, TOP_VIEW_HEIGHT)];
+        _topView = [[RCMeTopView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, TOP_VIEW_HEIGHT)];
     }
     
     for(UIView* subView in [_topView subviews])
@@ -148,7 +148,7 @@
     
     if(nil == _tabBar)
     {
-        _tabBar = [[RCMeTabBar alloc] initWithFrame:CGRectMake(0, NAVIGATION_BAR_HEIGHT + TOP_VIEW_HEIGHT, [RCTool getScreenSize].width, ME_TAB_BAR_HEIGHT)];
+        _tabBar = [[RCMeTabBar alloc] initWithFrame:CGRectMake(0,TOP_VIEW_HEIGHT, [RCTool getScreenSize].width, ME_TAB_BAR_HEIGHT)];
         _tabBar.delegate = self;
         
         NSArray* titleArray = [NSArray arrayWithObjects:@"朋友圈",@"积分兑换",@"积分赠予",nil];
@@ -172,7 +172,7 @@
     if(nil == _itemArray)
         _itemArray = [[NSMutableArray alloc] init];
     
-    CGFloat height = TOP_VIEW_HEIGHT + NAVIGATION_BAR_HEIGHT;
+    CGFloat height = TOP_VIEW_HEIGHT;
     if([RCTool isLogined])
         height += ME_TAB_BAR_HEIGHT;
     

@@ -30,14 +30,14 @@
 - (void)drawRect:(CGRect)rect
 {
     //draw name
-    NSString* name = [self.item objectForKey:@"name"];
+    NSString* name = [self.item objectForKey:@"title"];
     if([name length])
     {
         [name drawInRect:CGRectMake(10, 12, 240, 20) withFont:[UIFont systemFontOfSize:16] lineBreakMode:NSLineBreakByTruncatingTail];
     }
     
     //draw address
-    NSString* address = [self.item objectForKey:@"address"];
+    NSString* address = [self.item objectForKey:@"intro"];
     if([address length])
     {
         UIImage* image = [UIImage imageNamed:@"did"];
@@ -45,8 +45,18 @@
             [image drawInRect:CGRectMake(12, 38, image.size.width, image.size.height)];
         
         [SUBTITLE_COLOR set];
-        [address drawInRect:CGRectMake(30, 38, 220, 20) withFont:[UIFont systemFontOfSize:14] lineBreakMode:NSLineBreakByTruncatingTail];
+        [address drawInRect:CGRectMake(30, 38, (CALL_RECT.origin.x - 40)/2.0, 20) withFont:[UIFont systemFontOfSize:14] lineBreakMode:NSLineBreakByTruncatingTail];
     }
+    
+    NSString* pinfen = [self.item objectForKey:@"rank"];
+    if([pinfen length])
+    {
+        [SUBTITLE_COLOR set];
+        
+        NSString* temp = [NSString stringWithFormat:@"评分:%@",pinfen];
+        [temp drawInRect:CGRectMake(40+(CALL_RECT.origin.x - 40)/2.0, 38, (CALL_RECT.origin.x - 40)/2.0, 20) withFont:[UIFont systemFontOfSize:14] lineBreakMode:NSLineBreakByTruncatingTail];
+    }
+    
     
     //draw times
     UIImage* image = [UIImage imageNamed:@"lianxi"];
@@ -54,7 +64,7 @@
     {
         [image drawInRect:CGRectMake(self.bounds.size.width - 60/2.0 - image.size.width/2.0, 14, image.size.width, image.size.height)];
         
-        NSString* times = [self.item objectForKey:@"times"];
+        NSString* times = [self.item objectForKey:@"sucess"];
         if([times length])
         {
             [SUBTITLE_COLOR set];

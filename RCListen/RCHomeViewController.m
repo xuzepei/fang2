@@ -68,6 +68,9 @@
     self.banjiaButton = nil;
     self.jiazhengButton = nil;
     self.kuaidiButton = nil;
+    self.bjTitleLabel = nil;
+    self.jzTitleLabel = nil;
+    self.kdTitleLabel = nil;
     self.bjLabel = nil;
     self.jzLabel = nil;
     self.kdLabel = nil;
@@ -192,7 +195,29 @@
     NSDictionary* result = [RCTool parseToDictionary: jsonString];
     if(result && [result isKindOfClass:[NSDictionary class]])
     {
-
+        NSArray* list = [result objectForKey:@"list"];
+        if(list && [list isKindOfClass:[NSArray class]])
+        {
+            for(NSDictionary* item in list)
+            {
+                NSString* id = [item objectForKey:@"id"];
+                if([id isEqualToString:@"1"])
+                {
+                    self.bjTitleLabel.text = [item objectForKey:@"title"];
+                    self.bjLabel.text = [item objectForKey:@"num"];
+                }
+                else if([id isEqualToString:@"2"])
+                {
+                    self.jzTitleLabel.text = [item objectForKey:@"title"];
+                    self.jzLabel.text = [item objectForKey:@"num"];
+                }
+                else if([id isEqualToString:@"3"])
+                {
+                    self.kdTitleLabel.text = [item objectForKey:@"title"];
+                    self.kdLabel.text = [item objectForKey:@"num"];
+                }
+            }
+        }
     }
 }
 
@@ -380,7 +405,7 @@
 {
     NSLog(@"clickedLocationButton");
     
-    [[RCLocationController sharedInstance] startLocationService];
+    //[[RCLocationController sharedInstance] startLocationService];
 }
 
 - (void)clickedCalculatorButton:(id)sender

@@ -9,6 +9,7 @@
 #import "RCFJViewController.h"
 #import "RCHttpRequest.h"
 #import "RCPublicCell.h"
+#import "RCSHViewController.h"
 
 #define HEADER_VIEW_HEIGHT 40.0f
 #define HEADER_BUTTON0_TAG 100
@@ -30,6 +31,8 @@
         
         _itemArray = [[NSMutableArray alloc] init];
         
+        self.page = 1;
+        
         self.condition0 = @"3000米";
         self.condition1 = @"默认排序";
         
@@ -39,12 +42,20 @@
         UIBarButtonItem* rightItem = [[UIBarButtonItem alloc] initWithImage:image style:UIBarButtonItemStyleDone target:self action:@selector(clickedMapButtonItem:)];
         
         self.navigationItem.rightBarButtonItem = rightItem;
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updatedLocation:) name:UPDATED_LOCATION_NOTIFICATION object:nil];
+        
+        //获取当前位置
+        BMKMapView* mapView = [[BMKMapView alloc] init];
+        mapView.delegate  = self;
+        [mapView setShowsUserLocation:YES];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)viewDidLoad
@@ -60,6 +71,8 @@
     [self initHeaderView];
     
     [self initTableView];
+    
+    [self updateContent:nil];
     
 }
 
@@ -94,28 +107,25 @@
     if(0 == [self.itemArray count])
         return;
     
+    RCBaiDuMapViewController* temp = [[RCBaiDuMapViewController alloc] initWithNibName:nil bundle:nil];
+    temp.title = @"附近的搬家公司";
+    [temp updateContent:@{@"list":self.itemArray} zoom:17];
+    [self.navigationController pushViewController:temp animated:YES];
 }
 
 - (void)updateContent:(NSDictionary*)item
 {
-//    self.item = item;
-//    
-//    //http://acs.akange.com:81/index.php?c=main&a=bdsearch&type=1&jd_id=1&tag=%E5%9B%9B%E6%98%9F%E7%BA%A7&pageno=0&radius=1000%E7%B1%B3
-//    
-//    NSString* tag = [self.leibieValue stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-//    NSString* radius = [self.fanweiValue stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-//    
-//    NSString* jd_id = @"";
-//    if(self.item)
-//        jd_id = [self.item objectForKey:@"jd_id"];
-//    NSString* urlString = [NSString stringWithFormat:@"%@/index.php?c=main&a=bdsearch&type=2&jd_id=%@&tag=%@&pageno=%d&radius=%@&token=%@",BASE_URL,jd_id,tag,self.pageno,radius,[RCTool getDeviceID]];
-//    
-//    RCHttpRequest* temp = [[[RCHttpRequest alloc] init] autorelease];
-//    BOOL b = [temp request:urlString delegate:self resultSelector:@selector(finishedContentRequest:) token:nil];
-//    if(b)
-//    {
-//        [RCTool showIndicator:@"加载中..."];
-//    }
+    NSString* coordination = [RCTool getUserLocation];
+    NSString* params = [NSString stringWithFormat:@"type=list&page=%d&point=%@",self.page,coordination];
+    
+    NSString* urlString = [NSString stringWithFormat:@"%@/mover_nearby.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    
+    RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
+    BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedContentRequest:) token:params];
+    if(b)
+    {
+        [RCTool showIndicator:@"请稍候..."];
+    }
 }
 
 - (void)finishedContentRequest:(NSString*)jsonString
@@ -128,21 +138,22 @@
     NSDictionary* result = [RCTool parseToDictionary: jsonString];
     if(result && [result isKindOfClass:[NSDictionary class]])
     {
-//        if([RCTool hasNoError:result])
-//        {
-//            NSArray* array = [result objectForKey:@"data"];
-//            if(array && [array isKindOfClass:[NSArray class]])
-//            {
-//                [self.itemArray addObjectsFromArray:array];
-//                
-//                self.pageno++;
-//            }
-//        }
-//        else
-//        {
-//            [RCTool showAlert:@"提示" message:[result objectForKey:@"msg"]];
-//            return;
-//        }
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            NSArray* array = [result objectForKey:@"list"];
+            if(array && [array isKindOfClass:[NSArray class]])
+            {
+                [self.itemArray addObjectsFromArray:array];
+                
+                self.page++;
+            }
+        }
+        else
+        {
+            [RCTool showAlert:@"提示" message:error];
+            return;
+        }
     }
     
     if(self.tableView)
@@ -158,8 +169,8 @@
     [dict setObject:@"范围" forKey:@"name"];
     NSMutableArray* array = [[NSMutableArray alloc] init];
     [array addObject:@"1000米"];
-    [array addObject:@"2000米"];
     [array addObject:@"3000米"];
+    [array addObject:@"5000米"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:HEADER_BUTTON0_TAG] forKey:@"tag"];
     self.condition0Selection = dict;
@@ -198,7 +209,7 @@
         _locationLabel = [[UILabel alloc] initWithFrame:CGRectMake(6, HEADER_VIEW_HEIGHT, 250, LOCATION_BAR)];
         _locationLabel.backgroundColor = [UIColor clearColor];
         _locationLabel.font = [UIFont systemFontOfSize:16];
-        _locationLabel.text = @"当前：成都市双流县藏卫路";
+        _locationLabel.text = [NSString stringWithFormat:@"当前：%@",[RCTool getUserLocationName]];
     }
     
     [self.view addSubview:_locationLabel];
@@ -234,6 +245,18 @@
 - (IBAction)clickedRefreshButton:(id)sender
 {
     NSLog(@"clickedRefreshButton");
+    
+    RCAppDelegate* appDelegate = (RCAppDelegate*)[UIApplication sharedApplication].delegate;
+    [appDelegate updateUserLocation];
+    
+    CABasicAnimation* rotationAnimation;
+    rotationAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    rotationAnimation.toValue = [NSNumber numberWithFloat: M_PI * 2.0];
+    rotationAnimation.duration = 1.0;
+    rotationAnimation.cumulative = YES;
+    rotationAnimation.repeatCount = 100;
+    
+    [self.refreshButton.layer addAnimation:rotationAnimation forKey:@"rotationAnimation"];
 }
 
 #pragma mark - Picker View
@@ -295,11 +318,11 @@
         _tableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     }
     
-    NSDictionary* dict = @{@"name":@"成都双流－老兵搬家",
-                           @"address":@"双流－东升（1.15km）",
-                           @"times":@"12"};
-    [_itemArray addObject:dict];
-    [_itemArray addObject:dict];
+//    NSDictionary* dict = @{@"name":@"成都双流－老兵搬家",
+//                           @"address":@"双流－东升（1.15km）",
+//                           @"times":@"12"};
+//    [_itemArray addObject:dict];
+//    [_itemArray addObject:dict];
     
     [_tableView reloadData];
 	[self.view addSubview:_tableView];
@@ -349,6 +372,8 @@
 {
     if(1 == section)
         return [_itemArray count];
+    else if(2 == section)
+        return 1;
     
     return 0;
 }
@@ -363,6 +388,8 @@
     {
         return [self getCellHeight:indexPath];
     }
+    else if(2 == indexPath.section)
+        return 44.0f;
     
     return 0.0;
 }
@@ -442,11 +469,26 @@
 - (void)clickedCell:(NSDictionary*)token
 {
     NSLog(@"clickedCell");
+    
+    RCSHViewController* temp = [[RCSHViewController alloc] initWithNibName:nil bundle:nil];
+    [temp updateContent:token];
+    [self.navigationController pushViewController:temp animated:YES];
 }
 
 - (void)clickedCallRect:(NSDictionary*)token
 {
     NSLog(@"clickedCallRect");
+    
+    NSDictionary* item = (NSDictionary*)token;
+    
+    if(nil == item)
+        return;
+    
+    NSString* phoneNum = [item objectForKey:@"tel"];
+    if([phoneNum isKindOfClass:[NSString class]] && [phoneNum length])
+    {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phoneNum]]];
+    }
 }
 
 #pragma mark -
@@ -479,6 +521,30 @@
     {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"tel://%@",phoneNum]]];
     }
+}
+
+- (void)updatedLocation:(NSNotification*)noti
+{
+    _locationLabel.text = [NSString stringWithFormat:@"当前：%@",[RCTool getUserLocationName]];
+    
+    [_refreshButton.layer removeAllAnimations];
+}
+
+#pragma mark - 获取当前位置
+
+- (void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation
+{
+    
+    //NSLog(@"didUpdateUserLocation");
+    
+    //self.userLocation = mapView.userLocation.coordinate;
+    [mapView setShowsUserLocation:NO];
+    
+}
+
+- (void)mapView:(BMKMapView *)mapView didFailToLocateUserWithError:(NSError *)error
+{
+    NSLog(@"didFailToLocateUserWithError");
 }
 
 @end

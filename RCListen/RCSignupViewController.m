@@ -222,7 +222,7 @@
                 [RCTool setPassword:password];
             }
             
-            [[iToast makeText:[NSString stringWithFormat:@"注册成功！",username]] show];
+            [[iToast makeText:[NSString stringWithFormat:@"注册成功！%@",username]] show];
             
             [self.navigationController popToRootViewControllerAnimated:YES];
             

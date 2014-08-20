@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BMKUserLocation.h"
 
 @interface RCTool : NSObject {
 
@@ -70,7 +71,7 @@
 + (CGRect)getScreenRect;
 + (BOOL)isIphone5;
 + (BOOL)isIpad;
-
++ (CGFloat)systemVersion;
 
 #pragma mark - 搜索条件缓存
 
@@ -118,4 +119,7 @@
 
 
 + (BOOL)isLogined;
+
++ (NSString*)getUserLocation;
++ (NSString*)getUserLocationName;
 @end

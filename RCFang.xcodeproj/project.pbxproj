@@ -231,6 +231,13 @@
 		09621BB71988F7D90024BE87 /* 3_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09621BB11988F7D90024BE87 /* 3_on@2x.png */; };
 		09621BB81988F7D90024BE87 /* 3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09621BB21988F7D90024BE87 /* 3@2x.png */; };
 		09800CF4173CD72100AC5EF1 /* button_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09800CF3173CD72100AC5EF1 /* button_bg@2x.png */; };
+		09877786198F38A4006834C2 /* RCPointAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 09877780198F38A4006834C2 /* RCPointAnnotation.m */; };
+		09877787198F38A4006834C2 /* RouteAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 09877782198F38A4006834C2 /* RouteAnnotation.m */; };
+		0987778B198F5A20006834C2 /* location_button1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09877788198F5A20006834C2 /* location_button1@2x.png */; };
+		0987778C198F5A20006834C2 /* zoom_in@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09877789198F5A20006834C2 /* zoom_in@2x.png */; };
+		0987778D198F5A20006834C2 /* zoom_out@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0987778A198F5A20006834C2 /* zoom_out@2x.png */; };
+		09877799198F87C6006834C2 /* RCBaiDuMapViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 09877797198F87C6006834C2 /* RCBaiDuMapViewController.mm */; };
+		0987779A198F87C6006834C2 /* RCBaiDuMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09877798198F87C6006834C2 /* RCBaiDuMapViewController.xib */; };
 		098ACAF1170084C4005BDCC8 /* FGalleryPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = 098ACAEC170084C4005BDCC8 /* FGalleryPhoto.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		098ACAF2170084C4005BDCC8 /* FGalleryPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 098ACAEE170084C4005BDCC8 /* FGalleryPhotoView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		098ACAF3170084C4005BDCC8 /* FGalleryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 098ACAF0170084C4005BDCC8 /* FGalleryViewController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -287,6 +294,10 @@
 		09D9128D198B631400A643A4 /* RCCheckButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 09D9128C198B631400A643A4 /* RCCheckButton.m */; };
 		09DB7E7C17538A76004BAA2E /* RCTuanGouViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB7E7B17538A76004BAA2E /* RCTuanGouViewController.m */; };
 		09DB7E7F17539265004BAA2E /* RCShareTextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09DB7E7E17539265004BAA2E /* RCShareTextViewController.m */; };
+		09DECFB0198E339F00B08941 /* libbaidumapapi.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DECFAD198E339F00B08941 /* libbaidumapapi.a */; };
+		09DECFB1198E339F00B08941 /* mapapi.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 09DECFAE198E339F00B08941 /* mapapi.bundle */; };
+		09DECFB2198E339F00B08941 /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = 09DECFAF198E339F00B08941 /* readme.txt */; };
+		09DECFB4198E340D00B08941 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DECFB3198E340D00B08941 /* OpenGLES.framework */; };
 		09E7B9A516F0B26900C55573 /* fabu@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09E7B9A216F0B26900C55573 /* fabu@2x.png */; };
 		09E7B9A616F0B26900C55573 /* lishi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09E7B9A316F0B26900C55573 /* lishi@2x.png */; };
 		09E7B9A716F0B26900C55573 /* saomiao@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09E7B9A416F0B26900C55573 /* saomiao@2x.png */; };
@@ -312,6 +323,10 @@
 		09FC309916F8B3270004C765 /* RCFangInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09FC309716F8B3270004C765 /* RCFangInfoViewController.xib */; };
 		09FC309C16F8B82E0004C765 /* RCFangInfoJiaGeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FC309B16F8B82E0004C765 /* RCFangInfoJiaGeCell.m */; };
 		09FC309E16F8BFA70004C765 /* RCFangInfoJiaGeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09FC309D16F8BFA70004C765 /* RCFangInfoJiaGeCell.xib */; };
+		09FD90C319A2398C00BC59C0 /* RCSHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FD90C119A2398C00BC59C0 /* RCSHViewController.m */; };
+		09FD90C419A2398C00BC59C0 /* RCSHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09FD90C219A2398C00BC59C0 /* RCSHViewController.xib */; };
+		09FD90C719A23AA600BC59C0 /* RCSHDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FD90C619A23AA600BC59C0 /* RCSHDetailView.m */; };
+		09FD90C919A247F100BC59C0 /* xdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FD90C819A247F100BC59C0 /* xdd@2x.png */; };
 		09FE845C16F740F1008C5846 /* benyuekaipan@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FE845916F740F1008C5846 /* benyuekaipan@2x.png */; };
 		09FE845D16F740F1008C5846 /* fangchandaogou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FE845A16F740F1008C5846 /* fangchandaogou@2x.png */; };
 		09FE845E16F740F1008C5846 /* tuangou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FE845B16F740F1008C5846 /* tuangou@2x.png */; };
@@ -718,6 +733,16 @@
 		09621BB11988F7D90024BE87 /* 3_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3_on@2x.png"; sourceTree = "<group>"; };
 		09621BB21988F7D90024BE87 /* 3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "3@2x.png"; sourceTree = "<group>"; };
 		09800CF3173CD72100AC5EF1 /* button_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_bg@2x.png"; sourceTree = "<group>"; };
+		0987777F198F38A4006834C2 /* RCPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPointAnnotation.h; sourceTree = "<group>"; };
+		09877780198F38A4006834C2 /* RCPointAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPointAnnotation.m; sourceTree = "<group>"; };
+		09877781198F38A4006834C2 /* RouteAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RouteAnnotation.h; sourceTree = "<group>"; };
+		09877782198F38A4006834C2 /* RouteAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RouteAnnotation.m; sourceTree = "<group>"; };
+		09877788198F5A20006834C2 /* location_button1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location_button1@2x.png"; sourceTree = "<group>"; };
+		09877789198F5A20006834C2 /* zoom_in@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom_in@2x.png"; sourceTree = "<group>"; };
+		0987778A198F5A20006834C2 /* zoom_out@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zoom_out@2x.png"; sourceTree = "<group>"; };
+		09877796198F87C6006834C2 /* RCBaiDuMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCBaiDuMapViewController.h; sourceTree = "<group>"; };
+		09877797198F87C6006834C2 /* RCBaiDuMapViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RCBaiDuMapViewController.mm; sourceTree = "<group>"; };
+		09877798198F87C6006834C2 /* RCBaiDuMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCBaiDuMapViewController.xib; sourceTree = "<group>"; };
 		098ACAEB170084C4005BDCC8 /* FGalleryPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGalleryPhoto.h; sourceTree = "<group>"; };
 		098ACAEC170084C4005BDCC8 /* FGalleryPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FGalleryPhoto.m; sourceTree = "<group>"; };
 		098ACAED170084C4005BDCC8 /* FGalleryPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FGalleryPhotoView.h; sourceTree = "<group>"; };
@@ -803,6 +828,46 @@
 		09DB7E7B17538A76004BAA2E /* RCTuanGouViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTuanGouViewController.m; sourceTree = "<group>"; };
 		09DB7E7D17539265004BAA2E /* RCShareTextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCShareTextViewController.h; sourceTree = "<group>"; };
 		09DB7E7E17539265004BAA2E /* RCShareTextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCShareTextViewController.m; sourceTree = "<group>"; };
+		09DECF89198E339F00B08941 /* BMapKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMapKit.h; sourceTree = "<group>"; };
+		09DECF8A198E339F00B08941 /* BMKActionPaopaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKActionPaopaoView.h; sourceTree = "<group>"; };
+		09DECF8B198E339F00B08941 /* BMKAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotation.h; sourceTree = "<group>"; };
+		09DECF8C198E339F00B08941 /* BMKAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKAnnotationView.h; sourceTree = "<group>"; };
+		09DECF8D198E339F00B08941 /* BMKArcline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKArcline.h; sourceTree = "<group>"; };
+		09DECF8E198E339F00B08941 /* BMKArclineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKArclineView.h; sourceTree = "<group>"; };
+		09DECF8F198E339F00B08941 /* BMKBaseComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKBaseComponent.h; sourceTree = "<group>"; };
+		09DECF90198E339F00B08941 /* BMKCircle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKCircle.h; sourceTree = "<group>"; };
+		09DECF91198E339F00B08941 /* BMKCircleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKCircleView.h; sourceTree = "<group>"; };
+		09DECF92198E339F00B08941 /* BMKGeneralDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKGeneralDelegate.h; sourceTree = "<group>"; };
+		09DECF93198E339F00B08941 /* BMKGroundOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKGroundOverlay.h; sourceTree = "<group>"; };
+		09DECF94198E339F00B08941 /* BMKGroundOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKGroundOverlayView.h; sourceTree = "<group>"; };
+		09DECF95198E339F00B08941 /* BMKLocationComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKLocationComponent.h; sourceTree = "<group>"; };
+		09DECF96198E339F00B08941 /* BMKLocationService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKLocationService.h; sourceTree = "<group>"; };
+		09DECF97198E339F00B08941 /* BMKLocationViewDisplayParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKLocationViewDisplayParam.h; sourceTree = "<group>"; };
+		09DECF98198E339F00B08941 /* BMKMapComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKMapComponent.h; sourceTree = "<group>"; };
+		09DECF99198E339F00B08941 /* BMKMapManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKMapManager.h; sourceTree = "<group>"; };
+		09DECF9A198E339F00B08941 /* BMKMapStatus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKMapStatus.h; sourceTree = "<group>"; };
+		09DECF9B198E339F00B08941 /* BMKMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKMapView.h; sourceTree = "<group>"; };
+		09DECF9C198E339F00B08941 /* BMKMultiPoint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKMultiPoint.h; sourceTree = "<group>"; };
+		09DECF9D198E339F00B08941 /* BMKOfflineMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKOfflineMap.h; sourceTree = "<group>"; };
+		09DECF9E198E339F00B08941 /* BMKOfflineMapType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKOfflineMapType.h; sourceTree = "<group>"; };
+		09DECF9F198E339F00B08941 /* BMKOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKOverlay.h; sourceTree = "<group>"; };
+		09DECFA0198E339F00B08941 /* BMKOverlayGLBasicView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKOverlayGLBasicView.h; sourceTree = "<group>"; };
+		09DECFA1198E339F00B08941 /* BMKOverlayPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKOverlayPathView.h; sourceTree = "<group>"; };
+		09DECFA2198E339F00B08941 /* BMKOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKOverlayView.h; sourceTree = "<group>"; };
+		09DECFA3198E339F00B08941 /* BMKPinAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKPinAnnotationView.h; sourceTree = "<group>"; };
+		09DECFA4198E339F00B08941 /* BMKPointAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKPointAnnotation.h; sourceTree = "<group>"; };
+		09DECFA5198E339F00B08941 /* BMKPolygon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKPolygon.h; sourceTree = "<group>"; };
+		09DECFA6198E339F00B08941 /* BMKPolygonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKPolygonView.h; sourceTree = "<group>"; };
+		09DECFA7198E339F00B08941 /* BMKPolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKPolyline.h; sourceTree = "<group>"; };
+		09DECFA8198E339F00B08941 /* BMKPolylineView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKPolylineView.h; sourceTree = "<group>"; };
+		09DECFA9198E339F00B08941 /* BMKShape.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKShape.h; sourceTree = "<group>"; };
+		09DECFAA198E339F00B08941 /* BMKTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKTypes.h; sourceTree = "<group>"; };
+		09DECFAB198E339F00B08941 /* BMKUserLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKUserLocation.h; sourceTree = "<group>"; };
+		09DECFAC198E339F00B08941 /* BMKVersion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMKVersion.h; sourceTree = "<group>"; };
+		09DECFAD198E339F00B08941 /* libbaidumapapi.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libbaidumapapi.a; sourceTree = "<group>"; };
+		09DECFAE198E339F00B08941 /* mapapi.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = mapapi.bundle; sourceTree = "<group>"; };
+		09DECFAF198E339F00B08941 /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		09DECFB3198E340D00B08941 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		09E7B9A216F0B26900C55573 /* fabu@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fabu@2x.png"; sourceTree = "<group>"; };
 		09E7B9A316F0B26900C55573 /* lishi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lishi@2x.png"; sourceTree = "<group>"; };
 		09E7B9A416F0B26900C55573 /* saomiao@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "saomiao@2x.png"; sourceTree = "<group>"; };
@@ -843,6 +908,12 @@
 		09FC309A16F8B82E0004C765 /* RCFangInfoJiaGeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCFangInfoJiaGeCell.h; sourceTree = "<group>"; };
 		09FC309B16F8B82E0004C765 /* RCFangInfoJiaGeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCFangInfoJiaGeCell.m; sourceTree = "<group>"; };
 		09FC309D16F8BFA70004C765 /* RCFangInfoJiaGeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCFangInfoJiaGeCell.xib; sourceTree = "<group>"; };
+		09FD90C019A2398C00BC59C0 /* RCSHViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSHViewController.h; sourceTree = "<group>"; };
+		09FD90C119A2398C00BC59C0 /* RCSHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSHViewController.m; sourceTree = "<group>"; };
+		09FD90C219A2398C00BC59C0 /* RCSHViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCSHViewController.xib; sourceTree = "<group>"; };
+		09FD90C519A23AA600BC59C0 /* RCSHDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSHDetailView.h; sourceTree = "<group>"; };
+		09FD90C619A23AA600BC59C0 /* RCSHDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSHDetailView.m; sourceTree = "<group>"; };
+		09FD90C819A247F100BC59C0 /* xdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xdd@2x.png"; sourceTree = "<group>"; };
 		09FE845916F740F1008C5846 /* benyuekaipan@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "benyuekaipan@2x.png"; sourceTree = "<group>"; };
 		09FE845A16F740F1008C5846 /* fangchandaogou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fangchandaogou@2x.png"; sourceTree = "<group>"; };
 		09FE845B16F740F1008C5846 /* tuangou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tuangou@2x.png"; sourceTree = "<group>"; };
@@ -874,26 +945,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09CF7F2316A3EA810050A603 /* SystemConfiguration.framework in Frameworks */,
+				09DECFB4198E340D00B08941 /* OpenGLES.framework in Frameworks */,
+				09CF7F2F16A3EAB90050A603 /* QuartzCore.framework in Frameworks */,
+				09CF7EE216A3D7740050A603 /* CoreGraphics.framework in Frameworks */,
+				09CF7F2D16A3EAB30050A603 /* Security.framework in Frameworks */,
+				0913C3C816F9537C00D74A27 /* CoreLocation.framework in Frameworks */,
 				0920238F172E38B5009EAB94 /* libz.dylib in Frameworks */,
 				0920238D172E310E009EAB94 /* MobileCoreServices.framework in Frameworks */,
 				0920238B172E2FD5009EAB94 /* libxml2.dylib in Frameworks */,
 				09CF7F2B16A3EAAA0050A603 /* MessageUI.framework in Frameworks */,
 				0915D38A170DAA8800D86E9A /* libiconv.dylib in Frameworks */,
-				09CF7F2F16A3EAB90050A603 /* QuartzCore.framework in Frameworks */,
 				0915D388170DAA5E00D86E9A /* CoreVideo.framework in Frameworks */,
 				0915D386170DAA5300D86E9A /* CoreMedia.framework in Frameworks */,
-				0913C3C816F9537C00D74A27 /* CoreLocation.framework in Frameworks */,
 				0913C3C616F9535200D74A27 /* MapKit.framework in Frameworks */,
 				0950B93916F174D20039D561 /* CoreText.framework in Frameworks */,
 				095E5DE716AE6C6400FD47CE /* AVFoundation.framework in Frameworks */,
-				09CF7F2D16A3EAB30050A603 /* Security.framework in Frameworks */,
 				09CF7F2916A3EA9D0050A603 /* iAd.framework in Frameworks */,
 				09CF7F2716A3EA910050A603 /* CFNetwork.framework in Frameworks */,
 				09CF7F2516A3EA890050A603 /* AudioToolbox.framework in Frameworks */,
-				09CF7F2316A3EA810050A603 /* SystemConfiguration.framework in Frameworks */,
+				09DECFB0198E339F00B08941 /* libbaidumapapi.a in Frameworks */,
 				09CF7EDE16A3D7740050A603 /* UIKit.framework in Frameworks */,
 				09CF7EE016A3D7740050A603 /* Foundation.framework in Frameworks */,
-				09CF7EE216A3D7740050A603 /* CoreGraphics.framework in Frameworks */,
 				09CF7EE416A3D7740050A603 /* CoreData.framework in Frameworks */,
 				0915D380170DAA0600D86E9A /* libzbar.a in Frameworks */,
 			);
@@ -1521,6 +1594,11 @@
 				09A9E9431951735700417393 /* RCDDViewController.xib */,
 				09A9E94619517D0A00417393 /* RCDDCellContentView.h */,
 				09A9E94719517D0A00417393 /* RCDDCellContentView.m */,
+				09FD90C019A2398C00BC59C0 /* RCSHViewController.h */,
+				09FD90C119A2398C00BC59C0 /* RCSHViewController.m */,
+				09FD90C219A2398C00BC59C0 /* RCSHViewController.xib */,
+				09FD90C519A23AA600BC59C0 /* RCSHDetailView.h */,
+				09FD90C619A23AA600BC59C0 /* RCSHDetailView.m */,
 			);
 			name = banjia;
 			sourceTree = "<group>";
@@ -1552,6 +1630,10 @@
 		095C59C816AF804200F7B949 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				09FD90C819A247F100BC59C0 /* xdd@2x.png */,
+				09877788198F5A20006834C2 /* location_button1@2x.png */,
+				09877789198F5A20006834C2 /* zoom_in@2x.png */,
+				0987778A198F5A20006834C2 /* zoom_out@2x.png */,
 				09A8E3C7198A3CF2005DB535 /* wugou@2x.png */,
 				09A8E3C8198A3CF2005DB535 /* yougou@2x.png */,
 				09621BAD1988F7D90024BE87 /* 1_on@2x.png */,
@@ -1698,6 +1780,7 @@
 		09CF7EDC16A3D7740050A603 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09DECFB3198E340D00B08941 /* OpenGLES.framework */,
 				0920238E172E38B5009EAB94 /* libz.dylib */,
 				0920238A172E2FD5009EAB94 /* libxml2.dylib */,
 				0915D389170DAA8800D86E9A /* libiconv.dylib */,
@@ -1726,6 +1809,7 @@
 		09CF7EE516A3D7740050A603 /* RCFang */ = {
 			isa = PBXGroup;
 			children = (
+				09DECF87198E339F00B08941 /* BaiDuMap */,
 				090E3C14170C5F7400217C33 /* Location */,
 				09064DFE1708594B00BA0258 /* AD */,
 				0941EEC116EB8EC600327D1A /* More */,
@@ -1802,6 +1886,67 @@
 				09CF7F3616A3ECFF0050A603 /* TBXML.m */,
 			);
 			path = TBXML;
+			sourceTree = "<group>";
+		};
+		09DECF87198E339F00B08941 /* BaiDuMap */ = {
+			isa = PBXGroup;
+			children = (
+				09877796198F87C6006834C2 /* RCBaiDuMapViewController.h */,
+				09877797198F87C6006834C2 /* RCBaiDuMapViewController.mm */,
+				09877798198F87C6006834C2 /* RCBaiDuMapViewController.xib */,
+				0987777F198F38A4006834C2 /* RCPointAnnotation.h */,
+				09877780198F38A4006834C2 /* RCPointAnnotation.m */,
+				09877781198F38A4006834C2 /* RouteAnnotation.h */,
+				09877782198F38A4006834C2 /* RouteAnnotation.m */,
+				09DECF88198E339F00B08941 /* inc */,
+				09DECFAD198E339F00B08941 /* libbaidumapapi.a */,
+				09DECFAE198E339F00B08941 /* mapapi.bundle */,
+				09DECFAF198E339F00B08941 /* readme.txt */,
+			);
+			path = BaiDuMap;
+			sourceTree = "<group>";
+		};
+		09DECF88198E339F00B08941 /* inc */ = {
+			isa = PBXGroup;
+			children = (
+				09DECF89198E339F00B08941 /* BMapKit.h */,
+				09DECF8A198E339F00B08941 /* BMKActionPaopaoView.h */,
+				09DECF8B198E339F00B08941 /* BMKAnnotation.h */,
+				09DECF8C198E339F00B08941 /* BMKAnnotationView.h */,
+				09DECF8D198E339F00B08941 /* BMKArcline.h */,
+				09DECF8E198E339F00B08941 /* BMKArclineView.h */,
+				09DECF8F198E339F00B08941 /* BMKBaseComponent.h */,
+				09DECF90198E339F00B08941 /* BMKCircle.h */,
+				09DECF91198E339F00B08941 /* BMKCircleView.h */,
+				09DECF92198E339F00B08941 /* BMKGeneralDelegate.h */,
+				09DECF93198E339F00B08941 /* BMKGroundOverlay.h */,
+				09DECF94198E339F00B08941 /* BMKGroundOverlayView.h */,
+				09DECF95198E339F00B08941 /* BMKLocationComponent.h */,
+				09DECF96198E339F00B08941 /* BMKLocationService.h */,
+				09DECF97198E339F00B08941 /* BMKLocationViewDisplayParam.h */,
+				09DECF98198E339F00B08941 /* BMKMapComponent.h */,
+				09DECF99198E339F00B08941 /* BMKMapManager.h */,
+				09DECF9A198E339F00B08941 /* BMKMapStatus.h */,
+				09DECF9B198E339F00B08941 /* BMKMapView.h */,
+				09DECF9C198E339F00B08941 /* BMKMultiPoint.h */,
+				09DECF9D198E339F00B08941 /* BMKOfflineMap.h */,
+				09DECF9E198E339F00B08941 /* BMKOfflineMapType.h */,
+				09DECF9F198E339F00B08941 /* BMKOverlay.h */,
+				09DECFA0198E339F00B08941 /* BMKOverlayGLBasicView.h */,
+				09DECFA1198E339F00B08941 /* BMKOverlayPathView.h */,
+				09DECFA2198E339F00B08941 /* BMKOverlayView.h */,
+				09DECFA3198E339F00B08941 /* BMKPinAnnotationView.h */,
+				09DECFA4198E339F00B08941 /* BMKPointAnnotation.h */,
+				09DECFA5198E339F00B08941 /* BMKPolygon.h */,
+				09DECFA6198E339F00B08941 /* BMKPolygonView.h */,
+				09DECFA7198E339F00B08941 /* BMKPolyline.h */,
+				09DECFA8198E339F00B08941 /* BMKPolylineView.h */,
+				09DECFA9198E339F00B08941 /* BMKShape.h */,
+				09DECFAA198E339F00B08941 /* BMKTypes.h */,
+				09DECFAB198E339F00B08941 /* BMKUserLocation.h */,
+				09DECFAC198E339F00B08941 /* BMKVersion.h */,
+			);
+			path = inc;
 			sourceTree = "<group>";
 		};
 		09E9796B1701D15B000BB8C6 /* ErShouFang */ = {
@@ -1929,7 +2074,7 @@
 				ORGANIZATIONNAME = xuzepei;
 				TargetAttributes = {
 					09CF7ED816A3D7740050A603 = {
-						DevelopmentTeam = 2699D9JM3T;
+						DevelopmentTeam = F3GWLKMAPW;
 					};
 				};
 			};
@@ -1967,7 +2112,9 @@
 				091065E31941EE500040C10A /* RCMeViewController.xib in Resources */,
 				09BCA51816EB9BE000010C63 /* home_page@2x.png in Resources */,
 				092AA01A1940BD6E00E13E2E /* kuaidi@2x.png in Resources */,
+				0987779A198F87C6006834C2 /* RCBaiDuMapViewController.xib in Resources */,
 				0948E64519501C4800D73734 /* kan@2x.png in Resources */,
+				09DECFB1198E339F00B08941 /* mapapi.bundle in Resources */,
 				09BCA51916EB9BE000010C63 /* me@2x.png in Resources */,
 				090F10CA194295CD0062A5B3 /* me_tabbar_bg@2x.png in Resources */,
 				09FF093C16EC49280083CE91 /* ershoufang@2x.png in Resources */,
@@ -1997,6 +2144,7 @@
 				09E7B9A616F0B26900C55573 /* lishi@2x.png in Resources */,
 				0900D8D41956703F00760212 /* quxdd_on@2x.png in Resources */,
 				09E7B9A716F0B26900C55573 /* saomiao@2x.png in Resources */,
+				0987778D198F5A20006834C2 /* zoom_out@2x.png in Resources */,
 				09E7B9A916F0B34F00C55573 /* bg@2x.png in Resources */,
 				09621BB41988F7D90024BE87 /* 1@2x.png in Resources */,
 				090F10CB194295CD0062A5B3 /* me_tg@2x.png in Resources */,
@@ -2016,6 +2164,7 @@
 				09FE845C16F740F1008C5846 /* benyuekaipan@2x.png in Resources */,
 				09FE845D16F740F1008C5846 /* fangchandaogou@2x.png in Resources */,
 				090F10C6194295CD0062A5B3 /* me_jf@2x.png in Resources */,
+				09DECFB2198E339F00B08941 /* readme.txt in Resources */,
 				09FE845E16F740F1008C5846 /* tuangou@2x.png in Resources */,
 				09FE846216F744A5008C5846 /* fangchandaogou_bg@2x.png in Resources */,
 				09FE846716F75ABC008C5846 /* button_view_bg@2x.png in Resources */,
@@ -2058,9 +2207,11 @@
 				091FC1A01716E8CA002F72C2 /* input_box_bg@2x.png in Resources */,
 				092AA0211940CA5500E13E2E /* jiantou@2x.png in Resources */,
 				091FC1A21716EB5A002F72C2 /* send_button@2x.png in Resources */,
+				09FD90C419A2398C00BC59C0 /* RCSHViewController.xib in Resources */,
 				092683571725033700E46352 /* RCSecondHandHouseBaseInfoCell.xib in Resources */,
 				0926835F17250F7600E46352 /* RCSecondHandHouseXiaoQuCell.xib in Resources */,
 				09B735C917257CB400CABA29 /* RCZuFangBaseInfoCell.xib in Resources */,
+				0987778C198F5A20006834C2 /* zoom_in@2x.png in Resources */,
 				0948E64E195029E300D73734 /* dib@2x.png in Resources */,
 				092022A5172E141C009EAB94 /* guanyu@2x.png in Resources */,
 				092022A7172E14DF009EAB94 /* fenxiang@2x.png in Resources */,
@@ -2074,7 +2225,9 @@
 				09202391172E3F55009EAB94 /* bangzhu@2x.png in Resources */,
 				09073E8617335B4D00416E2D /* favorites@2x.png in Resources */,
 				09AD959F173C8DEB0060B3A5 /* fankui@2x.png in Resources */,
+				09FD90C919A247F100BC59C0 /* xdd@2x.png in Resources */,
 				09800CF4173CD72100AC5EF1 /* button_bg@2x.png in Resources */,
+				0987778B198F5A20006834C2 /* location_button1@2x.png in Resources */,
 				092479CC176011E6001D2722 /* clear_button@2x.png in Resources */,
 				092479D717608364001D2722 /* RCTuanGouJiaGeCell.xib in Resources */,
 				0923FC281761CF49009B1DEC /* gerenziliao@2x.png in Resources */,
@@ -2096,6 +2249,7 @@
 				09CF7EF916A3D7740050A603 /* RCListen.xcdatamodeld in Sources */,
 				09CF7F2116A3E9D30050A603 /* RCTool.mm in Sources */,
 				09CF7F3716A3ECFF0050A603 /* TBXML.m in Sources */,
+				09877786198F38A4006834C2 /* RCPointAnnotation.m in Sources */,
 				0941EEBA16EB8DE200327D1A /* RCHttpRequest.m in Sources */,
 				0941EEC416EB8EE200327D1A /* RCSearchViewController.m in Sources */,
 				0941EEC716EB8EF300327D1A /* RCMeViewController1.m in Sources */,
@@ -2132,6 +2286,7 @@
 				09FC309C16F8B82E0004C765 /* RCFangInfoJiaGeCell.m in Sources */,
 				0913C3BC16F9494500D74A27 /* RCFangInfoDiZhiCell.m in Sources */,
 				0913C3BF16F9496B00D74A27 /* RCFangInfoDiZhiCellContentView.m in Sources */,
+				09FD90C319A2398C00BC59C0 /* RCSHViewController.m in Sources */,
 				0913C3C416F9531A00D74A27 /* RCMapViewController.m in Sources */,
 				0913C3CB16F95B5E00D74A27 /* RCMapAnnotation.m in Sources */,
 				09621BAC1988F76C0024BE87 /* RCSignUpView.m in Sources */,
@@ -2165,6 +2320,7 @@
 				090E3C2A170C639200217C33 /* SBJsonParser.m in Sources */,
 				090E3C2B170C639200217C33 /* SBJsonWriter.m in Sources */,
 				090E3C2E170C755700217C33 /* iToast.m in Sources */,
+				09877799198F87C6006834C2 /* RCBaiDuMapViewController.mm in Sources */,
 				0915D390170DAFEC00D86E9A /* RCWebViewController.m in Sources */,
 				092368F91710424E003F093F /* RCZiXunViewController.m in Sources */,
 				092368FC171042C7003F093F /* RCZiXunTabBar.m in Sources */,
@@ -2216,6 +2372,7 @@
 				09AEBBC8194548D8005885C0 /* RCNumberView.m in Sources */,
 				09202327172E1855009EAB94 /* WBAuthorize.m in Sources */,
 				09202328172E1855009EAB94 /* WBEngine.m in Sources */,
+				09877787198F38A4006834C2 /* RouteAnnotation.m in Sources */,
 				09202329172E1855009EAB94 /* WBLogInAlertView.m in Sources */,
 				0920232A172E1855009EAB94 /* WBRequest.m in Sources */,
 				0920232B172E1855009EAB94 /* WBSendView.m in Sources */,
@@ -2225,6 +2382,7 @@
 				092AA0251940CF2900E13E2E /* RCBJViewController.m in Sources */,
 				0920236B172E2D56009EAB94 /* ASIAuthenticationDialog.m in Sources */,
 				0920236C172E2D56009EAB94 /* ASIDataCompressor.m in Sources */,
+				09FD90C719A23AA600BC59C0 /* RCSHDetailView.m in Sources */,
 				0948E65119502C5600D73734 /* RCFJCellContentView.m in Sources */,
 				09D9128D198B631400A643A4 /* RCCheckButton.m in Sources */,
 				0920236D172E2D56009EAB94 /* ASIDataDecompressor.m in Sources */,
@@ -2329,21 +2487,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Haisheng Chen (Z9ZS3G4WXF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Haisheng Chen (Z9ZS3G4WXF)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: zhang qiaolin (NLUP9BXJVD)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhang qiaolin (NLUP9BXJVD)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RCListen/RCFang-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "RCListen/RCFang-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/RCListen/ThirdParty/ZBarSDK\"",
+					"$(PROJECT_DIR)/RCListen/BaiDuMap",
+					"$(PROJECT_DIR)/RCListen/ThirdParty/ZBarSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "52CFB7C6-3ABB-4E7F-B213-C5A1DB2284B1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "52CFB7C6-3ABB-4E7F-B213-C5A1DB2284B1";
+				PROVISIONING_PROFILE = "02963f05-e16d-4d54-868c-27c52e5e0606";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "02963f05-e16d-4d54-868c-27c52e5e0606";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -2354,21 +2514,23 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: zhang qiaolin (F3GWLKMAPW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: zhang qiaolin (F3GWLKMAPW)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RCListen/RCFang-Prefix.pch";
 				HEADER_SEARCH_PATHS = "${SDK_DIR}/usr/include/libxml2";
 				INFOPLIST_FILE = "RCListen/RCFang-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/RCListen/ThirdParty/ZBarSDK\"",
+					"$(PROJECT_DIR)/RCListen/BaiDuMap",
+					"$(PROJECT_DIR)/RCListen/ThirdParty/ZBarSDK",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "52CFB7C6-3ABB-4E7F-B213-C5A1DB2284B1";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8514BD0B-5BD1-4830-9365-06703056F31C";
+				PROVISIONING_PROFILE = "303db5e7-24e8-4832-ac81-e768eb527294";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "303db5e7-24e8-4832-ac81-e768eb527294";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

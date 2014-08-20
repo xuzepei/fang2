@@ -46,7 +46,7 @@
         
         //phone
         [[RCTool colorWithHex:0x5b5b5b] set];
-        NSString* phone = [NSString stringWithFormat:@"手机号：%@",@""];
+        NSString* phone = [NSString stringWithFormat:@"手机号：%@",[RCTool getUsername]];
         [phone drawInRect:CGRectMake(10, 36, 200, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentLeft];
         
         //jifen
