@@ -107,10 +107,10 @@
     if(0 == [self.itemArray count])
         return;
     
-    RCBaiDuMapViewController* temp = [[RCBaiDuMapViewController alloc] initWithNibName:nil bundle:nil];
-    temp.title = @"附近的搬家公司";
-    [temp updateContent:@{@"list":self.itemArray} zoom:17];
-    [self.navigationController pushViewController:temp animated:YES];
+//    RCBaiDuMapViewController* temp = [[RCBaiDuMapViewController alloc] initWithNibName:nil bundle:nil];
+//    temp.title = @"附近的搬家公司";
+//    [temp updateContent:@{@"list":self.itemArray} zoom:17];
+//    [self.navigationController pushViewController:temp animated:YES];
 }
 
 - (void)updateContent:(NSDictionary*)item

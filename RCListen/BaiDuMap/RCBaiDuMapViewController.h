@@ -8,20 +8,19 @@
 
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
-#import "RCAppDelegate.h"
 
-@interface RCBaiDuMapViewController : UIViewController<BMKMapViewDelegate>
+@interface RCBaiDuMapViewController : UIViewController<BMKMapViewDelegate,BMKSearchDelegate>
 
 
-@property(nonatomic,strong)BMKMapView* mapView;
-@property(nonatomic,strong)NSString* address;
-@property(nonatomic,strong)NSString* myTitle;
-@property(nonatomic,strong)NSDictionary* item;
-@property(nonatomic,strong)UIStepper* stepper;
-@property(nonatomic,strong)UIButton* locationButton;
+@property(nonatomic,retain)BMKMapView* mapView;
+@property(nonatomic,retain)NSString* address;
+@property(nonatomic,retain)NSString* myTitle;
+@property(nonatomic,retain)NSDictionary* item;
+@property(nonatomic,retain)BMKSearch* search;
 
 - (void)updateContent:(NSDictionary*)item zoom:(int)zoom;
 - (void)updateContent:(NSDictionary*)item;
-- (void)addAnnotation:(NSString*)address title:(NSString*)title token:(id)token;
+- (void)addAnnotation:(NSString*)address;
+- (void)addOverlay:(NSString*)address;
 
 @end

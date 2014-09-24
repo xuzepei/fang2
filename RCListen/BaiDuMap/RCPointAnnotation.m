@@ -11,6 +11,8 @@
 @implementation RCPointAnnotation
 
 - (void)dealloc{
+    self.token = nil;
+    //[super dealloc];
 }
 
 @end

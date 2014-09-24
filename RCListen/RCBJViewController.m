@@ -9,6 +9,7 @@
 #import "RCBJViewController.h"
 #import "RCFJViewController.h"
 #import "RCDDViewController.h"
+#import "RCCreateDDViewController.h"
 
 @interface RCBJViewController ()
 
@@ -68,6 +69,8 @@
 
 - (IBAction)clickedButton2:(id)sender
 {
+    RCCreateDDViewController* temp = [[RCCreateDDViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:temp animated:YES];
 }
 
 @end

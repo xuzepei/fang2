@@ -17,6 +17,7 @@
 #import "RCHttpRequest.h"
 #import "RCNewsViewController.h"
 #import "RCBJViewController.h"
+#import "RCCreateDDViewController.h"
 
 #define AD_FRAME_HEIGHT 170.0
 
@@ -227,10 +228,13 @@
 {
     NSLog(@"clickedBJButton");
     
-    RCBJViewController* temp = [[RCBJViewController alloc] initWithNibName:nil bundle:nil];
+//    RCBJViewController* temp = [[RCBJViewController alloc] initWithNibName:nil bundle:nil];
+//    temp.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:temp animated:YES];
+    
+    RCCreateDDViewController* temp = [[RCCreateDDViewController alloc] initWithNibName:nil bundle:nil];
     temp.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:temp animated:YES];
-
 }
 
 - (IBAction)clickedJZButton:(id)sender

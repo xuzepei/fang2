@@ -7,19 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NSAttributedString+Attributes.h"
-#import "OHAttributedLabel.h"
 #import "RCSignUpView.h"
 
-@interface RCSignupViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,OHAttributedLabelDelegate>
+@interface RCSignupViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 
-@property(nonatomic,retain)UITableView* tableView;
 @property(nonatomic,retain)NSMutableArray* itemArray;
-@property(nonatomic,retain)UIButton* loginButton;
-@property(nonatomic,retain)UITextField* accountTF;
-@property(nonatomic,retain)UITextField* passwordTF;
-@property(nonatomic,retain)OHAttributedLabel* attributedLabel;
-
-- (void)initTableView;
 
 @end

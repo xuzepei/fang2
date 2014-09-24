@@ -10,6 +10,6 @@
 
 @interface RCPointAnnotation : BMKPointAnnotation
 
-@property(nonatomic,weak)id token;
+@property(nonatomic,retain)id token;
 
 @end

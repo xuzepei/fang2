@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RCPickerView.h"
 #import "RCButtonView.h"
-#import "RCBaiDuMapViewController.h"
+//#import "RCBaiDuMapViewController.h"
 #import "RCAppDelegate.h"
 
 @interface RCFJViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,BMKMapViewDelegate>

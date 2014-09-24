@@ -9,6 +9,7 @@
 #import "RCMeModifyViewController.h"
 #import "RCTool.h"
 #import "RCHttpRequest.h"
+#import "RCPasswordViewController.h"
 
 #define CELL_HEIGHT 50.0f
 
@@ -363,6 +364,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	
 	[tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+    if(1 == indexPath.row)
+    {
+        RCPasswordViewController* temp = [[RCPasswordViewController alloc] initWithNibName:nil bundle:nil];
+        [self.navigationController pushViewController:temp animated:YES];
+    }
 }
 
 #pragma mark - UITextField
@@ -386,7 +393,16 @@
     NSLog(@"textFieldShouldReturn");
     
     if([_nicknameTF.text length])
+    {
+        NSString* current = [RCTool getNickname];
+        if([current isEqualToString:_nicknameTF.text])
+        {
+            [_nicknameTF resignFirstResponder];
+            return YES;
+        }
+            
         [self updateNickname];
+    }
     
     return YES;
 }
