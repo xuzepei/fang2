@@ -48,8 +48,16 @@ enum {
         self.selected_index5 = -1;
         self.selected_index6 = -1;
         self.selected_index7 = -1;
+        
+        UIBarButtonItem* backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"fanhui"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedBackButton:)];
+        self.navigationItem.leftBarButtonItem = backBarButtonItem;
     }
     return self;
+}
+
+- (void)clickedBackButton:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
@@ -76,21 +84,21 @@ enum {
     self.item = item;
     
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"搬家类别" forKey:@"name"];
+    [dict setObject:@"请选择搬家类别" forKey:@"name"];
     NSArray* array = @[@"住家",@"公司"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_0] forKey:@"tag"];
     self.selection0 = dict;
     
     dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"搬家需求" forKey:@"name"];
+    [dict setObject:@"请选择搬家需求" forKey:@"name"];
     array = @[@"全包",@"只要车"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_1] forKey:@"tag"];
     self.selection1 = dict;
     
     dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"楼层" forKey:@"name"];
+    [dict setObject:@"请选择楼层" forKey:@"name"];
     
     NSMutableArray* mutableArray = [[NSMutableArray alloc] init];
     for(int i = -3; i <= 100; i++)
@@ -106,21 +114,23 @@ enum {
     self.selection2 = dict;
     
     dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"是否电梯" forKey:@"name"];
+    [dict setObject:@"请选择是否电梯" forKey:@"name"];
     array = @[@"是",@"否"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_5] forKey:@"tag"];
     self.selection3 = dict;
+    self.selected_index3 = 0;
     
     dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"是否可停车到楼下" forKey:@"name"];
+    [dict setObject:@"请选择是否可停车到楼下" forKey:@"name"];
     array = @[@"是",@"否"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_6] forKey:@"tag"];
     self.selection4 = dict;
+    self.selected_index4 = 0;
     
     dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"楼层" forKey:@"name"];
+    [dict setObject:@"请选择楼层" forKey:@"name"];
     
     mutableArray = [[NSMutableArray alloc] init];
     for(int i = -3; i <= 100; i++)
@@ -136,18 +146,20 @@ enum {
     self.selection5 = dict;
     
     dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"是否电梯" forKey:@"name"];
+    [dict setObject:@"请选择是否电梯" forKey:@"name"];
     array = @[@"是",@"否"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_10] forKey:@"tag"];
     self.selection6 = dict;
+    self.selected_index6 = 0;
     
     dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"是否可停车到楼下" forKey:@"name"];
+    [dict setObject:@"请选择是否可停车到楼下" forKey:@"name"];
     array = @[@"是",@"否"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_11] forKey:@"tag"];
     self.selection7 = dict;
+    self.selected_index7 = 0;
 }
 
 #pragma mark - UITextField
@@ -279,6 +291,11 @@ enum {
         NSArray* array = [self.selection3 objectForKey:@"values"];
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
+        
+        if(1 == index)
+        {
+            [RCTool showAlert:@"温馨提示" message:@"无电梯每层加收50元"];
+        }
     }
     else if(TF_TAG_6 == tag)
     {
@@ -286,6 +303,11 @@ enum {
         NSArray* array = [self.selection4 objectForKey:@"values"];
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
+        
+        if(1 == index)
+        {
+            [RCTool showAlert:@"温馨提示" message:@"不能停车到楼下加收100元"];
+        }
     }
     else if(TF_TAG_9 == tag)
     {
@@ -300,6 +322,11 @@ enum {
         NSArray* array = [self.selection6 objectForKey:@"values"];
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
+        
+        if(1 == index)
+        {
+            [RCTool showAlert:@"温馨提示" message:@"无电梯每层加收50元"];
+        }
     }
     else if(TF_TAG_11 == tag)
     {
@@ -307,6 +334,11 @@ enum {
         NSArray* array = [self.selection7 objectForKey:@"values"];
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
+        
+        if(1 == index)
+        {
+            [RCTool showAlert:@"温馨提示" message:@"不能停车到楼下加收100元"];
+        }
     }
 }
 
@@ -327,18 +359,18 @@ enum {
         return;
     }
     
-    if(-1 == self.selected_index1)
-    {
-        [RCTool showAlert:@"提示" message:@"请选择搬家方式！"];
-        return;
-    }
+//    if(-1 == self.selected_index1)
+//    {
+//        [RCTool showAlert:@"提示" message:@"请选择搬家方式！"];
+//        return;
+//    }
     
-    NSString* begin_room_num = self.tf3.text;
-    if(0 == [begin_room_num length])
-    {
-        [RCTool showAlert:@"提示" message:@"请输入起点房号！"];
-        return;
-    }
+//    NSString* begin_room_num = self.tf3.text;
+//    if(0 == [begin_room_num length])
+//    {
+//        [RCTool showAlert:@"提示" message:@"请输入起点房号！"];
+//        return;
+//    }
     
     if(-1 == self.selected_index2)
     {
@@ -358,15 +390,15 @@ enum {
         return;
     }
     
-    NSString* end_room_num = self.tf8.text;
-    if(0 == [end_room_num length])
-    {
-        [RCTool showAlert:@"提示" message:@"请输入终点房号！"];
-        return;
-    }
+//    NSString* end_room_num = self.tf8.text;
+//    if(0 == [end_room_num length])
+//    {
+//        [RCTool showAlert:@"提示" message:@"请输入终点房号！"];
+//        return;
+//    }
     
     NSString* remover_type = [NSString stringWithFormat:@"%d",self.selected_index0 + 1];
-    NSString* remover_class = [NSString stringWithFormat:@"%d",self.selected_index1 + 1];
+//    NSString* remover_class = [NSString stringWithFormat:@"%d",self.selected_index1 + 1];
     
     NSString* order_num = [self.item objectForKey:@"order_num"];
     NSString* begin_address = [self.item objectForKey:@"begin_address"];
@@ -404,7 +436,7 @@ enum {
     NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
     
 
-    NSString* token = [NSString stringWithFormat:@"type=remover&step=3&username=%@&remover_type=%@&remover_class=%@&order_num=%@&begin_address=%@&begin_room_num=%@&begin_floor=%@&begin_lift=%@&begin_park=%@&end_address=%@&end_room_num=%@&end_floor=%@&end_lift=%@&end_park=%@",username,remover_type,remover_class,order_num,begin_address,begin_room_num,begin_floor,begin_lift,begin_park,end_address,end_room_num,end_floor,end_lift,end_park];
+    NSString* token = [NSString stringWithFormat:@"type=remover&step=3&username=%@&remover_type=%@&order_num=%@&begin_address=%@&begin_floor=%@&begin_lift=%@&begin_park=%@&end_address=%@&end_floor=%@&end_lift=%@&end_park=%@",username,remover_type,order_num,begin_address,begin_floor,begin_lift,begin_park,end_address,end_floor,end_lift,end_park];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:token];
@@ -433,6 +465,7 @@ enum {
             [item addEntriesFromDictionary:result];
             [temp updateContent:item];
             [self.navigationController pushViewController:temp animated:YES];
+            return;
         }
         
         [RCTool showAlert:@"提示" message:error];

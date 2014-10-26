@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "BMapKit.h"
 
-@interface RCGuiHuaViewController : UIViewController<UITextFieldDelegate,BMKMapViewDelegate,BMKRouteSearchDelegate>
+@interface RCGuiHuaViewController : UIViewController<UITextFieldDelegate,BMKMapViewDelegate,BMKRouteSearchDelegate,BMKLocationServiceDelegate>
 
 @property(nonatomic,strong)IBOutlet UITextField* tf0;
 @property(nonatomic,strong)IBOutlet UITextField* tf1;
@@ -21,7 +21,8 @@
 @property(nonatomic,strong)BMKPoiInfo* zdInfo;
 @property(nonatomic,strong)BMKDrivingRouteLine* routePlan;
 
-- (void)updateContent:(NSDictionary*)item;
+@property(nonatomic,strong)BMKLocationService* locationService;
+
 - (void)addOverlay:(NSString*)address;
 
 @end

@@ -62,7 +62,7 @@
     NSString* name = [item objectForKey:@"name"];
     if([name length])
     {
-        NSString* title = [NSString stringWithFormat:@"请选择%@",[item objectForKey:@"name"]];
+        NSString* title = [NSString stringWithFormat:@"%@",[item objectForKey:@"name"]];
         _titleLabel.text = title;
     }
     else
@@ -157,7 +157,33 @@
 
 - (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component
 {
-    return 40.0;
+    return 60.0;
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
+{
+    if(0 == component)
+    {
+        if(row < [_itemArray count])
+        {
+            NSString* title = @"";
+            NSDictionary* value = [_itemArray objectAtIndex:row];
+            if(value && [value isKindOfClass:[NSDictionary class]])
+                title = [value objectForKey:@"name"];
+            else if([value isKindOfClass:[NSString class]])
+                title = (NSString*)value;
+            
+            UILabel* label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 50)];
+            label.numberOfLines = 2;
+            label.textAlignment = NSTextAlignmentCenter;
+            label.font = [UIFont systemFontOfSize:20];
+            label.text = title;
+            
+            return label;
+        }
+    }
+    
+    return nil;
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component

@@ -165,6 +165,17 @@
     {
        _mapView.delegate = self;
         [_mapView setShowsUserLocation:YES];
+
+        [_mapView setZoomLevel:13];
+    }
+    
+    //初始化BMKLocationService
+    if(nil == _locationService)
+    {
+        _locationService = [[BMKLocationService alloc] init];
+        _locationService.delegate = self;
+        //启动LocationService
+        [_locationService startUserLocationService];
     }
     
     
@@ -282,21 +293,16 @@
     return nil;
 }
 
+#pragma mark - BMKLocationServiceDelegate
 
-#pragma mark -
-- (void)mapViewWillStartLocatingUser:(BMKMapView *)mapView
+- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
 {
-    //NSLog(@"mapViewWillStartLocatingUser");
-}
-
-- (void)mapView:(BMKMapView *)mapView didUpdateUserLocation:(BMKUserLocation *)userLocation
-{
-    //NSLog(@"didUpdateUserLocation");
-}
-
-- (void)mapViewDidStopLocatingUser:(BMKMapView *)mapView
-{
-    //NSLog(@"mapViewDidStopLocatingUser");
+    NSLog(@"didUpdateUserLocation");
+    
+    BMKCoordinateRegion region;
+    region.center.latitude  = userLocation.location.coordinate.latitude;
+    region.center.longitude = userLocation.location.coordinate.longitude;
+    [self.mapView setRegion:region animated:YES];
 }
 
 #pragma mark - Route

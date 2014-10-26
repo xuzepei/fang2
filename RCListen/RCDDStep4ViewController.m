@@ -36,11 +36,19 @@ enum {
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"填写物品信息";
+        self.title = @"联系人信息";
         
         self.selected_index0 = -1;
+        
+        UIBarButtonItem* backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"fanhui"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedBackButton:)];
+        self.navigationItem.leftBarButtonItem = backBarButtonItem;
     }
     return self;
+}
+
+- (void)clickedBackButton:(id)sender
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)viewDidLoad
@@ -67,7 +75,7 @@ enum {
     self.item = item;
     
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"性别" forKey:@"name"];
+    [dict setObject:@"请选择性别" forKey:@"name"];
     NSArray* array = @[@"先生",@"女士"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_4] forKey:@"tag"];
@@ -160,12 +168,12 @@ enum {
         return ;
     }
     
+    NSString* user_tel = [RCTool getUsername];
+    
     NSString* order_num = [self.item objectForKey:@"order_num"];
     if(0 == [order_num length])
         return;
 
-    NSString* user_name = [RCTool getUsername];
-    
     if(-1 == self.selected_index0)
     {
         [RCTool showAlert:@"提示" message:@"请选择性别！"];
@@ -174,7 +182,7 @@ enum {
     
     NSString* user_sex = [NSString stringWithFormat:@"%d",self.selected_index0 + 1];
     
-    NSString* user_tel = self.tf2.text;
+    NSString* user_name = self.tf2.text;
     if(0 == [user_name length])
     {
         [RCTool showAlert:@"提示" message:@"请填写用户姓名！"];
@@ -184,8 +192,9 @@ enum {
     NSString* urgent_tel = self.tf3.text;
     if(0 == [urgent_tel length])
     {
-        [RCTool showAlert:@"提示" message:@"请填写紧急联系电话！"];
-        return;
+        urgent_tel = @"";
+//        [RCTool showAlert:@"提示" message:@"请填写紧急联系电话！"];
+//        return;
     }
 //    order_num     -- 订单编号
 //    user_name     -- 用户姓名
@@ -225,6 +234,7 @@ enum {
             [item addEntriesFromDictionary:result];
             [temp updateContent:item];
             [self.navigationController pushViewController:temp animated:YES];
+            return;
         }
         
         [RCTool showAlert:@"提示" message:error];

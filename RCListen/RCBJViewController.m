@@ -10,6 +10,7 @@
 #import "RCFJViewController.h"
 #import "RCDDViewController.h"
 #import "RCCreateDDViewController.h"
+#import "RCStartBJViewController.h"
 
 @interface RCBJViewController ()
 

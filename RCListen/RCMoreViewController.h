@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarSDK.h"
 
-@interface RCMoreViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
+@interface RCMoreViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ZBarCaptureDelegate>
 
-@property(nonatomic,retain)UITableView* tableView;
-@property(nonatomic,retain)NSMutableArray* itemArray;
+@property(nonatomic,strong)UITableView* tableView;
+@property(nonatomic,strong)NSMutableArray* itemArray;
+@property(nonatomic,strong)UILabel* versionLabel;
+@property(nonatomic,strong)NSString* updateUrlString;
 
 
 - (void)initTableView;

@@ -18,6 +18,7 @@
 #import "RCNewsViewController.h"
 #import "RCBJViewController.h"
 #import "RCCreateDDViewController.h"
+#import "RCStartBJViewController.h"
 
 #define AD_FRAME_HEIGHT 170.0
 
@@ -232,9 +233,13 @@
 //    temp.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController:temp animated:YES];
     
-    RCCreateDDViewController* temp = [[RCCreateDDViewController alloc] initWithNibName:nil bundle:nil];
+    RCStartBJViewController* temp = [[RCStartBJViewController alloc] initWithNibName:nil bundle:nil];
     temp.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:temp animated:YES];
+    
+//    RCCreateDDViewController* temp = [[RCCreateDDViewController alloc] initWithNibName:nil bundle:nil];
+//    temp.hidesBottomBarWhenPushed = YES;
+//    [self.navigationController pushViewController:temp animated:YES];
 }
 
 - (IBAction)clickedJZButton:(id)sender

@@ -8,6 +8,12 @@
 
 #import "RCDDViewController.h"
 #import "RCPublicCell.h"
+#import "RCHttpRequest.h"
+#import "RCDDCell.h"
+#import "RCDDStep4ViewController.h"
+#import "RCDDStep5ViewController.h"
+#import "RCDDStep6ViewController.h"
+#import "RCPJDDViewController.h"
 
 #define SEGMENTED_BAR_HEIGHT 50.0f
 
@@ -23,8 +29,24 @@
     if (self) {
         // Custom initialization
         
-        self.title = @"订单";
+        self.title = @"我的订单";
         self.view.backgroundColor = BG_COLOR;
+        
+        if(nil == _itemArray)
+            _itemArray = [[NSMutableArray alloc] init];
+        
+        if(nil == _itemArray0)
+            _itemArray0 = [[NSMutableArray alloc] init];
+        
+        if(nil == _itemArray1)
+            _itemArray1 = [[NSMutableArray alloc] init];
+        
+        if(nil == _itemArray2)
+            _itemArray2 = [[NSMutableArray alloc] init];
+        
+        self.page0 = 1;
+        self.page1 = 1;
+        self.page2 = 1;
     }
     return self;
 }
@@ -36,11 +58,13 @@
     
     UIBarButtonItem* backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"fanhui"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedBackButton:)];
     self.navigationItem.leftBarButtonItem = backBarButtonItem;
-
+    
     [self initSegmentedControl];
     
     [self initTableView];
-
+    
+    [self initRefreshControl];
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -58,13 +82,206 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (void)updateContent
+{
+    if(NO == [RCTool isLogined])
+        return;
+    
+    NSString* username = [RCTool getUsername];
+    NSString* password = [RCTool getPassword];
+    
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    
+    NSString* type = @"nocharge_list";
+    int page = 0;
+    if(0 == self.segmentedControl.selectedSegmentIndex)
+    {
+        type = @"nocharge_list";
+        page = self.page0;
+    }
+    else if(1 == self.segmentedControl.selectedSegmentIndex)
+    {
+        type = @"charged_list";
+        page = self.page1;
+    }
+    else if(2 == self.segmentedControl.selectedSegmentIndex)
+    {
+        type = @"finish_list";
+        page = self.page2;
+    }
+    
+    NSString* token = [NSString stringWithFormat:@"username=%@&password=%@&type=%@&page=%d",username,password,type,page];
+    
+    SEL selector = nil;
+    if(0 == self.segmentedControl.selectedSegmentIndex)
+        selector = @selector(finishedRequest0:);
+    else if(1 == self.segmentedControl.selectedSegmentIndex)
+        selector = @selector(finishedRequest1:);
+    else if(2 == self.segmentedControl.selectedSegmentIndex)
+        selector = @selector(finishedRequest2:);
+    
+    RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+    BOOL b = [temp post:urlString delegate:self resultSelector:selector token:token];
+    if(b)
+    {
+        //[RCTool showIndicator:@"请稍候..."];
+    }
+}
+
+- (void)finishedRequest0:(NSString*)jsonString
+{
+    //[RCTool hideIndicator];
+    
+    [self.tableView footerEndRefreshing];
+    
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            NSArray* array = [result objectForKey:@"order_list"];
+            if(array && [array isKindOfClass:[NSArray class]])
+            {
+                self.page0++;
+                //[self.itemArray0 removeAllObjects];
+                [self.itemArray0 addObjectsFromArray:array];
+                
+                if(0 == self.segmentedControl.selectedSegmentIndex)
+                {
+                    [self.itemArray removeAllObjects];
+                    [self.itemArray addObjectsFromArray:self.itemArray0];
+                    [self.tableView reloadData];
+                }
+                
+                
+            }
+            
+            return;
+        }
+        
+        [RCTool showAlert:@"提示" message:error];
+        
+    }
+}
+
+- (void)finishedRequest1:(NSString*)jsonString
+{
+    //[RCTool hideIndicator];
+    
+    [self.tableView footerEndRefreshing];
+    
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            NSArray* array = [result objectForKey:@"order_list"];
+            if(array && [array isKindOfClass:[NSArray class]])
+            {
+                self.page1++;
+                //[self.itemArray1 removeAllObjects];
+                [self.itemArray1 addObjectsFromArray:array];
+                [self.segmentedControl setTitle:[NSString stringWithFormat:@"搬家订单 %d",[self.itemArray1 count]] forSegmentAtIndex:1];
+                self.segmentedControl.center = CGPointMake([RCTool getScreenSize].width/2.0, SEGMENTED_BAR_HEIGHT/2.0);
+                
+                if(1 == self.segmentedControl.selectedSegmentIndex)
+                {
+                    [self.itemArray removeAllObjects];
+                    [self.itemArray addObjectsFromArray:self.itemArray1];
+                    [self.tableView reloadData];
+                }
+            }
+            
+            return;
+        }
+        
+        [RCTool showAlert:@"提示" message:error];
+        
+    }
+}
+
+- (void)finishedRequest2:(NSString*)jsonString
+{
+    //[RCTool hideIndicator];
+    
+    [self.tableView footerEndRefreshing];
+    
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            NSArray* array = [result objectForKey:@"order_list"];
+            if(array && [array isKindOfClass:[NSArray class]])
+            {
+                self.page2++;
+                //[self.itemArray2 removeAllObjects];
+                [self.itemArray2 addObjectsFromArray:array];
+                [self.segmentedControl setTitle:[NSString stringWithFormat:@"家政订单 %d",[self.itemArray2 count]] forSegmentAtIndex:2];
+                self.segmentedControl.center = CGPointMake([RCTool getScreenSize].width/2.0, SEGMENTED_BAR_HEIGHT/2.0);
+                
+                if(2 == self.segmentedControl.selectedSegmentIndex)
+                {
+                    [self.itemArray removeAllObjects];
+                    [self.itemArray addObjectsFromArray:self.itemArray2];
+                    [self.tableView reloadData];
+                }
+            }
+            
+            return;
+        }
+        
+        [RCTool showAlert:@"提示" message:error];
+        
+    }
+}
+
+#pragma mark - Refresh Control
+
+- (void)initRefreshControl
+{
+    // 1.下拉刷新(进入刷新状态就会调用self的headerRereshing)
+    //[self.tableView addHeaderWithTarget:self action:@selector(headerRereshing)];
+    
+    // 2.上拉加载更多(进入刷新状态就会调用self的footerRereshing)
+    [self.tableView addFooterWithTarget:self action:@selector(footerRereshing)];
+    
+    // 设置文字(也可以不设置,默认的文字在MJRefreshConst中修改)
+    //    self.tableView.headerPullToRefreshText = [RCTool getTextById:@"ti_6"];
+    //    self.tableView.headerReleaseToRefreshText = [RCTool getTextById:@"ti_7"];
+    //    self.tableView.headerRefreshingText = [RCTool getTextById:@"ti_8"];
+    //
+    self.tableView.footerPullToRefreshText = @"";
+    self.tableView.footerReleaseToRefreshText = @"";
+    self.tableView.footerRefreshingText = @"";
+}
+
+- (void)footerRereshing
+{
+    NSLog(@"footerRereshing");
+    
+    [self updateContent];
+}
+
 #pragma mark - SegmentedControl
 
 - (void)initSegmentedControl
 {
     if(nil == _segmentedControl)
     {
-        _segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"有效订单 10",@"自由订单 1",@"组团订单 1",nil]];
+        _segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"未付款",@"已付款",@"已完成",nil]];
         _segmentedControl.backgroundColor = [UIColor clearColor];
         _segmentedControl.tintColor = NAVIGATION_BAR_COLOR;
         
@@ -83,24 +300,34 @@
 - (void)clickedSegmentedControl:(id)sender
 {
     NSLog(@"clickedSegmentedControl");
+    
+    
+    if(0 == self.segmentedControl.selectedSegmentIndex)
+    {
+        [self.itemArray removeAllObjects];
+        [self.itemArray addObjectsFromArray:self.itemArray0];
+    }
+    else if(1 == self.segmentedControl.selectedSegmentIndex)
+    {
+        [self.itemArray removeAllObjects];
+        [self.itemArray addObjectsFromArray:self.itemArray1];
+    }
+    else if(2 == self.segmentedControl.selectedSegmentIndex)
+    {
+        [self.itemArray removeAllObjects];
+        [self.itemArray addObjectsFromArray:self.itemArray2];
+    }
+    
+    [self.tableView reloadData];
+    
+    if(0 == [self.itemArray count])
+        [self updateContent];
 }
 
 #pragma mark - Table View
 
 - (void)initTableView
 {
-    if(nil == _itemArray)
-        _itemArray = [[NSMutableArray alloc] init];
-    
-    if(nil == _itemArray0)
-        _itemArray0 = [[NSMutableArray alloc] init];
-    
-    if(nil == _itemArray1)
-        _itemArray1 = [[NSMutableArray alloc] init];
-    
-    if(nil == _itemArray2)
-        _itemArray2 = [[NSMutableArray alloc] init];
-    
     if(nil == _tableView)
     {
         _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,SEGMENTED_BAR_HEIGHT,[RCTool getScreenSize].width,[RCTool getScreenSize].height - NAVIGATION_BAR_HEIGHT - SEGMENTED_BAR_HEIGHT)
@@ -111,18 +338,8 @@
         _tableView.opaque = NO;
         _tableView.backgroundView = nil;
         _tableView.dataSource = self;
+        _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
-    
-    NSDictionary* dict = @{@"ddbh":@"2568855666",
-                           @"fwxq":@"搬家",
-                           @"bx":@"赠送",
-                           @"yq":@"无电梯上楼，双倍积分",
-                           @"zt":@"已发布",
-                           @"yz":@"3"};
-    [_itemArray addObject:dict];
-    [_itemArray addObject:dict];
-    [_itemArray addObject:dict];
-    [_itemArray addObject:dict];
     
     [_tableView reloadData];
 	[self.view addSubview:_tableView];
@@ -151,6 +368,8 @@
 
 - (CGFloat)getCellHeight:(NSIndexPath*)indexPath
 {
+    return 280.0;
+    
     CGFloat height = 0.0f;
     NSDictionary* item = [self getCellDataAtIndexPath:indexPath];
     if(item)
@@ -167,7 +386,7 @@
         if([fwxq length])
         {
             CGSize size = [fwxq sizeWithFont:[UIFont systemFontOfSize:16] constrainedToSize:CGSizeMake(80,CGFLOAT_MAX) lineBreakMode:NSLineBreakByWordWrapping];
-
+            
             height += MAX(size.height, 16) + 6;
         }
         
@@ -183,7 +402,7 @@
         height += 44;
     }
     
-        
+    
     return MAX(height,110);
 }
 
@@ -216,38 +435,40 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     static NSString *cellId1 = @"cellId1";
-//    static NSString *cellId2 = @"cellId2";
     
     UITableViewCell *cell = nil;
-    cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
-    if(cell == nil)
+    //    cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
+    //    if(cell == nil)
+    //    {
+    //        cell = [[RCPublicCell alloc] initWithStyle: UITableViewCellStyleDefault
+    //                                   reuseIdentifier: cellId1 contentViewClass:NSClassFromString(@"RCDDCellContentView")];
+    //        cell.accessoryType = UITableViewCellAccessoryNone;
+    //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    //        cell.backgroundColor = [UIColor clearColor];
+    //    }
+    //
+    //    NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
+    //    RCPublicCell* temp = (RCPublicCell*)cell;
+    //    if(temp)
+    //    {
+    //        [temp updateContent:item cellHeight:[self getCellHeight:indexPath] delegate:self token:nil];
+    //    }
+    
+    if (cell == nil)
     {
-        cell = [[RCPublicCell alloc] initWithStyle: UITableViewCellStyleDefault
-                                   reuseIdentifier: cellId1 contentViewClass:NSClassFromString(@"RCDDCellContentView")];
+        NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"RCDDCell" owner:self options:nil];
+        cell = [objects objectAtIndex:0];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        cell.backgroundColor = [UIColor clearColor];
     }
     
     NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
-    RCPublicCell* temp = (RCPublicCell*)cell;
+    RCDDCell* temp = (RCDDCell*)cell;
     if(temp)
     {
-        [temp updateContent:item cellHeight:[self getCellHeight:indexPath] delegate:self token:nil];
+        temp.delegate = self;
+        [temp updateContent:item];
     }
-
-//    else
-//    {
-//        cell = [tableView dequeueReusableCellWithIdentifier:cellId0];
-//        if(nil == cell)
-//        {
-//            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellId0];
-//            
-//            //cell.backgroundColor = BG_COLOR;
-//            cell.textLabel.text = @"更多...";
-//            cell.textLabel.textAlignment = NSTextAlignmentCenter;
-//        }
-//    }
     
     return cell;
 }
@@ -257,15 +478,158 @@
 	
 	[tableView deselectRowAtIndexPath: indexPath animated: YES];
     
-//    if(2 == indexPath.section)
-//    {
-//        [self updateContent:self.item];
-//    }
+    if(2 == indexPath.section)
+    {
+        //[self updateContent:self.item];
+    }
 }
 
-- (void)clickedButton:(id)token
+- (void)clickedButton:(int)type token:(NSDictionary *)token
 {
-    NSLog(@"clickedButton");
+    if(0 == type)//确认并支付
+    {
+        NSString* username = [RCTool getUsername];
+        NSString* password = [RCTool getPassword];
+        
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        
+        NSString* order_num = [token objectForKey:@"order_num"];
+        NSString* type = @"confirm";
+        
+        NSString* token1 = [NSString stringWithFormat:@"username=%@&password=%@&type=%@&order_num=%@&user_order=1",username,password,type,order_num];
+        
+        SEL selector = @selector(finishedConfirmRequest:);
+        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+        BOOL b = [temp post:urlString delegate:self resultSelector:selector token:token1];
+        if(b)
+        {
+            //[RCTool showIndicator:@"请稍候..."];
+        }
+    
+    }
+    else if(1 == type)//取消
+    {
+        NSString* username = [RCTool getUsername];
+        NSString* password = [RCTool getPassword];
+        
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        
+        NSString* order_num = [token objectForKey:@"order_num"];
+        
+        NSString* token1 = [NSString stringWithFormat:@"username=%@&password=%@&type=%@&order_num=%@&user_name=%@",username,password,@"del",order_num,username];
+        
+        SEL selector = @selector(finishedDeleteRequest:);
+        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+        BOOL b = [temp post:urlString delegate:self resultSelector:selector token:token1];
+        if(b)
+        {
+            //[RCTool showIndicator:@"请稍候..."];
+        }
+        
+        
+        int index = [[token objectForKey:@"index"] intValue];
+        if(index < [self.itemArray count])
+        {
+            [self.itemArray removeObjectAtIndex:index];
+            [self.tableView reloadData];
+        }
+    }
+    else if(2 == type)//支付
+    {
+        RCDDStep6ViewController* temp = [[RCDDStep6ViewController alloc] initWithNibName:nil bundle:nil];
+        [temp updateContent:token];
+        [self.navigationController pushViewController:temp animated:YES];
+    }
+    else if(3 == type)//跟踪流程
+    {
+
+    }
+    else if(4 == type)//完成订单
+    {
+        NSString* username = [RCTool getUsername];
+        NSString* password = [RCTool getPassword];
+        
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        
+        NSString* order_num = [token objectForKey:@"order_num"];
+        NSString* type = @"finish";
+        
+        NSString* token1 = [NSString stringWithFormat:@"username=%@&password=%@&type=%@&order_num=%@",username,password,type,order_num];
+        
+        SEL selector = @selector(finishedFinishRequest:);
+        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+        BOOL b = [temp post:urlString delegate:self resultSelector:selector token:token1];
+        if(b)
+        {
+            //[RCTool showIndicator:@"请稍候..."];
+        }
+    }
+    else if(5 == type)//评价
+    {
+        RCPJDDViewController* temp = [[RCPJDDViewController alloc] initWithNibName:nil bundle:nil];
+        [temp updateContent:token];
+        [self.navigationController pushViewController:temp animated:YES];
+    }
+}
+
+- (void)finishedConfirmRequest:(NSString*)jsonString
+{
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            RCDDStep5ViewController* temp = [[RCDDStep5ViewController alloc] initWithNibName:nil bundle:nil];
+            [temp updateContent:result];
+            [self.navigationController pushViewController:temp animated:YES];
+            return;
+        }
+        
+        [RCTool showAlert:@"提示" message:error];
+        
+    }
+}
+
+- (void)finishedDeleteRequest:(NSString*)jsonString
+{
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            return;
+        }
+        
+        [RCTool showAlert:@"提示" message:error];
+        
+    }
+}
+
+- (void)finishedFinishRequest:(NSString*)jsonString
+{
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            return;
+        }
+        
+        [RCTool showAlert:@"提示" message:error];
+        
+    }
 }
 
 @end

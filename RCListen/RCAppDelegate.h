@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RCHomeViewController.h"
-#import "RCSearchViewController.h"
+#import "RCTelephoneViewController.h"
 #import "RCMeViewController.h"
 #import "RCMoreViewController.h"
 #import <AVFoundation/AVFoundation.h>
@@ -29,12 +29,12 @@
 @property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
 
 @property (nonatomic,retain)RCHomeViewController* homeViewController;
-@property (nonatomic,retain)RCSearchViewController* searchViewController;
+@property (nonatomic,retain)RCTelephoneViewController* telephoneViewController;
 @property (nonatomic,retain)RCMeViewController* meViewController;
 @property (nonatomic,retain)RCMoreViewController* moreViewController;
 
 @property (nonatomic,retain)UINavigationController* homeNavigationController;
-@property (nonatomic,retain)UINavigationController* searchNavigationController;
+@property (nonatomic,retain)UINavigationController* telephoneNavigationController;
 @property (nonatomic,retain)UINavigationController* meNavigationController;
 @property (nonatomic,retain)UINavigationController* moreNavigationController;
 

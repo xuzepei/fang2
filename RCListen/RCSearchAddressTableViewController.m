@@ -32,6 +32,7 @@
         _searchBar.delegate = self;
     }
     
+    [_searchBar becomeFirstResponder];
     self.navigationItem.titleView = _searchBar;
     
     [self updateContent:self.item];
@@ -92,10 +93,14 @@
     if(flag)
     {
         NSLog(@"城市内检索发送成功");
+        
+        [RCTool showIndicator:@"请稍候..."];
     }
     else
     {
         NSLog(@"城市内检索发送失败");
+        [RCTool showAlert:@"提示" message:@"对不起，检索失败！"];
+        
     }
 }
 
@@ -113,6 +118,8 @@
 
 - (void)onGetPoiResult:(BMKPoiSearch*)searcher result:(BMKPoiResult*)poiResult errorCode:(BMKSearchErrorCode)errorCode
 {
+    [RCTool hideIndicator];
+    
     NSLog(@"onGetPoiResult");
     if(BMK_SEARCH_NO_ERROR == errorCode)
     {

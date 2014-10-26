@@ -12,10 +12,11 @@
 
 @interface RCMeViewController : UIViewController<UITableViewDataSource,UITableViewDelegate>
 
-@property(nonatomic,retain)RCMeTopView* topView;
-@property(nonatomic,retain)RCMeTabBar* tabBar;
-@property(nonatomic,retain)UITableView* tableView;
-@property(nonatomic,retain)NSMutableArray* itemArray;
+@property(nonatomic,strong)RCMeTopView* topView;
+@property(nonatomic,strong)RCMeTabBar* tabBar;
+@property(nonatomic,strong)UITableView* tableView;
+@property(nonatomic,strong)NSMutableArray* itemArray;
+@property(nonatomic,strong)NSDictionary* item;
 
 - (void)initTableView;
 

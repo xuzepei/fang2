@@ -10,6 +10,9 @@
 #import "RCLoginViewController.h"
 #import "RCPublicCell.h"
 #import "RCMeModifyViewController.h"
+#import "RCHttpRequest.h"
+#import "RCDDViewController.h"
+#import "RCJFViewController.h"
 
 #define TOP_VIEW_HEIGHT 80.0f
 #define ME_TAB_BAR_HEIGHT 53.0f
@@ -53,6 +56,8 @@
 //    [self initTabBar];
 //    
 //    [self initTableView];
+    
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -61,9 +66,11 @@
     
     [self initTopView];
     
-    [self initTabBar];
+    //[self initTabBar];
     
     [self initTableView];
+    
+    [self updateContent];
 }
 
 
@@ -71,6 +78,49 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)updateContent
+{
+    if(NO == [RCTool isLogined])
+        return;
+    
+    NSString* username = [RCTool getUsername];
+    NSString* password = [RCTool getPassword];
+    
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_center.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    
+    NSString* token = [NSString stringWithFormat:@"username=%@&password=%@",username,password];
+    
+    RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+    BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedRequest:) token:token];
+    if(b)
+    {
+        [RCTool showIndicator:@"请稍候..."];
+    }
+}
+
+- (void)finishedRequest:(NSString*)jsonString
+{
+    [RCTool hideIndicator];
+    
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            self.item = result;
+            [self.tableView reloadData];
+            return;
+        }
+        
+        [RCTool showAlert:@"提示" message:error];
+        
+    }
 }
 
 #pragma mark - Top View
@@ -173,8 +223,8 @@
         _itemArray = [[NSMutableArray alloc] init];
     
     CGFloat height = TOP_VIEW_HEIGHT;
-    if([RCTool isLogined])
-        height += ME_TAB_BAR_HEIGHT;
+//    if([RCTool isLogined])
+//        height += ME_TAB_BAR_HEIGHT;
     
     if(nil == _tableView)
     {
@@ -207,26 +257,13 @@
 
         
         dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"我的保险" forKey:@"name"];
+        [dict setObject:@"我的优惠卷" forKey:@"name"];
         [dict setObject:@"me_bx" forKey:@"image_path"];
         [_itemArray addObject:dict];
-
-        
-        dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"我的需求" forKey:@"name"];
-        [dict setObject:@"me_xq" forKey:@"image_path"];
-        [_itemArray addObject:dict];
-
         
         dict = [[NSMutableDictionary alloc] init];
         [dict setObject:@"我的积分" forKey:@"name"];
         [dict setObject:@"me_jf" forKey:@"image_path"];
-        [_itemArray addObject:dict];
-
-        
-        dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"我的团购" forKey:@"name"];
-        [dict setObject:@"me_tg" forKey:@"image_path"];
         [_itemArray addObject:dict];
 
     }
@@ -274,16 +311,13 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
     if (cell == nil)
 	{
-//		cell = [[[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault
-//                                       reuseIdentifier: cellId] autorelease];
 		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
         
         cell = [[RCPublicCell alloc] initWithStyle: UITableViewCellStyleDefault
                                     reuseIdentifier: cellId contentViewClass:NSClassFromString(@"RCMeNumberCellContentView")];
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        
+  
         UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"xjt"]];
         imageView.center = CGPointMake(280, CELL_HEIGHT/2.0);
         [cell.contentView addSubview:imageView];
@@ -297,9 +331,31 @@
         cell.textLabel.text = [item objectForKey:@"name"];
         cell.imageView.image = [UIImage imageNamed:[item objectForKey:@"image_path"]];
         
-        RCPublicCell* temp = (RCPublicCell*)cell;
-        
-        [temp updateContent:item cellHeight:CELL_HEIGHT delegate:self token:nil];
+        if(self.item)
+        {
+            NSMutableDictionary* tempDict = [[NSMutableDictionary alloc] init];
+            [tempDict addEntriesFromDictionary:item];
+            
+            NSString* count = @"";
+            if(0 == indexPath.row)
+            {
+                count = [self.item objectForKey:@"order_count"];
+            }
+            else if(1 == indexPath.row)
+            {
+                count = [self.item objectForKey:@"coupon_count"];
+            }
+            else if(2 == indexPath.row)
+            {
+                count = [self.item objectForKey:@"credit"];
+            }
+            
+            [tempDict setObject:count forKey:@"count"];
+            
+            RCPublicCell* temp = (RCPublicCell*)cell;
+            
+            [temp updateContent:tempDict cellHeight:CELL_HEIGHT delegate:self token:nil];
+        }
 	}
     
     return cell;
@@ -311,6 +367,39 @@
 	[tableView deselectRowAtIndexPath: indexPath animated: YES];
     
 
+    if(0 == indexPath.row)
+    {
+        if(NO == [RCTool isLogined])
+        {
+            [RCTool showAlert:@"提示" message:@"请先登录！"];
+            return;
+        }
+        
+        RCDDViewController* temp = [[RCDDViewController alloc] initWithNibName:nil bundle:nil];
+        [temp updateContent];
+        temp.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:temp animated:YES];
+    }
+    else if(1 == indexPath.row)
+    {
+        if(NO == [RCTool isLogined])
+        {
+            [RCTool showAlert:@"提示" message:@"请先登录！"];
+            return;
+        }
+    }
+    else if(2 == indexPath.row)
+    {
+        if(NO == [RCTool isLogined])
+        {
+            [RCTool showAlert:@"提示" message:@"请先登录！"];
+            return;
+        }
+        
+        RCJFViewController* temp = [[RCJFViewController alloc] initWithNibName:nil bundle:nil];
+        temp.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:temp animated:YES];
+    }
 }
 
 

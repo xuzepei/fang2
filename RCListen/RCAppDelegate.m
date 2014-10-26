@@ -54,11 +54,12 @@
     
     
     //search
-    _searchViewController = [[RCSearchViewController alloc] initWithNibName:nil bundle:nil];
+    _telephoneViewController = [[RCTelephoneViewController alloc] initWithNibName:nil bundle:nil];
 	
-	_searchNavigationController = [[UINavigationController alloc]
-                                   initWithRootViewController:_searchViewController];
-    _searchNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
+	_telephoneNavigationController = [[UINavigationController alloc]
+                                   initWithRootViewController:_telephoneViewController];
+    _telephoneNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
+        [_telephoneNavigationController.navigationBar setTranslucent:NO];
     
     
     //me
@@ -75,13 +76,14 @@
 	_moreNavigationController = [[UINavigationController alloc]
                                  initWithRootViewController:_moreViewController];
     _moreNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
+            [_moreNavigationController.navigationBar setTranslucent:NO];
     
     
     _tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
     
     NSArray* array = [[NSArray alloc] initWithObjects:
                       _homeNavigationController,
-                      _searchNavigationController,_meNavigationController,_moreNavigationController,nil];
+                      _telephoneNavigationController,_meNavigationController,_moreNavigationController,nil];
     
 	[_tabBarController setViewControllers:array animated:YES];
     

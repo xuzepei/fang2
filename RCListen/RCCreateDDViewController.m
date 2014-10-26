@@ -38,6 +38,13 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
+    
+    //[self performSelector:@selector(goTo) withObject:nil afterDelay:0.3];
+    
+    RCGuiHuaViewController* temp = [[RCGuiHuaViewController alloc] initWithNibName:nil bundle:nil];
+    temp.delegate = self;
+    [self.navigationController pushViewController:temp animated:YES];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -127,6 +134,7 @@
             RCDDStep2ViewController* temp = [[RCDDStep2ViewController alloc] initWithNibName:nil bundle:nil];
             [temp updateContent:result];
             [self.navigationController pushViewController:temp animated:YES];
+            return;
         }
         
         [RCTool showAlert:@"提示" message:error];

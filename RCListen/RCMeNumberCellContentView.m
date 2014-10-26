@@ -27,13 +27,15 @@
 - (void)drawRect:(CGRect)rect
 {
     // Drawing code
+    if(nil == self.item)
+        return;
     
     NSString* temp = nil;
-    int number = 888;
-    if(number <= 999)
+    int number = [[self.item objectForKey:@"count"] intValue];
+    if(number <= 99999)
         temp = [NSString stringWithFormat:@"%d",number];
     else
-        temp = @"999+";
+        temp = @"99999+";
     
     CGSize size = [temp sizeWithFont:[UIFont boldSystemFontOfSize:12] constrainedToSize:CGSizeMake(self.bounds.size.width, self.bounds.size.height) lineBreakMode:NSLineBreakByWordWrapping];
     
@@ -41,11 +43,11 @@
     if(bgImage)
     {
         bgImage = [bgImage resizableImageWithCapInsets:EDGE_INSETS];
-        [bgImage drawInRect:CGRectMake(130, (self.bounds.size.height - 19)/2.0, MAX(size.width + 11,24), 19)];
+        [bgImage drawInRect:CGRectMake(150, (self.bounds.size.height - 19)/2.0, MAX(size.width + 11,24), 19)];
     }
     
     [[UIColor whiteColor] set];
-    CGRect tempRect = CGRectMake(130, (self.bounds.size.height - 19)/2.0 + 2.0, MAX(size.width + 11,24), 19);
+    CGRect tempRect = CGRectMake(150, (self.bounds.size.height - 19)/2.0 + 2.0, MAX(size.width + 11,24), 19);
     tempRect.size.width = MAX(size.width + 11,24);
     [temp drawInRect:tempRect
             withFont:[UIFont boldSystemFontOfSize:12] lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentCenter];
