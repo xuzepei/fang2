@@ -14,6 +14,7 @@
 #import "RCDDStep5ViewController.h"
 #import "RCDDStep6ViewController.h"
 #import "RCPJDDViewController.h"
+#import "RCDDDetailViewController.h"
 
 #define SEGMENTED_BAR_HEIGHT 50.0f
 
@@ -189,9 +190,6 @@
                 self.page1++;
                 //[self.itemArray1 removeAllObjects];
                 [self.itemArray1 addObjectsFromArray:array];
-                [self.segmentedControl setTitle:[NSString stringWithFormat:@"搬家订单 %d",[self.itemArray1 count]] forSegmentAtIndex:1];
-                self.segmentedControl.center = CGPointMake([RCTool getScreenSize].width/2.0, SEGMENTED_BAR_HEIGHT/2.0);
-                
                 if(1 == self.segmentedControl.selectedSegmentIndex)
                 {
                     [self.itemArray removeAllObjects];
@@ -229,9 +227,6 @@
                 self.page2++;
                 //[self.itemArray2 removeAllObjects];
                 [self.itemArray2 addObjectsFromArray:array];
-                [self.segmentedControl setTitle:[NSString stringWithFormat:@"家政订单 %d",[self.itemArray2 count]] forSegmentAtIndex:2];
-                self.segmentedControl.center = CGPointMake([RCTool getScreenSize].width/2.0, SEGMENTED_BAR_HEIGHT/2.0);
-                
                 if(2 == self.segmentedControl.selectedSegmentIndex)
                 {
                     [self.itemArray removeAllObjects];
@@ -281,7 +276,7 @@
 {
     if(nil == _segmentedControl)
     {
-        _segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"未付款",@"已付款",@"已完成",nil]];
+        _segmentedControl = [[UISegmentedControl alloc] initWithItems:[NSArray arrayWithObjects:@"   未付款   ",@"   已付款   ",@"   已完成   ",nil]];
         _segmentedControl.backgroundColor = [UIColor clearColor];
         _segmentedControl.tintColor = NAVIGATION_BAR_COLOR;
         
@@ -437,23 +432,6 @@
     static NSString *cellId1 = @"cellId1";
     
     UITableViewCell *cell = nil;
-    //    cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
-    //    if(cell == nil)
-    //    {
-    //        cell = [[RCPublicCell alloc] initWithStyle: UITableViewCellStyleDefault
-    //                                   reuseIdentifier: cellId1 contentViewClass:NSClassFromString(@"RCDDCellContentView")];
-    //        cell.accessoryType = UITableViewCellAccessoryNone;
-    //        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    //        cell.backgroundColor = [UIColor clearColor];
-    //    }
-    //
-    //    NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
-    //    RCPublicCell* temp = (RCPublicCell*)cell;
-    //    if(temp)
-    //    {
-    //        [temp updateContent:item cellHeight:[self getCellHeight:indexPath] delegate:self token:nil];
-    //    }
-    
     if (cell == nil)
     {
         NSArray *objects = [[NSBundle mainBundle] loadNibNamed:@"RCDDCell" owner:self options:nil];
@@ -542,7 +520,9 @@
     }
     else if(3 == type)//跟踪流程
     {
-
+        RCDDDetailViewController* temp = [[RCDDDetailViewController alloc] initWithNibName:nil bundle:nil];
+        [temp updateContent:token];
+        [self.navigationController pushViewController:temp animated:YES];
     }
     else if(4 == type)//完成订单
     {

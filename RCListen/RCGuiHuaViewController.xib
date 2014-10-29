@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RCGuiHuaViewController">
             <connections>
+                <outlet property="button" destination="hdC-X9-Ieo" id="LLL-cc-Wg8"/>
                 <outlet property="mapView" destination="e6Q-ZX-iXK" id="2DH-Na-0s9"/>
                 <outlet property="tf0" destination="5Ga-9N-DRb" id="K1l-WJ-OAx"/>
                 <outlet property="tf1" destination="2iJ-jD-fZz" id="ogH-5H-hlf"/>
@@ -54,10 +55,28 @@
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hdC-X9-Ieo">
+                    <rect key="frame" x="47" y="480" width="225" height="40"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                    <state key="normal" title="查询" backgroundImage="button_bg1.png">
+                        <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                    </state>
+                    <connections>
+                        <action selector="clickedNextButton:" destination="-1" eventType="touchUpInside" id="dRX-CE-0Qt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.9213169642857143" green="0.9213169642857143" blue="0.9213169642857143" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="hdC-X9-Ieo" secondAttribute="bottom" constant="48" id="BgO-8d-Knx"/>
+                <constraint firstItem="hdC-X9-Ieo" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="47" id="K1y-06-OwS"/>
+            </constraints>
             <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
+    <resources>
+        <image name="button_bg1.png" width="225" height="40"/>
+    </resources>
 </document>

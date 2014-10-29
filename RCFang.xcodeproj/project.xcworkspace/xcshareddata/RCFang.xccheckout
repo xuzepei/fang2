@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>94A95B0F-A84F-4B7C-A04E-696803363976</string>
+	<string>D0D2CB48-B39E-4C83-834A-5CD9F514D951</string>
 	<key>IDESourceControlProjectName</key>
 	<string>RCFang</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>929354F0-5041-4A7F-9B2D-3CDC7C5FEA40</key>
+		<key>95859C0F6AE2A22930F10C39141C5D36D91F3E1C</key>
 		<string>https://github.com/xuzepei/fang2.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>RCFang.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>929354F0-5041-4A7F-9B2D-3CDC7C5FEA40</key>
+		<key>95859C0F6AE2A22930F10C39141C5D36D91F3E1C</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/xuzepei/fang2.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>929354F0-5041-4A7F-9B2D-3CDC7C5FEA40</string>
+	<string>95859C0F6AE2A22930F10C39141C5D36D91F3E1C</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>929354F0-5041-4A7F-9B2D-3CDC7C5FEA40</string>
+			<string>95859C0F6AE2A22930F10C39141C5D36D91F3E1C</string>
 			<key>IDESourceControlWCCName</key>
 			<string>fang2_git</string>
 		</dict>

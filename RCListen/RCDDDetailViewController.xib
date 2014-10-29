@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="5056" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RCDDDetailViewController">
+            <connections>
+                <outlet property="detailView" destination="SFT-xc-NK0" id="z7B-LT-f5h"/>
+                <outlet property="scrollView" destination="GWe-6H-56b" id="DoA-NR-8yl"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="GWe-6H-56b">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" id="SFT-xc-NK0" customClass="RCDDDetailView">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <button opaque="NO" tag="110" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="HhX-GY-pL4">
+                                    <rect key="frame" x="9" y="518" width="89" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="联系客服" backgroundImage="button_bg0.png">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clickedButton:" destination="SFT-xc-NK0" eventType="touchUpInside" id="df3-gM-KwH"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="111" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Icn-Tl-Vah">
+                                    <rect key="frame" x="116" y="519" width="89" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="联系搬家公司" backgroundImage="button_bg0.png">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clickedButton:" destination="SFT-xc-NK0" eventType="touchUpInside" id="LvS-P7-f7p"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" tag="112" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="WeV-80-pyd">
+                                    <rect key="frame" x="225" y="519" width="89" height="29"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <state key="normal" title="联系搬家师傅" backgroundImage="button_bg0.png">
+                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clickedButton:" destination="SFT-xc-NK0" eventType="touchUpInside" id="dyQ-br-rny"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.99444444444444446" green="0.98888888888888893" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <outlet property="button0" destination="HhX-GY-pL4" id="RSz-5R-BdB"/>
+                                <outlet property="button1" destination="Icn-Tl-Vah" id="DZS-8I-oCq"/>
+                                <outlet property="button2" destination="WeV-80-pyd" id="Mrr-9R-Jqj"/>
+                            </connections>
+                        </view>
+                    </subviews>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="IDj-SP-ejT"/>
+                    </connections>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="button_bg0.png" width="89" height="29"/>
+    </resources>
+</document>

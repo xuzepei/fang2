@@ -97,7 +97,6 @@
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <connections>
-                            <action selector="clickedButton0:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="JnU-a4-TlV"/>
                             <action selector="clickedDetailButton:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Wrq-dR-CPF"/>
                         </connections>
                     </button>

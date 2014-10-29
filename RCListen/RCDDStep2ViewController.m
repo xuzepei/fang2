@@ -89,6 +89,7 @@ enum {
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_0] forKey:@"tag"];
     self.selection0 = dict;
+    self.selected_index0 = 0;
     
     dict = [[NSMutableDictionary alloc] init];
     [dict setObject:@"请选择搬家需求" forKey:@"name"];
@@ -115,19 +116,19 @@ enum {
     
     dict = [[NSMutableDictionary alloc] init];
     [dict setObject:@"请选择是否电梯" forKey:@"name"];
-    array = @[@"是",@"否"];
+    array = @[@"否",@"是"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_5] forKey:@"tag"];
     self.selection3 = dict;
-    self.selected_index3 = 0;
+    self.selected_index3 = 1;
     
     dict = [[NSMutableDictionary alloc] init];
     [dict setObject:@"请选择是否可停车到楼下" forKey:@"name"];
-    array = @[@"是",@"否"];
+    array = @[@"否",@"是"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_6] forKey:@"tag"];
     self.selection4 = dict;
-    self.selected_index4 = 0;
+    self.selected_index4 = 1;
     
     dict = [[NSMutableDictionary alloc] init];
     [dict setObject:@"请选择楼层" forKey:@"name"];
@@ -147,19 +148,19 @@ enum {
     
     dict = [[NSMutableDictionary alloc] init];
     [dict setObject:@"请选择是否电梯" forKey:@"name"];
-    array = @[@"是",@"否"];
+    array = @[@"否",@"是"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_10] forKey:@"tag"];
     self.selection6 = dict;
-    self.selected_index6 = 0;
+    self.selected_index6 = 1;
     
     dict = [[NSMutableDictionary alloc] init];
     [dict setObject:@"请选择是否可停车到楼下" forKey:@"name"];
-    array = @[@"是",@"否"];
+    array = @[@"否",@"是"];
     [dict setObject:array forKey:@"values"];
     [dict setObject:[NSNumber numberWithInt:TF_TAG_11] forKey:@"tag"];
     self.selection7 = dict;
-    self.selected_index7 = 0;
+    self.selected_index7 = 1;
 }
 
 #pragma mark - UITextField
@@ -372,11 +373,11 @@ enum {
 //        return;
 //    }
     
-    if(-1 == self.selected_index2)
-    {
-        [RCTool showAlert:@"提示" message:@"请选择起点楼层！"];
-        return;
-    }
+//    if(-1 == self.selected_index2)
+//    {
+//        [RCTool showAlert:@"提示" message:@"请选择起点楼层！"];
+//        return;
+//    }
     
     if(-1 == self.selected_index3)
     {
@@ -403,8 +404,12 @@ enum {
     NSString* order_num = [self.item objectForKey:@"order_num"];
     NSString* begin_address = [self.item objectForKey:@"begin_address"];
     
-    NSArray* array = [self.selection2 objectForKey:@"values"];
-    NSString* begin_floor = [array objectAtIndex:self.selected_index2];
+    NSString* begin_floor = @"";
+    if(self.selected_index2 != -1)
+    {
+        NSArray* array = [self.selection2 objectForKey:@"values"];
+        begin_floor = [array objectAtIndex:self.selected_index2];
+    }
     
     NSString* begin_lift = [NSString stringWithFormat:@"%d",self.selected_index3];
     
@@ -412,8 +417,12 @@ enum {
     
     NSString* end_address = [self.item objectForKey:@"end_address"];
     
-    array = [self.selection5 objectForKey:@"values"];
-    NSString* end_floor = [array objectAtIndex:self.selected_index5];
+    NSString* end_floor = @"";
+    if(self.selected_index5 != -1)
+    {
+        NSArray* array = [self.selection5 objectForKey:@"values"];
+        end_floor = [array objectAtIndex:self.selected_index5];
+    }
     
     NSString* end_lift = [NSString stringWithFormat:@"%d",self.selected_index6];
     

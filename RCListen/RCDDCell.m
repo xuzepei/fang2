@@ -130,6 +130,7 @@
 
 - (IBAction)clickedDetailButton:(id)sender
 {
+    [self clickedButton3:nil];
 }
 
 //确定并支付

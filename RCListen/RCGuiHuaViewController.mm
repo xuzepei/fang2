@@ -12,6 +12,7 @@
 #import "RCPointOverlayView.h"
 #import "RouteAnnotation.h"
 #import "RCPointAnnotation.h"
+#import "RCDDStep2ViewController.h"
 
 #define MYBUNDLE_NAME @ "mapapi.bundle"
 #define MYBUNDLE_PATH [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent: MYBUNDLE_NAME]
@@ -59,8 +60,8 @@
         UIBarButtonItem* backBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"fanhui"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedBackButton:)];
         self.navigationItem.leftBarButtonItem = backBarButtonItem;
         
-        UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选定" style:UIBarButtonItemStylePlain target:self action:@selector(clickedFinishButton:)];
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem;
+//        UIBarButtonItem* rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"选定" style:UIBarButtonItemStylePlain target:self action:@selector(clickedFinishButton:)];
+//        self.navigationItem.rightBarButtonItem = rightBarButtonItem;
         
     }
     return self;
@@ -93,19 +94,83 @@
 
 - (void)clickedFinishButton:(id)sender
 {
+    [self clickedNextButton:nil];
+}
+
+- (IBAction)clickedNextButton:(id)sender
+{
     if(nil == self.routePlan)
     {
-        [RCTool showAlert:@"提示" message:@"对不起，您还未完成路径规划！"];
+        [RCTool showAlert:@"提示" message:@"对不起，您还未完成路径规划，请稍候尝试。"];
         return;
     }
     
-    RCCreateDDViewController* temp = (RCCreateDDViewController*)self.delegate;
-    temp.routePlan = self.routePlan;
-    temp.qdInfo = self.qdInfo;
-    temp.zdInfo = self.zdInfo;
-
+    NSString* username = [RCTool getUsername];
+    if(0 == [username length])
+    {
+        [RCTool showAlert:@"提示" message:@"请先登录！"];
+        return ;
+    }
     
-    [self.navigationController popViewControllerAnimated:YES];
+    NSString* begin_address = self.qdInfo.name;
+    if(0 == [begin_address length])
+    {
+        [RCTool showAlert:@"提示" message:@"请输入起点位置!"];
+        return ;
+    }
+    
+    NSString* end_address = self.zdInfo.name;
+    if(0 == [end_address length])
+    {
+        [RCTool showAlert:@"提示" message:@"请输入终点点位置!"];
+        return ;
+    }
+    
+    NSString* mileage =[NSString stringWithFormat:@"约%.1f公里",self.routePlan.distance/1000.0];
+    if(0 == [mileage length])
+    {
+        [RCTool showAlert:@"提示" message:@"里程计算失败，请稍后尝试!"];
+        return ;
+    }
+    else
+    {
+        mileage = [NSString stringWithFormat:@"%.2f",self.routePlan.distance/1000.0];
+    }
+    
+    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    
+    NSString* token = [NSString stringWithFormat:@"type=remover&step=2&username=%@&begin_address=%@&end_address=%@&mileage=%@",username,begin_address,end_address,mileage];
+    
+    RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+    BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:token];
+    if(b)
+    {
+        [RCTool showIndicator:@"请稍候..."];
+    }
+}
+
+- (void)finishedPostRequest:(NSString*)jsonString
+{
+    [RCTool hideIndicator];
+    
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            RCDDStep2ViewController* temp = [[RCDDStep2ViewController alloc] initWithNibName:nil bundle:nil];
+            [temp updateContent:result];
+            [self.navigationController pushViewController:temp animated:YES];
+            return;
+        }
+        
+        [RCTool showAlert:@"提示" message:error];
+        
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -115,33 +180,16 @@
     [_mapView viewWillAppear];
     _mapView.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
     _search.delegate = self; // 此处记得不用的时候需要置nil，否则影响内存的释放
+    _locationService.delegate = self;
     
-    if(self.delegate)
+    if(self.qdInfo)
     {
-        RCCreateDDViewController* temp = (RCCreateDDViewController*)self.delegate;
-        if(temp.qdInfo)
-        {
-            self.tf0.text = temp.qdInfo.name;
-        }
-        
-        if(temp.zdInfo)
-        {
-            self.tf1.text = temp.zdInfo.name;
-        }
-        
-        if(self.qdInfo)
-        {
-            self.tf0.text = self.qdInfo.name;
-        }
-        else
-            self.qdInfo = temp.qdInfo;
-        
-        if(self.zdInfo)
-        {
-            self.tf1.text = self.zdInfo.name;
-        }
-        else
-            self.zdInfo = temp.zdInfo;
+        self.tf0.text = self.qdInfo.name;
+    }
+    
+    if(self.zdInfo)
+    {
+        self.tf1.text = self.zdInfo.name;
     }
     
     [self route];
@@ -154,6 +202,7 @@
     [_mapView viewWillDisappear];
     _mapView.delegate = nil; // 不用时，置nil
     _search.delegate = nil; // 不用时，置nil
+    _locationService.delegate = nil;
 }
 
 - (void)viewDidLoad
@@ -166,7 +215,7 @@
        _mapView.delegate = self;
         [_mapView setShowsUserLocation:YES];
 
-        [_mapView setZoomLevel:13];
+        [_mapView setZoomLevel:15];
     }
     
     //初始化BMKLocationService
@@ -241,7 +290,7 @@
     else if ([annotation isKindOfClass:[BMKPointAnnotation class]])
     {
         BMKPinAnnotationView *newAnnotationView = [[BMKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:annotation.title];
-        //newAnnotationView.pinColor = BMKPinAnnotationColorPurple;
+        newAnnotationView.image = [UIImage imageNamed:@"map_mark"];
         newAnnotationView.canShowCallout = NO;
         newAnnotationView.animatesDrop = YES;// 设置该标注点动画显示
         return [newAnnotationView autorelease];
@@ -299,10 +348,22 @@
 {
     NSLog(@"didUpdateUserLocation");
     
+    [_locationService stopUserLocationService];
+    
     BMKCoordinateRegion region;
     region.center.latitude  = userLocation.location.coordinate.latitude;
     region.center.longitude = userLocation.location.coordinate.longitude;
     [self.mapView setRegion:region animated:YES];
+    
+    // 添加一个PointAnnotation
+    BMKPointAnnotation* annotation = [[BMKPointAnnotation alloc]init];
+    CLLocationCoordinate2D coor;
+    coor.latitude =   userLocation.location.coordinate.latitude;
+    coor.longitude =  userLocation.location.coordinate.longitude;
+    annotation.coordinate = coor;
+    annotation.title = @"当前位置";
+    [_mapView addAnnotation:annotation];
+
 }
 
 #pragma mark - Route

@@ -39,21 +39,21 @@
     
     if([RCTool isLogined])
     {
-        //nickname
-        [[RCTool colorWithHex:0x3e3c3d] set];
-        NSString* nickname = [NSString stringWithFormat:@"昵称：%@",[RCTool getNickname]];
-        [nickname drawInRect:CGRectMake(10, 12, 200, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentLeft];
+//        //nickname
+//        [[RCTool colorWithHex:0x3e3c3d] set];
+//        NSString* nickname = [NSString stringWithFormat:@"昵称：%@",[RCTool getNickname]];
+//        [nickname drawInRect:CGRectMake(10, 12, 200, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentLeft];
         
         //phone
         [[RCTool colorWithHex:0x5b5b5b] set];
         NSString* phone = [NSString stringWithFormat:@"手机号：%@",[RCTool getUsername]];
-        [phone drawInRect:CGRectMake(10, 36, 200, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentLeft];
+        [phone drawInRect:CGRectMake(10, 20, 200, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentLeft];
         
         //jifen
         if(self.item)
         {
             NSString* jifen = [NSString stringWithFormat:@"积分：%@",[self.item objectForKey:@"credit"]];
-            [jifen drawInRect:CGRectMake(10, 58, 200, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentLeft];
+            [jifen drawInRect:CGRectMake(10, 46, 200, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByCharWrapping alignment:NSTextAlignmentLeft];
         }
     }
     else

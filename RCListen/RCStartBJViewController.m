@@ -10,6 +10,7 @@
 #import "RCCreateDDViewController.h"
 #import "RCHttpRequest.h"
 #import "WRTipView.h"
+#import "RCGuiHuaViewController.h"
 
 @interface RCStartBJViewController ()
 
@@ -53,6 +54,13 @@
 
 - (IBAction)clickedButton:(id)sender
 {
+    NSString* username = [RCTool getUsername];
+    if(0 == [username length])
+    {
+        [RCTool showAlert:@"提示" message:@"请先登录！"];
+        return ;
+    }
+    
     BOOL b = [[NSUserDefaults standardUserDefaults] boolForKey:@"no_show_tips"];
     if(NO == b)
     {
@@ -64,7 +72,7 @@
         return;
     }
     
-    RCCreateDDViewController* temp = [[RCCreateDDViewController alloc] initWithNibName:nil bundle:nil];
+    RCGuiHuaViewController* temp = [[RCGuiHuaViewController alloc] initWithNibName:nil bundle:nil];
     temp.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:temp animated:NO];
 }

@@ -13,6 +13,7 @@
 #import "RCHttpRequest.h"
 #import "RCDDViewController.h"
 #import "RCJFViewController.h"
+#import "RCYHJViewController.h"
 
 #define TOP_VIEW_HEIGHT 80.0f
 #define ME_TAB_BAR_HEIGHT 53.0f
@@ -387,6 +388,11 @@
             [RCTool showAlert:@"提示" message:@"请先登录！"];
             return;
         }
+        
+        RCYHJViewController* temp = [[RCYHJViewController alloc] initWithNibName:nil bundle:nil];
+        [temp updateContent];
+        temp.hidesBottomBarWhenPushed = YES;
+        [self.navigationController pushViewController:temp animated:YES];
     }
     else if(2 == indexPath.row)
     {
