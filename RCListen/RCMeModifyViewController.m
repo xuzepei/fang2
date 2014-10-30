@@ -211,22 +211,22 @@
     
     if(0 == [_itemArray count])
     {
-        NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"修改昵称" forKey:@"name"];
-        [dict setObject:@"me_nc" forKey:@"image_path"];
-        [_itemArray addObject:dict];
+//        NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
+//        [dict setObject:@"修改昵称" forKey:@"name"];
+//        [dict setObject:@"me_nc" forKey:@"image_path"];
+//        [_itemArray addObject:dict];
 
         
-        dict = [[NSMutableDictionary alloc] init];
+        NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
         [dict setObject:@"修改密码" forKey:@"name"];
         [dict setObject:@"me_mm" forKey:@"image_path"];
         [_itemArray addObject:dict];
 
         
-        dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"绑定手机" forKey:@"name"];
-        [dict setObject:@"me_sj" forKey:@"image_path"];
-        [_itemArray addObject:dict];
+//        dict = [[NSMutableDictionary alloc] init];
+//        [dict setObject:@"绑定手机" forKey:@"name"];
+//        [dict setObject:@"me_sj" forKey:@"image_path"];
+//        [_itemArray addObject:dict];
 
     }
     
@@ -267,49 +267,49 @@
     
     UITableViewCell *cell = nil;
     
+//    if(0 == indexPath.row)
+//    {
+//        cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+//        if (cell == nil)
+//        {
+//            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
+//                                          reuseIdentifier: cellId];
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//            cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
+//            
+//            UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
+//            button.frame = CGRectMake(240, 10, 60, 30);
+//            [button setTitle:@"修改" forState:UIControlStateNormal];
+//            [button setTitleColor:NAVIGATION_BAR_COLOR forState:UIControlStateNormal];
+//            button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
+//            [button addTarget:self action:@selector(clickedModifyNicknameButton:) forControlEvents:UIControlEventTouchUpInside];
+//            [cell.contentView addSubview:button];
+//            
+//            if(nil == _nicknameTF)
+//            {
+//                _nicknameTF = [[UITextField alloc] initWithFrame:CGRectMake(50, 0, 180, 50)];
+//                _nicknameTF.delegate = self;
+//                //_nicknameTF.borderStyle = UITextBorderStyleLine;
+//                _nicknameTF.returnKeyType = UIReturnKeyDone;
+//                _nicknameTF.textColor = [RCTool colorWithHex:0x757575];
+//            }
+//            
+//            [cell.contentView addSubview:_nicknameTF];
+//        }
+//        
+//        NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
+//        if(item)
+//        {
+//            NSString* nickname = [RCTool getNickname];
+//            if(0 == [nickname length])
+//                _nicknameTF.placeholder = @"修改昵称";
+//            else
+//                _nicknameTF.text = nickname;
+//            
+//            cell.imageView.image = [UIImage imageNamed:[item objectForKey:@"image_path"]];
+//        }
+//    }
     if(0 == indexPath.row)
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
-                                          reuseIdentifier: cellId];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
-            
-            UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
-            button.frame = CGRectMake(240, 10, 60, 30);
-            [button setTitle:@"修改" forState:UIControlStateNormal];
-            [button setTitleColor:NAVIGATION_BAR_COLOR forState:UIControlStateNormal];
-            button.titleLabel.font = [UIFont boldSystemFontOfSize:16];
-            [button addTarget:self action:@selector(clickedModifyNicknameButton:) forControlEvents:UIControlEventTouchUpInside];
-            [cell.contentView addSubview:button];
-            
-            if(nil == _nicknameTF)
-            {
-                _nicknameTF = [[UITextField alloc] initWithFrame:CGRectMake(50, 0, 180, 50)];
-                _nicknameTF.delegate = self;
-                //_nicknameTF.borderStyle = UITextBorderStyleLine;
-                _nicknameTF.returnKeyType = UIReturnKeyDone;
-                _nicknameTF.textColor = [RCTool colorWithHex:0x757575];
-            }
-            
-            [cell.contentView addSubview:_nicknameTF];
-        }
-        
-        NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
-        if(item)
-        {
-            NSString* nickname = [RCTool getNickname];
-            if(0 == [nickname length])
-                _nicknameTF.placeholder = @"修改昵称";
-            else
-                _nicknameTF.text = nickname;
-            
-            cell.imageView.image = [UIImage imageNamed:[item objectForKey:@"image_path"]];
-        }
-    }
-    else if(1 == indexPath.row)
     {
         cell = [tableView dequeueReusableCellWithIdentifier:cellId1];
         if (cell == nil)
@@ -331,28 +331,28 @@
             cell.imageView.image = [UIImage imageNamed:[item objectForKey:@"image_path"]];
         }
     }
-    else if(2 == indexPath.row)
-    {
-        cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
-        if (cell == nil)
-        {
-            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
-                                          reuseIdentifier: cellId2];
-            cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
-            
-            UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"xjt"]];
-            imageView.center = CGPointMake(280, CELL_HEIGHT/2.0);
-            [cell.contentView addSubview:imageView];
-        }
-        
-        NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
-        if(item)
-        {
-            cell.textLabel.text = [item objectForKey:@"name"];
-            cell.imageView.image = [UIImage imageNamed:[item objectForKey:@"image_path"]];
-        }
-    }
+//    else if(2 == indexPath.row)
+//    {
+//        cell = [tableView dequeueReusableCellWithIdentifier:cellId2];
+//        if (cell == nil)
+//        {
+//            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
+//                                          reuseIdentifier: cellId2];
+//            cell.accessoryType = UITableViewCellAccessoryNone;
+//            cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
+//            
+//            UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"xjt"]];
+//            imageView.center = CGPointMake(280, CELL_HEIGHT/2.0);
+//            [cell.contentView addSubview:imageView];
+//        }
+//        
+//        NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
+//        if(item)
+//        {
+//            cell.textLabel.text = [item objectForKey:@"name"];
+//            cell.imageView.image = [UIImage imageNamed:[item objectForKey:@"image_path"]];
+//        }
+//    }
 	
     
 
@@ -365,7 +365,7 @@
 	
 	[tableView deselectRowAtIndexPath: indexPath animated: YES];
     
-    if(1 == indexPath.row)
+    if(0 == indexPath.row)
     {
         RCPasswordViewController* temp = [[RCPasswordViewController alloc] initWithNibName:nil bundle:nil];
         [self.navigationController pushViewController:temp animated:YES];

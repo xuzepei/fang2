@@ -370,7 +370,7 @@
     if(0 == [verify_list length])
         return;
     
-    NSString* params = [NSString stringWithFormat:@"type=register&username=%@&verify_list=%@",username,verify_list];
+    NSString* params = [NSString stringWithFormat:@"type=user_register&username=%@&verify_list=%@",username,verify_list];
     
     NSString* urlString = [NSString stringWithFormat:@"%@/resend_verify_code.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
     

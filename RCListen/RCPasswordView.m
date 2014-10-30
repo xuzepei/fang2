@@ -152,6 +152,7 @@
             _phoneTF.backgroundColor = [UIColor whiteColor];
             _phoneTF.placeholder = [NSString stringWithFormat:@" 手机号:%@",[RCTool getUsername]];
             _phoneTF.delegate = self;
+            _phoneTF.text = [RCTool getUsername];
             _phoneTF.returnKeyType = UIReturnKeyDone;
         }
         
@@ -168,6 +169,7 @@
             _yuanmimaTF.placeholder = @" 请输入原密码";
             _yuanmimaTF.delegate = self;
             _yuanmimaTF.returnKeyType = UIReturnKeyDone;
+            _yuanmimaTF.secureTextEntry = YES;
         }
         
         [self addSubview:_yuanmimaTF];
@@ -233,6 +235,7 @@
             _mima0TF.placeholder = @" 输入密码";
             _mima0TF.delegate = self;
             _mima0TF.returnKeyType = UIReturnKeyDone;
+            _mima0TF.secureTextEntry = YES;
         }
         
         [self addSubview:_mima0TF];
@@ -248,6 +251,7 @@
             _mima1TF.placeholder = @" 确认密码";
             _mima1TF.delegate = self;
             _mima1TF.returnKeyType = UIReturnKeyDone;
+            _mima1TF.secureTextEntry = YES;
         }
         
         [self addSubview:_mima1TF];
@@ -344,11 +348,11 @@
             return;
         }
         
-        if(NO == [_checkButton isChecked])
-        {
-            [RCTool showAlert:@"提示" message:@"请阅读并同意用户协议"];
-            return;
-        }
+//        if(NO == [_checkButton isChecked])
+//        {
+//            [RCTool showAlert:@"提示" message:@"请阅读并同意用户协议"];
+//            return;
+//        }
         
         
         if(self.delegate && [self.delegate respondsToSelector:@selector(clickedNextButton:token:)])
@@ -428,6 +432,14 @@
     }
 }
 
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    if(PHONE_TAG == textField.tag)
+        return NO;
+    
+    return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {

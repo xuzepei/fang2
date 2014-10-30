@@ -126,6 +126,11 @@
         [self.button1 addTarget:self action:@selector(clickedButton3:) forControlEvents:UIControlEventTouchUpInside];
         [self.button2 addTarget:self action:@selector(clickedButton5:) forControlEvents:UIControlEventTouchUpInside];
     }
+    else
+    {
+        self.button1.hidden = YES;
+        self.button2.hidden = YES;
+    }
 }
 
 - (IBAction)clickedDetailButton:(id)sender

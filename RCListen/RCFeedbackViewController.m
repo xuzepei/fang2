@@ -55,7 +55,7 @@
     if(0 == [_textView.text length])
         return;
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/web/feedback.php?apiid=%@&pwd=%@&action=add",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/feedback.php?apiid=%@&pwd=%@&action=add",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"content=%@&username=%@",_textView.text,[RCTool getUsername]];
     

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RCStartBJViewController : UIViewController
+@interface RCStartBJViewController : UIViewController<UIAlertViewDelegate>
 
 @property(nonatomic,strong)IBOutlet UIScrollView* scrollView;
 @property(nonatomic,strong)IBOutlet UIImageView* imageView;

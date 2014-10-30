@@ -13,6 +13,7 @@
 #import "RCWebViewController.h"
 #import "RCFeedbackViewController.h"
 #import "RCHttpRequest.h"
+#import "UMSocial.h"
 
 #define UPDATE_TAG 122
 
@@ -177,12 +178,12 @@
         [_itemArray addObject:dict];
         
         dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"价格" forKey:@"name"];
+        [dict setObject:@"价格标准" forKey:@"name"];
         [dict setObject:@"f4" forKey:@"image_path"];
         [_itemArray addObject:dict];
         
         dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"分享给好友(有奖)" forKey:@"name"];
+        [dict setObject:@"分享给好友" forKey:@"name"];
         [dict setObject:@"f5" forKey:@"image_path"];
         [_itemArray addObject:dict];
         
@@ -218,7 +219,10 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-	return 44.0;
+    if(indexPath.row != 2)
+        return 44.0;
+    
+    return 0.0;
 }
 
 
@@ -279,10 +283,10 @@
     }
     else if(2 == indexPath.row)
     {
-        //检查最新版本
-        NSString* urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&pwd=%@&ios=1",BASE_URL,APIID,PWD];
-        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
-        [temp request:urlString delegate:self resultSelector:@selector(finishedCheckRequest:) token:nil];
+//        //检查最新版本
+//        NSString* urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&pwd=%@&ios=1",BASE_URL,APIID,PWD];
+//        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+//        [temp request:urlString delegate:self resultSelector:@selector(finishedCheckRequest:) token:nil];
     }
     else if(3 == indexPath.row)
     {
@@ -315,7 +319,7 @@
         
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;
-        [temp updateContent:urlString title:@"常见问题"];
+        [temp updateContent:urlString title:@"新功能介绍"];
         [self.navigationController pushViewController:temp animated:YES];
     }
     else if(6 == indexPath.row)
@@ -331,15 +335,32 @@
     }
     else if(8 == indexPath.row)
     {
-
+        NSString* urlString = [NSString stringWithFormat:@"%@/web/price_list.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        
+        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+        temp.hidesBottomBarWhenPushed = YES;
+        [temp updateContent:urlString title:@"价格标准"];
+        [self.navigationController pushViewController:temp animated:YES];
     }
     else if(9 == indexPath.row)
     {
-
+        [UMSocialSnsService presentSnsIconSheetView:self
+                                             appKey:UMENG_APPKEY
+                                          shareText:@""
+                                         shareImage:nil
+                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,
+                                UMShareToWechatTimeline,
+                                    UMShareToWechatSession,UMShareToEmail,UMShareToSms,nil]
+                                           delegate:nil];
     }
     else if(10 == indexPath.row)
     {
-
+        NSString* urlString = [NSString stringWithFormat:@"%@/web/license.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        
+        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+        temp.hidesBottomBarWhenPushed = YES;
+        [temp updateContent:urlString title:@"软件使用许可协议"];
+        [self.navigationController pushViewController:temp animated:YES];
     }
 }
 

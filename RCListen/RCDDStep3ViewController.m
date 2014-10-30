@@ -63,6 +63,17 @@ enum {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    //默认车辆选择
+    NSArray* temparray = [self.selection4 objectForKey:@"values"];
+    UITextField* tf = (UITextField*)[self.view viewWithTag:TF_TAG_4];
+    tf.text = [temparray objectAtIndex:self.selected_index4];
+    
+    NSArray* cartype = [self.item objectForKey:@"cartype"];
+    if(self.selected_index4 < [cartype count])
+    {
+        self.infoLabel2.text = [[cartype objectAtIndex:self.selected_index4] objectForKey:@"intro"];
+    }
+    
     self.scrollView.contentSize = CGSizeMake([RCTool getScreenSize].width, 800);
     
     NSString* intro = [self.item objectForKey:@"intro"];
@@ -225,6 +236,7 @@ enum {
         [dict setObject:array forKey:@"values"];
         [dict setObject:[NSNumber numberWithInt:TF_TAG_4] forKey:@"tag"];
         self.selection4 = dict;
+        self.selected_index4 = 0;
     }
     
     NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];

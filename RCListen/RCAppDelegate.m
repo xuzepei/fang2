@@ -9,6 +9,7 @@
 #import "RCAppDelegate.h"
 #import "RCTool.h"
 #import "RCHttpRequest.h"
+#import "UMSocial.h"
 
 #define UPDATE_TAG 122
 
@@ -25,6 +26,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [UMSocialData setAppKey:UMENG_APPKEY];
     
     UIApplication* app = [UIApplication sharedApplication];
 	app.applicationIconBadgeNumber = 0;

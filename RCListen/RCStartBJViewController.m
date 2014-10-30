@@ -11,6 +11,7 @@
 #import "RCHttpRequest.h"
 #import "WRTipView.h"
 #import "RCGuiHuaViewController.h"
+#import "RCLoginViewController.h"
 
 @interface RCStartBJViewController ()
 
@@ -57,7 +58,13 @@
     NSString* username = [RCTool getUsername];
     if(0 == [username length])
     {
-        [RCTool showAlert:@"提示" message:@"请先登录！"];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                        message:@"请先登录大管家。"
+                                                       delegate: self
+                                              cancelButtonTitle: @"OK"
+                                              otherButtonTitles: nil];
+        alert.tag = 111;
+        [alert show];
         return ;
     }
     
@@ -138,6 +145,22 @@
         
         [RCTool showAlert:@"提示" message:error];
         
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if(111 == alertView.tag)
+    {
+        if(0 == buttonIndex)
+        {
+            NSLog(@"clickedLoginButton");
+            
+            RCLoginViewController* temp = [[RCLoginViewController alloc] initWithNibName:nil bundle:nil];
+            temp.hidesBottomBarWhenPushed = YES;
+            [self.navigationController pushViewController:temp
+                                                 animated:YES];
+        }
     }
 }
 
