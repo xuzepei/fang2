@@ -82,7 +82,7 @@
     NSString* username = [RCTool getUsername];
     NSString* password = [RCTool getPassword];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_credit.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_credit.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"username=%@&password=%@&type=list",username,password];
     
@@ -105,7 +105,7 @@
     if(result && [result isKindOfClass:[NSDictionary class]])
     {
         NSString* error = [result objectForKey:@"error"];
-        if(0 == [error length])
+        //if(0 == [error length])
         {
             self.item = result;
             
@@ -119,10 +119,11 @@
                 [self.tableView reloadData];
             }
             
-            return;
+            //return;
         }
         
-        [RCTool showAlert:@"提示" message:error];
+        if([error length])
+            [RCTool showAlert:@"提示" message:error];
         
     }
 }

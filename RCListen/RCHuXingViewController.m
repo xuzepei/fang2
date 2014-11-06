@@ -77,7 +77,7 @@
     if(0 == [id length])
         return;
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/units.php?apiid=%@&pwd=%@&id=%@&ios=1",BASE_URL,APIID,PWD,id];
+    NSString* urlString = [NSString stringWithFormat:@"%@/units.php?apiid=%@&apikey=%@&id=%@&ios=1",BASE_URL,APIID,PWD,id];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp request:urlString delegate:self resultSelector:@selector(finishedRequest:) token:nil];

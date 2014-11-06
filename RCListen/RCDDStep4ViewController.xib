@@ -13,6 +13,7 @@
                 <outlet property="tf2" destination="fP4-cR-jb1" id="bLe-k6-oOL"/>
                 <outlet property="tf3" destination="Rsv-0I-2ld" id="v8R-eH-RcB"/>
                 <outlet property="tf4" destination="grE-3u-a1o" id="cLM-I4-hLf"/>
+                <outlet property="tf5" destination="vMt-KH-5hP" id="ifb-O9-d2c"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -89,7 +90,7 @@
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8nh-uv-hk6">
-                            <rect key="frame" x="48" y="314" width="225" height="40"/>
+                            <rect key="frame" x="48" y="342" width="225" height="40"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                             <state key="normal" title="下一步" backgroundImage="button_bg1.png">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,6 +123,24 @@
                             <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
                             <connections>
                                 <outlet property="delegate" destination="-1" id="2Zl-Rx-Q6q"/>
+                            </connections>
+                        </textField>
+                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="预约搬家时间：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="74V-7F-PPz">
+                            <rect key="frame" x="20" y="278" width="126" height="22"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9RI-Qg-zJI">
+                            <rect key="frame" x="143" y="302" width="162" height="1"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                        </imageView>
+                        <textField opaque="NO" clipsSubviews="YES" tag="205" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请选择" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vMt-KH-5hP">
+                            <rect key="frame" x="143" y="273" width="162" height="30"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="done"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="z75-zt-Wwp"/>
                             </connections>
                         </textField>
                     </subviews>

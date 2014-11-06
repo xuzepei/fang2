@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "RCPickerView.h"
+#import "RCDatePickerView.h"
 
 @interface RCDDStep4ViewController : UIViewController<UITextFieldDelegate,UITextViewDelegate>
 
@@ -18,9 +19,11 @@
 @property(nonatomic,weak)IBOutlet UITextField* tf2;
 @property(nonatomic,weak)IBOutlet UITextField* tf3;
 @property(nonatomic,weak)IBOutlet UITextField* tf4;
+@property(nonatomic,weak)IBOutlet UITextField* tf5;
 @property(nonatomic,strong)RCPickerView* pickerView;
 @property(nonatomic,strong)NSDictionary* selection0;
 @property(nonatomic,assign)int selected_index0;
+@property(nonatomic,strong)RCDatePickerView* datePickerView;
 
 
 - (void)updateContent:(NSDictionary*)item;

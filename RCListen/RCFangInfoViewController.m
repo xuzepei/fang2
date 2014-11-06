@@ -101,7 +101,7 @@
     if(0 == [id length])
         return;
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/xinfang_content.php?apiid=%@&pwd=%@&id=%@&username=%@&ios=1",BASE_URL,APIID,PWD,id,[RCTool getUsername]];
+    NSString* urlString = [NSString stringWithFormat:@"%@/xinfang_content.php?apiid=%@&apikey=%@&id=%@&username=%@&ios=1",BASE_URL,APIID,PWD,id,[RCTool getUsername]];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp request:urlString delegate:self resultSelector:@selector(finishedRequest:) token:nil];
@@ -766,11 +766,11 @@
     NSString* urlString = nil;
     if([self.delid intValue])
     {
-        urlString = [NSString stringWithFormat:@"%@/favorite.php?apiid=%@&pwd=%@&action=del&class=1&hid=%@&username=%@",BASE_URL,APIID,PWD,hid,[RCTool getUsername]];
+        urlString = [NSString stringWithFormat:@"%@/favorite.php?apiid=%@&apikey=%@&action=del&class=1&hid=%@&username=%@",BASE_URL,APIID,PWD,hid,[RCTool getUsername]];
     }
     else
     {
-        urlString = [NSString stringWithFormat:@"%@/favorite.php?apiid=%@&pwd=%@&action=add&class=1&hid=%@&username=%@",BASE_URL,APIID,PWD,hid,[RCTool getUsername]];
+        urlString = [NSString stringWithFormat:@"%@/favorite.php?apiid=%@&apikey=%@&action=add&class=1&hid=%@&username=%@",BASE_URL,APIID,PWD,hid,[RCTool getUsername]];
     }
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];

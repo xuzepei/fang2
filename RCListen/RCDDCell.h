@@ -25,6 +25,7 @@
 @property(nonatomic,weak)IBOutlet UILabel* label4;
 @property(nonatomic,weak)IBOutlet UILabel* label5;
 @property(nonatomic,weak)IBOutlet UILabel* label6;
+@property(nonatomic,weak)IBOutlet UILabel* label7;
 
 @property(nonatomic,weak)IBOutlet UIButton* button0;
 @property(nonatomic,weak)IBOutlet UIButton* button1;

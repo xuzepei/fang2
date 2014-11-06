@@ -102,10 +102,10 @@
     NSString* urlString = nil;
     if([self.username length])
     {
-        urlString = [NSString stringWithFormat:@"%@/tuangou_list.php?apiid=%@&pwd=%@&page=%d&username=%@",BASE_URL,APIID,PWD,self.page,self.username];
+        urlString = [NSString stringWithFormat:@"%@/tuangou_list.php?apiid=%@&apikey=%@&page=%d&username=%@",BASE_URL,APIID,PWD,self.page,self.username];
     }
     else{
-        urlString = [NSString stringWithFormat:@"%@/tuangou_list.php?apiid=%@&pwd=%@&page=%d",BASE_URL,APIID,PWD,self.page];
+        urlString = [NSString stringWithFormat:@"%@/tuangou_list.php?apiid=%@&apikey=%@&page=%d",BASE_URL,APIID,PWD,self.page];
     }
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];

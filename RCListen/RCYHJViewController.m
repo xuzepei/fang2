@@ -82,7 +82,7 @@
     NSString* username = [RCTool getUsername];
     NSString* password = [RCTool getPassword];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_coupon.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_coupon.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* type = @"nuse";
     int page = 0;

@@ -376,7 +376,7 @@
 
 - (void)clickedTreatyButton:(id)sender
 {
-//    NSString* urlString = [NSString stringWithFormat:@"%@/treaty.php?apiid=%@&pwd=%@&type=register",BASE_URL,APIID,PWD];
+//    NSString* urlString = [NSString stringWithFormat:@"%@/treaty.php?apiid=%@&apikey=%@&type=register",BASE_URL,APIID,PWD];
 //    RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
 //    temp.hidesBottomBarWhenPushed = YES;
 //    [temp updateContent:urlString title:@"用户协议"];
@@ -399,7 +399,7 @@
     
     NSString* params = [NSString stringWithFormat:@"type=register&username=%@&verify_list=%@",username,verify_list];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/resend_verify_code.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/resend_verify_code.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedResendRequest:) token:params];

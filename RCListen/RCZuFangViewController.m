@@ -105,7 +105,7 @@
 
 - (void)updateContent
 {
-    NSString* urlString = [NSString stringWithFormat:@"%@/rent_list.php?apiid=%@&pwd=%@&page=%d&area=%d&source=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,self.page,self.quyuSearchId,self.selectionIndex1,self.selectionIndex2,self.selectionIndex3];
+    NSString* urlString = [NSString stringWithFormat:@"%@/rent_list.php?apiid=%@&apikey=%@&page=%d&area=%d&source=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,self.page,self.quyuSearchId,self.selectionIndex1,self.selectionIndex2,self.selectionIndex3];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp request:urlString delegate:self resultSelector:@selector(finishedRequest:) token:nil];
@@ -197,7 +197,7 @@
 
 - (void)updateAd
 {
-    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&pwd=%@&type=zufang",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=zufang",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     [temp request:urlString delegate:self resultSelector:@selector(finishedAdRequest:) token:nil];

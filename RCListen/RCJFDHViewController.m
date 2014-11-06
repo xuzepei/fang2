@@ -64,7 +64,7 @@
     NSString* username = [RCTool getUsername];
     NSString* password = [RCTool getPassword];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_credit.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_credit.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"username=%@&password=%@&type=convert_info",username,password];
     
@@ -115,7 +115,7 @@
     if(0 == [credit_convert length])
         return;
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_credit.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_credit.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"username=%@&password=%@&type=convert&credit_convert=%@",username,password,credit_convert];
     

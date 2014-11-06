@@ -46,7 +46,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/service_phone.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/service_phone.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
 
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedRequest:) token:nil];

@@ -91,7 +91,7 @@
     NSString* username = [RCTool getUsername];
     NSString* password = [RCTool getPassword];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* type = @"nocharge_list";
     int page = 0;
@@ -325,7 +325,7 @@
 {
     if(nil == _tableView)
     {
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,SEGMENTED_BAR_HEIGHT,[RCTool getScreenSize].width,[RCTool getScreenSize].height - NAVIGATION_BAR_HEIGHT - SEGMENTED_BAR_HEIGHT)
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,SEGMENTED_BAR_HEIGHT,[RCTool getScreenSize].width,[RCTool getScreenSize].height - NAVIGATION_BAR_HEIGHT - SEGMENTED_BAR_HEIGHT - STATUS_BAR_HEIGHT)
                                                   style:UITableViewStyleGrouped];
         
         _tableView.backgroundColor = [UIColor clearColor];
@@ -363,7 +363,7 @@
 
 - (CGFloat)getCellHeight:(NSIndexPath*)indexPath
 {
-    return 280.0;
+    return 300.0;
     
     CGFloat height = 0.0f;
     NSDictionary* item = [self getCellDataAtIndexPath:indexPath];
@@ -469,7 +469,7 @@
         NSString* username = [RCTool getUsername];
         NSString* password = [RCTool getPassword];
         
-        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         NSString* order_num = [token objectForKey:@"order_num"];
         NSString* type = @"confirm";
@@ -490,7 +490,7 @@
         NSString* username = [RCTool getUsername];
         NSString* password = [RCTool getPassword];
         
-        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         NSString* order_num = [token objectForKey:@"order_num"];
         
@@ -529,7 +529,7 @@
         NSString* username = [RCTool getUsername];
         NSString* password = [RCTool getPassword];
         
-        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         NSString* order_num = [token objectForKey:@"order_num"];
         NSString* type = @"finish";
@@ -549,6 +549,26 @@
         RCPJDDViewController* temp = [[RCPJDDViewController alloc] initWithNibName:nil bundle:nil];
         [temp updateContent:token];
         [self.navigationController pushViewController:temp animated:YES];
+    }
+    else if(6 == type)//申请退款
+    {
+        NSString* username = [RCTool getUsername];
+        NSString* password = [RCTool getPassword];
+        
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+        
+        NSString* order_num = [token objectForKey:@"order_num"];
+        NSString* type = @"refund";
+        
+        NSString* token1 = [NSString stringWithFormat:@"username=%@&password=%@&type=%@&order_num=%@",username,password,type,order_num];
+        
+        SEL selector = @selector(finishedFinishRequest:);
+        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+        BOOL b = [temp post:urlString delegate:self resultSelector:selector token:token1];
+        if(b)
+        {
+            //[RCTool showIndicator:@"请稍候..."];
+        }
     }
 }
 

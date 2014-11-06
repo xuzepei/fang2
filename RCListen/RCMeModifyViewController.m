@@ -84,7 +84,7 @@
     
     NSString* params = [NSString stringWithFormat:@"type=info&username=%@&password=%@",username,password];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_profile.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_profile.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedInfoRequest:) token:params];
@@ -149,7 +149,7 @@
     
     NSString* params = [NSString stringWithFormat:@"type=niname&username=%@&password=%@&niname=%@",username,password,_nicknameTF.text];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_profile.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_profile.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedUpdateNicknameRequest:) token:params];

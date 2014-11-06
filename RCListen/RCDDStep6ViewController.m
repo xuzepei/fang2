@@ -7,6 +7,7 @@
 //
 
 #import "RCDDStep6ViewController.h"
+#import "RCWebViewController.h"
 
 @interface RCDDStep6ViewController ()
 
@@ -53,7 +54,12 @@
 
 - (IBAction)clickedNextButton:(id)sender
 {
+    NSString* urlString = [NSString stringWithFormat:@"%@/alipay/alipayapi.php?apiid=%@&apikey=%@&order_num=%@&username=%@&order_price=%@",BASE_URL,APIID,PWD,[self.item objectForKey:@"order_num"],[RCTool getUsername],[self.item objectForKey:@"order_price"]];
     
+    RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+    temp.hidesBottomBarWhenPushed = YES;
+    [temp updateContent:urlString title:nil];
+    [self.navigationController pushViewController:temp animated:YES];
 }
 
 @end

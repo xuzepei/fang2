@@ -290,7 +290,7 @@
     
     if(0 == self.selectedIndex)
     {
-        NSString* urlString = [NSString stringWithFormat:@"%@/xinfang_list.php?apiid=%@&pwd=%@&page=%d&area=%d&type=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,1,[quyuSearchId intValue],[leixingSearchId intValue],[jiageIndex intValue],0];
+        NSString* urlString = [NSString stringWithFormat:@"%@/xinfang_list.php?apiid=%@&apikey=%@&page=%d&area=%d&type=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,1,[quyuSearchId intValue],[leixingSearchId intValue],[jiageIndex intValue],0];
         
         RCHttpRequest* temp = [[RCHttpRequest alloc] init];
         BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostXinFangRequest:) token:token];
@@ -301,7 +301,7 @@
     }
     else if(1 == self.selectedIndex)
     {
-        NSString* urlString = [NSString stringWithFormat:@"%@/2hand_list.php?apiid=%@&pwd=%@&page=%d&area=%d&unit_type=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,1,[quyuSearchId intValue],[leixingSearchId intValue],[jiageIndex intValue],0];
+        NSString* urlString = [NSString stringWithFormat:@"%@/2hand_list.php?apiid=%@&apikey=%@&page=%d&area=%d&unit_type=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,1,[quyuSearchId intValue],[leixingSearchId intValue],[jiageIndex intValue],0];
         
         RCHttpRequest* temp = [[RCHttpRequest alloc] init];
         BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostErShouFangRequest:) token:token];
@@ -312,7 +312,7 @@
     }
     else if(2 == self.selectedIndex)
     {
-        NSString* urlString = [NSString stringWithFormat:@"%@/rent_list.php?apiid=%@&pwd=%@&page=%d&area=%d&source=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,1,[quyuSearchId intValue],[leixingSearchId intValue],[jiageIndex intValue],0];
+        NSString* urlString = [NSString stringWithFormat:@"%@/rent_list.php?apiid=%@&apikey=%@&page=%d&area=%d&source=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,1,[quyuSearchId intValue],[leixingSearchId intValue],[jiageIndex intValue],0];
         
         RCHttpRequest* temp = [[RCHttpRequest alloc] init];
         BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostZuFangRequest:) token:token];

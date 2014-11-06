@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
+#import "RCGongGaoViewController.h"
 
 @interface RCMoreViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ZBarCaptureDelegate>
 

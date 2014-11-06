@@ -33,6 +33,7 @@
     self.label4.text = [self.item objectForKey:@"order_begin"];
     self.label5.text = [self.item objectForKey:@"order_end"];
     self.label6.text = [self.item objectForKey:@"order_state_intro"];
+    self.label7.text = [self.item objectForKey:@"order_remover_time"];
     
     [self.button1 removeTarget:nil
                         action:NULL
@@ -84,21 +85,21 @@
         [self.button1 addTarget:self action:@selector(clickedButton3:) forControlEvents:UIControlEventTouchUpInside];
         [self.button2 addTarget:self action:@selector(clickedButton1:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else if(3 == state)//正在搬家
+    else if(state > 2 && state <= 5)//正在搬家
     {
         self.button1.hidden = NO;
         self.button2.hidden = YES;
         
         [self.button1 setTitle:@"跟踪流程" forState:UIControlStateNormal];
-        [self.button2 setTitle:@"取消订单" forState:UIControlStateNormal];
+        [self.button2 setTitle:@"申请退款" forState:UIControlStateNormal];
         
         [self.button1 setBackgroundImage:[UIImage imageNamed:@"button_bg4"] forState:UIControlStateNormal];
         [self.button2 setBackgroundImage:[UIImage imageNamed:@"button_bg0"] forState:UIControlStateNormal];
         
         [self.button1 addTarget:self action:@selector(clickedButton3:) forControlEvents:UIControlEventTouchUpInside];
-        [self.button2 addTarget:self action:@selector(clickedButton1:) forControlEvents:UIControlEventTouchUpInside];
+        [self.button2 addTarget:self action:@selector(clickedButton6:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else if(4 == state)//搬家完成
+    else if(6 == state)//搬家完成
     {
         self.button1.hidden = NO;
         self.button2.hidden = NO;
@@ -112,7 +113,7 @@
         [self.button1 addTarget:self action:@selector(clickedButton3:) forControlEvents:UIControlEventTouchUpInside];
         [self.button2 addTarget:self action:@selector(clickedButton4:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else if(5 == state)//订单结束
+    else if(7 == state)//订单结束
     {
         self.button1.hidden = NO;
         self.button2.hidden = NO;
@@ -190,6 +191,15 @@
     if(self.delegate && [self.delegate respondsToSelector:@selector(clickedButton:token:)])
     {
         [self.delegate clickedButton:5 token:self.item];
+    }
+}
+
+//申请退款
+- (IBAction)clickedButton6:(id)sender
+{
+    if(self.delegate && [self.delegate respondsToSelector:@selector(clickedButton:token:)])
+    {
+        [self.delegate clickedButton:6 token:self.item];
     }
 }
 

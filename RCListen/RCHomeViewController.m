@@ -34,7 +34,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:@"类别"
+        UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:@"首页"
 														   image:[UIImage imageNamed:@"lb"]
 															 tag:TT_HOMEPAGE];
 		self.tabBarItem = item;
@@ -165,10 +165,10 @@
     
     if(0 == [token length])
     {
-        urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&pwd=%@&type=index",BASE_URL,APIID,PWD];
+        urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=index",BASE_URL,APIID,PWD];
     }
     else{
-        urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&pwd=%@&type=index&iostoken=%@",BASE_URL,APIID,PWD,token];
+        urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=index&iostoken=%@",BASE_URL,APIID,PWD,token];
     }
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
@@ -196,7 +196,7 @@
 
 - (void)updateInfo
 {
-    NSString* urlString = [NSString stringWithFormat:@"%@/index_project.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/index_project.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
 
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     [temp request:urlString delegate:self resultSelector:@selector(finishedInfoRequest:) token:nil];

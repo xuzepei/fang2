@@ -35,7 +35,7 @@
 {
     self.item = item;
 
-    NSString* urlString = [NSString stringWithFormat:@"%@/city_list.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/city_list.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* city = @"成都";
     

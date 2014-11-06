@@ -72,7 +72,7 @@
         
         NSString* params = [NSString stringWithFormat:@"step=1&username=%@&ypass=%@",phone,password];
         
-        NSString* urlString = [NSString stringWithFormat:@"%@/user_passport.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_passport.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCHttpRequest* temp = [[RCHttpRequest alloc] init];
         BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedStep1Request:) token:params];
@@ -98,7 +98,7 @@
         
         NSString* params = [NSString stringWithFormat:@"step=2&username=%@&verify_list=%@&verify_code=%@",phone,verify_list,verify_code];
         
-        NSString* urlString = [NSString stringWithFormat:@"%@/user_passport.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_passport.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
         BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedStep2Request:) token:params];
@@ -127,7 +127,7 @@
         
         NSString* params = [NSString stringWithFormat:@"step=3&username=%@&pass=%@&repass=%@&treaty=1&verify_code=%@",phone,pass,repass,verify_code];
         
-        NSString* urlString = [NSString stringWithFormat:@"%@/user_passport.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/user_passport.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCHttpRequest* temp = [[RCHttpRequest alloc] init];
         BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedStep3Request:) token:params];

@@ -293,7 +293,7 @@ enum {
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
         
-        if(1 == index)
+        if(0 == index)
         {
             [RCTool showAlert:@"温馨提示" message:@"无电梯每层加收50元"];
         }
@@ -305,7 +305,7 @@ enum {
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
         
-        if(1 == index)
+        if(0 == index)
         {
             [RCTool showAlert:@"温馨提示" message:@"不能停车到楼下加收100元"];
         }
@@ -324,7 +324,7 @@ enum {
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
         
-        if(1 == index)
+        if(0 == index)
         {
             [RCTool showAlert:@"温馨提示" message:@"无电梯每层加收50元"];
         }
@@ -336,7 +336,7 @@ enum {
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
         
-        if(1 == index)
+        if(0 == index)
         {
             [RCTool showAlert:@"温馨提示" message:@"不能停车到楼下加收100元"];
         }
@@ -442,7 +442,7 @@ enum {
     //    end_lift       --终点是否有电梯
     //    end_park       --终点是否可直接停楼下
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
 
     NSString* token = [NSString stringWithFormat:@"type=remover&step=3&username=%@&remover_type=%@&order_num=%@&begin_address=%@&begin_floor=%@&begin_lift=%@&begin_park=%@&end_address=%@&end_floor=%@&end_lift=%@&end_park=%@",username,remover_type,order_num,begin_address,begin_floor,begin_lift,begin_park,end_address,end_floor,end_lift,end_park];

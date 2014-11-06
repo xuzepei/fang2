@@ -105,7 +105,7 @@
     
     if(0 == [type length] && nil == info)
     {
-        NSString* urlString = [NSString stringWithFormat:@"%@/2hand_list.php?apiid=%@&pwd=%@&page=%d&area=%d&unit_type=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,self.page,self.area,self.typeIndex,self.price,0];
+        NSString* urlString = [NSString stringWithFormat:@"%@/2hand_list.php?apiid=%@&apikey=%@&page=%d&area=%d&unit_type=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,self.page,self.area,self.typeIndex,self.price,0];
         
         NSString* token = [NSString stringWithFormat:@"keyword=%@",self.keyword];
         RCHttpRequest* temp = [[RCHttpRequest alloc] init];
@@ -121,13 +121,13 @@
         {
             self.title = @"同小区房源";
             NSString* num = [self.detailInfo objectForKey:@"r_num"];
-            urlString = [NSString stringWithFormat:@"%@/2hand_more.php?apiid=%@&pwd=%@&page=%d&type=%@&num=%@",BASE_URL,APIID,PWD,self.page,self.type,num];
+            urlString = [NSString stringWithFormat:@"%@/2hand_more.php?apiid=%@&apikey=%@&page=%d&type=%@&num=%@",BASE_URL,APIID,PWD,self.page,self.type,num];
         }
         else if([self.type isEqualToString:@"price"])
         {
             self.title = @"同价位房源";
             NSString* price = [self.detailInfo objectForKey:@"h_pricenum"];
-            urlString = [NSString stringWithFormat:@"%@/2hand_more.php?apiid=%@&pwd=%@&page=%d&type=%@&price=%@",BASE_URL,APIID,PWD,self.page,self.type,price];
+            urlString = [NSString stringWithFormat:@"%@/2hand_more.php?apiid=%@&apikey=%@&page=%d&type=%@&price=%@",BASE_URL,APIID,PWD,self.page,self.type,price];
         }
         
         RCHttpRequest* temp = [[RCHttpRequest alloc] init];

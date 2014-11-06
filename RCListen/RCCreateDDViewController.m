@@ -39,24 +39,14 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    
-    //[self performSelector:@selector(goTo) withObject:nil afterDelay:0.3];
-    
-    RCGuiHuaViewController* temp = [[RCGuiHuaViewController alloc] initWithNibName:nil bundle:nil];
-    temp.delegate = self;
-    [self.navigationController pushViewController:temp animated:YES];
+    [self updateContent:self.item];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    if(self.routePlan)
-    {
-        self.setp0View.tf0.text = self.qdInfo.name;
-        self.setp0View.tf1.text = self.zdInfo.name;
-        self.setp0View.tf2.text = [NSString stringWithFormat:@"约%.1f公里",self.routePlan.distance/1000.0];
-    }
+    [self updateContent:self.item];
 }
 
 - (void)didReceiveMemoryWarning
@@ -65,51 +55,40 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)clickedTextField
+- (void)updateContent:(NSDictionary*)item
 {
-    RCGuiHuaViewController* temp = [[RCGuiHuaViewController alloc] initWithNibName:nil bundle:nil];
-    temp.delegate = self;
-    [self.navigationController pushViewController:temp animated:YES];
+    self.item = item;
+    
+    if(self.setp0View && self.item)
+    {
+        self.setp0View.tf0.text = [self.item objectForKey:@"begin_address"];
+        self.setp0View.tf1.text = [self.item objectForKey:@"end_address"];
+        self.setp0View.tf2.text = [NSString stringWithFormat:@"约%@公里",[self.item objectForKey:@"mileage"]];
+    }
 }
 
 - (IBAction)clickedNextButton:(id)sender
 {
     NSString* username = [RCTool getUsername];
     if(0 == [username length])
-    {
-        [RCTool showAlert:@"提示" message:@"请先登录！"];
         return ;
-    }
     
-    NSString* begin_address = self.setp0View.tf0.text;
+    NSString* begin_address = [self.item objectForKey:@"begin_address"];
     if(0 == [begin_address length])
-    {
-        [RCTool showAlert:@"提示" message:@"请输入起点位置!"];
         return ;
-    }
     
-    NSString* end_address = self.setp0View.tf1.text;
+    NSString* end_address = [self.item objectForKey:@"end_address"];
     if(0 == [end_address length])
-    {
-        [RCTool showAlert:@"提示" message:@"请输入终点点位置!"];
         return ;
-    }
     
-    NSString* mileage = self.setp0View.tf2.text;
+    NSString* mileage = [self.item objectForKey:@"mileage"];
     if(0 == [mileage length])
-    {
-        [RCTool showAlert:@"提示" message:@"里程计算失败，请稍后尝试!"];
         return ;
-    }
-    else
-    {
-        mileage = [NSString stringWithFormat:@"%.2f",self.routePlan.distance/1000.0];
-    }
-    
-    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
-    
+
+    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+
     NSString* token = [NSString stringWithFormat:@"type=remover&step=2&username=%@&begin_address=%@&end_address=%@&mileage=%@",username,begin_address,end_address,mileage];
-    
+
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:token];
     if(b)

@@ -98,7 +98,7 @@ enum {
     [self initPickerView];
     
     //特殊物品
-    NSString* urlString = [NSString stringWithFormat:@"%@/remover_special.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/remover_special.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"remover_type=%@",[self.item objectForKey:@"remover_type"]];
     
@@ -111,7 +111,7 @@ enum {
     
     
     //不搬物品
-    urlString = [NSString stringWithFormat:@"%@/remover_noservice.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    urlString = [NSString stringWithFormat:@"%@/remover_noservice.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     temp = [[RCHttpRequest alloc] init];
     b = [temp post:urlString delegate:self resultSelector:@selector(finishedBuBanRequest:) token:nil];
     if(b)
@@ -499,7 +499,7 @@ enum {
 //    other_item     -- 其他特殊物品的ID号，组成字符串 {1|2|3}
 //    other_item_count   -- 其他特殊物品的数量{0|0|1}
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
  
     NSString* token = [NSString stringWithFormat:@"type=remover&step=4&username=%@&order_num=%@&car_type=%@&car_count=%@&exp_item=%@&other_item=%@&other_item_count=%@",username,order_num,car_type,car_count,exp_item,other_item,other_item_count];
     

@@ -30,7 +30,8 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
-    self.scrollView.contentSize = CGSizeMake([RCTool getScreenSize].width, 800);
+    self.scrollView.contentSize = CGSizeMake([RCTool getScreenSize].width, 1000);
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,7 +51,7 @@
     NSString* password = [RCTool getPassword];
     NSString* order_num = [self.item objectForKey:@"order_num"];
 
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* type = @"more";
 
@@ -82,6 +83,19 @@
                 NSMutableDictionary* item = [[NSMutableDictionary alloc] init];
                 [item addEntriesFromDictionary:self.item];
                 [item addEntriesFromDictionary:result];
+                
+                CGFloat height = 20.0f;
+                height += 80.0f + 16*10 + 18 + 40 + 18 + 40 + 24 + 80;
+                NSArray* array = [item objectForKey:@"price_info_list"];
+                if([array count])
+                    height += 16.0*[array count];
+                
+                array = [item objectForKey:@"running_list"];
+                if([array count])
+                    height += 16.0*[array count];
+                
+                self.scrollView.contentSize = CGSizeMake([RCTool getScreenSize].width, height+100);
+                
                 [self.detailView updateContent:item];
             }
             return;

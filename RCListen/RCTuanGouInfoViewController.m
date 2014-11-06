@@ -114,7 +114,7 @@
     if(0 == [id length])
         return;
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/tuangou_content.php?apiid=%@&pwd=%@&id=%@&username=%@&ios=1",BASE_URL,APIID,PWD,id,[RCTool getUsername]];
+    NSString* urlString = [NSString stringWithFormat:@"%@/tuangou_content.php?apiid=%@&apikey=%@&id=%@&username=%@&ios=1",BASE_URL,APIID,PWD,id,[RCTool getUsername]];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp request:urlString delegate:self resultSelector:@selector(finishedRequest:) token:nil];
@@ -768,7 +768,7 @@
         if(0 == [tg_id length])
             return;
         
-        NSString* urlString = [NSString stringWithFormat:@"%@/tuangou_apply.php?apiid=%@&pwd=%@&action=apply",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/tuangou_apply.php?apiid=%@&apikey=%@&action=apply",BASE_URL,APIID,PWD];
         
         NSString* token = [NSString stringWithFormat:@"tg_id=%@&user=%@",tg_id,[RCTool getUsername]];
         
@@ -842,11 +842,11 @@
     NSString* urlString = nil;
     if([self.delid intValue])
     {
-        urlString = [NSString stringWithFormat:@"%@/favorite.php?apiid=%@&pwd=%@&action=del&class=1&hid=%@&username=%@",BASE_URL,APIID,PWD,hid,[RCTool getUsername]];
+        urlString = [NSString stringWithFormat:@"%@/favorite.php?apiid=%@&apikey=%@&action=del&class=1&hid=%@&username=%@",BASE_URL,APIID,PWD,hid,[RCTool getUsername]];
     }
     else
     {
-        urlString = [NSString stringWithFormat:@"%@/favorite.php?apiid=%@&pwd=%@&action=add&class=1&hid=%@&username=%@",BASE_URL,APIID,PWD,hid,[RCTool getUsername]];
+        urlString = [NSString stringWithFormat:@"%@/favorite.php?apiid=%@&apikey=%@&action=add&class=1&hid=%@&username=%@",BASE_URL,APIID,PWD,hid,[RCTool getUsername]];
     }
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];

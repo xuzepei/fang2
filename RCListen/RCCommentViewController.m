@@ -98,7 +98,7 @@
         self.title = @"租房－评论";
     }
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/comment.php?apiid=%@&pwd=%@&action=read&id=%@&type=%@&page=%d",BASE_URL,APIID,PWD,id,type,self.page];
+    NSString* urlString = [NSString stringWithFormat:@"%@/comment.php?apiid=%@&apikey=%@&action=read&id=%@&type=%@&page=%d",BASE_URL,APIID,PWD,id,type,self.page];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp request:urlString delegate:self resultSelector:@selector(finishedRequest:) token:nil];
@@ -202,7 +202,7 @@
     }
 
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/comment.php?apiid=%@&pwd=%@&action=add&id=%@&type=%@",BASE_URL,APIID,PWD,id,type];
+    NSString* urlString = [NSString stringWithFormat:@"%@/comment.php?apiid=%@&apikey=%@&action=add&id=%@&type=%@",BASE_URL,APIID,PWD,id,type];
     
     NSString* token = [NSString stringWithFormat:@"content=%@&user=%@",content,[RCTool getUsername]];
     

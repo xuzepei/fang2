@@ -118,7 +118,7 @@
     NSString* coordination = [RCTool getUserLocation];
     NSString* params = [NSString stringWithFormat:@"type=list&page=%d&point=%@",self.page,coordination];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/mover_nearby.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/mover_nearby.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedContentRequest:) token:params];

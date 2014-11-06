@@ -226,7 +226,7 @@
     }
     
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_login.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_login.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"type=2&username=%@&password=%@",_accountTF.text,_passwordTF.text];
     

@@ -135,26 +135,26 @@
     
     
     //首页广告
-    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&pwd=%@&type=open",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=open",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     [temp request:urlString delegate:self resultSelector:@selector(finishedAdRequest:) token:nil];
     
     //获取区域和类型
-    urlString = [NSString stringWithFormat:@"%@/xinfang_search.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    urlString = [NSString stringWithFormat:@"%@/xinfang_search.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     temp = [[RCHttpRequest alloc] init];
     [temp request:urlString delegate:self resultSelector:@selector(finishedAreaRequest:) token:nil];
     
     
     //获取分享信息
-    urlString = [NSString stringWithFormat:@"%@/share.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    urlString = [NSString stringWithFormat:@"%@/share.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     temp = [[RCHttpRequest alloc] init];
     [temp request:urlString delegate:self resultSelector:@selector(finishedShareTextRequest:) token:nil];
     
     
     //检查最新版本
-    urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&pwd=%@&ios=1",BASE_URL,APIID,PWD];
+    urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&apikey=%@&ios=1",BASE_URL,APIID,PWD];
     temp = [[RCHttpRequest alloc] init];
     [temp request:urlString delegate:self resultSelector:@selector(finishedCheckRequest:) token:nil];
     
@@ -454,7 +454,7 @@
 	token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     [RCTool setDeviceToken:token];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&pwd=%@&type=index&iostoken=%@",BASE_URL,APIID,PWD,token];
+    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=index&iostoken=%@",BASE_URL,APIID,PWD,token];
     
     RCHttpRequest* temp2 = [[RCHttpRequest alloc] init] ;
     [temp2 request:urlString delegate:self resultSelector:nil token:nil];

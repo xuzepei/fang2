@@ -126,27 +126,26 @@
         return ;
     }
     
-    NSString* mileage =[NSString stringWithFormat:@"约%.1f公里",self.routePlan.distance/1000.0];
-    if(0 == [mileage length])
-    {
-        [RCTool showAlert:@"提示" message:@"里程计算失败，请稍后尝试!"];
-        return ;
-    }
-    else
-    {
-        mileage = [NSString stringWithFormat:@"%.2f",self.routePlan.distance/1000.0];
-    }
+    NSString* mileage =[NSString stringWithFormat:@"%.2f",self.routePlan.distance/1000.0];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    RCCreateDDViewController* temp = [[RCCreateDDViewController alloc] initWithNibName:nil bundle:nil];
     
-    NSString* token = [NSString stringWithFormat:@"type=remover&step=2&username=%@&begin_address=%@&end_address=%@&mileage=%@",username,begin_address,end_address,mileage];
+    NSDictionary* dict = @{@"begin_address":begin_address,@"end_address":end_address,@"mileage":mileage};
     
-    RCHttpRequest* temp = [[RCHttpRequest alloc] init];
-    BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:token];
-    if(b)
-    {
-        [RCTool showIndicator:@"请稍候..."];
-    }
+    [temp updateContent:dict];
+    temp.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:temp animated:YES];
+    
+//    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+//    
+//    NSString* token = [NSString stringWithFormat:@"type=remover&step=2&username=%@&begin_address=%@&end_address=%@&mileage=%@",username,begin_address,end_address,mileage];
+//    
+//    RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+//    BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:token];
+//    if(b)
+//    {
+//        [RCTool showIndicator:@"请稍候..."];
+//    }
 }
 
 - (void)finishedPostRequest:(NSString*)jsonString

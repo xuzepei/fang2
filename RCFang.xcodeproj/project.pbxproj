@@ -239,6 +239,7 @@
 		0948E65319502F9F00D73734 /* jiantouxia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0948E65219502F9F00D73734 /* jiantouxia@2x.png */; };
 		0948E65619503CBD00D73734 /* did@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0948E65419503CBD00D73734 /* did@2x.png */; };
 		0948E65719503CBD00D73734 /* lianxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0948E65519503CBD00D73734 /* lianxi@2x.png */; };
+		094935BC1A04F4B90048A2C2 /* RCDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 094935BB1A04F4B90048A2C2 /* RCDatePickerView.m */; };
 		094A133D19D167E400A87938 /* RCDDStep4ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094A133B19D167E400A87938 /* RCDDStep4ViewController.m */; };
 		094A133E19D167E400A87938 /* RCDDStep4ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 094A133C19D167E400A87938 /* RCDDStep4ViewController.xib */; };
 		094A134319D1729800A87938 /* RCDDStep5ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 094A134119D1729800A87938 /* RCDDStep5ViewController.m */; };
@@ -363,6 +364,10 @@
 		09C21F5819F94942002E0F63 /* f9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C21F4D19F94942002E0F63 /* f9@2x.png */; };
 		09C21F5919F94942002E0F63 /* f10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C21F4E19F94942002E0F63 /* f10@2x.png */; };
 		09C21F5A19F94942002E0F63 /* f11@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C21F4F19F94942002E0F63 /* f11@2x.png */; };
+		09C240361A0A33A60027F290 /* RCGongGaoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C240341A0A33A60027F290 /* RCGongGaoViewController.m */; };
+		09C240371A0A33A60027F290 /* RCGongGaoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C240351A0A33A60027F290 /* RCGongGaoViewController.xib */; };
+		09C2403B1A0A370D0027F290 /* RCGongGaoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09C240391A0A370D0027F290 /* RCGongGaoCell.m */; };
+		09C2403C1A0A370D0027F290 /* RCGongGaoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09C2403A1A0A370D0027F290 /* RCGongGaoCell.xib */; };
 		09CBBC2619ECFD050093A06F /* RCTelephoneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CBBC2419ECFD050093A06F /* RCTelephoneViewController.m */; };
 		09CBBC2719ECFD050093A06F /* RCTelephoneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09CBBC2519ECFD050093A06F /* RCTelephoneViewController.xib */; };
 		09CDDDB316F41FD200B2F44B /* RCYueJunHuanKuanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CDDDB216F41FD200B2F44B /* RCYueJunHuanKuanViewController.m */; };
@@ -456,7 +461,7 @@
 		0900D8D619567BB200760212 /* yifb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yifb@2x.png"; sourceTree = "<group>"; };
 		090507B519EE24820008AA3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RCFang/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		09060D8F1711AFD000B61EDC /* RCCommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCommentViewController.h; sourceTree = "<group>"; };
-		09060D901711AFD000B61EDC /* RCCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCommentViewController.m; sourceTree = "<group>"; };
+		09060D901711AFD000B61EDC /* RCCommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCCommentViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		09064E02170859AE00BA0258 /* RCLaunchAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCLaunchAdView.h; sourceTree = "<group>"; };
 		09064E03170859AE00BA0258 /* RCLaunchAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCLaunchAdView.m; sourceTree = "<group>"; };
 		09064E05170860CE00BA0258 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
@@ -515,7 +520,7 @@
 		091065E41941EF6C0040C10A /* RCMeTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCMeTopView.h; sourceTree = "<group>"; };
 		091065E51941EF6C0040C10A /* RCMeTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCMeTopView.m; sourceTree = "<group>"; };
 		0913906F19C07CD8002ADC6F /* RCCreateDDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCreateDDViewController.h; sourceTree = "<group>"; };
-		0913907019C07CD8002ADC6F /* RCCreateDDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCreateDDViewController.m; sourceTree = "<group>"; };
+		0913907019C07CD8002ADC6F /* RCCreateDDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCCreateDDViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0913907119C07CD8002ADC6F /* RCCreateDDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCCreateDDViewController.xib; sourceTree = "<group>"; };
 		0913907419C08852002ADC6F /* RCCreateDDSetp0View.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCreateDDSetp0View.h; sourceTree = "<group>"; };
 		0913907519C08852002ADC6F /* RCCreateDDSetp0View.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCreateDDSetp0View.m; sourceTree = "<group>"; };
@@ -863,10 +868,10 @@
 		093D11F416F06FFA0077CC9A /* RCSearchCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSearchCell.m; sourceTree = "<group>"; };
 		093DD1F219D109A800FBDF67 /* button_bg1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_bg1@2x.png"; sourceTree = "<group>"; };
 		093DD1F419D10C2700FBDF67 /* RCDDStep2ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDDStep2ViewController.h; sourceTree = "<group>"; };
-		093DD1F519D10C2700FBDF67 /* RCDDStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDDStep2ViewController.m; sourceTree = "<group>"; };
+		093DD1F519D10C2700FBDF67 /* RCDDStep2ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCDDStep2ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		093DD1F619D10C2700FBDF67 /* RCDDStep2ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDDStep2ViewController.xib; sourceTree = "<group>"; };
 		093DD1FD19D1533900FBDF67 /* RCDDStep3ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDDStep3ViewController.h; sourceTree = "<group>"; };
-		093DD1FE19D1533900FBDF67 /* RCDDStep3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDDStep3ViewController.m; sourceTree = "<group>"; };
+		093DD1FE19D1533900FBDF67 /* RCDDStep3ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCDDStep3ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		093DD1FF19D1533900FBDF67 /* RCDDStep3ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDDStep3ViewController.xib; sourceTree = "<group>"; };
 		0941EEB816EB8DE200327D1A /* RCHttpRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCHttpRequest.h; sourceTree = "<group>"; };
 		0941EEB916EB8DE200327D1A /* RCHttpRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCHttpRequest.m; sourceTree = "<group>"; };
@@ -906,11 +911,13 @@
 		0948E65219502F9F00D73734 /* jiantouxia@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiantouxia@2x.png"; sourceTree = "<group>"; };
 		0948E65419503CBD00D73734 /* did@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "did@2x.png"; sourceTree = "<group>"; };
 		0948E65519503CBD00D73734 /* lianxi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lianxi@2x.png"; sourceTree = "<group>"; };
+		094935BA1A04F4B90048A2C2 /* RCDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDatePickerView.h; sourceTree = "<group>"; };
+		094935BB1A04F4B90048A2C2 /* RCDatePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDatePickerView.m; sourceTree = "<group>"; };
 		094A133A19D167E400A87938 /* RCDDStep4ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDDStep4ViewController.h; sourceTree = "<group>"; };
-		094A133B19D167E400A87938 /* RCDDStep4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDDStep4ViewController.m; sourceTree = "<group>"; };
+		094A133B19D167E400A87938 /* RCDDStep4ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCDDStep4ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		094A133C19D167E400A87938 /* RCDDStep4ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDDStep4ViewController.xib; sourceTree = "<group>"; };
 		094A134019D1729800A87938 /* RCDDStep5ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDDStep5ViewController.h; sourceTree = "<group>"; };
-		094A134119D1729800A87938 /* RCDDStep5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDDStep5ViewController.m; sourceTree = "<group>"; };
+		094A134119D1729800A87938 /* RCDDStep5ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCDDStep5ViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		094A134219D1729800A87938 /* RCDDStep5ViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDDStep5ViewController.xib; sourceTree = "<group>"; };
 		0950B92816F160B70039D561 /* RCLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCLoginViewController.h; sourceTree = "<group>"; };
 		0950B92916F160B70039D561 /* RCLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCLoginViewController.m; sourceTree = "<group>"; };
@@ -1011,7 +1018,7 @@
 		0998D7881A00E8340091B0F1 /* RCYHJCell1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCYHJCell1.m; sourceTree = "<group>"; };
 		0998D7891A00E8340091B0F1 /* RCYHJCell1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCYHJCell1.xib; sourceTree = "<group>"; };
 		0998D78C1A00EE620091B0F1 /* RCDDDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDDDetailViewController.h; sourceTree = "<group>"; };
-		0998D78D1A00EE620091B0F1 /* RCDDDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDDDetailViewController.m; sourceTree = "<group>"; };
+		0998D78D1A00EE620091B0F1 /* RCDDDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCDDDetailViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		0998D78E1A00EE620091B0F1 /* RCDDDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDDDetailViewController.xib; sourceTree = "<group>"; };
 		0998D7911A00F0C30091B0F1 /* RCDDDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDDDetailView.h; sourceTree = "<group>"; };
 		0998D7921A00F0C30091B0F1 /* RCDDDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDDDetailView.m; sourceTree = "<group>"; };
@@ -1050,7 +1057,7 @@
 		09A8E3C8198A3CF2005DB535 /* yougou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yougou@2x.png"; sourceTree = "<group>"; };
 		09A9E93F19516C9E00417393 /* shuaxin@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shuaxin@2x.png"; sourceTree = "<group>"; };
 		09A9E9411951735700417393 /* RCDDViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDDViewController.h; sourceTree = "<group>"; };
-		09A9E9421951735700417393 /* RCDDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDDViewController.m; sourceTree = "<group>"; };
+		09A9E9421951735700417393 /* RCDDViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCDDViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		09A9E9431951735700417393 /* RCDDViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCDDViewController.xib; sourceTree = "<group>"; };
 		09A9E94619517D0A00417393 /* RCDDCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCDDCellContentView.h; sourceTree = "<group>"; };
 		09A9E94719517D0A00417393 /* RCDDCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCDDCellContentView.m; sourceTree = "<group>"; };
@@ -1093,6 +1100,12 @@
 		09C21F4D19F94942002E0F63 /* f9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f9@2x.png"; sourceTree = "<group>"; };
 		09C21F4E19F94942002E0F63 /* f10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f10@2x.png"; sourceTree = "<group>"; };
 		09C21F4F19F94942002E0F63 /* f11@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "f11@2x.png"; sourceTree = "<group>"; };
+		09C240331A0A33A60027F290 /* RCGongGaoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCGongGaoViewController.h; sourceTree = "<group>"; };
+		09C240341A0A33A60027F290 /* RCGongGaoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCGongGaoViewController.m; sourceTree = "<group>"; };
+		09C240351A0A33A60027F290 /* RCGongGaoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCGongGaoViewController.xib; sourceTree = "<group>"; };
+		09C240381A0A370D0027F290 /* RCGongGaoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCGongGaoCell.h; sourceTree = "<group>"; };
+		09C240391A0A370D0027F290 /* RCGongGaoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCGongGaoCell.m; sourceTree = "<group>"; };
+		09C2403A1A0A370D0027F290 /* RCGongGaoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCGongGaoCell.xib; sourceTree = "<group>"; };
 		09CBBC2319ECFD050093A06F /* RCTelephoneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTelephoneViewController.h; sourceTree = "<group>"; };
 		09CBBC2419ECFD050093A06F /* RCTelephoneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTelephoneViewController.m; sourceTree = "<group>"; };
 		09CBBC2519ECFD050093A06F /* RCTelephoneViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCTelephoneViewController.xib; sourceTree = "<group>"; };
@@ -1112,7 +1125,7 @@
 		09CF7EEB16A3D7740050A603 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		09CF7EED16A3D7740050A603 /* RCFang-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "RCFang-Prefix.pch"; sourceTree = "<group>"; };
 		09CF7EEE16A3D7740050A603 /* RCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCAppDelegate.h; sourceTree = "<group>"; };
-		09CF7EEF16A3D7740050A603 /* RCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCAppDelegate.m; sourceTree = "<group>"; };
+		09CF7EEF16A3D7740050A603 /* RCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCAppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		09CF7EF816A3D7740050A603 /* RCListen.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RCListen.xcdatamodel; sourceTree = "<group>"; };
 		09CF7F1F16A3E9D30050A603 /* RCTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTool.h; sourceTree = "<group>"; };
 		09CF7F2016A3E9D30050A603 /* RCTool.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = RCTool.mm; sourceTree = "<group>"; };
@@ -1130,7 +1143,7 @@
 		09D1391B1A013C560090BEE2 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		09D1391D1A013C600090BEE2 /* libstdc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.dylib"; path = "usr/lib/libstdc++.dylib"; sourceTree = SDKROOT; };
 		09D139241A0140A10090BEE2 /* RCCityTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCityTableViewController.h; sourceTree = "<group>"; };
-		09D139251A0140A10090BEE2 /* RCCityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCityTableViewController.m; sourceTree = "<group>"; };
+		09D139251A0140A10090BEE2 /* RCCityTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCCityTableViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		09D139261A0140A20090BEE2 /* RCCityTableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCCityTableViewController.xib; sourceTree = "<group>"; };
 		09D9128B198B631400A643A4 /* RCCheckButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCheckButton.h; sourceTree = "<group>"; };
 		09D9128C198B631400A643A4 /* RCCheckButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCheckButton.m; sourceTree = "<group>"; };
@@ -1165,9 +1178,9 @@
 		09F1357A19A5BEBD0009CF4E /* RCPasswordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPasswordView.h; sourceTree = "<group>"; };
 		09F1357B19A5BEBD0009CF4E /* RCPasswordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPasswordView.m; sourceTree = "<group>"; };
 		09F49C32173A50EC00D9C7A3 /* RCFangListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCFangListViewController.h; sourceTree = "<group>"; };
-		09F49C33173A50EC00D9C7A3 /* RCFangListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCFangListViewController.m; sourceTree = "<group>"; };
+		09F49C33173A50EC00D9C7A3 /* RCFangListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCFangListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		09F49C35173A57C900D9C7A3 /* RCErShouFangListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCErShouFangListViewController.h; sourceTree = "<group>"; };
-		09F49C36173A57C900D9C7A3 /* RCErShouFangListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCErShouFangListViewController.m; sourceTree = "<group>"; };
+		09F49C36173A57C900D9C7A3 /* RCErShouFangListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCErShouFangListViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		09F49C38173A5C7200D9C7A3 /* RCZuFangListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCZuFangListViewController.h; sourceTree = "<group>"; };
 		09F49C39173A5C7200D9C7A3 /* RCZuFangListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCZuFangListViewController.m; sourceTree = "<group>"; };
 		09F66D6016F59FC9009834A7 /* RCXinFangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCXinFangViewController.h; sourceTree = "<group>"; };
@@ -1179,7 +1192,7 @@
 		09FC309116F891AE0004C765 /* list_image_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list_image_default@2x.png"; sourceTree = "<group>"; };
 		09FC309316F897860004C765 /* dingwei@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "dingwei@2x.png"; sourceTree = "<group>"; };
 		09FC309516F8B3270004C765 /* RCFangInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCFangInfoViewController.h; sourceTree = "<group>"; };
-		09FC309616F8B3270004C765 /* RCFangInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCFangInfoViewController.m; sourceTree = "<group>"; };
+		09FC309616F8B3270004C765 /* RCFangInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = RCFangInfoViewController.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		09FC309716F8B3270004C765 /* RCFangInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCFangInfoViewController.xib; sourceTree = "<group>"; };
 		09FC309A16F8B82E0004C765 /* RCFangInfoJiaGeCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCFangInfoJiaGeCell.h; sourceTree = "<group>"; };
 		09FC309B16F8B82E0004C765 /* RCFangInfoJiaGeCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCFangInfoJiaGeCell.m; sourceTree = "<group>"; };
@@ -2052,6 +2065,12 @@
 				0941EEC916EB8EFE00327D1A /* RCMoreViewController.m */,
 				09AD9598173C89700060B3A5 /* RCFeedbackViewController.h */,
 				09AD9599173C89700060B3A5 /* RCFeedbackViewController.m */,
+				09C240331A0A33A60027F290 /* RCGongGaoViewController.h */,
+				09C240341A0A33A60027F290 /* RCGongGaoViewController.m */,
+				09C240351A0A33A60027F290 /* RCGongGaoViewController.xib */,
+				09C240381A0A370D0027F290 /* RCGongGaoCell.h */,
+				09C240391A0A370D0027F290 /* RCGongGaoCell.m */,
+				09C2403A1A0A370D0027F290 /* RCGongGaoCell.xib */,
 			);
 			name = More;
 			sourceTree = "<group>";
@@ -2097,6 +2116,8 @@
 				094A133A19D167E400A87938 /* RCDDStep4ViewController.h */,
 				094A133B19D167E400A87938 /* RCDDStep4ViewController.m */,
 				094A133C19D167E400A87938 /* RCDDStep4ViewController.xib */,
+				094935BA1A04F4B90048A2C2 /* RCDatePickerView.h */,
+				094935BB1A04F4B90048A2C2 /* RCDatePickerView.m */,
 			);
 			name = step4;
 			sourceTree = "<group>";
@@ -2872,6 +2893,7 @@
 				0988C78B19EC003E00EED3AC /* check_button@2x.png in Resources */,
 				09A1F46519F7AE1C00C3E1A2 /* car@2x.png in Resources */,
 				092022A5172E141C009EAB94 /* guanyu@2x.png in Resources */,
+				09C240371A0A33A60027F290 /* RCGongGaoViewController.xib in Resources */,
 				092022A7172E14DF009EAB94 /* fenxiang@2x.png in Resources */,
 				0948E65319502F9F00D73734 /* jiantouxia@2x.png in Resources */,
 				0948E64C1950289300D73734 /* RCFJViewController.xib in Resources */,
@@ -2899,6 +2921,7 @@
 				0998D7861A00E6D20091B0F1 /* RCYHJCell0.xib in Resources */,
 				09C121B917644B6200D58D1B /* wodetuangou@2x.png in Resources */,
 				0948E65619503CBD00D73734 /* did@2x.png in Resources */,
+				09C2403C1A0A370D0027F290 /* RCGongGaoCell.xib in Resources */,
 				090F10C8194295CD0062A5B3 /* me_nc@2x.png in Resources */,
 				0933130019F909350057EC07 /* alipay.png in Resources */,
 				09A1F48619F7CBFC00C3E1A2 /* MJRefresh.bundle in Resources */,
@@ -2964,6 +2987,7 @@
 				09FC309016F88E720004C765 /* RCXinFangCellContentView.m in Sources */,
 				09FC309816F8B3270004C765 /* RCFangInfoViewController.m in Sources */,
 				09FC309C16F8B82E0004C765 /* RCFangInfoJiaGeCell.m in Sources */,
+				094935BC1A04F4B90048A2C2 /* RCDatePickerView.m in Sources */,
 				0913C3BC16F9494500D74A27 /* RCFangInfoDiZhiCell.m in Sources */,
 				0913C3BF16F9496B00D74A27 /* RCFangInfoDiZhiCellContentView.m in Sources */,
 				09FD90C319A2398C00BC59C0 /* RCSHViewController.m in Sources */,
@@ -3113,9 +3137,11 @@
 				0942C69B17334BAB001964E4 /* RCFavoriteViewController.m in Sources */,
 				0935942E1738912000B25913 /* RCThisMonthViewController.m in Sources */,
 				09F49C34173A50EC00D9C7A3 /* RCFangListViewController.m in Sources */,
+				09C2403B1A0A370D0027F290 /* RCGongGaoCell.m in Sources */,
 				090F10D21942B0970062A5B3 /* RCMeTabBar.m in Sources */,
 				09F49C37173A57C900D9C7A3 /* RCErShouFangListViewController.m in Sources */,
 				09AEBBC9194548D8005885C0 /* RCPublicCell.m in Sources */,
+				09C240361A0A33A60027F290 /* RCGongGaoViewController.m in Sources */,
 				09F49C3A173A5C7200D9C7A3 /* RCZuFangListViewController.m in Sources */,
 				09AD959A173C89700060B3A5 /* RCFeedbackViewController.m in Sources */,
 				09AD959D173C8AFA0060B3A5 /* RCPlaceHolderTextView.m in Sources */,
@@ -3226,8 +3252,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "02963f05-e16d-4d54-868c-27c52e5e0606";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "02963f05-e16d-4d54-868c-27c52e5e0606";
+				PROVISIONING_PROFILE = "d77b17eb-c893-45f4-85e2-d7ea58c989bb";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "d77b17eb-c893-45f4-85e2-d7ea58c989bb";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -3262,8 +3288,8 @@
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "2946ab06-6b5e-46ac-a475-30138664edf7";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "2946ab06-6b5e-46ac-a475-30138664edf7";
+				PROVISIONING_PROFILE = "c8bf1bdb-e577-4d46-b317-b4c9f89d0040";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "c8bf1bdb-e577-4d46-b317-b4c9f89d0040";
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;

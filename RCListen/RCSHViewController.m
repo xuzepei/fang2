@@ -59,7 +59,7 @@
         return;
     
     NSString* params = [NSString stringWithFormat:@"num=%@",num];
-    NSString* urlString = [NSString stringWithFormat:@"%@/mover_more.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/mover_more.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedContentRequest:) token:params];

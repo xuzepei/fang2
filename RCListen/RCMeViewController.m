@@ -89,7 +89,7 @@
     NSString* username = [RCTool getUsername];
     NSString* password = [RCTool getPassword];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_center.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_center.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"username=%@&password=%@",username,password];
     
@@ -115,6 +115,7 @@
         if(0 == [error length])
         {
             self.item = result;
+            [_topView updateContent:self.item];
             [self.tableView reloadData];
             return;
         }

@@ -36,7 +36,7 @@
     
     self.tv.placeholder = @"请填写评价内容";
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/order_appraise_info.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/order_appraise_info.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
 
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPFRequest:) token:nil];
@@ -187,7 +187,7 @@
     }
     
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/user_order.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"type=appraise&username=%@&password=%@&order_num=%@&appraise_text=%@&appraise=%@",username,password,order_num,appraise_text,appraise];
     

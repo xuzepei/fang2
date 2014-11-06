@@ -213,6 +213,7 @@
             _mima0TF.backgroundColor = [UIColor whiteColor];
             _mima0TF.placeholder = @" 输入密码";
             _mima0TF.delegate = self;
+            _mima0TF.secureTextEntry = YES;
             _mima0TF.returnKeyType = UIReturnKeyDone;
         }
         
@@ -228,6 +229,7 @@
             _mima1TF.backgroundColor = [UIColor whiteColor];
             _mima1TF.placeholder = @" 确认密码";
             _mima1TF.delegate = self;
+            _mima1TF.secureTextEntry = YES;
             _mima1TF.returnKeyType = UIReturnKeyDone;
         }
         
@@ -349,7 +351,7 @@
 
 - (void)clickedTreatyButton:(id)sender
 {
-    NSString* urlString = [NSString stringWithFormat:@"%@/treaty.php?apiid=%@&pwd=%@&type=register",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/treaty.php?apiid=%@&apikey=%@&type=register",BASE_URL,APIID,PWD];
     RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
     temp.hidesBottomBarWhenPushed = YES;
     [temp updateContent:urlString title:@"用户协议"];
@@ -372,7 +374,7 @@
     
     NSString* params = [NSString stringWithFormat:@"type=user_register&username=%@&verify_list=%@",username,verify_list];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/resend_verify_code.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/resend_verify_code.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedResendRequest:) token:params];

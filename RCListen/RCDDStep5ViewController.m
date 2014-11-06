@@ -50,7 +50,7 @@
     
     [self updateContent:self.item];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/coupon_convert.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/coupon_convert.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"username=%@&type=remover",[self.item objectForKey:@"username"]];
     
@@ -272,7 +272,7 @@
     }
     
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/order_charge.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/order_charge.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"type=remover&step=6&username=%@&password=%@&order_num=%@&final_price=%@&coupon_code=%@",username,password,order_num,final_price,coupon_code];
     

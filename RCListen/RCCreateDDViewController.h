@@ -17,7 +17,9 @@
 @property(nonatomic,strong)BMKPoiInfo* qdInfo;
 @property(nonatomic,strong)BMKPoiInfo* zdInfo;
 @property(nonatomic,strong)BMKDrivingRouteLine* routePlan;
+@property(nonatomic,strong)NSDictionary* item;
 
+- (void)updateContent:(NSDictionary*)item;
 - (IBAction)clickedNextButton:(id)sender;
 
 @end

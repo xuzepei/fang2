@@ -65,7 +65,7 @@
     if(0 == [self.tg_id length])
         return;
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/tuangou_apply.php?apiid=%@&pwd=%@&action=sub",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/tuangou_apply.php?apiid=%@&apikey=%@&action=sub",BASE_URL,APIID,PWD];
     
     NSString* token = [NSString stringWithFormat:@"tg_id=%@&user=%@&name=%@",self.tg_id,[RCTool getUsername],_textField.text];
     

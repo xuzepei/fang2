@@ -53,7 +53,15 @@
         offset_y += 16.0f;
     }
     
-    str = [NSString stringWithFormat:@"下单时间：%@",[self.item objectForKey:@"order_price"]];
+    str = [NSString stringWithFormat:@"订单金额：%@",[self.item objectForKey:@"order_price"]];
+    if([str length])
+    {
+        [str drawInRect:CGRectMake(offset_x, offset_y, [RCTool getScreenSize].width - 20.0f, 20) withFont:[UIFont systemFontOfSize:13] lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentLeft];
+        
+        offset_y += 16.0f;
+    }
+    
+    str = [NSString stringWithFormat:@"预约时间：%@（拨打客服电话可以更改时间）",[self.item objectForKey:@"order_remover_time"]];
     if([str length])
     {
         [str drawInRect:CGRectMake(offset_x, offset_y, [RCTool getScreenSize].width - 20.0f, 20) withFont:[UIFont systemFontOfSize:13] lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentLeft];
@@ -205,12 +213,7 @@
         
         offset_y += 30.0f;
     }
-    
-    CGRect tempRect = self.frame;
-    if(tempRect.size.height < offset_y)
-        tempRect.size.height = offset_y;
-    self.frame = tempRect;
-    
+
     [[UIColor grayColor] set];
     line = CGRectMake(6,offset_y,[RCTool getScreenSize].width - 12, 0.5);
     UIRectFill(line);
@@ -223,12 +226,12 @@
         
         offset_y += 24.0f;
     }
-    
+
     for(int i = 110; i < 113; i++)
     {
         UIView* button = [self viewWithTag:i];
         CGRect buttonRect = button.frame;
-        buttonRect.origin.y = self.bounds.size.height - 50.0;
+        buttonRect.origin.y = offset_y + 40;
         button.frame = buttonRect;
     }
 }
@@ -236,6 +239,19 @@
 - (void)updateContent:(NSDictionary*)item
 {
     self.item = item;
+    CGFloat height = 20.0f;
+    height += 80.0f + 16*10 + 18 + 40 + 18 + 40 + 24 + 80;
+    NSArray* array = [self.item objectForKey:@"price_info_list"];
+    if([array count])
+        height += 16.0*[array count];
+    
+    array = [self.item objectForKey:@"running_list"];
+    if([array count])
+        height += 16.0*[array count];
+    
+    CGRect tempRect = self.frame;
+        tempRect.size.height = height;
+    self.frame = tempRect;
     
     [self setNeedsDisplay];
 }

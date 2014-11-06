@@ -44,7 +44,7 @@
         [self.view addSubview:imageView];
         
         self.versionLabel = [[UILabel alloc] initWithFrame:CGRectMake([RCTool getScreenSize].width - 60, 52, 50, 18)];
-        self.versionLabel.text = @"v1.0";
+        self.versionLabel.text = [NSString stringWithFormat:@"v%@",[[NSBundle mainBundle] objectForInfoDictionaryKey:(NSString*)kCFBundleVersionKey]];
         self.versionLabel.font = [UIFont systemFontOfSize:15];
         self.versionLabel.backgroundColor = [UIColor blueColor];
         self.versionLabel.textColor = [UIColor whiteColor];
@@ -59,7 +59,7 @@
 - (void)updateContent
 {
 
-    NSString* urlString = [NSString stringWithFormat:@"%@/app_version.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/app_version.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
 
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedRequest:) token:nil];
@@ -260,7 +260,7 @@
 //        temp.hidesBottomBarWhenPushed = YES;
 //        [self.navigationController pushViewController:temp animated:YES];
         
-        NSString* urlString = [NSString stringWithFormat:@"%@/web/about.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/web/about.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;
@@ -270,27 +270,27 @@
     }
     else if(1 == indexPath.row)
     {
-//        RCShuiFeiViewController* temp = [[RCShuiFeiViewController alloc] initWithNibName:nil bundle:nil];
-//        temp.hidesBottomBarWhenPushed = YES;
-//        [self.navigationController pushViewController:temp animated:YES];
-        
-        NSString* urlString = [NSString stringWithFormat:@"%@/web/announcement.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
-        
-        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+        RCGongGaoViewController* temp = [[RCGongGaoViewController alloc] initWithNibName:nil bundle:nil];
         temp.hidesBottomBarWhenPushed = YES;
-        [temp updateContent:urlString title:@"大管家公告"];
         [self.navigationController pushViewController:temp animated:YES];
+        
+//        NSString* urlString = [NSString stringWithFormat:@"%@/web/announcement.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+//        
+//        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+//        temp.hidesBottomBarWhenPushed = YES;
+//        [temp updateContent:urlString title:@"大管家公告"];
+//        [self.navigationController pushViewController:temp animated:YES];
     }
     else if(2 == indexPath.row)
     {
 //        //检查最新版本
-//        NSString* urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&pwd=%@&ios=1",BASE_URL,APIID,PWD];
+//        NSString* urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&apikey=%@&ios=1",BASE_URL,APIID,PWD];
 //        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
 //        [temp request:urlString delegate:self resultSelector:@selector(finishedCheckRequest:) token:nil];
     }
     else if(3 == indexPath.row)
     {
-        NSString* urlString = [NSString stringWithFormat:@"%@/web/faq.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/web/faq.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;
@@ -315,7 +315,7 @@
     else if(5 == indexPath.row)
     {
 
-        NSString* urlString = [NSString stringWithFormat:@"%@/web/whatsnew.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/web/whatsnew.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;
@@ -335,7 +335,7 @@
     }
     else if(8 == indexPath.row)
     {
-        NSString* urlString = [NSString stringWithFormat:@"%@/web/price_list.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/web/price_list.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;
@@ -355,7 +355,7 @@
     }
     else if(10 == indexPath.row)
     {
-        NSString* urlString = [NSString stringWithFormat:@"%@/web/license.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+        NSString* urlString = [NSString stringWithFormat:@"%@/web/license.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;

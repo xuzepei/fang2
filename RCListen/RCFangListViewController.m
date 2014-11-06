@@ -100,7 +100,7 @@
     
     if(0 == [type length] && nil == info)
     {
-        NSString* urlString = [NSString stringWithFormat:@"%@/xinfang_list.php?apiid=%@&pwd=%@&page=%d&area=%d&type=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,self.page,self.area,self.typeIndex,self.price,0];
+        NSString* urlString = [NSString stringWithFormat:@"%@/xinfang_list.php?apiid=%@&apikey=%@&page=%d&area=%d&type=%d&price=%d&sort=%d",BASE_URL,APIID,PWD,self.page,self.area,self.typeIndex,self.price,0];
         
         NSString* token = [NSString stringWithFormat:@"keyword=%@",self.keyword];
         RCHttpRequest* temp = [[RCHttpRequest alloc] init];
@@ -116,13 +116,13 @@
         {
             self.title = @"同位置楼盘";
             NSString* area = [self.detailInfo objectForKey:@"areaid"];
-            urlString = [NSString stringWithFormat:@"%@/xinfang_more.php?apiid=%@&pwd=%@&page=%d&type=%@&area=%@",BASE_URL,APIID,PWD,self.page,self.type,area];
+            urlString = [NSString stringWithFormat:@"%@/xinfang_more.php?apiid=%@&apikey=%@&page=%d&type=%@&area=%@",BASE_URL,APIID,PWD,self.page,self.type,area];
         }
         else if([self.type isEqualToString:@"price"])
         {
             self.title = @"同价位楼盘";
             NSString* price = [self.detailInfo objectForKey:@"pricenum"];
-            urlString = [NSString stringWithFormat:@"%@/xinfang_more.php?apiid=%@&pwd=%@&page=%d&type=%@&price=%@",BASE_URL,APIID,PWD,self.page,self.type,price];
+            urlString = [NSString stringWithFormat:@"%@/xinfang_more.php?apiid=%@&apikey=%@&page=%d&type=%@&price=%@",BASE_URL,APIID,PWD,self.page,self.type,price];
         }
     }
 

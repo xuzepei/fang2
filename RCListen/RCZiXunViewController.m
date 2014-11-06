@@ -79,7 +79,7 @@
 - (void)updateContent:(int)type
 {
     self.type = type;
-    NSString* urlString = [NSString stringWithFormat:@"%@/news_list.php?apiid=%@&pwd=%@&page=%d&type=%d",BASE_URL,APIID,PWD,self.page0,self.type];
+    NSString* urlString = [NSString stringWithFormat:@"%@/news_list.php?apiid=%@&apikey=%@&page=%d&type=%d",BASE_URL,APIID,PWD,self.page0,self.type];
     
     NSDictionary* dict = [NSDictionary dictionaryWithObject:[NSNumber numberWithInt:0] forKey:@"index"];
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
@@ -155,7 +155,7 @@
 
 - (void)updateAd
 {
-    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&pwd=%@&type=news",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=news",BASE_URL,APIID,PWD];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     [temp request:urlString delegate:self resultSelector:@selector(finishedAdRequest:) token:nil];

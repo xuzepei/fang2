@@ -30,14 +30,6 @@
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
-    if(100 == textField.tag || 101 == textField.tag)
-    {
-        if(self.delegate)
-        {
-            [self.delegate clickedTextField];
-        }
-    }
-    
     return NO;
 }
 

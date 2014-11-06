@@ -62,6 +62,14 @@ enum {
     self.tf1.text = [RCTool getUsername];
     
     [self initPickerView];
+    
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"yyyy-MM-dd"];
+    NSString* dateString = [dateFormater stringFromDate:[NSDate date]];
+    if([dateString length])
+    {
+        self.tf5.text = dateString;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -102,6 +110,20 @@ enum {
         
         return NO;
     }
+    else if(TF_TAG_5 == textField.tag)
+    {
+        [_tf0 resignFirstResponder];
+        [_tf1 resignFirstResponder];
+        [_tf2 resignFirstResponder];
+        [_tf3 resignFirstResponder];
+        
+        if(_datePickerView)
+        {
+            [_datePickerView show];
+        }
+        
+        return NO;
+    }
     
     return YES;
 }
@@ -139,6 +161,12 @@ enum {
         _pickerView = [[RCPickerView alloc] initWithFrame:CGRectMake(0, [RCTool getScreenSize].height, [RCTool getScreenSize].width, PICKER_VIEW_HEIGHT)];
         _pickerView.delegate = self;
     }
+    
+    if(nil == _datePickerView)
+    {
+        _datePickerView = [[RCDatePickerView alloc] initWithFrame:CGRectMake(0, [RCTool getScreenSize].height, [RCTool getScreenSize].width, PICKER_VIEW_HEIGHT)];
+        _datePickerView.delegate = self;
+    }
 }
 
 - (void)clickedSureValueButton:(int)index token:(id)token
@@ -154,6 +182,20 @@ enum {
         NSArray* array = [self.selection0 objectForKey:@"values"];
         UITextField* tf = (UITextField*)[self.view viewWithTag:tag];
         tf.text = [array objectAtIndex:index];
+    }
+}
+
+- (void)clickedSureDateButton:(NSDate*)date
+{
+    if(nil == date)
+        return;
+    
+    NSDateFormatter *dateFormater = [[NSDateFormatter alloc] init];
+    [dateFormater setDateFormat:@"yyyy-MM-dd"];
+    NSString* dateString = [dateFormater stringFromDate:date];
+    if([dateString length])
+    {
+        self.tf5.text = dateString;
     }
 }
 
@@ -201,11 +243,18 @@ enum {
 //    user_sex      -- 用户性别
 //    user_tel      -- 用户电话
 //    urgent_tel    -- 紧急联系电话
+    
+    NSString* remover_date = self.tf5.text;
+    if(0 == [remover_date length])
+    {
+        [RCTool showAlert:@"提示" message:@"请选择预约搬家时间！"];
+        return;
+    }
 
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&pwd=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@/order_remover.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
-    NSString* token = [NSString stringWithFormat:@"type=remover&step=5&username=%@&order_num=%@&user_name=%@&user_sex=%@&user_tel=%@&urgent_tel=%@",username,order_num,user_name,user_sex,user_tel,urgent_tel];
+    NSString* token = [NSString stringWithFormat:@"type=remover&step=5&username=%@&order_num=%@&user_name=%@&user_sex=%@&user_tel=%@&urgent_tel=%@&remover_date=%@",username,order_num,user_name,user_sex,user_tel,urgent_tel,remover_date];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:token];
