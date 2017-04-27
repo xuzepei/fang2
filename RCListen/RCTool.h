@@ -111,8 +111,8 @@
 + (NSString *)getIpAddress;
 + (NSString*)base64forData:(NSData*)theData;
 
-+ (void)setShareText:(NSString*)text;
-+ (NSString*)getShareText;
++ (void)setShareItem:(NSDictionary*)item;
++ (NSDictionary*)getShareItem;
 
 + (void)setDeviceToken:(NSString*)token;
 + (NSString*)getDeviceToken;

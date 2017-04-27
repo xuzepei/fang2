@@ -66,7 +66,8 @@
         
         _selectAreaButton = [[RCSelectAreaButton alloc] initWithFrame:CGRectMake([RCTool getScreenSize].width - 76, -4, 60, 40)];
         _selectAreaButton.delegate = self;
-        [_selectAreaButton updateContent:@"成都"];
+        
+
         [self.navigationItem.titleView addSubview:_selectAreaButton];
         
         _itemArray = [[NSMutableArray alloc] init];
@@ -91,6 +92,23 @@
     self.kdLabel = nil;
     self.selectAreaButton = nil;
 
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSString* city = @"成都";
+    NSDictionary* cityInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"current_city"];
+    if(cityInfo)
+    {
+        city = [cityInfo objectForKey:@"city"];
+        if(0 == [city length])
+            city = [cityInfo objectForKey:@"now_city"];
+    }
+    
+    if(_selectAreaButton)
+        [_selectAreaButton updateContent:city];
 }
 
 - (void)viewDidLoad

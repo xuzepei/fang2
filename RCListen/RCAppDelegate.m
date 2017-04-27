@@ -10,6 +10,7 @@
 #import "RCTool.h"
 #import "RCHttpRequest.h"
 #import "UMSocial.h"
+#import "UMSocialWechatHandler.h"
 
 #define UPDATE_TAG 122
 
@@ -27,6 +28,9 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [UMSocialData setAppKey:UMENG_APPKEY];
+
+    //设置微信AppId、appSecret，分享url
+    [UMSocialWechatHandler setWXAppId:@"wx5c9d6f4c8df5d270" appSecret:@"62948ecae89fd2b2aac6c047713cf9a4" url:@"http://www.umeng.com/social"];
     
     UIApplication* app = [UIApplication sharedApplication];
 	app.applicationIconBadgeNumber = 0;
@@ -148,7 +152,7 @@
     
     
     //获取分享信息
-    urlString = [NSString stringWithFormat:@"%@/share.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+    urlString = [NSString stringWithFormat:@"%@/share_text.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     temp = [[RCHttpRequest alloc] init];
     [temp request:urlString delegate:self resultSelector:@selector(finishedShareTextRequest:) token:nil];
     
@@ -232,7 +236,11 @@
     NSDictionary* result = [RCTool parseToDictionary: jsonString];
     if(result && [result isKindOfClass:[NSDictionary class]])
     {
-        
+        NSString* error = [result objectForKey:@"error"];
+        if(0 == [error length])
+        {
+            [RCTool setShareItem:result];
+        }
     }
 }
 
@@ -549,6 +557,22 @@
 - (void)didFailToLocateUserWithError:(NSError *)error
 {
         [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_LOCATION_NOTIFICATION object:nil];
+}
+
+
+#pragma mark - UMeng
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+{
+    return  [UMSocialSnsService handleOpenURL:url];
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    return  [UMSocialSnsService handleOpenURL:url];
 }
 
 @end

@@ -43,21 +43,7 @@
               forControlEvents:UIControlEventAllEvents];
     
     int state = [[self.item objectForKey:@"order_state"] intValue];
-    if(0 == state) //未确认
-    {
-        self.button1.hidden = NO;
-        self.button2.hidden = NO;
-        
-        [self.button1 setTitle:@"确认并支付" forState:UIControlStateNormal];
-        [self.button2 setTitle:@"取消订单" forState:UIControlStateNormal];
-        
-        [self.button1 setBackgroundImage:[UIImage imageNamed:@"button_bg3"] forState:UIControlStateNormal];
-        [self.button2 setBackgroundImage:[UIImage imageNamed:@"button_bg0"] forState:UIControlStateNormal];
-        
-        [self.button1 addTarget:self action:@selector(clickedButton0:) forControlEvents:UIControlEventTouchUpInside];
-        [self.button2 addTarget:self action:@selector(clickedButton1:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    else if(1 == state)//未支付
+    if(0 == state || 1 == state) //未支付
     {
         self.button1.hidden = NO;
         self.button2.hidden = NO;
@@ -71,24 +57,10 @@
         [self.button1 addTarget:self action:@selector(clickedButton2:) forControlEvents:UIControlEventTouchUpInside];
         [self.button2 addTarget:self action:@selector(clickedButton1:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else if(2 == state)//支付完成
+    else if(state>=2 && state < 6)//正在搬家
     {
         self.button1.hidden = NO;
         self.button2.hidden = NO;
-        
-        [self.button1 setTitle:@"跟踪流程" forState:UIControlStateNormal];
-        [self.button2 setTitle:@"取消订单" forState:UIControlStateNormal];
-        
-        [self.button1 setBackgroundImage:[UIImage imageNamed:@"button_bg4"] forState:UIControlStateNormal];
-        [self.button2 setBackgroundImage:[UIImage imageNamed:@"button_bg0"] forState:UIControlStateNormal];
-        
-        [self.button1 addTarget:self action:@selector(clickedButton3:) forControlEvents:UIControlEventTouchUpInside];
-        [self.button2 addTarget:self action:@selector(clickedButton1:) forControlEvents:UIControlEventTouchUpInside];
-    }
-    else if(state > 2 && state <= 5)//正在搬家
-    {
-        self.button1.hidden = NO;
-        self.button2.hidden = YES;
         
         [self.button1 setTitle:@"跟踪流程" forState:UIControlStateNormal];
         [self.button2 setTitle:@"申请退款" forState:UIControlStateNormal];
@@ -113,7 +85,7 @@
         [self.button1 addTarget:self action:@selector(clickedButton3:) forControlEvents:UIControlEventTouchUpInside];
         [self.button2 addTarget:self action:@selector(clickedButton4:) forControlEvents:UIControlEventTouchUpInside];
     }
-    else if(7 == state)//订单结束
+    else if(state>7)//订单结束
     {
         self.button1.hidden = NO;
         self.button2.hidden = NO;

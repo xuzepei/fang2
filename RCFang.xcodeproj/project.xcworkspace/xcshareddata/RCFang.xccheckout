@@ -14,7 +14,7 @@
 		<string>https://github.com/xuzepei/fang2.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>RCFang.xcodeproj/project.xcworkspace</string>
+	<string>RCFang.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>95859C0F6AE2A22930F10C39141C5D36D91F3E1C</key>

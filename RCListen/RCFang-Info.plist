@@ -24,6 +24,27 @@
 	<string>1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLName</key>
+			<string>com.tapguilt.daguanjia</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wx5c9d6f4c8df5d270</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>com.tapguilt.daguanjia</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>daguanjia000000</string>
+			</array>
+		</dict>
+	</array>
 	<key>CFBundleVersion</key>
 	<string>1.0</string>
 	<key>LSRequiresIPhoneOS</key>

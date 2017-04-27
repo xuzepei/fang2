@@ -326,7 +326,9 @@ enum {
         
         if(0 == index)
         {
-            [RCTool showAlert:@"温馨提示" message:@"无电梯每层加收50元"];
+            NSString* tip = [self.item objectForKey:@"lift_intro"];
+            if([tip length])
+            [RCTool showAlert:@"温馨提示" message:tip];
         }
     }
     else if(TF_TAG_11 == tag)
@@ -338,7 +340,9 @@ enum {
         
         if(0 == index)
         {
-            [RCTool showAlert:@"温馨提示" message:@"不能停车到楼下加收100元"];
+            NSString* tip = [self.item objectForKey:@"park_intro"];
+            if([tip length])
+            [RCTool showAlert:@"温馨提示" message:tip];
         }
     }
 }

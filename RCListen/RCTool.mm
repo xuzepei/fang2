@@ -1130,24 +1130,24 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
 }
 
 
-+ (void)setShareText:(NSString*)text
++ (void)setShareItem:(NSDictionary*)item
 {
-    if(0 == [text length])
+    if(nil == item)
         return;
     
     NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
-    [temp setObject:text forKey:@"text"];
+    [temp setObject:item forKey:@"share_item"];
     [temp synchronize];
 }
 
-+ (NSString*)getShareText
++ (NSDictionary*)getShareItem
 {
     NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
-    NSString* text = [temp objectForKey:@"text"];
-    if([text length])
-        return text;
+    NSDictionary* share_item = [temp objectForKey:@"share_item"];
+    if(share_item)
+        return share_item;
     
-    return SHARE_TEXT;
+    return nil;
 }
 
 + (void)setDeviceToken:(NSString*)token

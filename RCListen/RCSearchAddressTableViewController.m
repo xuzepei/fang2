@@ -87,7 +87,16 @@
     BMKCitySearchOption *citySearchOption = [[BMKCitySearchOption alloc ] init];
     citySearchOption.pageIndex = 0;
     citySearchOption.pageCapacity = 10;
-    citySearchOption.city= @"成都";
+    
+    NSString* city = @"成都";
+//    NSDictionary* cityInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"current_city"];
+//    if(cityInfo)
+//    {
+//        city = [cityInfo objectForKey:@"city"];
+//        if(0 == [city length])
+//            city = [cityInfo objectForKey:@"now_city"];
+//    }
+    citySearchOption.city= city;
     citySearchOption.keyword = text;
     BOOL flag = [_search poiSearchInCity:citySearchOption];
     if(flag)

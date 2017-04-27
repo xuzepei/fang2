@@ -13,7 +13,7 @@
 #import "RCWebViewController.h"
 #import "RCFeedbackViewController.h"
 #import "RCHttpRequest.h"
-#import "UMSocial.h"
+
 
 #define UPDATE_TAG 122
 
@@ -145,10 +145,10 @@
     [dict setObject:@"f1" forKey:@"image_path"];
     [_itemArray addObject:dict];
         
-        dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"版本升级" forKey:@"name"];
-        [dict setObject:@"f6" forKey:@"image_path"];
-        [_itemArray addObject:dict];
+//        dict = [[NSMutableDictionary alloc] init];
+//        [dict setObject:@"版本升级" forKey:@"name"];
+//        [dict setObject:@"f6" forKey:@"image_path"];
+//        [_itemArray addObject:dict];
     
     dict = [[NSMutableDictionary alloc] init];
     [dict setObject:@"常见问题" forKey:@"name"];
@@ -178,8 +178,13 @@
         [_itemArray addObject:dict];
         
         dict = [[NSMutableDictionary alloc] init];
-        [dict setObject:@"价格标准" forKey:@"name"];
+        [dict setObject:@"价格列表" forKey:@"name"];
         [dict setObject:@"f4" forKey:@"image_path"];
+        [_itemArray addObject:dict];
+        
+        dict = [[NSMutableDictionary alloc] init];
+        [dict setObject:@"退款与赔偿细则" forKey:@"name"];
+        [dict setObject:@"f12" forKey:@"image_path"];
         [_itemArray addObject:dict];
         
         dict = [[NSMutableDictionary alloc] init];
@@ -219,10 +224,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.row != 2)
-        return 44.0;
-    
-    return 0.0;
+    return 44.0;
 }
 
 
@@ -281,14 +283,14 @@
 //        [temp updateContent:urlString title:@"大管家公告"];
 //        [self.navigationController pushViewController:temp animated:YES];
     }
+//    else if(2 == indexPath.row)
+//    {
+////        //检查最新版本
+////        NSString* urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&apikey=%@&ios=1",BASE_URL,APIID,PWD];
+////        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+////        [temp request:urlString delegate:self resultSelector:@selector(finishedCheckRequest:) token:nil];
+//    }
     else if(2 == indexPath.row)
-    {
-//        //检查最新版本
-//        NSString* urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&apikey=%@&ios=1",BASE_URL,APIID,PWD];
-//        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
-//        [temp request:urlString delegate:self resultSelector:@selector(finishedCheckRequest:) token:nil];
-    }
-    else if(3 == indexPath.row)
     {
         NSString* urlString = [NSString stringWithFormat:@"%@/web/faq.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
@@ -298,7 +300,7 @@
         [self.navigationController pushViewController:temp animated:YES];
 
     }
-    else if(4 == indexPath.row)
+    else if(3 == indexPath.row)
     {
         NSString* username = [RCTool getUsername];
         if(0 == [username length])
@@ -312,7 +314,7 @@
         [self.navigationController pushViewController:temp animated:YES];
 
     }
-    else if(5 == indexPath.row)
+    else if(4 == indexPath.row)
     {
 
         NSString* urlString = [NSString stringWithFormat:@"%@/web/whatsnew.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
@@ -322,36 +324,56 @@
         [temp updateContent:urlString title:@"新功能介绍"];
         [self.navigationController pushViewController:temp animated:YES];
     }
-    else if(6 == indexPath.row)
+    else if(5 == indexPath.row)
     {
         [self clickedScanButton:nil];
     }
-    else if(7 == indexPath.row)
+    else if(6 == indexPath.row)
     {
         NSString* imageDirectoryPath = [NSString stringWithFormat:@"%@/images",[RCTool getUserDocumentDirectoryPath]];
         [RCTool removeFile:imageDirectoryPath];
 
         [RCTool showAlert:@"提示" message:@"成功清理缓存!"];
     }
-    else if(8 == indexPath.row)
+    else if(7 == indexPath.row)
     {
         NSString* urlString = [NSString stringWithFormat:@"%@/web/price_list.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
         
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;
-        [temp updateContent:urlString title:@"价格标准"];
+        [temp updateContent:urlString title:@"价格列表"];
+        [self.navigationController pushViewController:temp animated:YES];
+    }
+    else if(8 == indexPath.row)
+    {
+        NSString* urlString = [NSString stringWithFormat:@"%@/web/payback.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+        
+        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+        temp.hidesBottomBarWhenPushed = YES;
+        [temp updateContent:urlString title:@"退款与赔偿细则"];
         [self.navigationController pushViewController:temp animated:YES];
     }
     else if(9 == indexPath.row)
     {
+        NSDictionary* item = [RCTool getShareItem];
+        NSString* text = @"";
+        NSString* url = @"";
+        if(item)
+        {
+            text = [item objectForKey:@"text"];
+            url = [item objectForKey:@"url"];
+        }
+        
+        [UMSocialConfig showAllPlatform:YES];
         [UMSocialSnsService presentSnsIconSheetView:self
                                              appKey:UMENG_APPKEY
-                                          shareText:@""
+                                          shareText:[NSString stringWithFormat:@"%@%@",text,url]
                                          shareImage:nil
                                     shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,
                                 UMShareToWechatTimeline,
                                     UMShareToWechatSession,UMShareToEmail,UMShareToSms,nil]
-                                           delegate:nil];
+                                           delegate:self];
+        
     }
     else if(10 == indexPath.row)
     {
@@ -363,6 +385,28 @@
         [self.navigationController pushViewController:temp animated:YES];
     }
 }
+
+#pragma mark - Share
+
+- (BOOL)isDirectShareInIconActionSheet
+{
+    return YES;
+}
+
+-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+{
+    if(response.responseCode == UMSResponseCodeSuccess)
+    {
+        NSString* snsName = [[response.data allKeys] objectAtIndex:0];
+        if([snsName length])
+        {
+            [RCTool showAlert:@"提示" message:[NSString stringWithFormat:@"已成功分享到%@!",snsName]];
+        }
+    }
+}
+
+
+#pragma mark - Scan
 
 - (void)clickedScanButton:(id)sender
 {

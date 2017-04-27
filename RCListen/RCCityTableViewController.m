@@ -38,7 +38,14 @@
     NSString* urlString = [NSString stringWithFormat:@"%@/city_list.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
     
     NSString* city = @"成都";
-    
+    NSDictionary* cityInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"current_city"];
+    if(cityInfo)
+    {
+        city = [cityInfo objectForKey:@"city"];
+        if(0 == [city length])
+            city = [cityInfo objectForKey:@"now_city"];
+    }
+
     NSString* token = [NSString stringWithFormat:@"city=%@",city];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
@@ -149,6 +156,29 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath: indexPath animated: YES];
+    
+    if(0 == indexPath.section)
+    {
+        NSString* temp = @"";
+        if(self.result && [self.result isKindOfClass:[NSDictionary class]])
+        {
+            NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+            [defaults setObject:self.result forKey:@"current_city"];
+            [defaults synchronize];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    }
+    else if(1 == indexPath.section)
+    {
+        NSDictionary* dict = [self getCellDataAtIndexPath:indexPath];
+        if(dict)
+        {
+            NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+            [defaults setObject:dict forKey:@"current_city"];
+            [defaults synchronize];
+            [self.navigationController popToRootViewControllerAnimated:YES];
+        }
+    }
 }
 
 
