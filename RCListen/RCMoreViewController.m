@@ -364,15 +364,15 @@
             url = [item objectForKey:@"url"];
         }
         
-        [UMSocialConfig showAllPlatform:YES];
-        [UMSocialSnsService presentSnsIconSheetView:self
-                                             appKey:UMENG_APPKEY
-                                          shareText:[NSString stringWithFormat:@"%@%@",text,url]
-                                         shareImage:nil
-                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,
-                                UMShareToWechatTimeline,
-                                    UMShareToWechatSession,UMShareToEmail,UMShareToSms,nil]
-                                           delegate:self];
+//        [UMSocialConfig showAllPlatform:YES];
+//        [UMSocialSnsService presentSnsIconSheetView:self
+//                                             appKey:UMENG_APPKEY
+//                                          shareText:[NSString stringWithFormat:@"%@%@",text,url]
+//                                         shareImage:nil
+//                                    shareToSnsNames:[NSArray arrayWithObjects:UMShareToSina,UMShareToTencent,
+//                                UMShareToWechatTimeline,
+//                                    UMShareToWechatSession,UMShareToEmail,UMShareToSms,nil]
+//                                           delegate:self];
         
     }
     else if(10 == indexPath.row)
@@ -388,22 +388,22 @@
 
 #pragma mark - Share
 
-- (BOOL)isDirectShareInIconActionSheet
-{
-    return YES;
-}
-
--(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
-{
-    if(response.responseCode == UMSResponseCodeSuccess)
-    {
-        NSString* snsName = [[response.data allKeys] objectAtIndex:0];
-        if([snsName length])
-        {
-            [RCTool showAlert:@"提示" message:[NSString stringWithFormat:@"已成功分享到%@!",snsName]];
-        }
-    }
-}
+//- (BOOL)isDirectShareInIconActionSheet
+//{
+//    return YES;
+//}
+//
+//-(void)didFinishGetUMSocialDataInViewController:(UMSocialResponseEntity *)response
+//{
+//    if(response.responseCode == UMSResponseCodeSuccess)
+//    {
+//        NSString* snsName = [[response.data allKeys] objectAtIndex:0];
+//        if([snsName length])
+//        {
+//            [RCTool showAlert:@"提示" message:[NSString stringWithFormat:@"已成功分享到%@!",snsName]];
+//        }
+//    }
+//}
 
 
 #pragma mark - Scan

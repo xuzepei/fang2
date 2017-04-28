@@ -16,7 +16,7 @@
 @property(nonatomic,retain)RCAdScrollView* adScrollView;
 @property(nonatomic,retain)UITableView* tableView;
 @property(nonatomic,retain)NSMutableArray* itemArray;
-@property(assign)CGFloat adHeight;
+@property(assign)CGFloat adScrollViewHeight;
 
 @property(nonatomic,retain)IBOutlet UIButton* banjiaButton;
 @property(nonatomic,retain)IBOutlet UIButton* jiazhengButton;

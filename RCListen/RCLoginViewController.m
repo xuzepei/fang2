@@ -72,8 +72,12 @@
 
 - (void)clickedRightBarButtonItem:(id)sender
 {
-    RCSignupViewController* temp = [[RCSignupViewController alloc] initWithNibName:nil bundle:nil];
-    [self.navigationController pushViewController:temp animated:YES];
+    [self dismissViewControllerAnimated:YES completion:^{
+        
+    }];
+    
+//    RCSignupViewController* temp = [[RCSignupViewController alloc] initWithNibName:nil bundle:nil];
+//    [self.navigationController pushViewController:temp animated:YES];
 
 }
 
@@ -344,6 +348,7 @@
     if(nil == _attributedLabel)
     {
         _attributedLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectZero];
+        [_attributedLabel setLinkUnderlineStyle:kCTUnderlineStyleSingle];
         _attributedLabel.tag = ATTRIBUTED_LABEL_TAG;
         _attributedLabel.frame = CGRectMake([RCTool getScreenSize].width - 70, [RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - 260, 200, 20);
         _attributedLabel.underlineLinks = YES;
@@ -356,7 +361,6 @@
         [_attributedLabel setFont:[UIFont systemFontOfSize:16]];
         _attributedLabel.attributedText = attrStr;
         [_attributedLabel addCustomLink:[NSURL URLWithString:text] inRange:NSMakeRange(0, [text length])];
-        _attributedLabel.hidden = YES;
     }
     
     [self.tableView addSubview: _attributedLabel];

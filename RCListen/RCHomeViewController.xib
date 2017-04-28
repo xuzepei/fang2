@@ -1,22 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="NO">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none">
     <dependencies>
         <deployment identifier="iOS"/>
         <development version="7000" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RCHomeViewController">
             <connections>
-                <outlet property="banjiaButton" destination="eHj-IM-9y7" id="9bl-vh-t1n"/>
-                <outlet property="bjLabel" destination="77w-vt-aK2" id="Mvu-NE-MKt"/>
-                <outlet property="bjTitleLabel" destination="aZz-NZ-CRe" id="cpy-Pm-fFC"/>
-                <outlet property="jiazhengButton" destination="gvu-FV-3eR" id="UgG-lL-D70"/>
-                <outlet property="jzLabel" destination="ob5-xm-ikG" id="dnq-Dz-xIe"/>
-                <outlet property="jzTitleLabel" destination="pM7-IG-B16" id="qUN-bH-0an"/>
-                <outlet property="kdLabel" destination="yre-3U-Wws" id="jej-xQ-Lyx"/>
-                <outlet property="kdTitleLabel" destination="teD-Ii-RLQ" id="a7c-ix-neU"/>
-                <outlet property="kuaidiButton" destination="V0G-uj-ADd" id="qSe-ad-EKt"/>
                 <outlet property="view" destination="jsN-5z-K6x" id="C6e-b8-HBl"/>
             </connections>
         </placeholder>
@@ -25,91 +16,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="eHj-IM-9y7">
-                    <rect key="frame" x="10" y="180" width="300" height="140"/>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="pIh-vi-9jj">
+                    <rect key="frame" x="45" y="260" width="240" height="128"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="banjia.png">
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="clickedBJButton:" destination="-1" eventType="touchUpInside" id="T3w-44-7RH"/>
-                    </connections>
-                </button>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我要搬家" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="aZz-NZ-CRe">
-                    <rect key="frame" x="22" y="193" width="101" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="77w-vt-aK2">
-                    <rect key="frame" x="24" y="219" width="124" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.015686274509803921" green="0.4823529411764706" blue="0.70196078431372544" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="gvu-FV-3eR">
-                    <rect key="frame" x="6" y="323" width="158" height="68"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="jiazheng.png">
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="jiazheng_on.png"/>
-                    <connections>
-                        <action selector="clickedJZButton:" destination="-1" eventType="touchUpInside" id="L4e-bQ-VE5"/>
-                    </connections>
-                </button>
-                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="找家政" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pM7-IG-B16">
-                    <rect key="frame" x="16" y="333" width="101" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ob5-xm-ikG">
-                    <rect key="frame" x="17" y="357" width="124" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.74901960784313726" green="0.46666666666666667" blue="0.035294117647058823" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="V0G-uj-ADd">
-                    <rect key="frame" x="6" y="395" width="158" height="68"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" backgroundImage="kuaidi.png">
-                        <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="calibratedRGB"/>
-                    </state>
-                    <state key="highlighted" backgroundImage="kuaidi_on.png"/>
-                    <connections>
-                        <action selector="clickedKDButton:" destination="-1" eventType="touchUpInside" id="klx-Gq-3ue"/>
-                    </connections>
-                </button>
-                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="发快递" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="teD-Ii-RLQ">
-                    <rect key="frame" x="16" y="404" width="101" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yre-3U-Wws">
-                    <rect key="frame" x="17" y="428" width="124" height="21"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.40392156862745099" green="0.56470588235294117" blue="0.054901960784313725" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
         </view>
     </objects>
-    <resources>
-        <image name="banjia.png" width="300" height="140"/>
-        <image name="jiazheng.png" width="158" height="68"/>
-        <image name="jiazheng_on.png" width="158" height="68"/>
-        <image name="kuaidi.png" width="158" height="68"/>
-        <image name="kuaidi_on.png" width="158" height="68"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

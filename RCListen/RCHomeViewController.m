@@ -20,6 +20,8 @@
 #import "RCCreateDDViewController.h"
 #import "RCStartBJViewController.h"
 #import "RCCityTableViewController.h"
+#import "RCFuctionButton.h"
+#import "RCLoginViewController.h"
 
 #define AD_FRAME_HEIGHT 170.0
 
@@ -34,12 +36,13 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:@"首页"
-														   image:[UIImage imageNamed:@"lb"]
-															 tag:TT_HOMEPAGE];
-		self.tabBarItem = item;
+//        UITabBarItem* item = [[UITabBarItem alloc] initWithTitle:@"首页"
+//														   image:[UIImage imageNamed:@"lb"]
+//															 tag:TT_HOMEPAGE];
+//        
+//		self.tabBarItem = item;
 		
-		self.navigationItem.title = @"欢迎进入大管家";
+		self.navigationItem.title = @"工地之家";
         self.view.backgroundColor = BG_COLOR;
 
 //        UIButton *titleImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -51,24 +54,23 @@
         
         
         
-        UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 2, 200, 30)];
-        titleLabel.font = [UIFont boldSystemFontOfSize:21];
-        titleLabel.textColor = [UIColor whiteColor];
-        titleLabel.textAlignment = NSTextAlignmentCenter;
-        titleLabel.shadowColor = [UIColor grayColor];
-        titleLabel.shadowOffset = CGSizeMake(1, 1);
-        titleLabel.backgroundColor = [UIColor clearColor];
-        titleLabel.text = @"欢迎进入大管家";
+//        UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 2, 200, 30)];
+//        titleLabel.font = [UIFont boldSystemFontOfSize:21];
+//        titleLabel.textColor = [UIColor whiteColor];
+//        titleLabel.textAlignment = NSTextAlignmentCenter;
+//        titleLabel.shadowColor = [UIColor grayColor];
+//        titleLabel.shadowOffset = CGSizeMake(1, 1);
+//        titleLabel.backgroundColor = [UIColor clearColor];
+//        titleLabel.text = @"欢迎进入大管家";
+//        
+//        self.navigationItem.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, 40)];
+//        
+//        [self.navigationItem.titleView addSubview:titleLabel];
         
-        self.navigationItem.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, 40)];
-        
-        [self.navigationItem.titleView addSubview:titleLabel];
-        
-        _selectAreaButton = [[RCSelectAreaButton alloc] initWithFrame:CGRectMake([RCTool getScreenSize].width - 76, -4, 60, 40)];
-        _selectAreaButton.delegate = self;
-        
-
-        [self.navigationItem.titleView addSubview:_selectAreaButton];
+//        _selectAreaButton = [[RCSelectAreaButton alloc] initWithFrame:CGRectMake([RCTool getScreenSize].width - 76, -4, 60, 40)];
+//        _selectAreaButton.delegate = self;
+//        
+//        [self.navigationItem.titleView addSubview:_selectAreaButton];
         
         _itemArray = [[NSMutableArray alloc] init];
         
@@ -98,17 +100,19 @@
 {
     [super viewWillAppear:animated];
     
-    NSString* city = @"成都";
-    NSDictionary* cityInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"current_city"];
-    if(cityInfo)
-    {
-        city = [cityInfo objectForKey:@"city"];
-        if(0 == [city length])
-            city = [cityInfo objectForKey:@"now_city"];
-    }
+//    [self goToLoginViewController];
     
-    if(_selectAreaButton)
-        [_selectAreaButton updateContent:city];
+//    NSString* city = @"成都";
+//    NSDictionary* cityInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"current_city"];
+//    if(cityInfo)
+//    {
+//        city = [cityInfo objectForKey:@"city"];
+//        if(0 == [city length])
+//            city = [cityInfo objectForKey:@"now_city"];
+//    }
+//    
+//    if(_selectAreaButton)
+//        [_selectAreaButton updateContent:city];
 }
 
 - (void)viewDidLoad
@@ -116,11 +120,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    [self updateAd];
+//    [self updateAd];
+//    [self updateInfo];
+
+    [self initAdScrollView];
     
-    [self updateInfo];
-    
-    //[self initButtons];
+    [self initFunctionButtons];
 }
 
 - (void)didReceiveMemoryWarning
@@ -134,6 +139,7 @@
 
 - (void)clickedRightBarButtonItem:(id)sender
 {
+    NSLog(@"clickedRightBarButtonItem");
 }
 
 - (void)clickedTitleImageButton:(id)sender
@@ -147,30 +153,22 @@
 
 - (void)initAdScrollView
 {
-    self.adHeight = 0;
+    self.adScrollViewHeight = 0;
     
-    NSDictionary* ad = [RCTool getAdByType:@"index"];
-    if(ad)
+    NSArray* urlArray = @[@{@"url":@"http://luxuryhalongbay.com/uploads/cruise/imagecruise/image-cruise.jpg", @"goto":@"http://www.baidu.com"},@{@"url":@"https://institutfrancais-cambodge.com/wp-content/uploads/2017/03/stop-motion-640x300.jpg",@"goto":@"http://www.163.com"},@{@"url":@"http://www.fba.org.au/wordpress/wp-content/uploads/2017/03/Grains-image-640x300.jpg",@"goto":@"http://www.yahoo.com"}];
+    if(urlArray && [urlArray isKindOfClass:[NSArray class]])
     {
-        NSString* show = [ad objectForKey:@"show"];
-        if([show isEqualToString:@"1"])
+        if([urlArray count])
         {
-            NSArray* urlArray = [ad objectForKey:@"urllist"];
-            if(urlArray && [urlArray isKindOfClass:[NSArray class]])
+            if(nil == _adScrollView)
             {
-                if([urlArray count])
-                {
-                    if(nil == _adScrollView)
-                    {
-                        self.adHeight = AD_FRAME_HEIGHT;
-                        _adScrollView = [[RCAdScrollView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, AD_FRAME_HEIGHT)];
-                    }
-                    
-                    [_adScrollView updateContent:urlArray];
-                    
-                    [self.view addSubview: _adScrollView];
-                }
+                self.adScrollViewHeight = AD_FRAME_HEIGHT;
+                _adScrollView = [[RCAdScrollView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, AD_FRAME_HEIGHT)];
             }
+            
+            [_adScrollView updateContent:urlArray];
+            
+            [self.view addSubview: _adScrollView];
         }
     }
 }
@@ -207,7 +205,7 @@
         
         if(_tableView)
         {
-            _tableView.frame = CGRectMake(0,self.adHeight,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - self.adHeight - TAB_BAR_HEIGHT - 40);
+            _tableView.frame = CGRectMake(0,self.adScrollViewHeight,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - self.adScrollViewHeight - TAB_BAR_HEIGHT - 40);
         }
     }
 }
@@ -288,7 +286,7 @@
     if(nil == _tableView)
     {
         //init table view
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,self.adHeight,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - self.adHeight - TAB_BAR_HEIGHT - 40)
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,self.adScrollViewHeight,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - self.adScrollViewHeight - TAB_BAR_HEIGHT - 40)
                                                   style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
@@ -414,31 +412,60 @@
 
 #pragma mark - Buttons
 
-- (void)initButtons
+- (void)initFunctionButtons
 {
-    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(50, [RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - 42, 40, 40);
-    [button setImage:[UIImage imageNamed:@"location_button"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(clickedLocationButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview: button];
+    CGSize screenSize = [RCTool getScreenSize];
+    CGFloat offset_x = 10.0f;
+    CGFloat offset_y = self.adScrollViewHeight + 20;
+    CGFloat buttonWidth = (screenSize.width - offset_x*2 - 10*2)/3.0;
+    CGFloat buttonHeight = 60;
     
+    for(int i = 0; i < 7; i++)
+    {
+        int column = i % 3;
+        if(i > 0 && column == 0)
+        {
+            offset_y += buttonHeight + 10;
+            offset_x = 10;
+        }
+        
+        RCFuctionButton* button = [[RCFuctionButton alloc] initWithFrame:CGRectMake(offset_x + (buttonWidth + 10)*column, offset_y, buttonWidth, buttonHeight)];
+        button.delegate = self;
+        [button updateContent: @{@"text": @"看电影"}];
+        [self.view addSubview: button];
+
+    }
     
+//    UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(50+40+50, [RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - 42, 40, 40);
+//    [button setImage:[UIImage imageNamed:@"calculator_button"] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(clickedCalculatorButton:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview: button];
+//    
+//    
+//    button = [UIButton buttonWithType:UIButtonTypeCustom];
+//    button.frame = CGRectMake(50+(40+50)*2, [RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - 42, 40, 40);
+//    [button setImage:[UIImage imageNamed:@"scan_button"] forState:UIControlStateNormal];
+//    [button addTarget:self action:@selector(clickedScanButton:) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview: button];
     
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(50+40+50, [RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - 42, 40, 40);
-    [button setImage:[UIImage imageNamed:@"calculator_button"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(clickedCalculatorButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview: button];
+}
+
+- (void)clickedFuctionButton:(id)token
+{
+    NSLog(@"clickedFuctionButton:%@",token);
     
+    [self goToLoginViewController];
+}
+
+- (void)goToLoginViewController
+{
+    RCLoginViewController* temp = [[RCLoginViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:temp];
     
-    
-    button = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame = CGRectMake(50+(40+50)*2, [RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - TAB_BAR_HEIGHT - 42, 40, 40);
-    [button setImage:[UIImage imageNamed:@"scan_button"] forState:UIControlStateNormal];
-    [button addTarget:self action:@selector(clickedScanButton:) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview: button];
-    
-    
+    [self presentViewController:navController animated:NO completion:^{
+        
+    }];
 }
 
 - (void)clickedLocationButton:(id)sender

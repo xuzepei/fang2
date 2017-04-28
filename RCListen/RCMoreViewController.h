@@ -9,9 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
 #import "RCGongGaoViewController.h"
-#import "UMSocial.h"
 
-@interface RCMoreViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ZBarCaptureDelegate,UMSocialUIDelegate>
+@interface RCMoreViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,ZBarCaptureDelegate>
 
 @property(nonatomic,strong)UITableView* tableView;
 @property(nonatomic,strong)NSMutableArray* itemArray;

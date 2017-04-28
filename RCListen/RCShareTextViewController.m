@@ -9,7 +9,7 @@
 #import "RCShareTextViewController.h"
 #import "RCTool.h"
 #import "RCShareTextToolbar.h"
-#import "CUShareCenter.h"
+//#import "CUShareCenter.h"
 
 @interface RCShareTextViewController ()
 
@@ -76,28 +76,28 @@
 
 - (void)clickedRightBarButtonItem:(id)sender
 {
-    int count = [_textView.text length];
-    if(count > 0 && count <= 140)
-    {
-        if(SHT_SINA == _shareType)
-        {
-            CUShareCenter* sinaShare = [CUShareCenter sharedInstanceWithType:CUSHARE_SINA];
-            
-            if ([sinaShare isBind])
-            {
-                [sinaShare sendWithText:_textView.text delegate:self];
-            }
-        }
-        else if(SHT_QQ == _shareType)
-        {
-            CUShareCenter* qqShare = [CUShareCenter sharedInstanceWithType:CUSHARE_QQ];
-            
-            if([qqShare isBind])
-            {
-                [qqShare sendWithText:_textView.text delegate:self];
-            }
-        }
-    }
+//    int count = [_textView.text length];
+//    if(count > 0 && count <= 140)
+//    {
+//        if(SHT_SINA == _shareType)
+//        {
+//            CUShareCenter* sinaShare = [CUShareCenter sharedInstanceWithType:CUSHARE_SINA];
+//            
+//            if ([sinaShare isBind])
+//            {
+//                [sinaShare sendWithText:_textView.text delegate:self];
+//            }
+//        }
+//        else if(SHT_QQ == _shareType)
+//        {
+//            CUShareCenter* qqShare = [CUShareCenter sharedInstanceWithType:CUSHARE_QQ];
+//            
+//            if([qqShare isBind])
+//            {
+//                [qqShare sendWithText:_textView.text delegate:self];
+//            }
+//        }
+//    }
 
 }
 

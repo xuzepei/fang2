@@ -25,6 +25,7 @@
 
 - (void)dealloc
 {
+    self.delegate = nil;
     self.item = nil;
     self.imageUrl = nil;
     self.image = nil;
@@ -43,6 +44,7 @@
 
 - (void)updateContent:(NSDictionary*)item
 {
+    self.item = item;
     self.image = nil;
     
     self.imageUrl = [item objectForKey:@"url"];
@@ -73,6 +75,16 @@
 		self.image = [RCTool getImageFromLocal:self.imageUrl];
 		[self setNeedsDisplay];
 	}
+}
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    //[self touchesEnded:touches withEvent:event];
+    
+    if(self.delegate && [self.delegate respondsToSelector:@selector(clickedAd:)])
+    {
+        [self.delegate clickedAd:self.item];
+    }
 }
 
 

@@ -20,6 +20,7 @@
 @property(nonatomic,retain)NSDictionary* item;
 @property(nonatomic,retain)NSString* imageUrl;
 @property(nonatomic,retain)UIImage* image;
+@property(nonatomic,weak)id delegate;
 
 - (void)updateContent:(NSDictionary*)item;
 

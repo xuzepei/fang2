@@ -10,6 +10,8 @@
 
 #import "RCAdScrollView.h"
 
+#define CHANGE_TIME_INTERVAL 6
+
 @implementation RCAdScrollView
 
 - (id)initWithFrame:(CGRect)frame
@@ -29,6 +31,7 @@
             _scrollView.showsVerticalScrollIndicator = NO;
             _scrollView.scrollsToTop = NO;
             _scrollView.delegate = self;
+            _scrollView.bouncesZoom = NO;
         }
         
         [self addSubview: _scrollView];
@@ -37,7 +40,7 @@
         if(nil == _timer)
         {
             self.timer = [NSTimer
-                           scheduledTimerWithTimeInterval:10
+                           scheduledTimerWithTimeInterval:CHANGE_TIME_INTERVAL
                            target:self
                            selector:@selector(handleTimer:)
                            userInfo:nil
@@ -89,6 +92,7 @@
     for(NSDictionary* item in itemArray)
     {
         RCAdView* adView = [[RCAdView alloc] initWithFrame:CGRectMake(self.bounds.size.width * i,0,self.bounds.size.width,self.bounds.size.height)];
+        adView.delegate = self;
         [adView updateContent:item];
         [self.scrollView addSubview:adView];
         
@@ -149,9 +153,21 @@
     }
     else
     {
-        int index = _pageControl.currentPage - 1;
+        //int index = _pageControl.currentPage - 1;
+        _pageControl.currentPage = 0;
+        int index = _pageControl.currentPage;
         if(index < [self.itemArray count] && index != -1)
             [self goToIndex: index];
+    }
+}
+
+#pragma mark - 
+
+- (void)clickedAd:(id)token {
+
+    if(token && [token isKindOfClass:[NSDictionary class]]) {
+    
+        NSLog(@"Go to:%@", [token objectForKey:@"goto"]);
     }
 }
 

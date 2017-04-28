@@ -9,8 +9,8 @@
 #import "RCAppDelegate.h"
 #import "RCTool.h"
 #import "RCHttpRequest.h"
-#import "UMSocial.h"
-#import "UMSocialWechatHandler.h"
+//#import "UMSocial.h"
+//#import "UMSocialWechatHandler.h"
 
 #define UPDATE_TAG 122
 
@@ -27,26 +27,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [UMSocialData setAppKey:UMENG_APPKEY];
+//    UIApplication* app = [UIApplication sharedApplication];
+//	app.applicationIconBadgeNumber = 0;
+//	[app registerForRemoteNotificationTypes:
+//	 (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
+//    
+//    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
 
-    //设置微信AppId、appSecret，分享url
-    [UMSocialWechatHandler setWXAppId:@"wx5c9d6f4c8df5d270" appSecret:@"62948ecae89fd2b2aac6c047713cf9a4" url:@"http://www.umeng.com/social"];
-    
-    UIApplication* app = [UIApplication sharedApplication];
-	app.applicationIconBadgeNumber = 0;
-	[app registerForRemoteNotificationTypes:
-	 (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
-    
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
-    
-    
-    _mapManager = [[BMKMapManager alloc]init];
-    BOOL ret = [_mapManager start:BAIDUMAP_KEY  generalDelegate:nil];
-    if (!ret) {
-        NSLog(@"manager start failed!");
-    }
-
-    [self updateUserLocation];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
@@ -59,108 +46,108 @@
     [_homeNavigationController.navigationBar setTranslucent:NO];
     
     
-    //search
-    _telephoneViewController = [[RCTelephoneViewController alloc] initWithNibName:nil bundle:nil];
-	
-	_telephoneNavigationController = [[UINavigationController alloc]
-                                   initWithRootViewController:_telephoneViewController];
-    _telephoneNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
-        [_telephoneNavigationController.navigationBar setTranslucent:NO];
+//    //search
+//    _telephoneViewController = [[RCTelephoneViewController alloc] initWithNibName:nil bundle:nil];
+//	
+//	_telephoneNavigationController = [[UINavigationController alloc]
+//                                   initWithRootViewController:_telephoneViewController];
+//    _telephoneNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
+//        [_telephoneNavigationController.navigationBar setTranslucent:NO];
+//    
+//    
+//    //me
+//    _meViewController = [[RCMeViewController alloc] initWithNibName:nil bundle:nil];
+//	
+//	_meNavigationController = [[UINavigationController alloc]
+//                               initWithRootViewController:_meViewController];
+//    _meNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
+//    _meNavigationController.navigationBar.translucent = NO;
+//    
+//    //more
+//    _moreViewController = [[RCMoreViewController alloc] initWithNibName:nil bundle:nil];
+//	
+//	_moreNavigationController = [[UINavigationController alloc]
+//                                 initWithRootViewController:_moreViewController];
+//    _moreNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
+//            [_moreNavigationController.navigationBar setTranslucent:NO];
+//    
+//    
+//    _tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
+//    
+//    NSArray* array = [[NSArray alloc] initWithObjects:
+//                      _homeNavigationController,
+//                      _telephoneNavigationController,_meNavigationController,_moreNavigationController,nil];
+//    
+//	[_tabBarController setViewControllers:array animated:YES];
     
-    
-    //me
-    _meViewController = [[RCMeViewController alloc] initWithNibName:nil bundle:nil];
-	
-	_meNavigationController = [[UINavigationController alloc]
-                               initWithRootViewController:_meViewController];
-    _meNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
-    _meNavigationController.navigationBar.translucent = NO;
-    
-    //more
-    _moreViewController = [[RCMoreViewController alloc] initWithNibName:nil bundle:nil];
-	
-	_moreNavigationController = [[UINavigationController alloc]
-                                 initWithRootViewController:_moreViewController];
-    _moreNavigationController.navigationBar.tintColor = NAVIGATION_BAR_COLOR;
-            [_moreNavigationController.navigationBar setTranslucent:NO];
-    
-    
-    _tabBarController = [[UITabBarController alloc] initWithNibName:nil bundle:nil];
-    
-    NSArray* array = [[NSArray alloc] initWithObjects:
-                      _homeNavigationController,
-                      _telephoneNavigationController,_meNavigationController,_moreNavigationController,nil];
-    
-	[_tabBarController setViewControllers:array animated:YES];
-    
-    self.window.rootViewController = _tabBarController;
+    self.window.rootViewController = _homeNavigationController;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     
-    BOOL showAD = YES;
-    NSString* imageUrl = nil;
-    NSDictionary* ad = [RCTool getAdByType:@"open"];
-    if(ad)
-    {
-        NSString* show = [ad objectForKey:@"show"];
-        if([show isEqualToString:@"0"])
-        {
-            showAD = NO;
-        }
-        else
-        {
-            NSArray* urlArray = [ad objectForKey:@"urllist"];
-            if(urlArray && [urlArray isKindOfClass:[NSArray class]])
-            {
-                if([urlArray count])
-                    imageUrl = [[urlArray objectAtIndex:0] objectForKey:@"url"];
-            }
-        }
-    }
-    
-    if(nil == _lauchAdView && showAD)
-    {
-        [[UIApplication sharedApplication] setStatusBarHidden:YES];
-        
-        _lauchAdView = [[RCLaunchAdView alloc] initWithFrame:[RCTool getScreenRect]];
-        
-        if(0 == [imageUrl length])
-            imageUrl = @"";
-        
-        NSMutableDictionary* item = [[NSMutableDictionary alloc] init];
-        [item setObject:imageUrl forKey:@"image_url"];
-        [_lauchAdView updateContent:item];
-        
-        [[RCTool frontWindow] addSubview:_lauchAdView];
-        
-        [self performSelector:@selector(removeLauchAdView) withObject:nil afterDelay:1.0];
-    }
-    
-    
-    //首页广告
-    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=open",BASE_URL,APIID,PWD];
-    
-    RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
-    [temp request:urlString delegate:self resultSelector:@selector(finishedAdRequest:) token:nil];
-    
-    //获取区域和类型
-    urlString = [NSString stringWithFormat:@"%@/xinfang_search.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
-    
-    temp = [[RCHttpRequest alloc] init];
-    [temp request:urlString delegate:self resultSelector:@selector(finishedAreaRequest:) token:nil];
+//    BOOL showAD = YES;
+//    NSString* imageUrl = nil;
+//    NSDictionary* ad = [RCTool getAdByType:@"open"];
+//    if(ad)
+//    {
+//        NSString* show = [ad objectForKey:@"show"];
+//        if([show isEqualToString:@"0"])
+//        {
+//            showAD = NO;
+//        }
+//        else
+//        {
+//            NSArray* urlArray = [ad objectForKey:@"urllist"];
+//            if(urlArray && [urlArray isKindOfClass:[NSArray class]])
+//            {
+//                if([urlArray count])
+//                    imageUrl = [[urlArray objectAtIndex:0] objectForKey:@"url"];
+//            }
+//        }
+//    }
+//    
+//    if(nil == _lauchAdView && showAD)
+//    {
+//        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+//        
+//        _lauchAdView = [[RCLaunchAdView alloc] initWithFrame:[RCTool getScreenRect]];
+//        
+//        if(0 == [imageUrl length])
+//            imageUrl = @"";
+//        
+//        NSMutableDictionary* item = [[NSMutableDictionary alloc] init];
+//        [item setObject:imageUrl forKey:@"image_url"];
+//        [_lauchAdView updateContent:item];
+//        
+//        [[RCTool frontWindow] addSubview:_lauchAdView];
+//        
+//        [self performSelector:@selector(removeLauchAdView) withObject:nil afterDelay:1.0];
+//    }
     
     
-    //获取分享信息
-    urlString = [NSString stringWithFormat:@"%@/share_text.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
-    temp = [[RCHttpRequest alloc] init];
-    [temp request:urlString delegate:self resultSelector:@selector(finishedShareTextRequest:) token:nil];
-    
-    
-    //检查最新版本
-    urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&apikey=%@&ios=1",BASE_URL,APIID,PWD];
-    temp = [[RCHttpRequest alloc] init];
-    [temp request:urlString delegate:self resultSelector:@selector(finishedCheckRequest:) token:nil];
+//    //首页广告
+//    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=open",BASE_URL,APIID,PWD];
+//    
+//    RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
+//    [temp request:urlString delegate:self resultSelector:@selector(finishedAdRequest:) token:nil];
+//    
+//    //获取区域和类型
+//    urlString = [NSString stringWithFormat:@"%@/xinfang_search.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+//    
+//    temp = [[RCHttpRequest alloc] init];
+//    [temp request:urlString delegate:self resultSelector:@selector(finishedAreaRequest:) token:nil];
+//    
+//    
+//    //获取分享信息
+//    urlString = [NSString stringWithFormat:@"%@/share_text.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+//    temp = [[RCHttpRequest alloc] init];
+//    [temp request:urlString delegate:self resultSelector:@selector(finishedShareTextRequest:) token:nil];
+//    
+//    
+//    //检查最新版本
+//    urlString = [NSString stringWithFormat:@"%@/check_update.php?apiid=%@&apikey=%@&ios=1",BASE_URL,APIID,PWD];
+//    temp = [[RCHttpRequest alloc] init];
+//    [temp request:urlString delegate:self resultSelector:@selector(finishedCheckRequest:) token:nil];
     
     
     [[UINavigationBar appearance] setBarTintColor:NAVIGATION_BAR_COLOR];
@@ -184,10 +171,10 @@
                [UIFont boldSystemFontOfSize:21], NSFontAttributeName, nil]];
     
     
-    //获取当前位置
-    BMKMapView* mapView = [[BMKMapView alloc] init];
-    //mapView.delegate  = self;
-    [mapView setShowsUserLocation:YES];
+//    //获取当前位置
+//    BMKMapView* mapView = [[BMKMapView alloc] init];
+//    //mapView.delegate  = self;
+//    [mapView setShowsUserLocation:YES];
     
     
     return YES;
@@ -562,17 +549,17 @@
 
 #pragma mark - UMeng
 
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-{
-    return  [UMSocialSnsService handleOpenURL:url];
-}
-
-- (BOOL)application:(UIApplication *)application
-            openURL:(NSURL *)url
-  sourceApplication:(NSString *)sourceApplication
-         annotation:(id)annotation
-{
-    return  [UMSocialSnsService handleOpenURL:url];
-}
+//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
+//{
+//    return  [UMSocialSnsService handleOpenURL:url];
+//}
+//
+//- (BOOL)application:(UIApplication *)application
+//            openURL:(NSURL *)url
+//  sourceApplication:(NSString *)sourceApplication
+//         annotation:(id)annotation
+//{
+//    return  [UMSocialSnsService handleOpenURL:url];
+//}
 
 @end
