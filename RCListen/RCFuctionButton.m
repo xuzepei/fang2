@@ -80,9 +80,9 @@
     CGPoint touchPoint = [[touches anyObject] locationInView:self];
     if(CGRectContainsPoint(self.bounds, touchPoint))
     {
-        if(self.delegate && [self.delegate respondsToSelector:@selector(clickedFuctionButton:)])
+        if(self.delegate && [self.delegate respondsToSelector:@selector(clickedFuctionButton:token:)])
         {
-            [self.delegate clickedFuctionButton:self.item];
+            [self.delegate clickedFuctionButton:self token:self.item];
         }
     }
 }

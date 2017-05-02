@@ -366,24 +366,20 @@
     [self.tableView addSubview: _attributedLabel];
 }
 
-- (void)clickLinkText:(NSString*)linkText token:(id)token
+-(BOOL)attributedLabel:(OHAttributedLabel*)attributedLabel shouldFollowLink:(NSTextCheckingResult*)linkInfo
 {
-    NSLog(@"clickLinkText:%@",linkText);
-    
+    NSLog(@"shouldFollowLink");
     if(ATTRIBUTED_LABEL_TAG == _attributedLabel.tag)
     {
-        
+        NSLog(@"clickLinkText");
     }
+    
+    return YES;
 }
 
-- (UIColor*)colorForLink:(NSTextCheckingResult*)linkInfo underlineStyle:(int32_t*)underlineStyle
+-(UIColor*)attributedLabel:(OHAttributedLabel*)attributedLabel colorForLink:(NSTextCheckingResult*)linkInfo underlineStyle:(int32_t*)underlineStyle
 {
     return [UIColor blueColor];
-}
-
-- (UIFont*)fontForLink:(id)token
-{
-	return [UIFont systemFontOfSize:12];
 }
 
 

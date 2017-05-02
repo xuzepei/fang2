@@ -10,13 +10,17 @@
 #import "RCAdScrollView.h"
 #import "ZBarSDK.h"
 #import "RCSelectAreaButton.h"
+#import "RCScrollLabel.h"
 
 @interface RCHomeViewController : UIViewController<RCAdScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,ZBarReaderDelegate>
 
+@property(nonatomic,retain)NSMutableArray* adItems;
 @property(nonatomic,retain)RCAdScrollView* adScrollView;
 @property(nonatomic,retain)UITableView* tableView;
 @property(nonatomic,retain)NSMutableArray* itemArray;
 @property(assign)CGFloat adScrollViewHeight;
+
+@property(nonatomic, strong)RCScrollLabel* scrollLabel;
 
 @property(nonatomic,retain)IBOutlet UIButton* banjiaButton;
 @property(nonatomic,retain)IBOutlet UIButton* jiazhengButton;

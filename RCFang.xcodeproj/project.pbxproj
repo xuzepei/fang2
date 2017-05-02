@@ -300,6 +300,27 @@
 		09AEBBC9194548D8005885C0 /* RCPublicCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AEBBC4194548D8005885C0 /* RCPublicCell.m */; };
 		09AEBBCA194548D8005885C0 /* RCPublicCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09AEBBC6194548D8005885C0 /* RCPublicCellContentView.m */; };
 		09AEBBCC194596C0005885C0 /* fanhui@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09AEBBCB194596C0005885C0 /* fanhui@2x.png */; };
+		09B32B7D1EB81520001CA370 /* RCScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B7C1EB81520001CA370 /* RCScrollLabel.m */; };
+		09B32B971EB83CBB001CA370 /* TYAlertController+BlurEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B811EB83CBB001CA370 /* TYAlertController+BlurEffects.m */; };
+		09B32B981EB83CBB001CA370 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B831EB83CBB001CA370 /* UIImage+ImageEffects.m */; };
+		09B32B991EB83CBB001CA370 /* TYAlertController+TransitionAnimate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B841EB83CBB001CA370 /* TYAlertController+TransitionAnimate.m */; };
+		09B32B9A1EB83CBB001CA370 /* TYAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B861EB83CBB001CA370 /* TYAlertController.m */; };
+		09B32B9B1EB83CBB001CA370 /* TYAlertDropDownAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B881EB83CBB001CA370 /* TYAlertDropDownAnimation.m */; };
+		09B32B9C1EB83CBB001CA370 /* TYAlertFadeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B8A1EB83CBB001CA370 /* TYAlertFadeAnimation.m */; };
+		09B32B9D1EB83CBB001CA370 /* TYAlertScaleFadeAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B8C1EB83CBB001CA370 /* TYAlertScaleFadeAnimation.m */; };
+		09B32B9E1EB83CBB001CA370 /* TYAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B8E1EB83CBB001CA370 /* TYAlertView.m */; };
+		09B32B9F1EB83CBB001CA370 /* TYBaseAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B901EB83CBB001CA370 /* TYBaseAnimation.m */; };
+		09B32BA01EB83CBB001CA370 /* TYShowAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B921EB83CBB001CA370 /* TYShowAlertView.m */; };
+		09B32BA11EB83CBB001CA370 /* UIView+TYAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B941EB83CBB001CA370 /* UIView+TYAlertView.m */; };
+		09B32BA21EB83CBB001CA370 /* UIView+TYAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32B961EB83CBB001CA370 /* UIView+TYAutoLayout.m */; };
+		09B32BA71EB840AA001CA370 /* OpenAppView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B32BA51EB840AA001CA370 /* OpenAppView.m */; };
+		09B32BA81EB840AA001CA370 /* OpenAppView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B32BA61EB840AA001CA370 /* OpenAppView.xib */; };
+		09B32BAA1EB85222001CA370 /* cancel_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B32BA91EB85222001CA370 /* cancel_button@2x.png */; };
+		09B32BB01EB85E58001CA370 /* chonghuafei.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B32BAB1EB85E58001CA370 /* chonghuafei.jpg */; };
+		09B32BB11EB85E58001CA370 /* maixiangyin.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B32BAC1EB85E58001CA370 /* maixiangyin.jpg */; };
+		09B32BB21EB85E58001CA370 /* tianyishixun.png in Resources */ = {isa = PBXBuildFile; fileRef = 09B32BAD1EB85E58001CA370 /* tianyishixun.png */; };
+		09B32BB31EB85E58001CA370 /* wanyouxi.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B32BAE1EB85E58001CA370 /* wanyouxi.jpg */; };
+		09B32BB41EB85E58001CA370 /* xiangjiale.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B32BAF1EB85E58001CA370 /* xiangjiale.jpg */; };
 		09B735C717257CA500CABA29 /* RCZuFangBaseInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B735C617257CA500CABA29 /* RCZuFangBaseInfoCell.m */; };
 		09B735C917257CB400CABA29 /* RCZuFangBaseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B735C817257CB400CABA29 /* RCZuFangBaseInfoCell.xib */; };
 		09BCA51816EB9BE000010C63 /* home_page@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BCA51616EB9BE000010C63 /* home_page@2x.png */; };
@@ -935,6 +956,40 @@
 		09AEBBC5194548D8005885C0 /* RCPublicCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPublicCellContentView.h; sourceTree = "<group>"; };
 		09AEBBC6194548D8005885C0 /* RCPublicCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPublicCellContentView.m; sourceTree = "<group>"; };
 		09AEBBCB194596C0005885C0 /* fanhui@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fanhui@2x.png"; sourceTree = "<group>"; };
+		09B32B7B1EB81520001CA370 /* RCScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCScrollLabel.h; sourceTree = "<group>"; };
+		09B32B7C1EB81520001CA370 /* RCScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCScrollLabel.m; sourceTree = "<group>"; };
+		09B32B801EB83CBB001CA370 /* TYAlertController+BlurEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TYAlertController+BlurEffects.h"; sourceTree = "<group>"; };
+		09B32B811EB83CBB001CA370 /* TYAlertController+BlurEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TYAlertController+BlurEffects.m"; sourceTree = "<group>"; };
+		09B32B821EB83CBB001CA370 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		09B32B831EB83CBB001CA370 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		09B32B841EB83CBB001CA370 /* TYAlertController+TransitionAnimate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TYAlertController+TransitionAnimate.m"; sourceTree = "<group>"; };
+		09B32B851EB83CBB001CA370 /* TYAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAlertController.h; sourceTree = "<group>"; };
+		09B32B861EB83CBB001CA370 /* TYAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAlertController.m; sourceTree = "<group>"; };
+		09B32B871EB83CBB001CA370 /* TYAlertDropDownAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAlertDropDownAnimation.h; sourceTree = "<group>"; };
+		09B32B881EB83CBB001CA370 /* TYAlertDropDownAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAlertDropDownAnimation.m; sourceTree = "<group>"; };
+		09B32B891EB83CBB001CA370 /* TYAlertFadeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAlertFadeAnimation.h; sourceTree = "<group>"; };
+		09B32B8A1EB83CBB001CA370 /* TYAlertFadeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAlertFadeAnimation.m; sourceTree = "<group>"; };
+		09B32B8B1EB83CBB001CA370 /* TYAlertScaleFadeAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAlertScaleFadeAnimation.h; sourceTree = "<group>"; };
+		09B32B8C1EB83CBB001CA370 /* TYAlertScaleFadeAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAlertScaleFadeAnimation.m; sourceTree = "<group>"; };
+		09B32B8D1EB83CBB001CA370 /* TYAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYAlertView.h; sourceTree = "<group>"; };
+		09B32B8E1EB83CBB001CA370 /* TYAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYAlertView.m; sourceTree = "<group>"; };
+		09B32B8F1EB83CBB001CA370 /* TYBaseAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYBaseAnimation.h; sourceTree = "<group>"; };
+		09B32B901EB83CBB001CA370 /* TYBaseAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYBaseAnimation.m; sourceTree = "<group>"; };
+		09B32B911EB83CBB001CA370 /* TYShowAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYShowAlertView.h; sourceTree = "<group>"; };
+		09B32B921EB83CBB001CA370 /* TYShowAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYShowAlertView.m; sourceTree = "<group>"; };
+		09B32B931EB83CBB001CA370 /* UIView+TYAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TYAlertView.h"; sourceTree = "<group>"; };
+		09B32B941EB83CBB001CA370 /* UIView+TYAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TYAlertView.m"; sourceTree = "<group>"; };
+		09B32B951EB83CBB001CA370 /* UIView+TYAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+TYAutoLayout.h"; sourceTree = "<group>"; };
+		09B32B961EB83CBB001CA370 /* UIView+TYAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+TYAutoLayout.m"; sourceTree = "<group>"; };
+		09B32BA41EB840AA001CA370 /* OpenAppView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenAppView.h; sourceTree = "<group>"; };
+		09B32BA51EB840AA001CA370 /* OpenAppView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpenAppView.m; sourceTree = "<group>"; };
+		09B32BA61EB840AA001CA370 /* OpenAppView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OpenAppView.xib; sourceTree = "<group>"; };
+		09B32BA91EB85222001CA370 /* cancel_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cancel_button@2x.png"; sourceTree = "<group>"; };
+		09B32BAB1EB85E58001CA370 /* chonghuafei.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = chonghuafei.jpg; sourceTree = "<group>"; };
+		09B32BAC1EB85E58001CA370 /* maixiangyin.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = maixiangyin.jpg; sourceTree = "<group>"; };
+		09B32BAD1EB85E58001CA370 /* tianyishixun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tianyishixun.png; sourceTree = "<group>"; };
+		09B32BAE1EB85E58001CA370 /* wanyouxi.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = wanyouxi.jpg; sourceTree = "<group>"; };
+		09B32BAF1EB85E58001CA370 /* xiangjiale.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = xiangjiale.jpg; sourceTree = "<group>"; };
 		09B735C517257CA500CABA29 /* RCZuFangBaseInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCZuFangBaseInfoCell.h; sourceTree = "<group>"; };
 		09B735C617257CA500CABA29 /* RCZuFangBaseInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCZuFangBaseInfoCell.m; sourceTree = "<group>"; };
 		09B735C817257CB400CABA29 /* RCZuFangBaseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCZuFangBaseInfoCell.xib; sourceTree = "<group>"; };
@@ -1608,6 +1663,8 @@
 				092AA00D1940BC2300E13E2E /* RCHomeViewController.xib */,
 				09FF092C16EC22920083CE91 /* RCAdScrollView.h */,
 				09FF092D16EC22920083CE91 /* RCAdScrollView.m */,
+				09B32B7B1EB81520001CA370 /* RCScrollLabel.h */,
+				09B32B7C1EB81520001CA370 /* RCScrollLabel.m */,
 				09FF092F16EC25750083CE91 /* RCAdView.h */,
 				09FF093016EC25750083CE91 /* RCAdView.m */,
 				0915D38E170DAFEC00D86E9A /* RCWebViewController.h */,
@@ -1617,6 +1674,7 @@
 				09D139241A0140A10090BEE2 /* RCCityTableViewController.h */,
 				09D139251A0140A10090BEE2 /* RCCityTableViewController.m */,
 				09D139261A0140A20090BEE2 /* RCCityTableViewController.xib */,
+				09B32BA31EB840AA001CA370 /* OpenAppView */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1786,6 +1844,12 @@
 		095C59C816AF804200F7B949 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				09B32BAB1EB85E58001CA370 /* chonghuafei.jpg */,
+				09B32BAC1EB85E58001CA370 /* maixiangyin.jpg */,
+				09B32BAD1EB85E58001CA370 /* tianyishixun.png */,
+				09B32BAE1EB85E58001CA370 /* wanyouxi.jpg */,
+				09B32BAF1EB85E58001CA370 /* xiangjiale.jpg */,
+				09B32BA91EB85222001CA370 /* cancel_button@2x.png */,
 				09D5EEB71A1A019700542922 /* f12@2x.png */,
 				09D138E01A0133FA0090BEE2 /* map_mark@2x.png */,
 				0998D7711A00CE270091B0F1 /* renren@2x.png */,
@@ -1956,6 +2020,54 @@
 			path = MJRefresh;
 			sourceTree = "<group>";
 		};
+		09B32B7E1EB83CBB001CA370 /* TYAlertController */ = {
+			isa = PBXGroup;
+			children = (
+				09B32B7F1EB83CBB001CA370 /* Blur Effects */,
+				09B32B841EB83CBB001CA370 /* TYAlertController+TransitionAnimate.m */,
+				09B32B851EB83CBB001CA370 /* TYAlertController.h */,
+				09B32B861EB83CBB001CA370 /* TYAlertController.m */,
+				09B32B871EB83CBB001CA370 /* TYAlertDropDownAnimation.h */,
+				09B32B881EB83CBB001CA370 /* TYAlertDropDownAnimation.m */,
+				09B32B891EB83CBB001CA370 /* TYAlertFadeAnimation.h */,
+				09B32B8A1EB83CBB001CA370 /* TYAlertFadeAnimation.m */,
+				09B32B8B1EB83CBB001CA370 /* TYAlertScaleFadeAnimation.h */,
+				09B32B8C1EB83CBB001CA370 /* TYAlertScaleFadeAnimation.m */,
+				09B32B8D1EB83CBB001CA370 /* TYAlertView.h */,
+				09B32B8E1EB83CBB001CA370 /* TYAlertView.m */,
+				09B32B8F1EB83CBB001CA370 /* TYBaseAnimation.h */,
+				09B32B901EB83CBB001CA370 /* TYBaseAnimation.m */,
+				09B32B911EB83CBB001CA370 /* TYShowAlertView.h */,
+				09B32B921EB83CBB001CA370 /* TYShowAlertView.m */,
+				09B32B931EB83CBB001CA370 /* UIView+TYAlertView.h */,
+				09B32B941EB83CBB001CA370 /* UIView+TYAlertView.m */,
+				09B32B951EB83CBB001CA370 /* UIView+TYAutoLayout.h */,
+				09B32B961EB83CBB001CA370 /* UIView+TYAutoLayout.m */,
+			);
+			path = TYAlertController;
+			sourceTree = "<group>";
+		};
+		09B32B7F1EB83CBB001CA370 /* Blur Effects */ = {
+			isa = PBXGroup;
+			children = (
+				09B32B801EB83CBB001CA370 /* TYAlertController+BlurEffects.h */,
+				09B32B811EB83CBB001CA370 /* TYAlertController+BlurEffects.m */,
+				09B32B821EB83CBB001CA370 /* UIImage+ImageEffects.h */,
+				09B32B831EB83CBB001CA370 /* UIImage+ImageEffects.m */,
+			);
+			path = "Blur Effects";
+			sourceTree = "<group>";
+		};
+		09B32BA31EB840AA001CA370 /* OpenAppView */ = {
+			isa = PBXGroup;
+			children = (
+				09B32BA41EB840AA001CA370 /* OpenAppView.h */,
+				09B32BA51EB840AA001CA370 /* OpenAppView.m */,
+				09B32BA61EB840AA001CA370 /* OpenAppView.xib */,
+			);
+			path = OpenAppView;
+			sourceTree = "<group>";
+		};
 		09CBBC2219ECFCC10093A06F /* Telephone */ = {
 			isa = PBXGroup;
 			children = (
@@ -2083,6 +2195,7 @@
 		09CF7F3016A3EC9C0050A603 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				09B32B7E1EB83CBB001CA370 /* TYAlertController */,
 				091A810A1EB3393B00E082CE /* OHAttributedLabel */,
 				09A1F47219F7CBFC00C3E1A2 /* MJRefresh */,
 				09202387172E2E18009EAB94 /* NSString+URLEncoding.h */,
@@ -2281,6 +2394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09B32BAA1EB85222001CA370 /* cancel_button@2x.png in Resources */,
 				09621BB51988F7D90024BE87 /* 2_on@2x.png in Resources */,
 				0948E64419501C4800D73734 /* kan_on@2x.png in Resources */,
 				092AA0091940976200E13E2E /* gd@2x.png in Resources */,
@@ -2289,6 +2403,7 @@
 				0944830019FCC7A900026387 /* RCPJDDViewController.xib in Resources */,
 				091065E31941EE500040C10A /* RCMeViewController.xib in Resources */,
 				09C21F5419F94942002E0F63 /* f5@2x.png in Resources */,
+				09B32BB31EB85E58001CA370 /* wanyouxi.jpg in Resources */,
 				09BCA51816EB9BE000010C63 /* home_page@2x.png in Resources */,
 				092AA01A1940BD6E00E13E2E /* kuaidi@2x.png in Resources */,
 				09F1357919A5BE380009CF4E /* RCPasswordViewController.xib in Resources */,
@@ -2315,9 +2430,11 @@
 				099B1AF916EF5C6800984120 /* home_title@2x.png in Resources */,
 				09CBBC2719ECFD050093A06F /* RCTelephoneViewController.xib in Resources */,
 				09240EBF19EB7C7200C3F6AC /* tip2@2x.png in Resources */,
+				09B32BB01EB85E58001CA370 /* chonghuafei.jpg in Resources */,
 				090F10C4194295CD0062A5B3 /* me_bx@2x.png in Resources */,
 				09A9E9451951735700417393 /* RCDDViewController.xib in Resources */,
 				093D11EF16F018FD0077CC9A /* tabbar_bg@2x.png in Resources */,
+				09B32BB21EB85E58001CA370 /* tianyishixun.png in Resources */,
 				09C21F5619F94942002E0F63 /* f7@2x.png in Resources */,
 				09A8E3C9198A3CF2005DB535 /* wugou@2x.png in Resources */,
 				092AA0151940BD6E00E13E2E /* banjia_on@2x.png in Resources */,
@@ -2383,6 +2500,7 @@
 				094A133E19D167E400A87938 /* RCDDStep4ViewController.xib in Resources */,
 				0948E65719503CBD00D73734 /* lianxi@2x.png in Resources */,
 				0913908519C08CE6002ADC6F /* RCSearchAddressTableViewController.xib in Resources */,
+				09B32BB41EB85E58001CA370 /* xiangjiale.jpg in Resources */,
 				0945E15D16FA9C6300E53996 /* dadianhua@2x.png in Resources */,
 				090F10CC194295CD0062A5B3 /* me_top_view_bg@2x.png in Resources */,
 				0988C78A19EC003E00EED3AC /* check_button_selected@2x.png in Resources */,
@@ -2395,6 +2513,7 @@
 				098ACAF71700880D005BDCC8 /* photo-gallery-right@2x.png in Resources */,
 				090F10CF194295CD0062A5B3 /* xjt@2x.png in Resources */,
 				09A1F46619F7AE1C00C3E1A2 /* mei@2x.png in Resources */,
+				09B32BB11EB85E58001CA370 /* maixiangyin.jpg in Resources */,
 				09E979731701D1F8000BB8C6 /* RCSecondHandHouseInfoViewController.xib in Resources */,
 				092AA01C1940C46800E13E2E /* guanggao@2x.png in Resources */,
 				09064E19170868AC00BA0258 /* RCZuFangInfoViewController.xib in Resources */,
@@ -2449,6 +2568,7 @@
 				0998D78B1A00E8340091B0F1 /* RCYHJCell1.xib in Resources */,
 				09202391172E3F55009EAB94 /* bangzhu@2x.png in Resources */,
 				09073E8617335B4D00416E2D /* favorites@2x.png in Resources */,
+				09B32BA81EB840AA001CA370 /* OpenAppView.xib in Resources */,
 				09AD959F173C8DEB0060B3A5 /* fankui@2x.png in Resources */,
 				09FD90C919A247F100BC59C0 /* xdd@2x.png in Resources */,
 				09800CF4173CD72100AC5EF1 /* button_bg@2x.png in Resources */,
@@ -2478,9 +2598,11 @@
 				09CF7EEC16A3D7740050A603 /* main.m in Sources */,
 				09CF7EF016A3D7740050A603 /* RCAppDelegate.m in Sources */,
 				09CF7EF916A3D7740050A603 /* RCListen.xcdatamodeld in Sources */,
+				09B32B9B1EB83CBB001CA370 /* TYAlertDropDownAnimation.m in Sources */,
 				09CF7F2116A3E9D30050A603 /* RCTool.mm in Sources */,
 				09CF7F3716A3ECFF0050A603 /* TBXML.m in Sources */,
 				0913907219C07CD8002ADC6F /* RCCreateDDViewController.m in Sources */,
+				09B32B9D1EB83CBB001CA370 /* TYAlertScaleFadeAnimation.m in Sources */,
 				09877786198F38A4006834C2 /* RCPointAnnotation.m in Sources */,
 				0941EEBA16EB8DE200327D1A /* RCHttpRequest.m in Sources */,
 				0941EEC416EB8EE200327D1A /* RCSearchViewController.m in Sources */,
@@ -2505,10 +2627,12 @@
 				094482FF19FCC7A900026387 /* RCPJDDViewController.m in Sources */,
 				0950B93716F173120039D561 /* NSAttributedString+Attributes.m in Sources */,
 				0950B94716F19EE60039D561 /* RCFangDaiViewController.m in Sources */,
+				09B32BA01EB83CBB001CA370 /* TYShowAlertView.m in Sources */,
 				0950B94B16F1A38C0039D561 /* RCFangDaiCell.m in Sources */,
 				0950B94F16F1B07C0039D561 /* RCDaiKuanTypeViewController.m in Sources */,
 				0950B95216F1B0AB0039D561 /* RCAnJieYearViewController.m in Sources */,
 				09CBBC2619ECFD050093A06F /* RCTelephoneViewController.m in Sources */,
+				09B32B9F1EB83CBB001CA370 /* TYBaseAnimation.m in Sources */,
 				0950B95516F1B0BF0039D561 /* RCRateTypeViewController.m in Sources */,
 				09ACF5D116F2C59500C99C6F /* RCFangDaiRateCell.m in Sources */,
 				09FF86C319C1D95C001B08D8 /* RCPointOverlayView.m in Sources */,
@@ -2552,13 +2676,17 @@
 				09D139271A0140A20090BEE2 /* RCCityTableViewController.m in Sources */,
 				09E979761701D526000BB8C6 /* RCSecondHandHouseCell.m in Sources */,
 				0913907619C08852002ADC6F /* RCCreateDDSetp0View.m in Sources */,
+				09B32B9E1EB83CBB001CA370 /* TYAlertView.m in Sources */,
 				09E979791701D54F000BB8C6 /* RCSecondHandHouseCellContentView.m in Sources */,
 				09064E04170859AE00BA0258 /* RCLaunchAdView.m in Sources */,
 				09064E07170860CE00BA0258 /* MBProgressHUD.m in Sources */,
+				09B32B7D1EB81520001CA370 /* RCScrollLabel.m in Sources */,
+				09B32B971EB83CBB001CA370 /* TYAlertController+BlurEffects.m in Sources */,
 				09FF86C619C1EBCD001B08D8 /* RouteAnnotation.m in Sources */,
 				09064E0B1708644E00BA0258 /* RCZuFangViewController.m in Sources */,
 				09064E0E1708675C00BA0258 /* RCZuFangCell.m in Sources */,
 				09064E111708678C00BA0258 /* RCZuFangCellContentView.m in Sources */,
+				09B32BA11EB83CBB001CA370 /* UIView+TYAlertView.m in Sources */,
 				09064E18170868AC00BA0258 /* RCZuFangInfoViewController.m in Sources */,
 				090E3C17170C5F9600217C33 /* RCLocationController.m in Sources */,
 				090E3C26170C639200217C33 /* NSObject+SBJSON.m in Sources */,
@@ -2613,6 +2741,7 @@
 				09D9128D198B631400A643A4 /* RCCheckButton.m in Sources */,
 				0920236D172E2D56009EAB94 /* ASIDataDecompressor.m in Sources */,
 				091A81171EB3393B00E082CE /* OHAttributedLabel.m in Sources */,
+				09B32BA21EB83CBB001CA370 /* UIView+TYAutoLayout.m in Sources */,
 				0920236E172E2D56009EAB94 /* ASIDownloadCache.m in Sources */,
 				09A1F48919F7CBFC00C3E1A2 /* MJRefreshFooterView.m in Sources */,
 				0920236F172E2D56009EAB94 /* ASIFormDataRequest.m in Sources */,
@@ -2621,8 +2750,10 @@
 				09202371172E2D56009EAB94 /* ASIInputStream.m in Sources */,
 				09202372172E2D56009EAB94 /* ASINetworkQueue.m in Sources */,
 				09202373172E2D56009EAB94 /* ASIWebPageRequest.m in Sources */,
+				09B32B981EB83CBB001CA370 /* UIImage+ImageEffects.m in Sources */,
 				09202374172E2D56009EAB94 /* ASICloudFilesCDNRequest.m in Sources */,
 				09202375172E2D56009EAB94 /* ASICloudFilesContainer.m in Sources */,
+				09B32B9C1EB83CBB001CA370 /* TYAlertFadeAnimation.m in Sources */,
 				09202376172E2D56009EAB94 /* ASICloudFilesContainerRequest.m in Sources */,
 				09202377172E2D56009EAB94 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				09202378172E2D56009EAB94 /* ASICloudFilesObject.m in Sources */,
@@ -2630,6 +2761,7 @@
 				0920237A172E2D56009EAB94 /* ASICloudFilesRequest.m in Sources */,
 				0988C78719EBFFCA00EED3AC /* WRCheckButton.m in Sources */,
 				0920237C172E2D56009EAB94 /* Reachability.m in Sources */,
+				09B32B991EB83CBB001CA370 /* TYAlertController+TransitionAnimate.m in Sources */,
 				0920237D172E2D56009EAB94 /* ASIS3Bucket.m in Sources */,
 				09A1F48C19F7CBFC00C3E1A2 /* UIScrollView+Extension.m in Sources */,
 				09A1F48E19F7CBFC00C3E1A2 /* UIView+Extension.m in Sources */,
@@ -2642,6 +2774,7 @@
 				093312F719F8F4800057EC07 /* RCJFCell.m in Sources */,
 				09202389172E2E18009EAB94 /* NSString+URLEncoding.m in Sources */,
 				0942C69B17334BAB001964E4 /* RCFavoriteViewController.m in Sources */,
+				09B32B9A1EB83CBB001CA370 /* TYAlertController.m in Sources */,
 				0935942E1738912000B25913 /* RCThisMonthViewController.m in Sources */,
 				09F49C34173A50EC00D9C7A3 /* RCFangListViewController.m in Sources */,
 				09C2403B1A0A370D0027F290 /* RCGongGaoCell.m in Sources */,
@@ -2652,6 +2785,7 @@
 				09F49C3A173A5C7200D9C7A3 /* RCZuFangListViewController.m in Sources */,
 				09AD959A173C89700060B3A5 /* RCFeedbackViewController.m in Sources */,
 				09AD959D173C8AFA0060B3A5 /* RCPlaceHolderTextView.m in Sources */,
+				09B32BA71EB840AA001CA370 /* OpenAppView.m in Sources */,
 				09DB7E7C17538A76004BAA2E /* RCTuanGouViewController.m in Sources */,
 				09DB7E7F17539265004BAA2E /* RCShareTextViewController.m in Sources */,
 				09AC71F9175F418500094BDB /* RCShareTextToolbar.m in Sources */,
@@ -2724,6 +2858,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer: zhang qiaolin (NLUP9BXJVD)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: zhang qiaolin (NLUP9BXJVD)";
@@ -2756,6 +2891,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: zhang qiaolin (F3GWLKMAPW)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: zhang qiaolin (F3GWLKMAPW)";

@@ -8,13 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol RCFuctionButtonDelegate <NSObject>
-
-@optional
-- (void)clickedFuctionButton:(id)token;
-
-@end
-
 @interface RCFuctionButton : UIView
 
 @property(nonatomic,strong)NSDictionary* item;
@@ -23,4 +16,9 @@
 
 - (void)updateContent:(NSDictionary*)item;
 
+@end
+
+@protocol RCFuctionButtonDelegate <NSObject>
+@optional
+- (void)clickedFuctionButton:(RCFuctionButton*)button token:(id)token;
 @end

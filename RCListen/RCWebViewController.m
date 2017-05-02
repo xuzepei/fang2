@@ -194,7 +194,7 @@
     
     if (nil == _indicator) {
         _indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
-        _indicator.center = CGPointMake(160, 200 - 44);
+        _indicator.center = CGPointMake([RCTool getScreenSize].width/2.0, [RCTool getScreenSize].height/2.0- 40);
     }
     
     [_webView addSubview: _indicator];

@@ -75,7 +75,7 @@ typedef enum{
 //#define BASE_URL @"http://demo.by111.com/fxggapp/Api"
 
 //#ifndef DEBUG
-#define BASE_URL @"http://demo.by111.com/demo_fang2/Api"
+#define BASE_URL @"http://182.140.235.65:8081/index.php"
 //#else
 //#define BASE_URL @"http://api.dgj.la/Api"
 //#endif

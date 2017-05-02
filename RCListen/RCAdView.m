@@ -47,7 +47,7 @@
     self.item = item;
     self.image = nil;
     
-    self.imageUrl = [item objectForKey:@"url"];
+    self.imageUrl = [item objectForKey:@"picurl"];
     if([self.imageUrl length])
     {
         UIImage* image = [RCTool getImageFromLocal:self.imageUrl];
@@ -68,7 +68,7 @@
 - (void)succeedLoad:(id)result token:(id)token
 {
 	NSDictionary* dict = (NSDictionary*)result;
-	NSString* urlString = [dict valueForKey: @"url"];
+	NSString* urlString = [dict valueForKey: @"picurl"];
     
 	if([urlString isEqualToString: self.imageUrl])
 	{

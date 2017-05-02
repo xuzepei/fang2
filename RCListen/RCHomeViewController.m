@@ -22,8 +22,12 @@
 #import "RCCityTableViewController.h"
 #import "RCFuctionButton.h"
 #import "RCLoginViewController.h"
+#import "TYAlertController.h"
+#import "UIView+TYAlertView.h"
+#import "OpenAppView.h"
 
 #define AD_FRAME_HEIGHT 170.0
+#define SCROLL_LABEL_HEIGHT 60.0
 
 @interface RCHomeViewController ()
 
@@ -72,7 +76,7 @@
 //        
 //        [self.navigationItem.titleView addSubview:_selectAreaButton];
         
-        _itemArray = [[NSMutableArray alloc] init];
+        
         
     }
     return self;
@@ -120,12 +124,12 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-//    [self updateAd];
+    [self updateAd];
 //    [self updateInfo];
-
-    [self initAdScrollView];
     
-    [self initFunctionButtons];
+    [self initScrollLabel];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -149,13 +153,63 @@
     //[[RCTool getTabBarController] setSelectedIndex:1];
 }
 
+- (void)updateContent
+{
+    if(nil == _itemArray)
+    {
+        _itemArray = [[NSMutableArray alloc] init];
+        [_itemArray addObjectsFromArray:@[@{@"text":@"上WiFi"},@{@"text":@"看电影"},@{@"text":@"玩游戏"},@{@"text":@"充话费"},@{@"text":@"想家了"},@{@"text":@"买相因"},@{@"text":@"安全须知"}]];
+        
+        [self initFunctionButtons];
+    }
+}
+
+- (void)updateAd
+{
+    if(nil == _adItems)
+    {
+        self.adItems = [[NSMutableArray alloc] init];
+    }
+    
+    NSString* urlString = [NSString stringWithFormat:@"%@?m=%@&c=%@&a=%@",BASE_URL,@"api",@"index",@"getbanner"];
+    RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
+    [temp request:urlString delegate:self resultSelector:@selector(finishedAdRequest:) token:nil];
+}
+
+- (void)finishedAdRequest:(NSString*)jsonString
+{
+    if(0 == [jsonString length])
+        return;
+    
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSNumber* code = [result objectForKey:@"code"];
+        if(code.intValue == 200)
+        {
+            [_adItems removeAllObjects];
+            
+            NSArray* dataArray = [result objectForKey:@"data"];
+            if(dataArray && [dataArray isKindOfClass:[NSArray class]])
+            {
+                [_adItems addObjectsFromArray:dataArray];
+            }
+            
+        }
+        
+        [self initAdScrollView];
+    }
+    
+    [self updateContent];
+}
+
 #pragma mark - AdScrollView
 
 - (void)initAdScrollView
 {
     self.adScrollViewHeight = 0;
     
-    NSArray* urlArray = @[@{@"url":@"http://luxuryhalongbay.com/uploads/cruise/imagecruise/image-cruise.jpg", @"goto":@"http://www.baidu.com"},@{@"url":@"https://institutfrancais-cambodge.com/wp-content/uploads/2017/03/stop-motion-640x300.jpg",@"goto":@"http://www.163.com"},@{@"url":@"http://www.fba.org.au/wordpress/wp-content/uploads/2017/03/Grains-image-640x300.jpg",@"goto":@"http://www.yahoo.com"}];
+    NSArray* urlArray = self.adItems;
     if(urlArray && [urlArray isKindOfClass:[NSArray class]])
     {
         if([urlArray count])
@@ -169,43 +223,6 @@
             [_adScrollView updateContent:urlArray];
             
             [self.view addSubview: _adScrollView];
-        }
-    }
-}
-
-- (void)updateAd
-{
-    NSString* token = [RCTool getDeviceToken];
-    
-    NSString* urlString = nil;
-    
-    if(0 == [token length])
-    {
-        urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=index",BASE_URL,APIID,PWD];
-    }
-    else{
-        urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=index&iostoken=%@",BASE_URL,APIID,PWD,token];
-    }
-    
-    RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
-    [temp request:urlString delegate:self resultSelector:@selector(finishedAdRequest:) token:nil];
-}
-
-- (void)finishedAdRequest:(NSString*)jsonString
-{
-    if(0 == [jsonString length])
-        return;
-    
-    NSDictionary* result = [RCTool parseToDictionary: jsonString];
-    if(result && [result isKindOfClass:[NSDictionary class]])
-    {
-        [RCTool setAd:@"index" ad:result];
-        
-        [self initAdScrollView];
-        
-        if(_tableView)
-        {
-            _tableView.frame = CGRectMake(0,self.adScrollViewHeight,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - self.adScrollViewHeight - TAB_BAR_HEIGHT - 40);
         }
     }
 }
@@ -252,31 +269,18 @@
     }
 }
 
-#pragma mark - Menu
+#pragma mark - RCScrollLabelDelegate
 
-- (IBAction)clickedBJButton:(id)sender
+- (void)initScrollLabel
 {
-    NSLog(@"clickedBJButton");
+    if(nil == _scrollLabel)
+    {
+        self.scrollLabel = [[RCScrollLabel alloc] initWithFrame:CGRectMake(0, [RCTool getScreenSize].height - SCROLL_LABEL_HEIGHT -STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT, [RCTool getScreenSize].width, SCROLL_LABEL_HEIGHT)];
+        self.scrollLabel.backgroundColor = [UIColor blackColor];
+        [self.scrollLabel updateContent:nil];
+    }
     
-//    RCBJViewController* temp = [[RCBJViewController alloc] initWithNibName:nil bundle:nil];
-//    temp.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:temp animated:YES];
-    
-    RCStartBJViewController* temp = [[RCStartBJViewController alloc] initWithNibName:nil bundle:nil];
-    temp.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:temp animated:YES];
-    
-//    RCCreateDDViewController* temp = [[RCCreateDDViewController alloc] initWithNibName:nil bundle:nil];
-//    temp.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController:temp animated:YES];
-}
-
-- (IBAction)clickedJZButton:(id)sender
-{
-}
-
-- (IBAction)clickedKDButton:(id)sender
-{
+    [self.view addSubview:self.scrollLabel];
 }
 
 #pragma mark - UITableView
@@ -431,7 +435,8 @@
         
         RCFuctionButton* button = [[RCFuctionButton alloc] initWithFrame:CGRectMake(offset_x + (buttonWidth + 10)*column, offset_y, buttonWidth, buttonHeight)];
         button.delegate = self;
-        [button updateContent: @{@"text": @"看电影"}];
+        button.tag = i + 500;
+        [button updateContent: [self.itemArray objectAtIndex:i]];
         [self.view addSubview: button];
 
     }
@@ -451,11 +456,84 @@
     
 }
 
-- (void)clickedFuctionButton:(id)token
+- (void)clickedFuctionButton:(RCFuctionButton*)button token:(id)token
 {
     NSLog(@"clickedFuctionButton:%@",token);
     
-    [self goToLoginViewController];
+    int tag = button.tag;
+    NSDictionary* item = (NSDictionary*)token;
+    
+    switch (tag) {
+        case 500:
+        {
+            [self goToLoginViewController];
+            break;
+        }
+        case 501:
+        {
+            OpenAppView* temp = [OpenAppView createViewFromNib];
+            temp.titleLabel.text = [item objectForKey:@"text"];
+            [temp updateContent:@[@{@"name":@"天翼视讯",@"image":@"tianyishixun.png",@"url":@""}]];
+            
+            TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:temp preferredStyle:TYAlertControllerStyleAlert];
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            break;
+        }
+        case 502:
+        {
+            OpenAppView* temp = [OpenAppView createViewFromNib];
+            temp.titleLabel.text = [item objectForKey:@"text"];
+            [temp updateContent:@[@{@"name":@"玩游戏",@"image":@"wanyouxi.jpg",@"url":@"http://wap.189store.com/game/game?f=0"}]];
+            
+            TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:temp preferredStyle:TYAlertControllerStyleAlert];
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            break;
+        }
+        case 503:
+        {
+            OpenAppView* temp = [OpenAppView createViewFromNib];
+            temp.titleLabel.text = [item objectForKey:@"text"];
+            [temp updateContent:@[@{@"name":@"充话费",@"image":@"chonghuafei.jpg",@"url":@"http://wapsc.189.cn/pay?intid=wap-sy-menu-cz"}]];
+            TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:temp preferredStyle:TYAlertControllerStyleAlert];
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            break;
+        }
+        case 504:
+        {
+            OpenAppView* temp = [OpenAppView createViewFromNib];
+            temp.titleLabel.text = [item objectForKey:@"text"];
+            [temp updateContent:@[@{@"name":@"想家了",@"image":@"xiangjiale.jpg",@"url":@""}]];
+            TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:temp preferredStyle:TYAlertControllerStyleAlert];
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            break;
+        }
+        case 505:
+        {
+            OpenAppView* temp = [OpenAppView createViewFromNib];
+            temp.titleLabel.text = [item objectForKey:@"text"];
+            [temp updateContent:@[@{@"name":@"买相因",@"image":@"maixiangyin.jpg",@"url":@"http://m.tyfo.com/wap/newversion/main.htm?numflag=0"}]];
+            TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:temp preferredStyle:TYAlertControllerStyleAlert];
+            [self presentViewController:alertController animated:YES completion:nil];
+            
+            break;
+        }
+        case 506:
+        {
+            break;
+        }
+        case 507:
+        {
+            break;
+        }
+        default:
+            break;
+    }
+    
+    
 }
 
 - (void)goToLoginViewController
@@ -468,93 +546,76 @@
     }];
 }
 
-- (void)clickedLocationButton:(id)sender
-{
-    NSLog(@"clickedLocationButton");
-    
-    //[[RCLocationController sharedInstance] startLocationService];
-}
+//- (void)clickedScanButton:(id)sender
+//{
+//    NSLog(@"clickedScanButton");
+//    
+//    // ADD: present a barcode reader that scans from the camera feed
+//    ZBarReaderViewController *reader = [ZBarReaderViewController new];
+//    reader.readerDelegate = self;
+//    reader.supportedOrientationsMask = ZBarOrientationMask(UIInterfaceOrientationPortrait);
+//    
+//    ZBarImageScanner *scanner = reader.scanner;
+//    // TODO: (optional) additional reader configuration here
+//    
+//    // EXAMPLE: disable rarely used I2/5 to improve performance
+//    [scanner setSymbology: ZBAR_I25
+//                   config: ZBAR_CFG_ENABLE
+//                       to: 0];
+//    
+//    // present and release the controller
+//    [self presentModalViewController: reader
+//                            animated: YES];
+//
+//}
 
-- (void)clickedCalculatorButton:(id)sender
-{
-    NSLog(@"clickedCalculatorButton");
-    
-    RCFangDaiViewController* temp =[[RCFangDaiViewController alloc] initWithNibName:nil bundle:nil];
-    temp.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:temp animated:YES];
-
-}
-
-- (void)clickedScanButton:(id)sender
-{
-    NSLog(@"clickedScanButton");
-    
-    // ADD: present a barcode reader that scans from the camera feed
-    ZBarReaderViewController *reader = [ZBarReaderViewController new];
-    reader.readerDelegate = self;
-    reader.supportedOrientationsMask = ZBarOrientationMask(UIInterfaceOrientationPortrait);
-    
-    ZBarImageScanner *scanner = reader.scanner;
-    // TODO: (optional) additional reader configuration here
-    
-    // EXAMPLE: disable rarely used I2/5 to improve performance
-    [scanner setSymbology: ZBAR_I25
-                   config: ZBAR_CFG_ENABLE
-                       to: 0];
-    
-    // present and release the controller
-    [self presentModalViewController: reader
-                            animated: YES];
-
-}
-
-- (void) imagePickerController: (UIImagePickerController*) reader
- didFinishPickingMediaWithInfo: (NSDictionary*) info
-{
-    [RCTool playSound:@"done.caf"];
-    // ADD: get the decode results
-    id<NSFastEnumeration> results =
-    [info objectForKey: ZBarReaderControllerResults];
-    ZBarSymbol *symbol = nil;
-    for(symbol in results)
-        // EXAMPLE: just grab the first barcode
-        break;
-    
-    NSLog(@"code:%@",symbol.data);
-
-    NSString* urlString = symbol.data;
-    //    // EXAMPLE: do something useful with the barcode data
-    //    resultText.text = symbol.data;
-    //
-    //    // EXAMPLE: do something useful with the barcode image
-    //    resultImage.image =
-    //    [info objectForKey: UIImagePickerControllerOriginalImage];
-    
-    // ADD: dismiss the controller (NB dismiss from the *reader*!)
-    [reader dismissModalViewControllerAnimated: YES];
-    
-    if([urlString hasPrefix:@"http:"] || [urlString hasPrefix:@"https:"])
-    {
-        RCWebViewController* temp = [[RCWebViewController alloc] init:NO];
-        temp.hidesBottomBarWhenPushed = YES;
-        [temp updateContent:urlString title:nil];
-        [self.navigationController pushViewController:temp animated:YES];
-
-    }
-}
+//- (void) imagePickerController: (UIImagePickerController*) reader
+// didFinishPickingMediaWithInfo: (NSDictionary*) info
+//{
+//    [RCTool playSound:@"done.caf"];
+//    // ADD: get the decode results
+//    id<NSFastEnumeration> results =
+//    [info objectForKey: ZBarReaderControllerResults];
+//    ZBarSymbol *symbol = nil;
+//    for(symbol in results)
+//        // EXAMPLE: just grab the first barcode
+//        break;
+//    
+//    NSLog(@"code:%@",symbol.data);
+//
+//    NSString* urlString = symbol.data;
+//    //    // EXAMPLE: do something useful with the barcode data
+//    //    resultText.text = symbol.data;
+//    //
+//    //    // EXAMPLE: do something useful with the barcode image
+//    //    resultImage.image =
+//    //    [info objectForKey: UIImagePickerControllerOriginalImage];
+//    
+//    // ADD: dismiss the controller (NB dismiss from the *reader*!)
+//    [reader dismissModalViewControllerAnimated: YES];
+//    
+//    if([urlString hasPrefix:@"http:"] || [urlString hasPrefix:@"https:"])
+//    {
+//        RCWebViewController* temp = [[RCWebViewController alloc] init:NO];
+//        temp.hidesBottomBarWhenPushed = YES;
+//        [temp updateContent:urlString title:nil];
+//        [self.navigationController pushViewController:temp animated:YES];
+//
+//    }
+//}
 
 
-#pragma mark - Selection Area
-
-- (void)clickedSelectionButton:(id)sender
-{
-    NSLog(@"clickedSelectionButton");
-
-    RCCityTableViewController* temp = [[RCCityTableViewController alloc] initWithNibName:nil bundle:nil];
-    temp.hidesBottomBarWhenPushed = YES;
-    [temp updateContent:nil];
-    [self.navigationController pushViewController:temp animated:YES];
-}
+//#pragma mark - Selection Area
+//
+//- (void)clickedSelectionButton:(id)sender
+//{
+//    NSLog(@"clickedSelectionButton");
+//
+//    RCCityTableViewController* temp = [[RCCityTableViewController alloc] initWithNibName:nil bundle:nil];
+//    temp.hidesBottomBarWhenPushed = YES;
+//    [temp updateContent:nil];
+//    [self.navigationController pushViewController:temp animated:YES];
+//}
 
 
 @end
