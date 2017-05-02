@@ -58,7 +58,7 @@ typedef enum{
     HT_ZUFANG
 }HOUSE_TYPE;
 
-#define NAVIGATION_BAR_COLOR [UIColor colorWithRed:1/255.0 green:164/255.0 blue:241/255.0 alpha:1.0]
+#define NAVIGATION_BAR_COLOR [UIColor colorWithRed:145/255.0 green:110/255.0 blue:252/255.0 alpha:1.0]
 #define NAVIGATION_BAR_TINT_COLOR [UIColor colorWithRed:1/255.0 green:164/255.0 blue:241/255.0 alpha:1.0]
 #define TAB_BAR_TEXT_COLOR [UIColor colorWithRed:2/255.0 green:164/255.0 blue:239/255.0 alpha:1.0]
 #define TAB_BAR_COLOR [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]

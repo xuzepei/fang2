@@ -26,7 +26,7 @@
 #import "UIView+TYAlertView.h"
 #import "OpenAppView.h"
 
-#define AD_FRAME_HEIGHT 170.0
+#define AD_FRAME_HEIGHT 250.0
 #define SCROLL_LABEL_HEIGHT 60.0
 
 @interface RCHomeViewController ()
@@ -125,11 +125,8 @@
 	// Do any additional setup after loading the view.
     
     [self updateAd];
-//    [self updateInfo];
-    
-    [self initScrollLabel];
-    
-    
+    [self updateFunctions];
+    [self updateHotNews];
 }
 
 - (void)didReceiveMemoryWarning
@@ -153,7 +150,7 @@
     //[[RCTool getTabBarController] setSelectedIndex:1];
 }
 
-- (void)updateContent
+- (void)updateFunctions
 {
     if(nil == _itemArray)
     {
@@ -164,14 +161,18 @@
     }
 }
 
+#pragma mark - AdScrollView
+
 - (void)updateAd
 {
+    [self initAdScrollView];
+    
     if(nil == _adItems)
     {
         self.adItems = [[NSMutableArray alloc] init];
     }
-    
-    NSString* urlString = [NSString stringWithFormat:@"%@?m=%@&c=%@&a=%@",BASE_URL,@"api",@"index",@"getbanner"];
+
+    NSString* urlString = [NSString stringWithFormat:@"%@?m=%@&c=%@&a=%@&t=%f",BASE_URL,@"api",@"index",@"getbanner",[NSDate date].timeIntervalSince1970];
     RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
     [temp request:urlString delegate:self resultSelector:@selector(finishedAdRequest:) token:nil];
 }
@@ -197,41 +198,31 @@
             
         }
         
-        [self initAdScrollView];
+        if([_adItems count] && _adScrollView)
+            [_adScrollView updateContent:_adItems];
     }
-    
-    [self updateContent];
 }
-
-#pragma mark - AdScrollView
 
 - (void)initAdScrollView
 {
-    self.adScrollViewHeight = 0;
-    
-    NSArray* urlArray = self.adItems;
-    if(urlArray && [urlArray isKindOfClass:[NSArray class]])
+    if(nil == _adScrollView)
     {
-        if([urlArray count])
-        {
-            if(nil == _adScrollView)
-            {
-                self.adScrollViewHeight = AD_FRAME_HEIGHT;
-                _adScrollView = [[RCAdScrollView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, AD_FRAME_HEIGHT)];
-            }
-            
-            [_adScrollView updateContent:urlArray];
-            
-            [self.view addSubview: _adScrollView];
-        }
+        self.adScrollViewHeight = AD_FRAME_HEIGHT;
+        _adScrollView = [[RCAdScrollView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, AD_FRAME_HEIGHT)];
     }
+    
+    [self.view addSubview: _adScrollView];
 }
 
-- (void)updateInfo
-{
-    NSString* urlString = [NSString stringWithFormat:@"%@/index_project.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+#pragma mark - Hot News
 
-    RCHttpRequest* temp = [[RCHttpRequest alloc] init] ;
+- (void)updateHotNews
+{
+    [self initScrollLabel];
+    
+    NSString* urlString = [NSString stringWithFormat:@"%@?m=%@&c=%@&a=%@&t=%f",BASE_URL,@"api",@"index",@"gethotnews",[NSDate date].timeIntervalSince1970];
+    
+    RCHttpRequest* temp = [[RCHttpRequest alloc] init];
     [temp request:urlString delegate:self resultSelector:@selector(finishedInfoRequest:) token:nil];
 }
 
@@ -243,28 +234,17 @@
     NSDictionary* result = [RCTool parseToDictionary: jsonString];
     if(result && [result isKindOfClass:[NSDictionary class]])
     {
-        NSArray* list = [result objectForKey:@"list"];
-        if(list && [list isKindOfClass:[NSArray class]])
+        NSNumber* code = [result objectForKey:@"code"];
+        if(code.intValue == 200)
         {
-            for(NSDictionary* item in list)
+            NSArray* dataArray = [result objectForKey:@"data"];
+            if(dataArray && [dataArray isKindOfClass:[NSArray class]])
             {
-                NSString* id = [item objectForKey:@"id"];
-                if([id isEqualToString:@"1"])
-                {
-                    self.bjTitleLabel.text = [item objectForKey:@"title"];
-                    self.bjLabel.text = [item objectForKey:@"num"];
-                }
-                else if([id isEqualToString:@"2"])
-                {
-                    self.jzTitleLabel.text = [item objectForKey:@"title"];
-                    self.jzLabel.text = [item objectForKey:@"num"];
-                }
-                else if([id isEqualToString:@"3"])
-                {
-                    self.kdTitleLabel.text = [item objectForKey:@"title"];
-                    self.kdLabel.text = [item objectForKey:@"num"];
-                }
+                self.hotNews = dataArray;
             }
+            
+            if([self.hotNews count] && self.scrollLabel)
+                [self.scrollLabel updateContent:self.hotNews];
         }
     }
 }
@@ -277,7 +257,6 @@
     {
         self.scrollLabel = [[RCScrollLabel alloc] initWithFrame:CGRectMake(0, [RCTool getScreenSize].height - SCROLL_LABEL_HEIGHT -STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT, [RCTool getScreenSize].width, SCROLL_LABEL_HEIGHT)];
         self.scrollLabel.backgroundColor = [UIColor blackColor];
-        [self.scrollLabel updateContent:nil];
     }
     
     [self.view addSubview:self.scrollLabel];
@@ -290,7 +269,7 @@
     if(nil == _tableView)
     {
         //init table view
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,self.adScrollViewHeight,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - self.adScrollViewHeight - TAB_BAR_HEIGHT - 40)
+        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,AD_FRAME_HEIGHT,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - AD_FRAME_HEIGHT - TAB_BAR_HEIGHT - 40)
                                                   style:UITableViewStylePlain];
         _tableView.backgroundColor = [UIColor clearColor];
         _tableView.delegate = self;
@@ -420,7 +399,7 @@
 {
     CGSize screenSize = [RCTool getScreenSize];
     CGFloat offset_x = 10.0f;
-    CGFloat offset_y = self.adScrollViewHeight + 20;
+    CGFloat offset_y = AD_FRAME_HEIGHT + 20;
     CGFloat buttonWidth = (screenSize.width - offset_x*2 - 10*2)/3.0;
     CGFloat buttonHeight = 60;
     

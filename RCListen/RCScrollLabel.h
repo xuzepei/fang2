@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "RCScrollLabelView.h"
 
 @protocol RCScrollLabelDelegate <NSObject>
 
@@ -18,10 +19,10 @@
 @interface RCScrollLabel : UIView
 
 @property(nonatomic,weak)id delegate;
-@property(nonatomic,strong)UIView* currentView;
-@property(nonatomic,strong)UILabel* currentLabel;
-@property(nonatomic,strong)UIView* nextView;
-@property(nonatomic,strong)UILabel* nextLabel;
+@property(nonatomic,strong)RCScrollLabelView* currentView;
+@property(nonatomic,strong)NSArray* content;
+@property(nonatomic,strong)RCScrollLabelView* nextView;
+@property(nonatomic,assign)int index;
 
 - (void)updateContent:(NSArray*)content;
 

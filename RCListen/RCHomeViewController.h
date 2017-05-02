@@ -15,6 +15,7 @@
 @interface RCHomeViewController : UIViewController<RCAdScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,ZBarReaderDelegate>
 
 @property(nonatomic,retain)NSMutableArray* adItems;
+@property(nonatomic,retain)NSArray* hotNews;
 @property(nonatomic,retain)RCAdScrollView* adScrollView;
 @property(nonatomic,retain)UITableView* tableView;
 @property(nonatomic,retain)NSMutableArray* itemArray;

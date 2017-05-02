@@ -9,6 +9,7 @@
 
 
 #import "RCAdScrollView.h"
+#import "RCWebViewController.h"
 
 #define CHANGE_TIME_INTERVAL 6
 
@@ -167,7 +168,17 @@
 
     if(token && [token isKindOfClass:[NSDictionary class]]) {
     
-        NSLog(@"Go to:%@", [token objectForKey:@"goto"]);
+        NSString* linkUrl = [token objectForKey:@"linkurl"];
+        
+        if([linkUrl length])
+        {
+            RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+            temp.hidesBottomBarWhenPushed = YES;
+            [temp updateContent:linkUrl title:nil];
+            
+            UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+            [naviController pushViewController:temp animated:YES];
+        }
     }
 }
 
