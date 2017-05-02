@@ -394,6 +394,7 @@
 		09F49C37173A57C900D9C7A3 /* RCErShouFangListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F49C36173A57C900D9C7A3 /* RCErShouFangListViewController.m */; };
 		09F49C3A173A5C7200D9C7A3 /* RCZuFangListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F49C39173A5C7200D9C7A3 /* RCZuFangListViewController.m */; };
 		09F66D6216F59FC9009834A7 /* RCXinFangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F66D6116F59FC9009834A7 /* RCXinFangViewController.m */; };
+		09FB9EAA1EB8DEFE003E8B96 /* RCScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9EA91EB8DEFE003E8B96 /* RCScrollLabelView.m */; };
 		09FC308D16F88E560004C765 /* RCXinFangCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FC308C16F88E560004C765 /* RCXinFangCell.m */; };
 		09FC309016F88E720004C765 /* RCXinFangCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FC308F16F88E720004C765 /* RCXinFangCellContentView.m */; };
 		09FC309216F891AE0004C765 /* list_image_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FC309116F891AE0004C765 /* list_image_default@2x.png */; };
@@ -1093,6 +1094,8 @@
 		09F49C39173A5C7200D9C7A3 /* RCZuFangListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCZuFangListViewController.m; sourceTree = "<group>"; };
 		09F66D6016F59FC9009834A7 /* RCXinFangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCXinFangViewController.h; sourceTree = "<group>"; };
 		09F66D6116F59FC9009834A7 /* RCXinFangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCXinFangViewController.m; sourceTree = "<group>"; };
+		09FB9EA81EB8DEFE003E8B96 /* RCScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCScrollLabelView.h; sourceTree = "<group>"; };
+		09FB9EA91EB8DEFE003E8B96 /* RCScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCScrollLabelView.m; sourceTree = "<group>"; };
 		09FC308B16F88E560004C765 /* RCXinFangCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCXinFangCell.h; sourceTree = "<group>"; };
 		09FC308C16F88E560004C765 /* RCXinFangCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCXinFangCell.m; sourceTree = "<group>"; };
 		09FC308E16F88E720004C765 /* RCXinFangCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCXinFangCellContentView.h; sourceTree = "<group>"; };
@@ -1665,6 +1668,8 @@
 				09FF092D16EC22920083CE91 /* RCAdScrollView.m */,
 				09B32B7B1EB81520001CA370 /* RCScrollLabel.h */,
 				09B32B7C1EB81520001CA370 /* RCScrollLabel.m */,
+				09FB9EA81EB8DEFE003E8B96 /* RCScrollLabelView.h */,
+				09FB9EA91EB8DEFE003E8B96 /* RCScrollLabelView.m */,
 				09FF092F16EC25750083CE91 /* RCAdView.h */,
 				09FF093016EC25750083CE91 /* RCAdView.m */,
 				0915D38E170DAFEC00D86E9A /* RCWebViewController.h */,
@@ -2763,6 +2768,7 @@
 				0920237C172E2D56009EAB94 /* Reachability.m in Sources */,
 				09B32B991EB83CBB001CA370 /* TYAlertController+TransitionAnimate.m in Sources */,
 				0920237D172E2D56009EAB94 /* ASIS3Bucket.m in Sources */,
+				09FB9EAA1EB8DEFE003E8B96 /* RCScrollLabelView.m in Sources */,
 				09A1F48C19F7CBFC00C3E1A2 /* UIScrollView+Extension.m in Sources */,
 				09A1F48E19F7CBFC00C3E1A2 /* UIView+Extension.m in Sources */,
 				0920237E172E2D56009EAB94 /* ASIS3BucketObject.m in Sources */,
