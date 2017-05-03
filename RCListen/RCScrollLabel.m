@@ -7,7 +7,7 @@
 //
 
 #import "RCScrollLabel.h"
-
+#import "RCNewsViewController.h"
 
 #define HEADER_WIDTH 100.0
 
@@ -138,8 +138,15 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    //[super touchesEnded:touches withEvent:event];
-    NSLog(@"@@@@@@touchesEnded");
+    CGPoint touchPoint = [[touches anyObject] locationInView:self];
+    
+    CGRect headerRect = CGRectMake(0,0,HEADER_WIDTH,self.bounds.size.height);
+    if(CGRectContainsPoint(headerRect, touchPoint))
+    {
+        RCNewsViewController* temp = [[RCNewsViewController alloc] initWithNibName:nil bundle:nil];
+        UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+        [naviController pushViewController:temp animated:YES];
+    }
 }
 
 

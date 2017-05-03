@@ -62,7 +62,8 @@ typedef enum{
 #define NAVIGATION_BAR_TINT_COLOR [UIColor colorWithRed:1/255.0 green:164/255.0 blue:241/255.0 alpha:1.0]
 #define TAB_BAR_TEXT_COLOR [UIColor colorWithRed:2/255.0 green:164/255.0 blue:239/255.0 alpha:1.0]
 #define TAB_BAR_COLOR [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1.0]
-#define BG_COLOR [UIColor colorWithRed:240/255.0 green:240/255.0 blue:240/255.0 alpha:1.0]
+#define BG_COLOR [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1.0]
+#define HIGHLIGHT_COLOR [UIColor colorWithRed:31/255.0 green:143/255.0 blue:250/255.0 alpha:1.0]
 
 #define STATUS_BAR_HEIGHT 20.0
 #define NAVIGATION_BAR_HEIGHT 44.0
