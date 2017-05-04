@@ -122,4 +122,7 @@
 
 + (NSString*)getUserLocation;
 + (NSString*)getUserLocationName;
+
++ (void)saveUserInfo:(NSDictionary*)userInfo;
++ (NSDictionary*)getUserInfo;
 @end

@@ -1200,4 +1200,20 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     return temp;
 }
 
++ (void)saveUserInfo:(NSDictionary*)userInfo
+{
+    if(userInfo && [userInfo isKindOfClass:[NSDictionary class]])
+    {
+        NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
+        [temp setObject:userInfo forKey:@"user_info"];
+        [temp synchronize];
+    }
+}
+
++ (NSDictionary*)getUserInfo
+{
+    NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
+    return [temp objectForKey:@"user_info"];
+}
+
 @end

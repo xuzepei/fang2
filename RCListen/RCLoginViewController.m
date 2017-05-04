@@ -230,12 +230,11 @@
     }
     
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/user_login.php?apiid=%@&apikey=%@",BASE_URL,APIID,PWD];
+    NSString* urlString = [NSString stringWithFormat:@"%@?m=%@&c=%@&a=%@&t=%f&mobile=%@&password=%@",BASE_URL,@"api",@"user",@"login",[NSDate date].timeIntervalSince1970,_accountTF.text,_passwordTF.text];
     
-    NSString* token = [NSString stringWithFormat:@"type=2&username=%@&password=%@",_accountTF.text,_passwordTF.text];
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];
-    BOOL b = [temp post:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:token];
+    BOOL b = [temp request:urlString delegate:self resultSelector:@selector(finishedPostRequest:) token:nil];
     if(b)
     {
         [RCTool showIndicator:@"请稍候..."];
@@ -246,37 +245,43 @@
 {
     [RCTool hideIndicator];
     
-    if(0 == [jsonString length])
-        return;
-    
     NSDictionary* result = [RCTool parseToDictionary: jsonString];
     if(result && [result isKindOfClass:[NSDictionary class]])
     {
-        NSString* error = [result objectForKey:@"error"];
-        if(0 == [error length])
+        NSNumber* code = [result objectForKey:@"code"];
+        if(code.intValue == 200)
         {
-            NSString* username = [result objectForKey:@"username"];
-            if([username length])
+            NSDictionary* data= [result objectForKey:@"data"];
+            if(data && [data isKindOfClass:[NSDictionary class]])
             {
-                [RCTool setUsername:username];
-            }
-            
-            NSString* password = [result objectForKey:@"password"];
-            if([password length])
-            {
-                [RCTool setPassword:password];
+                [RCTool saveUserInfo:data];
                 
-                [[iToast makeText:[NSString stringWithFormat:@"欢迎:%@用户登录",username]] show];
+                [self dismissViewControllerAnimated:YES completion:^{
+                    
+                }];
                 
-                [self.navigationController popToRootViewControllerAnimated:YES];
+                return;
+                
+//                NSString* msg = [result objectForKey:@"msg"];
+//                if([msg length])
+//                {
+//                    [RCTool showAlert:@"提示" message:msg];
+//                    
+//                    return;
+//                }
             }
-            
-            return;
         }
         else
-            [RCTool showAlert:@"提示" message:error];
-        
-        return;
+        {
+            NSString* msg = [result objectForKey:@"msg"];
+            if([msg length])
+            {
+                [RCTool showAlert:@"提示" message:msg];
+                
+                return;
+            }
+        }
+
     }
     
     [RCTool showAlert:@"提示" message:@"登录失败，请检查网络，稍后尝试！"];
