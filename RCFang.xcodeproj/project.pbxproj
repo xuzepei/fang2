@@ -325,6 +325,8 @@
 		09B32BB41EB85E58001CA370 /* xiangjiale.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 09B32BAF1EB85E58001CA370 /* xiangjiale.jpg */; };
 		09B735C717257CA500CABA29 /* RCZuFangBaseInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09B735C617257CA500CABA29 /* RCZuFangBaseInfoCell.m */; };
 		09B735C917257CB400CABA29 /* RCZuFangBaseInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09B735C817257CB400CABA29 /* RCZuFangBaseInfoCell.xib */; };
+		09BBA7041EBB6053008D15B1 /* RCSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09BBA7021EBB6053008D15B1 /* RCSettingsViewController.m */; };
+		09BBA7051EBB6053008D15B1 /* RCSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09BBA7031EBB6053008D15B1 /* RCSettingsViewController.xib */; };
 		09BCA51816EB9BE000010C63 /* home_page@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BCA51616EB9BE000010C63 /* home_page@2x.png */; };
 		09BCA51916EB9BE000010C63 /* me@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09BCA51716EB9BE000010C63 /* me@2x.png */; };
 		09C121B917644B6200D58D1B /* wodetuangou@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C121B817644B6200D58D1B /* wodetuangou@2x.png */; };
@@ -1014,6 +1016,9 @@
 		09B735C517257CA500CABA29 /* RCZuFangBaseInfoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCZuFangBaseInfoCell.h; sourceTree = "<group>"; };
 		09B735C617257CA500CABA29 /* RCZuFangBaseInfoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCZuFangBaseInfoCell.m; sourceTree = "<group>"; };
 		09B735C817257CB400CABA29 /* RCZuFangBaseInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCZuFangBaseInfoCell.xib; sourceTree = "<group>"; };
+		09BBA7011EBB6053008D15B1 /* RCSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSettingsViewController.h; sourceTree = "<group>"; };
+		09BBA7021EBB6053008D15B1 /* RCSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSettingsViewController.m; sourceTree = "<group>"; };
+		09BBA7031EBB6053008D15B1 /* RCSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCSettingsViewController.xib; sourceTree = "<group>"; };
 		09BCA51616EB9BE000010C63 /* home_page@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "home_page@2x.png"; sourceTree = "<group>"; };
 		09BCA51716EB9BE000010C63 /* me@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "me@2x.png"; sourceTree = "<group>"; };
 		09C121B817644B6200D58D1B /* wodetuangou@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wodetuangou@2x.png"; sourceTree = "<group>"; };
@@ -1676,13 +1681,9 @@
 			name = step3;
 			sourceTree = "<group>";
 		};
-		0941EEBE16EB8EAA00327D1A /* Home */ = {
+		0941EEBE16EB8EAA00327D1A /* gongdizhijia */ = {
 			isa = PBXGroup;
 			children = (
-				0948E63B19501AB400D73734 /* banjia */,
-				09064E081708640300BA0258 /* zufang */,
-				09E9796B1701D15B000BB8C6 /* ErShouFang */,
-				09F66D5F16F59FA3009834A7 /* XinFang */,
 				0941EECB16EB8F8E00327D1A /* RCHomeViewController.h */,
 				0941EECC16EB8F8E00327D1A /* RCHomeViewController.m */,
 				09633BC11EB2E9A700D1D4A1 /* RCFuctionButton.h */,
@@ -1704,14 +1705,12 @@
 				09FF093016EC25750083CE91 /* RCAdView.m */,
 				0915D38E170DAFEC00D86E9A /* RCWebViewController.h */,
 				0915D38F170DAFEC00D86E9A /* RCWebViewController.m */,
-				092AA01D1940CA0C00E13E2E /* RCSelectAreaButton.h */,
-				092AA01E1940CA0C00E13E2E /* RCSelectAreaButton.m */,
-				09D139241A0140A10090BEE2 /* RCCityTableViewController.h */,
-				09D139251A0140A10090BEE2 /* RCCityTableViewController.m */,
-				09D139261A0140A20090BEE2 /* RCCityTableViewController.xib */,
 				09B32BA31EB840AA001CA370 /* OpenAppView */,
+				09BBA7011EBB6053008D15B1 /* RCSettingsViewController.h */,
+				09BBA7021EBB6053008D15B1 /* RCSettingsViewController.m */,
+				09BBA7031EBB6053008D15B1 /* RCSettingsViewController.xib */,
 			);
-			name = Home;
+			name = gongdizhijia;
 			sourceTree = "<group>";
 		};
 		0941EEBF16EB8EB700327D1A /* Search */ = {
@@ -2194,6 +2193,7 @@
 		09CF7EE516A3D7740050A603 /* RCFang */ = {
 			isa = PBXGroup;
 			children = (
+				0941EEBE16EB8EAA00327D1A /* gongdizhijia */,
 				09CBBC2219ECFCC10093A06F /* Telephone */,
 				09DECF87198E339F00B08941 /* BaiDuMap */,
 				090E3C14170C5F7400217C33 /* Location */,
@@ -2201,7 +2201,10 @@
 				0941EEC116EB8EC600327D1A /* More */,
 				0941EEC016EB8EC000327D1A /* Me */,
 				0941EEBF16EB8EB700327D1A /* Search */,
-				0941EEBE16EB8EAA00327D1A /* Home */,
+				0948E63B19501AB400D73734 /* banjia */,
+				09064E081708640300BA0258 /* zufang */,
+				09E9796B1701D15B000BB8C6 /* ErShouFang */,
+				09F66D5F16F59FA3009834A7 /* XinFang */,
 				09CF7F3016A3EC9C0050A603 /* ThirdParty */,
 				09CF7EEE16A3D7740050A603 /* RCAppDelegate.h */,
 				09CF7EEF16A3D7740050A603 /* RCAppDelegate.m */,
@@ -2321,6 +2324,11 @@
 		09F66D5F16F59FA3009834A7 /* XinFang */ = {
 			isa = PBXGroup;
 			children = (
+				092AA01D1940CA0C00E13E2E /* RCSelectAreaButton.h */,
+				092AA01E1940CA0C00E13E2E /* RCSelectAreaButton.m */,
+				09D139241A0140A10090BEE2 /* RCCityTableViewController.h */,
+				09D139251A0140A10090BEE2 /* RCCityTableViewController.m */,
+				09D139261A0140A20090BEE2 /* RCCityTableViewController.xib */,
 				092368F6171041B9003F093F /* zixun */,
 				09F66D6016F59FC9009834A7 /* RCXinFangViewController.h */,
 				09F66D6116F59FC9009834A7 /* RCXinFangViewController.m */,
@@ -2633,6 +2641,7 @@
 				09AD959F173C8DEB0060B3A5 /* fankui@2x.png in Resources */,
 				09FD90C919A247F100BC59C0 /* xdd@2x.png in Resources */,
 				09800CF4173CD72100AC5EF1 /* button_bg@2x.png in Resources */,
+				09BBA7051EBB6053008D15B1 /* RCSettingsViewController.xib in Resources */,
 				0987778B198F5A20006834C2 /* location_button1@2x.png in Resources */,
 				092479CC176011E6001D2722 /* clear_button@2x.png in Resources */,
 				09C6780E1EBADB1C006F250D /* wanyouxi@3x.png in Resources */,
@@ -2798,6 +2807,7 @@
 				09AEBBC8194548D8005885C0 /* RCNumberView.m in Sources */,
 				09AEBBBE1945484E005885C0 /* RCMeNumberCellContentView.m in Sources */,
 				092AA0251940CF2900E13E2E /* RCBJViewController.m in Sources */,
+				09BBA7041EBB6053008D15B1 /* RCSettingsViewController.m in Sources */,
 				0920236B172E2D56009EAB94 /* ASIAuthenticationDialog.m in Sources */,
 				0920236C172E2D56009EAB94 /* ASIDataCompressor.m in Sources */,
 				09FD90C719A23AA600BC59C0 /* RCSHDetailView.m in Sources */,
