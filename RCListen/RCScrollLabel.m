@@ -9,7 +9,7 @@
 #import "RCScrollLabel.h"
 #import "RCNewsViewController.h"
 
-#define HEADER_WIDTH 100.0
+#define HEADER_WIDTH 80.0
 
 @implementation RCScrollLabel
 
@@ -38,8 +38,8 @@
     
     if(nil == _currentView)
     {
-        self.currentView = [[RCScrollLabelView alloc] initWithFrame:CGRectMake(HEADER_WIDTH, 0, self.bounds.size.width - HEADER_WIDTH, self.bounds.size.height)];
-        self.currentView.backgroundColor = [UIColor redColor];
+        self.currentView = [[RCScrollLabelView alloc] initWithFrame:CGRectMake(HEADER_WIDTH, 1, self.bounds.size.width - HEADER_WIDTH, self.bounds.size.height - 1)];
+        self.currentView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.currentView];
     }
     
@@ -51,8 +51,8 @@
     
     if(nil == _nextView)
     {
-        self.nextView = [[RCScrollLabelView alloc] initWithFrame:CGRectMake(HEADER_WIDTH, self.bounds.size.height, self.bounds.size.width - HEADER_WIDTH, self.bounds.size.height)];
-        self.nextView.backgroundColor = [UIColor blueColor];
+        self.nextView = [[RCScrollLabelView alloc] initWithFrame:CGRectMake(HEADER_WIDTH, self.bounds.size.height + 1, self.bounds.size.width - HEADER_WIDTH, self.bounds.size.height - 1)];
+        self.nextView.backgroundColor = [UIColor whiteColor];
         [self addSubview:self.nextView];
     }
     
@@ -65,8 +65,17 @@
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
-//- (void)drawRect:(CGRect)rect {
-//}
+- (void)drawRect:(CGRect)rect {
+    
+    [NAVIGATION_BAR_COLOR set];
+    UIRectFill(CGRectMake(0, 0, self.bounds.size.width, 1));
+    
+    UIImage* image = [UIImage imageNamed:@"zhongyaotongzhi"];
+    if(image)
+    {
+        [image drawAtPoint:CGPointMake(16, 8)];
+    }
+}
 
 
 - (NSDictionary*)getItemByIndex:(int)index {
@@ -105,7 +114,7 @@
             self.currentView.frame = rect;
             
             rect = self.nextView.frame;
-            rect.origin.y = 0;
+            rect.origin.y = 1;
             self.nextView.frame = rect;
             
         } completion:^(BOOL finished) {
@@ -114,7 +123,7 @@
             self.currentView = self.nextView;
             
             CGRect rect = temp.frame;
-            rect.origin.y = self.bounds.size.height;
+            rect.origin.y = self.bounds.size.height + 1;
             temp.frame = rect;
             self.nextView = temp;
             

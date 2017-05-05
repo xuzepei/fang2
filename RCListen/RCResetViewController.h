@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface RCResetViewController : UIViewController<UITextFieldDelegate>
+@interface RCResetViewController : UIViewController<UITextFieldDelegate,UIAlertViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
 @property (weak, nonatomic) IBOutlet UITextField *identity;

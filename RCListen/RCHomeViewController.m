@@ -245,7 +245,7 @@
     {
         CGFloat height = ([RCTool getScreenSize].height <= 480)? 50 : SCROLL_LABEL_HEIGHT;
         self.scrollLabel = [[RCScrollLabel alloc] initWithFrame:CGRectMake(0, [RCTool getScreenSize].height - height -STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT, [RCTool getScreenSize].width, height)];
-        self.scrollLabel.backgroundColor = [UIColor blackColor];
+        self.scrollLabel.backgroundColor = [UIColor whiteColor];
     }
     
     [self.view addSubview:self.scrollLabel];
@@ -314,7 +314,7 @@
     switch (tag) {
         case 500:
         {
-            [self goToLoginViewController];
+            //[self goToLoginViewController];
             break;
         }
         case 501:

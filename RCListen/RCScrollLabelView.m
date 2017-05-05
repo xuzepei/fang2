@@ -9,7 +9,7 @@
 #import "RCScrollLabelView.h"
 #import "RCWebViewController.h"
 
-#define MARGIN_X 20.0f
+#define MARGIN_X 30.0f
 
 @implementation RCScrollLabelView
 
@@ -25,6 +25,8 @@
     {
         self.line0Rect = CGRectZero;
         self.line1Rect = CGRectZero;
+        
+        self.image0 = [UIImage imageNamed:@"zhiding"];
     }
     
     return self;
@@ -37,14 +39,18 @@
    
     if(self.line0)
     {
-        
         NSString* text = [self.line0 objectForKey:@"title"];
         if([text length])
         {
             [[UIColor blackColor] set];
             
             int fontSize = 12;
-            self.line0Rect = CGRectMake(MARGIN_X, ((self.bounds.size.height/2.0) - fontSize)/2.0, self.bounds.size.width - MARGIN_X, 20);
+            CGFloat offset_y = ((self.bounds.size.height/2.0) - fontSize)/2.0;
+            if(self.image0)
+                [self.image0 drawAtPoint:CGPointMake(4, offset_y + 2)];
+            
+            
+            self.line0Rect = CGRectMake(MARGIN_X, offset_y, self.bounds.size.width - MARGIN_X, 20);
             [text drawInRect:self.line0Rect withFont:[UIFont systemFontOfSize:fontSize] lineBreakMode:NSLineBreakByTruncatingTail];
         }
         
@@ -59,7 +65,10 @@
         {
             [[UIColor blackColor] set];
             int fontSize = 12;
-            self.line1Rect = CGRectMake(MARGIN_X, (self.bounds.size.height/2.0) + ((self.bounds.size.height/2.0) - fontSize)/2.0 , self.bounds.size.width - MARGIN_X, 20);
+            CGFloat offset_y = (self.bounds.size.height/2.0) + ((self.bounds.size.height/2.0) - fontSize)/2.0;
+            if(self.image0)
+                [self.image0 drawAtPoint:CGPointMake(4, offset_y + 2)];
+            self.line1Rect = CGRectMake(MARGIN_X,  offset_y, self.bounds.size.width - MARGIN_X, 20);
             [text drawInRect:self.line1Rect withFont:[UIFont systemFontOfSize:fontSize] lineBreakMode:NSLineBreakByTruncatingTail];
         }
         

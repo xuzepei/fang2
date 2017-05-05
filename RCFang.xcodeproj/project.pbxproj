@@ -171,7 +171,6 @@
 		093312FC19F8F93F0057EC07 /* RCJFDHViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 093312FA19F8F93F0057EC07 /* RCJFDHViewController.m */; };
 		093312FD19F8F93F0057EC07 /* RCJFDHViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 093312FB19F8F93F0057EC07 /* RCJFDHViewController.xib */; };
 		0933130019F909350057EC07 /* alipay.png in Resources */ = {isa = PBXBuildFile; fileRef = 093312FE19F909350057EC07 /* alipay.png */; };
-		0933130119F909350057EC07 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 093312FF19F909350057EC07 /* logo.png */; };
 		0935942E1738912000B25913 /* RCThisMonthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0935942D1738912000B25913 /* RCThisMonthViewController.m */; };
 		093868D61EBA0EB0004F7571 /* RCNewsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 093868D51EBA0EB0004F7571 /* RCNewsTableViewCell.m */; };
 		093868D91EBA0EE2004F7571 /* RCNewsTableViewCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 093868D81EBA0EE2004F7571 /* RCNewsTableViewCellContentView.m */; };
@@ -416,6 +415,11 @@
 		09F49C37173A57C900D9C7A3 /* RCErShouFangListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F49C36173A57C900D9C7A3 /* RCErShouFangListViewController.m */; };
 		09F49C3A173A5C7200D9C7A3 /* RCZuFangListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F49C39173A5C7200D9C7A3 /* RCZuFangListViewController.m */; };
 		09F66D6216F59FC9009834A7 /* RCXinFangViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F66D6116F59FC9009834A7 /* RCXinFangViewController.m */; };
+		09FAED041EBCB95200CF22F4 /* button0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FAED031EBCB95200CF22F4 /* button0@2x.png */; };
+		09FAED061EBCBAC500CF22F4 /* button1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FAED051EBCBAC500CF22F4 /* button1@2x.png */; };
+		09FAED081EBCBEC900CF22F4 /* jiantou1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FAED071EBCBEC900CF22F4 /* jiantou1@2x.png */; };
+		09FAED0A1EBCC2F700CF22F4 /* button2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FAED091EBCC2F700CF22F4 /* button2@2x.png */; };
+		09FAED0C1EBCC86800CF22F4 /* login_form@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FAED0B1EBCC86800CF22F4 /* login_form@2x.png */; };
 		09FB9EAA1EB8DEFE003E8B96 /* RCScrollLabelView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FB9EA91EB8DEFE003E8B96 /* RCScrollLabelView.m */; };
 		09FC308D16F88E560004C765 /* RCXinFangCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FC308C16F88E560004C765 /* RCXinFangCell.m */; };
 		09FC309016F88E720004C765 /* RCXinFangCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09FC308F16F88E720004C765 /* RCXinFangCellContentView.m */; };
@@ -788,7 +792,6 @@
 		093312FA19F8F93F0057EC07 /* RCJFDHViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCJFDHViewController.m; sourceTree = "<group>"; };
 		093312FB19F8F93F0057EC07 /* RCJFDHViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCJFDHViewController.xib; sourceTree = "<group>"; };
 		093312FE19F909350057EC07 /* alipay.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = alipay.png; sourceTree = "<group>"; };
-		093312FF19F909350057EC07 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		0935942C1738912000B25913 /* RCThisMonthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCThisMonthViewController.h; sourceTree = "<group>"; };
 		0935942D1738912000B25913 /* RCThisMonthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCThisMonthViewController.m; sourceTree = "<group>"; };
 		093868D41EBA0EB0004F7571 /* RCNewsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCNewsTableViewCell.h; sourceTree = "<group>"; };
@@ -1143,6 +1146,11 @@
 		09F49C39173A5C7200D9C7A3 /* RCZuFangListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCZuFangListViewController.m; sourceTree = "<group>"; };
 		09F66D6016F59FC9009834A7 /* RCXinFangViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCXinFangViewController.h; sourceTree = "<group>"; };
 		09F66D6116F59FC9009834A7 /* RCXinFangViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCXinFangViewController.m; sourceTree = "<group>"; };
+		09FAED031EBCB95200CF22F4 /* button0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button0@2x.png"; sourceTree = "<group>"; };
+		09FAED051EBCBAC500CF22F4 /* button1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button1@2x.png"; sourceTree = "<group>"; };
+		09FAED071EBCBEC900CF22F4 /* jiantou1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiantou1@2x.png"; sourceTree = "<group>"; };
+		09FAED091EBCC2F700CF22F4 /* button2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button2@2x.png"; sourceTree = "<group>"; };
+		09FAED0B1EBCC86800CF22F4 /* login_form@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login_form@2x.png"; sourceTree = "<group>"; };
 		09FB9EA81EB8DEFE003E8B96 /* RCScrollLabelView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCScrollLabelView.h; sourceTree = "<group>"; };
 		09FB9EA91EB8DEFE003E8B96 /* RCScrollLabelView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCScrollLabelView.m; sourceTree = "<group>"; };
 		09FC308B16F88E560004C765 /* RCXinFangCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCXinFangCell.h; sourceTree = "<group>"; };
@@ -1894,6 +1902,11 @@
 		095C59C816AF804200F7B949 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				09FAED0B1EBCC86800CF22F4 /* login_form@2x.png */,
+				09FAED071EBCBEC900CF22F4 /* jiantou1@2x.png */,
+				09FAED031EBCB95200CF22F4 /* button0@2x.png */,
+				09FAED051EBCBAC500CF22F4 /* button1@2x.png */,
+				09FAED091EBCC2F700CF22F4 /* button2@2x.png */,
 				09C678171EBADB64006F250D /* login_bg.png */,
 				09C678151EBADB25006F250D /* anquanxuzhi@3x.png */,
 				09C677FD1EBADB1C006F250D /* chonghuafei@3x.png */,
@@ -1929,7 +1942,6 @@
 				09C21F4E19F94942002E0F63 /* f10@2x.png */,
 				09C21F4F19F94942002E0F63 /* f11@2x.png */,
 				093312FE19F909350057EC07 /* alipay.png */,
-				093312FF19F909350057EC07 /* logo.png */,
 				09A1F46819F7B1FE00C3E1A2 /* button_bg0@2x.png */,
 				09A1F46919F7B1FE00C3E1A2 /* button_bg2@2x.png */,
 				09A1F46A19F7B1FE00C3E1A2 /* button_bg3@2x.png */,
@@ -2472,7 +2484,6 @@
 				09621BB51988F7D90024BE87 /* 2_on@2x.png in Resources */,
 				0948E64419501C4800D73734 /* kan_on@2x.png in Resources */,
 				092AA0091940976200E13E2E /* gd@2x.png in Resources */,
-				0933130119F909350057EC07 /* logo.png in Resources */,
 				0941EED116EB95B800327D1A /* RCFang-Info.plist in Resources */,
 				0944830019FCC7A900026387 /* RCPJDDViewController.xib in Resources */,
 				091065E31941EE500040C10A /* RCMeViewController.xib in Resources */,
@@ -2483,6 +2494,7 @@
 				09F1357919A5BE380009CF4E /* RCPasswordViewController.xib in Resources */,
 				0948E64519501C4800D73734 /* kan@2x.png in Resources */,
 				09D138E11A0133FA0090BEE2 /* map_mark@2x.png in Resources */,
+				09FAED061EBCBAC500CF22F4 /* button1@2x.png in Resources */,
 				09BCA51916EB9BE000010C63 /* me@2x.png in Resources */,
 				090F10CA194295CD0062A5B3 /* me_tabbar_bg@2x.png in Resources */,
 				09FF093C16EC49280083CE91 /* ershoufang@2x.png in Resources */,
@@ -2537,12 +2549,14 @@
 				0950B93E16F17E9D0039D561 /* qingli@2x.png in Resources */,
 				0913907319C07CD8002ADC6F /* RCCreateDDViewController.xib in Resources */,
 				092AA0171940BD6E00E13E2E /* jiazheng_on@2x.png in Resources */,
+				09FAED0C1EBCC86800CF22F4 /* login_form@2x.png in Resources */,
 				093312FD19F8F93F0057EC07 /* RCJFDHViewController.xib in Resources */,
 				09C678181EBADB64006F250D /* login_bg.png in Resources */,
 				092AA0181940BD6E00E13E2E /* jiazheng@2x.png in Resources */,
 				0950B94216F17F020039D561 /* fangdai@2x.png in Resources */,
 				09240EC119EB7C7200C3F6AC /* tip4@2x.png in Resources */,
 				0900D8D719567BB200760212 /* yifb@2x.png in Resources */,
+				09FAED081EBCBEC900CF22F4 /* jiantou1@2x.png in Resources */,
 				09C21F5219F94942002E0F63 /* f3@2x.png in Resources */,
 				0950B94316F17F020039D561 /* suifei@2x.png in Resources */,
 				09240EBE19EB7C7200C3F6AC /* tip1@2x.png in Resources */,
@@ -2626,6 +2640,7 @@
 				092AA0211940CA5500E13E2E /* jiantou@2x.png in Resources */,
 				091FC1A21716EB5A002F72C2 /* send_button@2x.png in Resources */,
 				09FD90C419A2398C00BC59C0 /* RCSHViewController.xib in Resources */,
+				09FAED0A1EBCC2F700CF22F4 /* button2@2x.png in Resources */,
 				092683571725033700E46352 /* RCSecondHandHouseBaseInfoCell.xib in Resources */,
 				0926835F17250F7600E46352 /* RCSecondHandHouseXiaoQuCell.xib in Resources */,
 				09B735C917257CB400CABA29 /* RCZuFangBaseInfoCell.xib in Resources */,
@@ -2651,6 +2666,7 @@
 				09C21F5A19F94942002E0F63 /* f11@2x.png in Resources */,
 				090F10C1194295CD0062A5B3 /* djt@2x.png in Resources */,
 				0998D78B1A00E8340091B0F1 /* RCYHJCell1.xib in Resources */,
+				09FAED041EBCB95200CF22F4 /* button0@2x.png in Resources */,
 				09C678121EBADB1C006F250D /* zhiding@3x.png in Resources */,
 				09202391172E3F55009EAB94 /* bangzhu@2x.png in Resources */,
 				09073E8617335B4D00416E2D /* favorites@2x.png in Resources */,

@@ -53,6 +53,23 @@
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
+//    if(RESET_ALERT_TAG == alertView.tag)
+//    {
+//        NSLog(@"clickedButtonAtIndex:%d",buttonIndex);
+//        
+//        if(0 == buttonIndex)
+//        {
+//            [self requestToReset];
+//        }
+//        else if(1 == buttonIndex)
+//        {
+//
+//        }
+//    }
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
     if(RESET_ALERT_TAG == alertView.tag)
     {
         NSLog(@"clickedButtonAtIndex:%d",buttonIndex);
@@ -63,7 +80,7 @@
         }
         else if(1 == buttonIndex)
         {
-
+            
         }
     }
 }
@@ -116,10 +133,10 @@
         if(code.intValue == 200)
         {
             NSString* message = [NSString stringWithFormat:@"新密码已经发送至手机号“%@”上，请使用新密码重新登录。",self.phoneNumber.text];
-            [RCTool showAlert:@"重置密码成功" message:message];
+            [RCTool showAlert:@"提示" message:message];
             
             [RCTool removeUserInfo];
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:NO];
             
             return;
         }
@@ -128,7 +145,7 @@
             NSString* msg = [result objectForKey:@"msg"];
             if([msg length])
             {
-                [RCTool showAlert:@"重置密码失败" message:msg];
+                [RCTool showAlert:@"提示" message:msg];
                 
                 return;
             }
