@@ -1246,4 +1246,11 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     return [temp objectForKey:@"user_info"];
 }
 
++ (void)removeUserInfo
+{
+    NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
+    [temp removeObjectForKey:@"user_info"];
+    [temp synchronize];
+}
+
 @end

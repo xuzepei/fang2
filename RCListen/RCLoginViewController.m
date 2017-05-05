@@ -16,6 +16,9 @@
 #define PASSWORD_TF_TAG 101
 #define ATTRIBUTED_LABEL_TAG 102
 
+#define TEST_PHONENUMBER  @"13518100698"
+#define TEST_PASSWORD @"123321"
+
 @interface RCLoginViewController ()
 
 @end
@@ -276,8 +279,7 @@
             NSString* msg = [result objectForKey:@"msg"];
             if([msg length])
             {
-                [RCTool showAlert:@"提示" message:msg];
-                
+                [RCTool showAlert:@"登录失败" message:msg];
                 return;
             }
         }

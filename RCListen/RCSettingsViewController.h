@@ -10,4 +10,11 @@
 
 @interface RCSettingsViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UILabel *phoneNumber;
+
+- (IBAction)changeAccount:(id)sender;
+- (IBAction)clickedResetButton:(id)sender;
+- (IBAction)clickedChangePasswordButton:(id)sender;
+
+
 @end

@@ -7,12 +7,29 @@
 //
 
 #import "RCSettingsViewController.h"
+#import "RCLoginViewController.h"
+#import "RCResetViewController.h"
+#import "RCChangePasswordViewController.h"
 
 @interface RCSettingsViewController ()
 
 @end
 
 @implementation RCSettingsViewController
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    if(nil == [RCTool getUserInfo])
+        [self goToLoginViewController];
+    
+    NSDictionary* userInfo = [RCTool getUserInfo];
+    if(userInfo)
+    {
+        self.phoneNumber.text = [userInfo objectForKey:@"mobile"];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -34,5 +51,35 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+- (IBAction)changeAccount:(id)sender {
+    
+    [RCTool removeUserInfo];
+    [self goToLoginViewController];
+}
+
+- (IBAction)clickedResetButton:(id)sender {
+    
+    RCResetViewController* temp = [[RCResetViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:temp animated:YES];
+}
+
+- (IBAction)clickedChangePasswordButton:(id)sender {
+    
+    RCChangePasswordViewController* temp = [[RCChangePasswordViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:temp animated:YES];
+}
+
+
+
+- (void)goToLoginViewController
+{
+    RCLoginViewController* temp = [[RCLoginViewController alloc] initWithNibName:nil bundle:nil];
+    UINavigationController* navController = [[UINavigationController alloc] initWithRootViewController:temp];
+    
+    [self presentViewController:navController animated:NO completion:^{
+        
+    }];
+}
 
 @end

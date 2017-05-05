@@ -25,6 +25,7 @@
 #import "TYAlertController.h"
 #import "UIView+TYAlertView.h"
 #import "OpenAppView.h"
+#import "RCSettingsViewController.h"
 
 #define AD_FRAME_HEIGHT 250.0
 #define SCROLL_LABEL_HEIGHT 60.0
@@ -48,6 +49,8 @@
 		
 		self.navigationItem.title = @"工地之家";
         self.view.backgroundColor = BG_COLOR;
+        
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting_button"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftBarButtonItem:)];
 
 //        UIButton *titleImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
 //        UIImage* titleImage = [UIImage imageNamed:@"home_title"];
@@ -104,19 +107,8 @@
 {
     [super viewWillAppear:animated];
     
-//    [self goToLoginViewController];
-    
-//    NSString* city = @"成都";
-//    NSDictionary* cityInfo = [[NSUserDefaults standardUserDefaults] objectForKey:@"current_city"];
-//    if(cityInfo)
-//    {
-//        city = [cityInfo objectForKey:@"city"];
-//        if(0 == [city length])
-//            city = [cityInfo objectForKey:@"now_city"];
-//    }
-//    
-//    if(_selectAreaButton)
-//        [_selectAreaButton updateContent:city];
+    if(nil == [RCTool getUserInfo])
+        [self goToLoginViewController];
 }
 
 - (void)viewDidLoad
@@ -142,9 +134,12 @@
     self.tableView = nil;
 }
 
-- (void)clickedRightBarButtonItem:(id)sender
+- (void)clickedLeftBarButtonItem:(id)sender
 {
-    NSLog(@"clickedRightBarButtonItem");
+    NSLog(@"clickedLeftBarButtonItem");
+    
+    RCSettingsViewController* temp = [[RCSettingsViewController alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:temp animated:YES];
 }
 
 - (void)clickedTitleImageButton:(id)sender

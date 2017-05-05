@@ -124,4 +124,6 @@
 
 + (void)saveUserInfo:(NSDictionary*)userInfo;
 + (NSDictionary*)getUserInfo;
++ (void)removeUserInfo;
+
 @end

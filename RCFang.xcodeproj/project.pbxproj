@@ -349,7 +349,7 @@
 		09C6780A1EBADB1C006F250D /* kandianying@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C677FE1EBADB1C006F250D /* kandianying@3x.png */; };
 		09C6780B1EBADB1C006F250D /* logo@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C677FF1EBADB1C006F250D /* logo@3x.png */; };
 		09C6780C1EBADB1C006F250D /* maixiangyin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678001EBADB1C006F250D /* maixiangyin@3x.png */; };
-		09C6780D1EBADB1C006F250D /* setting_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678011EBADB1C006F250D /* setting_button.png */; };
+		09C6780D1EBADB1C006F250D /* setting_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678011EBADB1C006F250D /* setting_button@2x.png */; };
 		09C6780E1EBADB1C006F250D /* wanyouxi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678021EBADB1C006F250D /* wanyouxi@3x.png */; };
 		09C6780F1EBADB1C006F250D /* weilianjie@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678031EBADB1C006F250D /* weilianjie@3x.png */; };
 		09C678101EBADB1C006F250D /* xiangjiale@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678041EBADB1C006F250D /* xiangjiale@3x.png */; };
@@ -405,6 +405,10 @@
 		09E979731701D1F8000BB8C6 /* RCSecondHandHouseInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09E979711701D1F8000BB8C6 /* RCSecondHandHouseInfoViewController.xib */; };
 		09E979761701D526000BB8C6 /* RCSecondHandHouseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E979751701D526000BB8C6 /* RCSecondHandHouseCell.m */; };
 		09E979791701D54F000BB8C6 /* RCSecondHandHouseCellContentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09E979781701D54F000BB8C6 /* RCSecondHandHouseCellContentView.m */; };
+		09EB3E181EBC1F930092D7BE /* RCResetViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB3E161EBC1F930092D7BE /* RCResetViewController.m */; };
+		09EB3E191EBC1F930092D7BE /* RCResetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EB3E171EBC1F930092D7BE /* RCResetViewController.xib */; };
+		09EB3E1E1EBC2EF20092D7BE /* RCChangePasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09EB3E1C1EBC2EF20092D7BE /* RCChangePasswordViewController.m */; };
+		09EB3E1F1EBC2EF20092D7BE /* RCChangePasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09EB3E1D1EBC2EF20092D7BE /* RCChangePasswordViewController.xib */; };
 		09F1357819A5BE380009CF4E /* RCPasswordViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F1357619A5BE380009CF4E /* RCPasswordViewController.m */; };
 		09F1357919A5BE380009CF4E /* RCPasswordViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 09F1357719A5BE380009CF4E /* RCPasswordViewController.xib */; };
 		09F1357C19A5BEBD0009CF4E /* RCPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09F1357B19A5BEBD0009CF4E /* RCPasswordView.m */; };
@@ -1043,7 +1047,7 @@
 		09C677FE1EBADB1C006F250D /* kandianying@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "kandianying@3x.png"; sourceTree = "<group>"; };
 		09C677FF1EBADB1C006F250D /* logo@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo@3x.png"; sourceTree = "<group>"; };
 		09C678001EBADB1C006F250D /* maixiangyin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "maixiangyin@3x.png"; sourceTree = "<group>"; };
-		09C678011EBADB1C006F250D /* setting_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = setting_button.png; sourceTree = "<group>"; };
+		09C678011EBADB1C006F250D /* setting_button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "setting_button@2x.png"; sourceTree = "<group>"; };
 		09C678021EBADB1C006F250D /* wanyouxi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "wanyouxi@3x.png"; sourceTree = "<group>"; };
 		09C678031EBADB1C006F250D /* weilianjie@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "weilianjie@3x.png"; sourceTree = "<group>"; };
 		09C678041EBADB1C006F250D /* xiangjiale@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xiangjiale@3x.png"; sourceTree = "<group>"; };
@@ -1120,6 +1124,12 @@
 		09E979751701D526000BB8C6 /* RCSecondHandHouseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSecondHandHouseCell.m; sourceTree = "<group>"; };
 		09E979771701D54F000BB8C6 /* RCSecondHandHouseCellContentView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCSecondHandHouseCellContentView.h; sourceTree = "<group>"; };
 		09E979781701D54F000BB8C6 /* RCSecondHandHouseCellContentView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCSecondHandHouseCellContentView.m; sourceTree = "<group>"; };
+		09EB3E151EBC1F930092D7BE /* RCResetViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCResetViewController.h; sourceTree = "<group>"; };
+		09EB3E161EBC1F930092D7BE /* RCResetViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCResetViewController.m; sourceTree = "<group>"; };
+		09EB3E171EBC1F930092D7BE /* RCResetViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCResetViewController.xib; sourceTree = "<group>"; };
+		09EB3E1B1EBC2EF20092D7BE /* RCChangePasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCChangePasswordViewController.h; sourceTree = "<group>"; };
+		09EB3E1C1EBC2EF20092D7BE /* RCChangePasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCChangePasswordViewController.m; sourceTree = "<group>"; };
+		09EB3E1D1EBC2EF20092D7BE /* RCChangePasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCChangePasswordViewController.xib; sourceTree = "<group>"; };
 		09F1357519A5BE380009CF4E /* RCPasswordViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCPasswordViewController.h; sourceTree = "<group>"; };
 		09F1357619A5BE380009CF4E /* RCPasswordViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCPasswordViewController.m; sourceTree = "<group>"; };
 		09F1357719A5BE380009CF4E /* RCPasswordViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RCPasswordViewController.xib; sourceTree = "<group>"; };
@@ -1709,6 +1719,15 @@
 				09BBA7011EBB6053008D15B1 /* RCSettingsViewController.h */,
 				09BBA7021EBB6053008D15B1 /* RCSettingsViewController.m */,
 				09BBA7031EBB6053008D15B1 /* RCSettingsViewController.xib */,
+				09EB3E151EBC1F930092D7BE /* RCResetViewController.h */,
+				09EB3E161EBC1F930092D7BE /* RCResetViewController.m */,
+				09EB3E171EBC1F930092D7BE /* RCResetViewController.xib */,
+				09EB3E1B1EBC2EF20092D7BE /* RCChangePasswordViewController.h */,
+				09EB3E1C1EBC2EF20092D7BE /* RCChangePasswordViewController.m */,
+				09EB3E1D1EBC2EF20092D7BE /* RCChangePasswordViewController.xib */,
+				0950B92816F160B70039D561 /* RCLoginViewController.h */,
+				0950B92916F160B70039D561 /* RCLoginViewController.m */,
+				0950B92A16F160B70039D561 /* RCLoginViewController.xib */,
 			);
 			name = gongdizhijia;
 			sourceTree = "<group>";
@@ -1742,9 +1761,6 @@
 				091065E51941EF6C0040C10A /* RCMeTopView.m */,
 				090F10D01942B0970062A5B3 /* RCMeTabBar.h */,
 				090F10D11942B0970062A5B3 /* RCMeTabBar.m */,
-				0950B92816F160B70039D561 /* RCLoginViewController.h */,
-				0950B92916F160B70039D561 /* RCLoginViewController.m */,
-				0950B92A16F160B70039D561 /* RCLoginViewController.xib */,
 				0950B92D16F160ED0039D561 /* RCSignupViewController.h */,
 				0950B92E16F160ED0039D561 /* RCSignupViewController.m */,
 				0950B92F16F160ED0039D561 /* RCSignupViewController.xib */,
@@ -1884,7 +1900,7 @@
 				09C677FE1EBADB1C006F250D /* kandianying@3x.png */,
 				09C677FF1EBADB1C006F250D /* logo@3x.png */,
 				09C678001EBADB1C006F250D /* maixiangyin@3x.png */,
-				09C678011EBADB1C006F250D /* setting_button.png */,
+				09C678011EBADB1C006F250D /* setting_button@2x.png */,
 				09C678021EBADB1C006F250D /* wanyouxi@3x.png */,
 				09C678031EBADB1C006F250D /* weilianjie@3x.png */,
 				09C678041EBADB1C006F250D /* xiangjiale@3x.png */,
@@ -2487,7 +2503,7 @@
 				09FF094B16EC54210083CE91 /* location_button@2x.png in Resources */,
 				09C678131EBADB1C006F250D /* zhongyaotongzhi@3x.png in Resources */,
 				099B1AF916EF5C6800984120 /* home_title@2x.png in Resources */,
-				09C6780D1EBADB1C006F250D /* setting_button.png in Resources */,
+				09C6780D1EBADB1C006F250D /* setting_button@2x.png in Resources */,
 				09CBBC2719ECFD050093A06F /* RCTelephoneViewController.xib in Resources */,
 				09240EBF19EB7C7200C3F6AC /* tip2@2x.png in Resources */,
 				09B32BB01EB85E58001CA370 /* chonghuafei.jpg in Resources */,
@@ -2576,6 +2592,7 @@
 				098ACAF71700880D005BDCC8 /* photo-gallery-right@2x.png in Resources */,
 				090F10CF194295CD0062A5B3 /* xjt@2x.png in Resources */,
 				09A1F46619F7AE1C00C3E1A2 /* mei@2x.png in Resources */,
+				09EB3E191EBC1F930092D7BE /* RCResetViewController.xib in Resources */,
 				09B32BB11EB85E58001CA370 /* maixiangyin.jpg in Resources */,
 				09E979731701D1F8000BB8C6 /* RCSecondHandHouseInfoViewController.xib in Resources */,
 				092AA01C1940C46800E13E2E /* guanggao@2x.png in Resources */,
@@ -2642,6 +2659,7 @@
 				09FD90C919A247F100BC59C0 /* xdd@2x.png in Resources */,
 				09800CF4173CD72100AC5EF1 /* button_bg@2x.png in Resources */,
 				09BBA7051EBB6053008D15B1 /* RCSettingsViewController.xib in Resources */,
+				09EB3E1F1EBC2EF20092D7BE /* RCChangePasswordViewController.xib in Resources */,
 				0987778B198F5A20006834C2 /* location_button1@2x.png in Resources */,
 				092479CC176011E6001D2722 /* clear_button@2x.png in Resources */,
 				09C6780E1EBADB1C006F250D /* wanyouxi@3x.png in Resources */,
@@ -2675,6 +2693,7 @@
 				09CF7F3716A3ECFF0050A603 /* TBXML.m in Sources */,
 				0913907219C07CD8002ADC6F /* RCCreateDDViewController.m in Sources */,
 				09B32B9D1EB83CBB001CA370 /* TYAlertScaleFadeAnimation.m in Sources */,
+				09EB3E181EBC1F930092D7BE /* RCResetViewController.m in Sources */,
 				09877786198F38A4006834C2 /* RCPointAnnotation.m in Sources */,
 				0941EEBA16EB8DE200327D1A /* RCHttpRequest.m in Sources */,
 				0941EEC416EB8EE200327D1A /* RCSearchViewController.m in Sources */,
@@ -2698,6 +2717,7 @@
 				09240EB519EB669C00C3F6AC /* RCStartBJViewController.m in Sources */,
 				094482FF19FCC7A900026387 /* RCPJDDViewController.m in Sources */,
 				0950B93716F173120039D561 /* NSAttributedString+Attributes.m in Sources */,
+				09EB3E1E1EBC2EF20092D7BE /* RCChangePasswordViewController.m in Sources */,
 				0950B94716F19EE60039D561 /* RCFangDaiViewController.m in Sources */,
 				09B32BA01EB83CBB001CA370 /* TYShowAlertView.m in Sources */,
 				0950B94B16F1A38C0039D561 /* RCFangDaiCell.m in Sources */,
