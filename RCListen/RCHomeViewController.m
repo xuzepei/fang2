@@ -124,6 +124,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
+    NSLog(@"%f",[RCTool getScreenSize].height);
+    
+    self.adScrollViewHeight = ([RCTool getScreenSize].height <= 480)? 140.0f :([RCTool getScreenSize].height * AD_FRAME_HEIGHT)/736.0 ;
+    
     [self updateAd];
     [self updateFunctions];
     [self updateHotNews];
@@ -150,17 +154,6 @@
     //[[RCTool getTabBarController] setSelectedIndex:1];
 }
 
-- (void)updateFunctions
-{
-    if(nil == _itemArray)
-    {
-        _itemArray = [[NSMutableArray alloc] init];
-        [_itemArray addObjectsFromArray:@[@{@"text":@"上WiFi"},@{@"text":@"看电影"},@{@"text":@"玩游戏"},@{@"text":@"充话费"},@{@"text":@"想家了"},@{@"text":@"买相因"},@{@"text":@"安全须知"}]];
-        
-        [self initFunctionButtons];
-    }
-}
-
 #pragma mark - AdScrollView
 
 - (void)updateAd
@@ -179,9 +172,6 @@
 
 - (void)finishedAdRequest:(NSString*)jsonString
 {
-    if(0 == [jsonString length])
-        return;
-    
     NSDictionary* result = [RCTool parseToDictionary: jsonString];
     if(result && [result isKindOfClass:[NSDictionary class]])
     {
@@ -196,19 +186,21 @@
                 [_adItems addObjectsFromArray:dataArray];
             }
             
+            if([_adItems count] && _adScrollView)
+                [_adScrollView updateContent:_adItems];
+            
+            return;
         }
-        
-        if([_adItems count] && _adScrollView)
-            [_adScrollView updateContent:_adItems];
     }
+    
+    [self performSelector:@selector(updateAd) withObject:nil afterDelay:5];
 }
 
 - (void)initAdScrollView
 {
     if(nil == _adScrollView)
     {
-        self.adScrollViewHeight = AD_FRAME_HEIGHT;
-        _adScrollView = [[RCAdScrollView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, AD_FRAME_HEIGHT)];
+        _adScrollView = [[RCAdScrollView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, self.self.adScrollViewHeight)];
     }
     
     [self.view addSubview: _adScrollView];
@@ -228,9 +220,6 @@
 
 - (void)finishedInfoRequest:(NSString*)jsonString
 {
-    if(0 == [jsonString length])
-        return;
-    
     NSDictionary* result = [RCTool parseToDictionary: jsonString];
     if(result && [result isKindOfClass:[NSDictionary class]])
     {
@@ -245,8 +234,12 @@
             
             if([self.hotNews count] && self.scrollLabel)
                 [self.scrollLabel updateContent:self.hotNews];
+            
+            return;
         }
     }
+    
+    [self performSelector:@selector(updateHotNews) withObject:nil afterDelay:5];
 }
 
 #pragma mark - RCScrollLabelDelegate
@@ -255,151 +248,32 @@
 {
     if(nil == _scrollLabel)
     {
-        self.scrollLabel = [[RCScrollLabel alloc] initWithFrame:CGRectMake(0, [RCTool getScreenSize].height - SCROLL_LABEL_HEIGHT -STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT, [RCTool getScreenSize].width, SCROLL_LABEL_HEIGHT)];
+        CGFloat height = ([RCTool getScreenSize].height <= 480)? 50 : SCROLL_LABEL_HEIGHT;
+        self.scrollLabel = [[RCScrollLabel alloc] initWithFrame:CGRectMake(0, [RCTool getScreenSize].height - height -STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT, [RCTool getScreenSize].width, height)];
         self.scrollLabel.backgroundColor = [UIColor blackColor];
     }
     
     [self.view addSubview:self.scrollLabel];
 }
 
-#pragma mark - UITableView
-
-- (void)initTableView
-{
-    if(nil == _tableView)
-    {
-        //init table view
-        _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0,AD_FRAME_HEIGHT,[RCTool getScreenSize].width,[RCTool getScreenSize].height - STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT - AD_FRAME_HEIGHT - TAB_BAR_HEIGHT - 40)
-                                                  style:UITableViewStylePlain];
-        _tableView.backgroundColor = [UIColor clearColor];
-        _tableView.delegate = self;
-        _tableView.dataSource = self;
-    }
-	
-	[self.view addSubview:_tableView];
-    
-    
-    if(0 == [_itemArray count])
-    {
-    //temp
-    NSMutableDictionary* dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"新房" forKey:@"name"];
-    [dict setObject:@"xinfang" forKey:@"image_path"];
-    [_itemArray addObject:dict];
-    
-    dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"二手房" forKey:@"name"];
-    [dict setObject:@"ershoufang" forKey:@"image_path"];
-    [_itemArray addObject:dict];
-    
-    dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"租房" forKey:@"name"];
-    [dict setObject:@"zufang" forKey:@"image_path"];
-    [_itemArray addObject:dict];
-    
-    
-    dict = [[NSMutableDictionary alloc] init];
-    [dict setObject:@"新闻" forKey:@"name"];
-    [dict setObject:@"xinwen" forKey:@"image_path"];
-    [_itemArray addObject:dict];
-        
-    }
-    
-    [_tableView reloadData];
-}
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
-}
-
-- (id)getCellDataAtIndexPath: (NSIndexPath*)indexPath
-{
-	if(indexPath.row >= [_itemArray count])
-		return nil;
-	
-	return [_itemArray objectAtIndex: indexPath.row];
-}
-
-// Customize the number of rows in the table view.
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [_itemArray count];
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-	return 50.0;
-}
-
-
-// Customize the appearance of table view cells.
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    static NSString *cellId = @"cellId";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-    if (cell == nil)
-	{
-		cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleDefault
-                                                  reuseIdentifier: cellId] ;
-		cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    }
-	
-
-    NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
-	if(item)
-	{
-        cell.textLabel.text = [item objectForKey:@"name"];
-        cell.imageView.image = [UIImage imageNamed:[item objectForKey:@"image_path"]];
-	}
-    
-    return cell;
-}
-
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	[tableView deselectRowAtIndexPath: indexPath animated: YES];
-	
-	//NSDictionary* item = (NSDictionary*)[self getCellDataAtIndexPath: indexPath];
-    
-    if(0 == indexPath.row)
-    {
-        RCXinFangViewController* temp = [[RCXinFangViewController alloc] initWithNibName:nil bundle:nil];
-        [temp updateContent];
-        [self.navigationController pushViewController:temp animated:YES];
-
-    
-    }
-    else if(1 == indexPath.row)
-    {
-        RCSecondHandHouseViewController* temp = [[RCSecondHandHouseViewController alloc] initWithNibName:nil bundle:nil];
-        [temp updateContent];
-        [self.navigationController pushViewController:temp animated:YES];
-
-    }
-    else if(2 ==  indexPath.row)
-    {
-        RCZuFangViewController* temp = [[RCZuFangViewController alloc] initWithNibName:nil bundle:nil];
-        [temp updateContent];
-        [self.navigationController pushViewController:temp animated:YES];
-
-    }
-    else if(3 ==  indexPath.row)
-    {
-        RCNewsViewController* temp = [[RCNewsViewController alloc] initWithNibName:nil bundle:nil];
-        [self.navigationController pushViewController:temp animated:YES];
-
-    }
-}
-
 #pragma mark - Buttons
+
+- (void)updateFunctions
+{
+    if(nil == _itemArray)
+    {
+        _itemArray = [[NSMutableArray alloc] init];
+        [_itemArray addObjectsFromArray:@[@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@""},@{@"text":@"看电影",@"color":@"36bfe1",@"image":@"kandianying"},@{@"text":@"玩游戏",@"color":@"e3c623",@"image":@"wanyouxi"},@{@"text":@"充话费",@"color":@"ff4545",@"image":@"chonghuafei"},@{@"text":@"想家了",@"color":@"b089ff",@"image":@"xiangjiale"},@{@"text":@"买相因",@"color":@"ff7800",@"image":@"maixiangyin"},@{@"text":@"安全须知",@"color":@"6dcf1d",@"image":@"anquanxuzhi"}]];
+        
+        [self initFunctionButtons];
+    }
+}
 
 - (void)initFunctionButtons
 {
     CGSize screenSize = [RCTool getScreenSize];
     CGFloat offset_x = 10.0f;
-    CGFloat offset_y = AD_FRAME_HEIGHT + 20;
+    CGFloat offset_y = self.adScrollViewHeight + 20;
     CGFloat buttonWidth = (screenSize.width - offset_x*2 - 10*2)/3.0;
     CGFloat buttonHeight = 60;
     
@@ -452,7 +326,7 @@
         {
             OpenAppView* temp = [OpenAppView createViewFromNib];
             temp.titleLabel.text = [item objectForKey:@"text"];
-            [temp updateContent:@[@{@"name":@"天翼视讯",@"image":@"tianyishixun.png",@"url":@""}]];
+            [temp updateContent:@[@{@"name":@"天翼视讯",@"image":@"tianyishixun.png",@"url":@"",@"apple_id":@"1128325956",@"urlscheme":@"yzf1000"}]];
             
             TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:temp preferredStyle:TYAlertControllerStyleAlert];
             [self presentViewController:alertController animated:YES completion:nil];
@@ -484,7 +358,7 @@
         {
             OpenAppView* temp = [OpenAppView createViewFromNib];
             temp.titleLabel.text = [item objectForKey:@"text"];
-            [temp updateContent:@[@{@"name":@"想家了",@"image":@"xiangjiale.jpg",@"url":@""}]];
+            [temp updateContent:@[@{@"name":@"想家了",@"image":@"xiangjiale.jpg",@"url":@"",@"apple_id":@"1021510983",@"urlscheme":@"keshidianhua"}]];
             TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:temp preferredStyle:TYAlertControllerStyleAlert];
             [self presentViewController:alertController animated:YES completion:nil];
             

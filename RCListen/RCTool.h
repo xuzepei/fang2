@@ -17,8 +17,7 @@
 + (NSString *)md5:(NSString *)str;
 + (UIWindow*)frontWindow;
 + (UITabBarController*)getTabBarController;
-+ (UIColor*)colorWithHex:(NSInteger)hexValue alpha:(CGFloat)alphaValue;
-+ (UIColor*)colorWithHex:(NSInteger)hexValue;
++ (UIColor *)colorWithHexString:(NSString *)color;
 
 + (BOOL)saveImage:(NSData*)data path:(NSString*)path;
 + (NSString*)getImageLocalPath:(NSString *)path;

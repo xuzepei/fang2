@@ -68,7 +68,7 @@
 - (void)succeedLoad:(id)result token:(id)token
 {
 	NSDictionary* dict = (NSDictionary*)result;
-	NSString* urlString = [dict valueForKey: @"picurl"];
+	NSString* urlString = [dict valueForKey: @"url"];
     
 	if([urlString isEqualToString: self.imageUrl])
 	{

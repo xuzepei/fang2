@@ -48,7 +48,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg"]];
+    self.view.backgroundColor = NAVIGATION_BAR_COLOR;
     
     [self initTableView];
     

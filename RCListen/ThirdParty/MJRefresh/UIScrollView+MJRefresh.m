@@ -77,7 +77,7 @@ static char MJRefreshFooterViewKey;
     // 1.创建新的header
     if (!self.header) {
         MJRefreshHeaderView *header = [MJRefreshHeaderView header];
-        //header.backgroundColor = [RCTool colorWithHex:0xdbe0e4];
+        //header.backgroundColor = [RCTool colorWithHexString:@"0xdbe0e4];
         [self addSubview:header];
         self.header = header;
     }

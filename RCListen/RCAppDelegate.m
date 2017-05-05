@@ -546,20 +546,15 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_LOCATION_NOTIFICATION object:nil];
 }
 
+#pragma mark - SKStoreProductViewControllerDelegate
 
-#pragma mark - UMeng
-
-//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url
-//{
-//    return  [UMSocialSnsService handleOpenURL:url];
-//}
-//
-//- (BOOL)application:(UIApplication *)application
-//            openURL:(NSURL *)url
-//  sourceApplication:(NSString *)sourceApplication
-//         annotation:(id)annotation
-//{
-//    return  [UMSocialSnsService handleOpenURL:url];
-//}
+- (void)productViewControllerDidFinish:(SKStoreProductViewController *)viewController
+{
+    if(viewController)
+    {
+        [viewController dismissViewControllerAnimated:YES completion:^{
+        }];
+    }
+}
 
 @end

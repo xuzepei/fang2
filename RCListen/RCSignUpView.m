@@ -10,8 +10,8 @@
 #import "RCSignupViewController.h"
 #import "RCHttpRequest.h"
 
-#define HIGHTLIGHT_COLOR [RCTool colorWithHex:0x01a4f1]
-#define COMMON_COLOR [RCTool colorWithHex:0x7a828d]
+#define HIGHTLIGHT_COLOR [RCTool colorWithHexString:@"#01a4f1"]
+#define COMMON_COLOR [RCTool colorWithHexString:@"#7a828d"]
 
 #define PHONE_TAG 111
 #define YANZHENG_TAG 112
@@ -37,7 +37,7 @@
     
     _type = 3;
     
-    self.backgroundColor = [RCTool colorWithHex:0xf0f0f0];
+    self.backgroundColor = [RCTool colorWithHexString:@"#f0f0f0"];
 }
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -146,7 +146,7 @@
             _phoneTF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170 - 64, [RCTool getScreenSize].width - 32, 40)];
             _phoneTF.tag = PHONE_TAG;
             _phoneTF.borderStyle = UITextBorderStyleLine;
-            _phoneTF.layer.borderColor = [RCTool colorWithHex:0xdadada].CGColor;
+            _phoneTF.layer.borderColor = [RCTool colorWithHexString:@"#dadada"].CGColor;
             _phoneTF.layer.borderWidth = 1;
             _phoneTF.backgroundColor = [UIColor whiteColor];
             _phoneTF.placeholder = @" 输入手机号码";
@@ -168,7 +168,7 @@
             _yanzhengmaTF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170 - 64, [RCTool getScreenSize].width - 32, 40)];
             _yanzhengmaTF.tag = YANZHENG_TAG;
             _yanzhengmaTF.borderStyle = UITextBorderStyleLine;
-            _yanzhengmaTF.layer.borderColor = [RCTool colorWithHex:0xdadada].CGColor;
+            _yanzhengmaTF.layer.borderColor = [RCTool colorWithHexString:@"#dadada"].CGColor;
             _yanzhengmaTF.layer.borderWidth = 1;
             _yanzhengmaTF.backgroundColor = [UIColor whiteColor];
             _yanzhengmaTF.placeholder = @" 输入短信验证码";
@@ -208,7 +208,7 @@
             _mima0TF = [[UITextField alloc] initWithFrame:CGRectMake(16, 170 - 64, [RCTool getScreenSize].width - 32, 40)];
             _mima0TF.tag = PASS_TAG;
             _mima0TF.borderStyle = UITextBorderStyleLine;
-            _mima0TF.layer.borderColor = [RCTool colorWithHex:0xdadada].CGColor;
+            _mima0TF.layer.borderColor = [RCTool colorWithHexString:@"#dadada"].CGColor;
             _mima0TF.layer.borderWidth = 1;
             _mima0TF.backgroundColor = [UIColor whiteColor];
             _mima0TF.placeholder = @" 输入密码";
@@ -224,7 +224,7 @@
             _mima1TF = [[UITextField alloc] initWithFrame:CGRectMake(16, 220 - 64, [RCTool getScreenSize].width - 32, 40)];
             _mima1TF.tag = REPASS_TAG;
             _mima1TF.borderStyle = UITextBorderStyleLine;
-            _mima1TF.layer.borderColor = [RCTool colorWithHex:0xdadada].CGColor;
+            _mima1TF.layer.borderColor = [RCTool colorWithHexString:@"#dadada"].CGColor;
             _mima1TF.layer.borderWidth = 1;
             _mima1TF.backgroundColor = [UIColor whiteColor];
             _mima1TF.placeholder = @" 确认密码";

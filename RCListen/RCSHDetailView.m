@@ -21,7 +21,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [[RCTool colorWithHex:0xe0e0de] set];
+    [[RCTool colorWithHexString:@"0xe0e0de"] set];
     CGRect line = CGRectMake(10, 44, 300, 1);
     UIRectFill(line);
     
@@ -34,7 +34,7 @@
         [content drawInRect:CGRectMake(12, offset_y, [RCTool getScreenSize].width - 24, self.bounds.size.height - 48 - offset_y) withFont:[UIFont systemFontOfSize:16] lineBreakMode:NSLineBreakByTruncatingTail alignment:NSTextAlignmentLeft];
     }
 
-    [[RCTool colorWithHex:0x01a4f1] set];
+    [[RCTool colorWithHexString:@"0x01a4f1"] set];
     line = CGRectMake(10, self.bounds.size.height - 44, 300, 1);
     UIRectFill(line);
 }

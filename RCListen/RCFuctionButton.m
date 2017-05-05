@@ -14,7 +14,6 @@
 {
     if(self = [super initWithFrame:frame])
     {
-        self.backgroundColor = [UIColor redColor];
         self.layer.cornerRadius = 5;
         self.clipsToBounds = YES;
     }
@@ -43,6 +42,12 @@
     
     if(self.item)
     {
+        NSString* imageName = [self.item objectForKey:@"image"];
+        UIImage* image = [UIImage imageNamed:imageName];
+        if(image)
+        {
+            [image drawInRect:CGRectMake(6, 8, image.size.width, image.size.height)];
+        }
         
         NSString* text = [self.item objectForKey:@"text"];
         
@@ -50,7 +55,7 @@
         {
             [[UIColor whiteColor] set];
             
-            [text drawInRect:CGRectMake(4, self.bounds.size.height - 20, self.bounds.size.width, 20) withFont:[UIFont systemFontOfSize:14] lineBreakMode:NSLineBreakByTruncatingTail];
+            [text drawInRect:CGRectMake(6, self.bounds.size.height - 20, self.bounds.size.width - 12, 20) withFont:[UIFont systemFontOfSize:14] lineBreakMode:NSLineBreakByTruncatingTail];
         }
     
     }
@@ -61,6 +66,8 @@
 {
     self.item = item;
     
+    NSString* bgColor = [self.item objectForKey:@"color"];
+    self.backgroundColor = [RCTool colorWithHexString:bgColor];
     [self setNeedsDisplay];
 }
 

@@ -8,10 +8,10 @@
 
 #import "RCDDCellContentView.h"
 
-#define LINE_COLOR [RCTool colorWithHex:0xcccccc]
+#define LINE_COLOR [RCTool colorWithHexString:@"#cccccc"]
 #define FONT_SIZE 15
 #define BUTTON_RECT CGRectMake(220,self.bounds.size.height - 36,89,29)
-#define BLUE_TEXT_COLOR [RCTool colorWithHex:0x02a3f1]
+#define BLUE_TEXT_COLOR [RCTool colorWithHexString:@"#02a3f1"]
 
 @implementation RCDDCellContentView
 

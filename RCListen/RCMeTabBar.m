@@ -48,7 +48,7 @@
     if([_itemArray count] < 3)
         return;
     
-    [[RCTool colorWithHex:0x999999] set];
+    [[RCTool colorWithHexString:@"0x999999"] set];
     NSString* temp = [_itemArray objectAtIndex:0];
     
     CGRect tempRect = RECT_0;

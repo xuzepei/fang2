@@ -52,7 +52,7 @@
     }
     
     
-    UIColor* lineColor = [RCTool colorWithHex:0xdddddd];
+    UIColor* lineColor = [RCTool colorWithHexString:@"#dddddd"];
     [lineColor set];
     CGRect lineRect = CGRectMake(0, self.bounds.size.height - 1, self.bounds.size.width, 1);
     UIRectFill(lineRect);

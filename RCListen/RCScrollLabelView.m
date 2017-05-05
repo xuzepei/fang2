@@ -43,8 +43,9 @@
         {
             [[UIColor blackColor] set];
             
-            self.line0Rect = CGRectMake(MARGIN_X, 6, self.bounds.size.width - MARGIN_X, 20);
-            [text drawInRect:self.line0Rect withFont:[UIFont systemFontOfSize:16] lineBreakMode:NSLineBreakByTruncatingTail];
+            int fontSize = 12;
+            self.line0Rect = CGRectMake(MARGIN_X, ((self.bounds.size.height/2.0) - fontSize)/2.0, self.bounds.size.width - MARGIN_X, 20);
+            [text drawInRect:self.line0Rect withFont:[UIFont systemFontOfSize:fontSize] lineBreakMode:NSLineBreakByTruncatingTail];
         }
         
     }
@@ -57,9 +58,9 @@
         if([text length])
         {
             [[UIColor blackColor] set];
-            
-            self.line1Rect = CGRectMake(MARGIN_X, (self.bounds.size.height/2.0) + 6, self.bounds.size.width - MARGIN_X, 20);
-            [text drawInRect:self.line1Rect withFont:[UIFont systemFontOfSize:16] lineBreakMode:NSLineBreakByTruncatingTail];
+            int fontSize = 12;
+            self.line1Rect = CGRectMake(MARGIN_X, (self.bounds.size.height/2.0) + ((self.bounds.size.height/2.0) - fontSize)/2.0 , self.bounds.size.width - MARGIN_X, 20);
+            [text drawInRect:self.line1Rect withFont:[UIFont systemFontOfSize:fontSize] lineBreakMode:NSLineBreakByTruncatingTail];
         }
         
     }

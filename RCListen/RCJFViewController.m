@@ -28,7 +28,7 @@
 
 		self.title = @"我的积分";
         
-        self.view.backgroundColor = [RCTool colorWithHex:0xf0f0f0];
+        self.view.backgroundColor = [RCTool colorWithHexString:@"0xf0f0f0"];
         
         if(nil == _itemArray)
             _itemArray = [[NSMutableArray alloc] init];

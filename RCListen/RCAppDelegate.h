@@ -16,8 +16,9 @@
 #import "BMKMapManager.h"
 #import "BMKLocationService.h"
 #import "BMKMapView.h"
+#import <StoreKit/StoreKit.h>
 
-@interface RCAppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate,BMKLocationServiceDelegate>
+@interface RCAppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate,BMKLocationServiceDelegate,SKStoreProductViewControllerDelegate>
 {
     UIBackgroundTaskIdentifier _bgTask;
 }

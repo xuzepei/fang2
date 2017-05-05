@@ -8,8 +8,8 @@
 
 #import "RCFJCellContentView.h"
 
-#define SUBTITLE_COLOR [RCTool colorWithHex:0xafafaf]
-#define LINE_COLOR [RCTool colorWithHex:0xcccccc]
+#define SUBTITLE_COLOR [RCTool colorWithHexString:@"0xafafaf"]
+#define LINE_COLOR [RCTool colorWithHexString:@"0xcccccc"]
 
 #define CALL_RECT CGRectMake(self.bounds.size.width - 60,0,60,self.bounds.size.height)
 

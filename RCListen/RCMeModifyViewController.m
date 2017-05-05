@@ -275,7 +275,7 @@
 //            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
 //                                          reuseIdentifier: cellId];
 //            cell.accessoryType = UITableViewCellAccessoryNone;
-//            cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
+//            cell.textLabel.textColor = [RCTool colorWithHexString:@"0x757575];
 //            
 //            UIButton* button = [UIButton buttonWithType:UIButtonTypeSystem];
 //            button.frame = CGRectMake(240, 10, 60, 30);
@@ -291,7 +291,7 @@
 //                _nicknameTF.delegate = self;
 //                //_nicknameTF.borderStyle = UITextBorderStyleLine;
 //                _nicknameTF.returnKeyType = UIReturnKeyDone;
-//                _nicknameTF.textColor = [RCTool colorWithHex:0x757575];
+//                _nicknameTF.textColor = [RCTool colorWithHexString:@"0x757575];
 //            }
 //            
 //            [cell.contentView addSubview:_nicknameTF];
@@ -317,7 +317,7 @@
             cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
                                           reuseIdentifier: cellId1];
             cell.accessoryType = UITableViewCellAccessoryNone;
-            cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
+            cell.textLabel.textColor = [RCTool colorWithHexString:@"0x757575"];
             
             UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"xjt"]];
             imageView.center = CGPointMake(280, CELL_HEIGHT/2.0);
@@ -339,7 +339,7 @@
 //            cell = [[UITableViewCell alloc] initWithStyle: UITableViewCellStyleSubtitle
 //                                          reuseIdentifier: cellId2];
 //            cell.accessoryType = UITableViewCellAccessoryNone;
-//            cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
+//            cell.textLabel.textColor = [RCTool colorWithHexString:@"0x757575];
 //            
 //            UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"xjt"]];
 //            imageView.center = CGPointMake(280, CELL_HEIGHT/2.0);

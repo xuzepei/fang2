@@ -86,11 +86,45 @@
                 [naviController pushViewController:temp animated:YES];
                 return;
             }
+            else
+            {
+                NSString* urlScheme = [item objectForKey:@"urlscheme"];
+                if([urlScheme length])
+                {
+                    NSString* url = [NSString stringWithFormat:@"%@://",urlScheme];
+                    NSLog(@"---Open url:%@", url);
+                    if([[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]])
+                    {
+                        return;
+                    }
+                }
+                
+                NSString* appleId = [item objectForKey:@"apple_id"];
+                if([appleId length])
+                {
+                    [self openAppStore:appleId];
+                }
+            }
+            
+            
             break;
         }
         default:
             break;
     }
+}
+
+- (void)openAppStore:(NSString*)appleId
+{
+    SKStoreProductViewController *storeController = [[SKStoreProductViewController alloc] init];
+    storeController.delegate = [UIApplication sharedApplication].delegate;
+    NSDictionary *productParameters = @{ SKStoreProductParameterITunesItemIdentifier : appleId };
+    [storeController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError *error) {
+        //Handle response
+    }];
+
+    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    [vc presentViewController:storeController animated:YES completion:nil];
 }
 
 @end

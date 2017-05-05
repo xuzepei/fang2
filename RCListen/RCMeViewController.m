@@ -36,7 +36,7 @@
 		
 		self.navigationItem.title = @"个人中心";
         
-        self.view.backgroundColor = [RCTool colorWithHex:0xf0f0f0];
+        self.view.backgroundColor = [RCTool colorWithHexString:@"0xf0f0f0"];
     }
     return self;
 }
@@ -156,7 +156,7 @@
         loginButton.frame = CGRectMake(0, 0, 71, 25);
         loginButton.center = CGPointMake([RCTool getScreenSize].width/2.0, 58);
         [loginButton setTitle:@"点击登录" forState:UIControlStateNormal];
-        [loginButton setTitleColor:[RCTool colorWithHex:0x3e3c3d] forState:UIControlStateNormal];
+        [loginButton setTitleColor:[RCTool colorWithHexString:@"0x3e3c3d"] forState:UIControlStateNormal];
         loginButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [loginButton setBackgroundImage:[UIImage imageNamed:@"login"] forState:UIControlStateNormal];
         [loginButton addTarget:self action:@selector(clickedLoginButton:) forControlEvents:UIControlEventTouchUpInside];
@@ -318,7 +318,7 @@
         cell = [[RCPublicCell alloc] initWithStyle: UITableViewCellStyleDefault
                                     reuseIdentifier: cellId contentViewClass:NSClassFromString(@"RCMeNumberCellContentView")];
         cell.accessoryType = UITableViewCellAccessoryNone;
-        cell.textLabel.textColor = [RCTool colorWithHex:0x757575];
+        cell.textLabel.textColor = [RCTool colorWithHexString:@"0x757575"];
   
         UIImageView* imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"xjt"]];
         imageView.center = CGPointMake(280, CELL_HEIGHT/2.0);
