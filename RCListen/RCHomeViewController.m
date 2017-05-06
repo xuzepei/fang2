@@ -371,6 +371,12 @@
         }
         case 506:
         {
+            
+            NSString* urlString = @"http://downapp.tfeyes.com:8081/aqxz.html";
+            RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+            temp.hidesBottomBarWhenPushed = YES;
+            [temp updateContent:urlString title:@"安全须知"];
+            [self.navigationController pushViewController:temp animated:YES];
             break;
         }
         case 507:
