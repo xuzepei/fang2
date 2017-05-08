@@ -53,7 +53,6 @@
         
         
         temp = [self.item objectForKey:@"title"];
-        
         if([temp length])
         {
             color = self.highlighted?[UIColor whiteColor]:[UIColor blackColor];
@@ -63,7 +62,6 @@
         }
         
         temp = [self.item objectForKey:@"describe"];
-        temp = @"Could you show the code where you are setting the background colour? What about the parent view? Perhaps the table view background is clear but the parent isn't? ";
         if([temp length])
         {
             color = self.highlighted?[UIColor whiteColor]:[UIColor grayColor];
@@ -81,7 +79,13 @@
     
     color = self.highlighted?[UIColor whiteColor]:[UIColor blackColor] ;
     [color set];
-    [@"查看详情" drawInRect:CGRectMake(MARGIN_X + 10, self.bounds.size.height - 26, self.bounds.size.width - (MARGIN_X + 10)*2, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByTruncatingTail];
+    [@"查看详情" drawInRect:CGRectMake(MARGIN_X + 10, self.bounds.size.height - 24, 100, 20) withFont:[UIFont boldSystemFontOfSize:14] lineBreakMode:NSLineBreakByTruncatingTail];
+    
+    UIImage* image = [UIImage imageNamed:@"jiantou1"];
+    if(image)
+    {
+        [image drawAtPoint:CGPointMake(self.bounds.size.width - MARGIN_X - image.size.width - 10, self.bounds.size.height - 24)];
+    }
 }
 
 - (void)updateContent:(NSDictionary *)item

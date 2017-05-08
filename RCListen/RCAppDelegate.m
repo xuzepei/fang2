@@ -161,7 +161,7 @@
     
     //导航条返回按钮颜色
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
-    
+    [UINavigationBar appearance].translucent = NO;
     //导航条标题颜色
     NSShadow *shadow = [[NSShadow alloc] init];
     shadow.shadowColor = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.8];

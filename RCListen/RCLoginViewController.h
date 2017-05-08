@@ -12,13 +12,14 @@
 
 @interface RCLoginViewController : UIViewController<UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,OHAttributedLabelDelegate>
 
-@property(nonatomic,retain)UITableView* tableView;
-@property(nonatomic,retain)NSMutableArray* itemArray;
-@property(nonatomic,retain)UIButton* loginButton;
-@property(nonatomic,retain)UITextField* accountTF;
-@property(nonatomic,retain)UITextField* passwordTF;
-@property(nonatomic,retain)OHAttributedLabel* attributedLabel;
 
-- (void)initTableView;
+@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *FormImageView;
+@property (weak, nonatomic) IBOutlet UITextField *phoneNumber;
+@property (weak, nonatomic) IBOutlet UITextField *password;
+@property (weak, nonatomic) IBOutlet OHAttributedLabel *forgotPwd;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *logoImageTopContraint;
+
+- (IBAction)clickedLoginButton:(id)sender;
 
 @end

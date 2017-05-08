@@ -101,11 +101,12 @@
         NSNumber* code = [result objectForKey:@"code"];
         if(code.intValue == 200)
         {
-            NSString* message = [NSString stringWithFormat:@"请使用新密码重新登录。"];
-            [RCTool showAlert:@"修改密码成功" message:message];
+            NSString* msg = [result objectForKey:@"msg"];
+            //NSString* message = [NSString stringWithFormat:@"请使用新密码重新登录。"];
+            [RCTool showAlert:@"提示" message:msg];
             
             [RCTool removeUserInfo];
-            [self.navigationController popViewControllerAnimated:YES];
+            [self.navigationController popViewControllerAnimated:NO];
             
             return;
         }
@@ -114,7 +115,7 @@
             NSString* msg = [result objectForKey:@"msg"];
             if([msg length])
             {
-                [RCTool showAlert:@"修改密码失败" message:msg];
+                [RCTool showAlert:@"提示" message:msg];
                 
                 return;
             }

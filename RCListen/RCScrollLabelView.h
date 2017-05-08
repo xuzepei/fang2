@@ -14,6 +14,7 @@
 @property(nonatomic, strong)NSDictionary* line1;
 @property(nonatomic, assign)CGRect line0Rect;
 @property(nonatomic, assign)CGRect line1Rect;
+@property(nonatomic, strong)UIImage* image0;
 
 - (void)updateContent:(NSDictionary*)line0 line1:(NSDictionary*)line1;
 

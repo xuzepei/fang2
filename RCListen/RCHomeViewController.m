@@ -245,7 +245,7 @@
     {
         CGFloat height = ([RCTool getScreenSize].height <= 480)? 50 : SCROLL_LABEL_HEIGHT;
         self.scrollLabel = [[RCScrollLabel alloc] initWithFrame:CGRectMake(0, [RCTool getScreenSize].height - height -STATUS_BAR_HEIGHT - NAVIGATION_BAR_HEIGHT, [RCTool getScreenSize].width, height)];
-        self.scrollLabel.backgroundColor = [UIColor blackColor];
+        self.scrollLabel.backgroundColor = [UIColor whiteColor];
     }
     
     [self.view addSubview:self.scrollLabel];
@@ -314,7 +314,7 @@
     switch (tag) {
         case 500:
         {
-            [self goToLoginViewController];
+            //[self goToLoginViewController];
             break;
         }
         case 501:
@@ -371,6 +371,12 @@
         }
         case 506:
         {
+            
+            NSString* urlString = @"http://downapp.tfeyes.com:8081/aqxz.html";
+            RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+            temp.hidesBottomBarWhenPushed = YES;
+            [temp updateContent:urlString title:@"安全须知"];
+            [self.navigationController pushViewController:temp animated:YES];
             break;
         }
         case 507:
