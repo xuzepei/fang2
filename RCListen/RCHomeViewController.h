@@ -11,6 +11,8 @@
 #import "ZBarSDK.h"
 #import "RCSelectAreaButton.h"
 #import "RCScrollLabel.h"
+#import "Reachability.h"
+#import "RCFuctionButton.h"
 
 @interface RCHomeViewController : UIViewController<RCAdScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,ZBarReaderDelegate>
 
@@ -20,6 +22,10 @@
 @property(nonatomic,retain)UITableView* tableView;
 @property(nonatomic,retain)NSMutableArray* itemArray;
 @property(assign)CGFloat adScrollViewHeight;
+@property(nonatomic, strong)Reachability* internetReachable;
+@property(nonatomic, strong)RCFuctionButton* firstButton;
+@property(nonatomic, assign)BOOL isWifiConnected;
+@property(nonatomic, assign)int httpStatusCode;
 
 @property(nonatomic, strong)RCScrollLabel* scrollLabel;
 

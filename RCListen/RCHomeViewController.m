@@ -20,17 +20,17 @@
 #import "RCCreateDDViewController.h"
 #import "RCStartBJViewController.h"
 #import "RCCityTableViewController.h"
-#import "RCFuctionButton.h"
 #import "RCLoginViewController.h"
 #import "TYAlertController.h"
 #import "UIView+TYAlertView.h"
 #import "OpenAppView.h"
 #import "RCSettingsViewController.h"
 
+
 #define AD_FRAME_HEIGHT 250.0
 #define SCROLL_LABEL_HEIGHT 60.0
 
-@interface RCHomeViewController ()
+@interface RCHomeViewController ()<NSURLConnectionDelegate>
 
 @end
 
@@ -116,13 +116,65 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     
-    NSLog(@"%f",[RCTool getScreenSize].height);
-    
     self.adScrollViewHeight = ([RCTool getScreenSize].height <= 480)? 140.0f :([RCTool getScreenSize].height * AD_FRAME_HEIGHT)/736.0 ;
     
     [self updateAd];
     [self updateFunctions];
     [self updateHotNews];
+    
+    if([RCTool isReachableViaWiFi])
+    {
+        self.isWifiConnected = YES;
+        [self updateWifiConnectionStatus];
+    }
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
+    self.internetReachable = [Reachability reachabilityForInternetConnection];
+    [self.internetReachable startNotifier];
+}
+
+- (void)checkNetworkStatus:(NSNotification *)notice
+{
+    // called after network status changes
+    NetworkStatus internetStatus = [self.internetReachable currentReachabilityStatus];
+    switch (internetStatus)
+    {
+        case ReachableViaWiFi:
+        {
+            NSLog(@"The internet is working via WIFI.");
+            self.isWifiConnected = YES;
+            break;
+        }
+        case NotReachable:
+        {
+            NSLog(@"The internet is down.");
+            self.isWifiConnected = NO;
+            break;
+        }
+        case ReachableViaWWAN:
+        {
+            NSLog(@"The internet is working via WWAN.");
+            self.isWifiConnected = NO;
+            break;
+        }
+    }
+    
+    [self updateWifiConnectionStatus];
+}
+
+- (void)updateWifiConnectionStatus
+{
+    if(self.firstButton)
+    {
+        if(self.isWifiConnected)
+        {
+            [self.firstButton updateContent:@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"yilianjie"}];
+        }
+        else
+        {
+            [self.firstButton updateContent:@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"weilianjie"}];
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -258,7 +310,7 @@
     if(nil == _itemArray)
     {
         _itemArray = [[NSMutableArray alloc] init];
-        [_itemArray addObjectsFromArray:@[@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@""},@{@"text":@"看电影",@"color":@"36bfe1",@"image":@"kandianying"},@{@"text":@"玩游戏",@"color":@"e3c623",@"image":@"wanyouxi"},@{@"text":@"充话费",@"color":@"ff4545",@"image":@"chonghuafei"},@{@"text":@"想家了",@"color":@"b089ff",@"image":@"xiangjiale"},@{@"text":@"买相因",@"color":@"ff7800",@"image":@"maixiangyin"},@{@"text":@"安全须知",@"color":@"6dcf1d",@"image":@"anquanxuzhi"}]];
+        [_itemArray addObjectsFromArray:@[@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"weilianjie"},@{@"text":@"看电影",@"color":@"36bfe1",@"image":@"kandianying"},@{@"text":@"玩游戏",@"color":@"e3c623",@"image":@"wanyouxi"},@{@"text":@"充话费",@"color":@"ff4545",@"image":@"chonghuafei"},@{@"text":@"想家了",@"color":@"b089ff",@"image":@"xiangjiale"},@{@"text":@"买相因",@"color":@"ff7800",@"image":@"maixiangyin"},@{@"text":@"安全须知",@"color":@"6dcf1d",@"image":@"anquanxuzhi"}]];
         
         [self initFunctionButtons];
     }
@@ -286,6 +338,11 @@
         button.tag = i + 500;
         [button updateContent: [self.itemArray objectAtIndex:i]];
         [self.view addSubview: button];
+        
+        if(button.tag == 500)
+        {
+            self.firstButton = button;
+        }
 
     }
     
@@ -314,7 +371,7 @@
     switch (tag) {
         case 500:
         {
-            //[self goToLoginViewController];
+            [self checkWifiConnection];
             break;
         }
         case 501:
@@ -398,6 +455,112 @@
     [self presentViewController:navController animated:NO completion:^{
         
     }];
+}
+
+- (void)clickedFirstButton
+{
+    if([RCTool isReachableViaWiFi])
+    {
+        if(self.isWifiConnected)
+        {
+            
+        }
+    }
+    else
+    {
+        
+    }
+}
+
+- (void)checkWifiConnection
+{
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSString* urlString = [@"http://www.baidu.com" stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
+    [request setURL:[NSURL URLWithString: urlString]];
+    [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
+    [request setTimeoutInterval: 10];
+    [request setHTTPShouldHandleCookies:FALSE];
+    [request setHTTPMethod:@"GET"];
+
+    BOOL isSuccess = YES;
+    
+    NSURLConnection * urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    if (urlConnection)
+    {
+        [RCTool showIndicator:@"检测中..."];
+    }
+    else
+    {
+        isSuccess = NO;
+    }
+
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    self.httpStatusCode = [(NSHTTPURLResponse*)response statusCode];
+    NSDictionary* header = [(NSHTTPURLResponse*)response allHeaderFields];
+}
+
+- (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+}
+
+- (void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    [RCTool hideIndicator];
+    
+    NSLog(@"checkWifiConnection, finish:%d",self.httpStatusCode);
+    
+    if(200 == self.httpStatusCode)
+    {
+        NSString* wifiName = @"";
+        NSDictionary* wifiInfo = [RCTool getWifiInfo];
+        if(wifiInfo && [wifiInfo isKindOfClass:[wifiInfo class]])
+        {
+            wifiName = [wifiInfo objectForKey:@"SSID"];
+        }
+        
+        if(0 == [wifiName length])
+            wifiName = @"";
+        
+        NSString* phoneNumber = @"";
+        NSDictionary* userInfo = [RCTool getUserInfo];
+        if(userInfo)
+        {
+            phoneNumber = [userInfo objectForKey:@"mobile"];
+        }
+        
+        if(0 == [phoneNumber length])
+            phoneNumber = @"";
+        
+        NSString* urlString = [NSString stringWithFormat:@"http://downapp.tfeyes.com:8081/home/index/onlinestatus.html?macaddress=%@&wifiname=%@&gdmobile=%@",@"",wifiName,phoneNumber];
+        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+        temp.hidesBottomBarWhenPushed = YES;
+        [temp updateContent:urlString title:nil];
+        [self.navigationController pushViewController:temp animated:YES];
+    }
+    else
+    {
+
+    }
+}
+
+- (void)connection:(NSURLConnection *)connection
+  didFailWithError:(NSError *)error
+{
+    [RCTool hideIndicator];
+    
+    NSLog(@"checkWifiConnection, fail:%d",self.httpStatusCode);
+    
+    if(302 == self.httpStatusCode)
+    {
+    }
+    else
+    {
+        
+    }
+
 }
 
 //- (void)clickedScanButton:(id)sender
