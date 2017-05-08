@@ -15,6 +15,7 @@
 #import "SBJSON.h"
 #include <ifaddrs.h>
 #include <arpa/inet.h>
+#import <SystemConfiguration/CaptiveNetwork.h>
 
 static int g_reachabilityType = -1;
 
@@ -182,6 +183,26 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
 	}
 	
 	return NO;
+}
+
++ (NSDictionary*)getWifiInfo
+{
+    NSArray *interfaceNames = CFBridgingRelease(CNCopySupportedInterfaces());
+    NSLog(@"%s: Supported interfaces: %@", __func__, interfaceNames);
+    
+    NSDictionary *SSIDInfo;
+    for (NSString *interfaceName in interfaceNames) {
+        SSIDInfo = CFBridgingRelease(
+                                     CNCopyCurrentNetworkInfo((__bridge CFStringRef)interfaceName));
+        NSLog(@"%s: %@ => %@", __func__, interfaceName, SSIDInfo);
+        
+        BOOL isNotEmpty = (SSIDInfo.count > 0);
+        if (isNotEmpty) {
+            break;
+        }
+    }
+    
+    return SSIDInfo;
 }
 
 + (BOOL)saveImage:(NSData*)data path:(NSString*)path

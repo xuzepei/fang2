@@ -29,6 +29,7 @@
 + (int)getReachabilityType;
 + (BOOL)isReachableViaWiFi;
 + (BOOL)isReachableViaInternet;
++ (NSDictionary*)getWifiInfo;
 
 + (NSPersistentStoreCoordinator*)getPersistentStoreCoordinator;
 + (NSManagedObjectContext*)getManagedObjectContext;
