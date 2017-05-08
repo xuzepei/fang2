@@ -489,62 +489,62 @@
 
 #pragma mark - Location
 
-- (void)updateUserLocation
-{
-    if(nil == _locationService)
-    {
-        _locationService = [[BMKLocationService alloc]init];
-        _locationService.delegate = self;
-    }
-    
-    [_locationService stopUserLocationService];
-    [_locationService startUserLocationService];
-}
-
-- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
-{
-    //NSLog(@"heading is %@,title:%@",userLocation.heading,[userLocation.location description]);
-    
-    self.userLocation = userLocation;
-    
-    [_locationService stopUserLocationService];
-    
-    //获取位置名称
-    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
-    CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
-        
-        for (CLPlacemark *placemark in place) {
-            
-            NSString* cityStr=placemark.thoroughfare;
-            
-            NSString* cityName=placemark.locality;
-            
-            if([cityStr length] && [cityName length])
-                self.locationName = [NSString stringWithFormat:@"%@,%@",cityName,cityStr];
-            
-            break;
-        }
-        
-    };
-    
-    CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
-    
-    [geocoder reverseGeocodeLocation:loc completionHandler:handler];
-    
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_LOCATION_NOTIFICATION object:nil];
-}
-
-//处理位置坐标更新
-- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
-{
-    //NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
-}
-
-- (void)didFailToLocateUserWithError:(NSError *)error
-{
-        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_LOCATION_NOTIFICATION object:nil];
-}
+//- (void)updateUserLocation
+//{
+//    if(nil == _locationService)
+//    {
+//        _locationService = [[BMKLocationService alloc]init];
+//        _locationService.delegate = self;
+//    }
+//    
+//    [_locationService stopUserLocationService];
+//    [_locationService startUserLocationService];
+//}
+//
+//- (void)didUpdateUserHeading:(BMKUserLocation *)userLocation
+//{
+//    //NSLog(@"heading is %@,title:%@",userLocation.heading,[userLocation.location description]);
+//    
+//    self.userLocation = userLocation;
+//    
+//    [_locationService stopUserLocationService];
+//    
+//    //获取位置名称
+//    CLGeocoder *geocoder=[[CLGeocoder alloc]init];
+//    CLGeocodeCompletionHandler handler = ^(NSArray *place, NSError *error) {
+//        
+//        for (CLPlacemark *placemark in place) {
+//            
+//            NSString* cityStr=placemark.thoroughfare;
+//            
+//            NSString* cityName=placemark.locality;
+//            
+//            if([cityStr length] && [cityName length])
+//                self.locationName = [NSString stringWithFormat:@"%@,%@",cityName,cityStr];
+//            
+//            break;
+//        }
+//        
+//    };
+//    
+//    CLLocation *loc = [[CLLocation alloc] initWithLatitude:userLocation.location.coordinate.latitude longitude:userLocation.location.coordinate.longitude];
+//    
+//    [geocoder reverseGeocodeLocation:loc completionHandler:handler];
+//    
+//    
+//    [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_LOCATION_NOTIFICATION object:nil];
+//}
+//
+////处理位置坐标更新
+//- (void)didUpdateUserLocation:(BMKUserLocation *)userLocation
+//{
+//    //NSLog(@"didUpdateUserLocation lat %f,long %f",userLocation.location.coordinate.latitude,userLocation.location.coordinate.longitude);
+//}
+//
+//- (void)didFailToLocateUserWithError:(NSError *)error
+//{
+//        [[NSNotificationCenter defaultCenter] postNotificationName:UPDATED_LOCATION_NOTIFICATION object:nil];
+//}
 
 #pragma mark - SKStoreProductViewControllerDelegate
 

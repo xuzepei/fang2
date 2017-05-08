@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BMKUserLocation.h"
+//#import "BMKUserLocation.h"
 
 @interface RCTool : NSObject {
 

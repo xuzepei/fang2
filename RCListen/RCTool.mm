@@ -12,7 +12,6 @@
 #import "TBXML.h"
 #import "RCAppDelegate.h"
 #import "MBProgressHUD.h"
-#import "SBJSON.h"
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
@@ -882,106 +881,32 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     if(0 == [jsonString length])
         return nil;
     
-    SBJSON* sbjson = [[SBJSON alloc] init];
-	NSDictionary* dict = [sbjson objectWithString:jsonString error:NULL];
-
-    
-    if(dict && [dict isKindOfClass:[NSDictionary class]])
-	{
-        NSArray* results = [dict objectForKey:@"results"];
-        if(results && [results isKindOfClass:[NSArray class]])
-        {
-            if([results count])
-            {
-                NSDictionary* adress = [results objectAtIndex:0];
-                if(adress && [adress isKindOfClass:[NSDictionary class]])
-                {
-                    NSArray* address_components = [adress objectForKey:@"address_components"];
-                    if(address_components && [address_components isKindOfClass:[NSArray class]])
-                    {
-                        
-                        NSMutableDictionary* result = [[NSMutableDictionary alloc] init];
-
-                        for(NSDictionary* component in address_components)
-                        {
-                            if([component isKindOfClass:[NSDictionary class]])
-                            {
-                                NSArray* types = [component objectForKey:@"types"];
-                                for(NSString* temp in types)
-                                {
-                                    if([temp isEqualToString:@"route"])
-                                    {
-                                        NSString* road = [component objectForKey:@"long_name"];
-                                        if([road length])
-                                            [result setObject:road forKey:@"road"];
-                                    }
-                                    else if([temp isEqualToString:@"sublocality"])
-                                    {
-                                        NSString* area = [component objectForKey:@"long_name"];
-                                        if([area length])
-                                            [result setObject:area forKey:@"area"];
-                                    }
-                                    
-                                    else if([temp isEqualToString:@"locality"])
-                                    {
-                                        NSString* city = [component objectForKey:@"long_name"];
-                                        if([city length])
-                                            [result setObject:city forKey:@"city"];
-                                    }
-                                    else if([temp isEqualToString:@"administrative_area_level_1"])
-                                    {
-                                        
-                                        NSString* province = [component objectForKey:@"long_name"];
-                                        if([province length])
-                                            [result setObject:province forKey:@"province"];
-                                    }
-                                    else if([temp isEqualToString:@"country"])
-                                    {
-                                        NSString* country = [component objectForKey:@"long_name"];
-                                        if([country length])
-                                            [result setObject:country forKey:@"country"];
-                                    }
-                                }
-                            }
-                        }
-                        
-                        return result;
-                    }
-                }
-            }
-        }
-	}
-    
     return nil;
 }
 
 + (NSDictionary*)parseToDictionary:(NSString*)jsonString
 {
     if(0 == [jsonString length])
-		return nil;
+        return nil;
     
-    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-    
-    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"\r" withString:@""];
-    
-    jsonString = [jsonString stringByReplacingOccurrencesOfString:@"    " withString:@""];
-    
-	SBJSON* sbjson = [[SBJSON alloc] init];
+    NSData* data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+    if(nil == data)
+        return nil;
     
     NSError* error = nil;
-	NSDictionary* dict = [sbjson objectWithString:jsonString error:&error];
-   
+    NSJSONSerialization* json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingAllowFragments error:&error];
     if(error)
-        NSLog(@"error:%@",[error description]);
-	
-	if(dict && [dict isKindOfClass:[NSDictionary class]])
-	{
-
-        return dict;
-	}
-	
-
-	return nil;
+    {
+        NSLog(@"parse errror:%@",[error localizedDescription]);
+        return nil;
+    }
+    
+    if([json isKindOfClass:[NSDictionary class]])
+    {
+        return (NSDictionary *)json;
+    }
+    
+    return nil;
 }
 
 + (void)playSound:(NSString*)filename
@@ -1232,23 +1157,25 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
 
 + (NSString*)getUserLocation
 {
-    RCAppDelegate* appDelegate = (RCAppDelegate*)[[UIApplication sharedApplication] delegate];
-    if(appDelegate.userLocation)
-    {
-        return [NSString stringWithFormat:@"%lf,%lf",appDelegate.userLocation.location.coordinate.longitude,appDelegate.userLocation.location.coordinate.latitude];
-    }
+//    RCAppDelegate* appDelegate = (RCAppDelegate*)[[UIApplication sharedApplication] delegate];
+//    if(appDelegate.userLocation)
+//    {
+//        return [NSString stringWithFormat:@"%lf,%lf",appDelegate.userLocation.location.coordinate.longitude,appDelegate.userLocation.location.coordinate.latitude];
+//    }
     
     return @"";
 }
 
 + (NSString*)getUserLocationName
 {
-    RCAppDelegate* appDelegate = (RCAppDelegate*)[[UIApplication sharedApplication] delegate];
-    NSString* temp = appDelegate.locationName;
-    if(0 == [temp length])
-        return @"";
+//    RCAppDelegate* appDelegate = (RCAppDelegate*)[[UIApplication sharedApplication] delegate];
+//    NSString* temp = appDelegate.locationName;
+//    if(0 == [temp length])
+//        return @"";
+//    
+//    return temp;
     
-    return temp;
+    return @"";
 }
 
 + (void)saveUserInfo:(NSDictionary*)userInfo

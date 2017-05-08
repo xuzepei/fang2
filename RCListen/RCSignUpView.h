@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "RCCheckButton.h"
+//#import "RCCheckButton.h"
 #import "RCWebViewController.h"
 
 @protocol RCSignUpViewDelegate <NSObject>
@@ -27,7 +27,7 @@
 @property(nonatomic,weak)id delegate;
 @property(nonatomic,strong)NSDictionary* step1Token;
 @property(nonatomic,strong)NSDictionary* step2Token;
-@property(nonatomic,strong)RCCheckButton* checkButton;
+@property(nonatomic,strong)UIButton* checkButton;
 @property(nonatomic,strong)UIButton* resendButton;
 
 - (void)updateContent:(int)type token:(NSDictionary*)token;

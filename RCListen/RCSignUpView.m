@@ -237,12 +237,12 @@
         
         if(nil == _checkButton)
         {
-            _checkButton = [RCCheckButton buttonWithType:UIButtonTypeCustom];
-            _checkButton.frame = CGRectMake(16, 270 - 64, 30, 30);
-            _checkButton.normalImageName = @"wugou";
-            _checkButton.selectedImageName = @"yougou";
-            [_checkButton setChecked:NO];
-            [_checkButton addTarget:self action:@selector(clickedCheckButton:) forControlEvents:UIControlEventTouchUpInside];
+//            _checkButton = [RCCheckButton buttonWithType:UIButtonTypeCustom];
+//            _checkButton.frame = CGRectMake(16, 270 - 64, 30, 30);
+//            _checkButton.normalImageName = @"wugou";
+//            _checkButton.selectedImageName = @"yougou";
+//            [_checkButton setChecked:NO];
+//            [_checkButton addTarget:self action:@selector(clickedCheckButton:) forControlEvents:UIControlEventTouchUpInside];
         }
         
         [self addSubview:_checkButton];
@@ -323,11 +323,11 @@
             return;
         }
         
-        if(NO == [_checkButton isChecked])
-        {
-            [RCTool showAlert:@"提示" message:@"请阅读并同意用户协议"];
-            return;
-        }
+//        if(NO == [_checkButton isChecked])
+//        {
+//            [RCTool showAlert:@"提示" message:@"请阅读并同意用户协议"];
+//            return;
+//        }
         
  
         if(self.delegate && [self.delegate respondsToSelector:@selector(clickedNextButton:token:)])
@@ -345,8 +345,8 @@
 
 - (void)clickedCheckButton:(id)sender
 {
-    BOOL b = [_checkButton isChecked]?NO:YES;
-    [_checkButton setChecked:b];
+//    BOOL b = [_checkButton isChecked]?NO:YES;
+//    [_checkButton setChecked:b];
 }
 
 - (void)clickedTreatyButton:(id)sender

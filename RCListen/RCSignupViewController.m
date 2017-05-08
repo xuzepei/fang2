@@ -9,7 +9,7 @@
 #import "RCSignupViewController.h"
 #import "RCTool.h"
 #import "RCHttpRequest.h"
-#import "iToast.h"
+//#import "iToast.h"
 
 
 #define ACCOUNT_TF_TAG 100
@@ -207,7 +207,7 @@
                 [RCTool setPassword:password];
             }
             
-            [[iToast makeText:[NSString stringWithFormat:@"注册成功！%@",username]] show];
+            //[[iToast makeText:[NSString stringWithFormat:@"注册成功！%@",username]] show];
             
             [self.navigationController popToRootViewControllerAnimated:YES];
             

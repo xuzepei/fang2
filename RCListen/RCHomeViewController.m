@@ -8,18 +8,9 @@
 
 #import "RCHomeViewController.h"
 #import "RCTool.h"
-#import "RCXinFangViewController.h"
-#import "RCFangDaiViewController.h"
-#import "RCSecondHandHouseViewController.h"
-#import "RCZuFangViewController.h"
-#import "RCLocationController.h"
 #import "RCWebViewController.h"
 #import "RCHttpRequest.h"
 #import "RCNewsViewController.h"
-#import "RCBJViewController.h"
-#import "RCCreateDDViewController.h"
-#import "RCStartBJViewController.h"
-#import "RCCityTableViewController.h"
 #import "RCLoginViewController.h"
 #import "TYAlertController.h"
 #import "UIView+TYAlertView.h"
@@ -51,35 +42,7 @@
         self.view.backgroundColor = BG_COLOR;
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting_button"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftBarButtonItem:)];
-
-//        UIButton *titleImageButton = [UIButton buttonWithType:UIButtonTypeCustom];
-//        UIImage* titleImage = [UIImage imageNamed:@"home_title"];
-//        titleImageButton.frame = CGRectMake(0, 0, titleImage.size.width, titleImage.size.height);
-//        [titleImageButton setImage:titleImage forState:UIControlStateNormal];
-//        [titleImageButton setImage:titleImage forState:UIControlStateHighlighted];
-//        [titleImageButton addTarget:self action:@selector(clickedTitleImageButton:) forControlEvents:UIControlEventTouchUpInside];
-        
-        
-        
-//        UILabel* titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(50, 2, 200, 30)];
-//        titleLabel.font = [UIFont boldSystemFontOfSize:21];
-//        titleLabel.textColor = [UIColor whiteColor];
-//        titleLabel.textAlignment = NSTextAlignmentCenter;
-//        titleLabel.shadowColor = [UIColor grayColor];
-//        titleLabel.shadowOffset = CGSizeMake(1, 1);
-//        titleLabel.backgroundColor = [UIColor clearColor];
-//        titleLabel.text = @"欢迎进入大管家";
-//        
-//        self.navigationItem.titleView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, [RCTool getScreenSize].width, 40)];
-//        
-//        [self.navigationItem.titleView addSubview:titleLabel];
-        
-//        _selectAreaButton = [[RCSelectAreaButton alloc] initWithFrame:CGRectMake([RCTool getScreenSize].width - 76, -4, 60, 40)];
-//        _selectAreaButton.delegate = self;
-//        
-//        [self.navigationItem.titleView addSubview:_selectAreaButton];
-        
-        
+   
         
     }
     return self;
@@ -99,7 +62,6 @@
     self.bjLabel = nil;
     self.jzLabel = nil;
     self.kdLabel = nil;
-    self.selectAreaButton = nil;
 
 }
 

@@ -10,7 +10,7 @@
 #import "RCTool.h"
 #import "RCSignupViewController.h"
 #import "RCHttpRequest.h"
-#import "iToast.h"
+//#import "iToast.h"
 #import "RCResetViewController.h"
 
 #define ACCOUNT_TF_TAG 100

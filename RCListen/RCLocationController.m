@@ -9,7 +9,7 @@
 #import "RCLocationController.h"
 #import "RCTool.h"
 #import "RCHttpRequest.h"
-#import "iToast.h"
+//#import "iToast.h"
 
 @implementation RCLocationController
 
@@ -161,7 +161,7 @@
         if([road length])
             [temp appendString:road];
 
-        [[iToast makeText:temp] show];
+        //[[iToast makeText:temp] show];
     }
 
 }

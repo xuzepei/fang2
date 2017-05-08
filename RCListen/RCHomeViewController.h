@@ -8,13 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "RCAdScrollView.h"
-#import "ZBarSDK.h"
-#import "RCSelectAreaButton.h"
 #import "RCScrollLabel.h"
 #import "Reachability.h"
 #import "RCFuctionButton.h"
 
-@interface RCHomeViewController : UIViewController<RCAdScrollViewDelegate,UITableViewDataSource,UITableViewDelegate,ZBarReaderDelegate>
+@interface RCHomeViewController : UIViewController<RCAdScrollViewDelegate,UITableViewDataSource,UITableViewDelegate>
 
 @property(nonatomic,retain)NSMutableArray* adItems;
 @property(nonatomic,retain)NSArray* hotNews;
@@ -38,8 +36,6 @@
 @property(nonatomic,retain)IBOutlet UILabel* bjLabel;
 @property(nonatomic,retain)IBOutlet UILabel* jzLabel;
 @property(nonatomic,retain)IBOutlet UILabel* kdLabel;
-
-@property(nonatomic,retain)RCSelectAreaButton* selectAreaButton;
 
 - (void)initAdScrollView;
 - (void)initTableView;

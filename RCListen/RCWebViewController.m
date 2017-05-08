@@ -8,6 +8,7 @@
 
 #import "RCWebViewController.h"
 #import "RCTool.h"
+#import <JavaScriptCore/JavaScriptCore.h>
 
 @interface RCWebViewController ()
 
@@ -87,6 +88,7 @@
     if(0 == [urlString length])
         return;
     
+    //urlString = @"http://appdream.sinaapp.com/test.html";
     self.urlString = urlString;
     
     if([title length])
@@ -231,8 +233,24 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
 	[_indicator stopAnimating];
-	
+    
 	[self updateToolbarItem];
+    
+    NSString* phoneNumber = @"";
+    NSDictionary* userInfo = [RCTool getUserInfo];
+    if(userInfo)
+    {
+        phoneNumber = [userInfo objectForKey:@"mobile"];
+    }
+    
+    if([phoneNumber length])
+    {
+        JSContext *context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
+        if(context)
+        {
+            [context[@"showPhoneNumber"] callWithArguments:@[phoneNumber]];
+        }
+    }
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
