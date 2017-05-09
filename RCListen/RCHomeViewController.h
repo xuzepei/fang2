@@ -24,6 +24,7 @@
 @property(nonatomic, strong)RCFuctionButton* firstButton;
 @property(nonatomic, assign)BOOL isWifiConnected;
 @property(nonatomic, assign)int httpStatusCode;
+@property(nonatomic, assign)BOOL isChecking;
 
 @property(nonatomic, strong)RCScrollLabel* scrollLabel;
 

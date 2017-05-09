@@ -71,6 +71,8 @@
     
     if(nil == [RCTool getUserInfo])
         [self goToLoginViewController];
+    
+    [self checkWifiConnection];
 }
 
 - (void)viewDidLoad
@@ -440,7 +442,7 @@
     NSString* urlString = [@"http://www.baidu.com" stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString: urlString]];
     [request setCachePolicy:NSURLRequestReloadIgnoringCacheData];
-    [request setTimeoutInterval: 10];
+    [request setTimeoutInterval: 5];
     [request setHTTPShouldHandleCookies:FALSE];
     [request setHTTPMethod:@"GET"];
 
@@ -449,6 +451,7 @@
     NSURLConnection * urlConnection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
     if (urlConnection)
     {
+        self.isChecking = YES;
         [RCTool showIndicator:@"检测中..."];
     }
     else
@@ -470,6 +473,7 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    self.isChecking = NO;
     [RCTool hideIndicator];
     
     NSLog(@"checkWifiConnection, finish:%d",self.httpStatusCode);
@@ -511,6 +515,7 @@
 - (void)connection:(NSURLConnection *)connection
   didFailWithError:(NSError *)error
 {
+    self.isChecking = NO;
     [RCTool hideIndicator];
     
     NSLog(@"checkWifiConnection, fail:%d",self.httpStatusCode);

@@ -127,4 +127,10 @@
     [vc presentViewController:storeController animated:YES completion:nil];
 }
 
+
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self hideView];
+}
+
 @end

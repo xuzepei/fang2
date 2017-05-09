@@ -1357,7 +1357,7 @@
 				ORGANIZATIONNAME = xuzepei;
 				TargetAttributes = {
 					09CF7ED816A3D7740050A603 = {
-						DevelopmentTeam = F297N3S4ZC;
+						DevelopmentTeam = 86WCPL8Z9L;
 					};
 				};
 			};
@@ -1743,8 +1743,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1752,7 +1752,7 @@
 				GCC_PREFIX_HEADER = "RCListen/RCFang-Prefix.pch";
 				HEADER_SEARCH_PATHS = " $(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "RCListen/RCFang-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -1761,8 +1761,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gongdizhijia.app.com;
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = gongdizhijia_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -1777,8 +1777,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1786,7 +1786,7 @@
 				GCC_PREFIX_HEADER = "RCListen/RCFang-Prefix.pch";
 				HEADER_SEARCH_PATHS = " $(SDKROOT)/usr/include/libxml2";
 				INFOPLIST_FILE = "RCListen/RCFang-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = (
@@ -1795,8 +1795,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gongdizhijia.app.com;
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				PROVISIONING_PROFILE_SPECIFIER = gongdizhijia_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
