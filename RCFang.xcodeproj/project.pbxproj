@@ -79,6 +79,7 @@
 		0948E65319502F9F00D73734 /* jiantouxia@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0948E65219502F9F00D73734 /* jiantouxia@2x.png */; };
 		0948E65619503CBD00D73734 /* did@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0948E65419503CBD00D73734 /* did@2x.png */; };
 		0948E65719503CBD00D73734 /* lianxi@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0948E65519503CBD00D73734 /* lianxi@2x.png */; };
+		0950394A1EC1F6710049971D /* RCCheckWifi.m in Sources */ = {isa = PBXBuildFile; fileRef = 095039491EC1F6710049971D /* RCCheckWifi.m */; };
 		0950B93916F174D20039D561 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0950B93816F174D20039D561 /* CoreText.framework */; };
 		0950B93E16F17E9D0039D561 /* qingli@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0950B93B16F17E9D0039D561 /* qingli@2x.png */; };
 		0950B94216F17F020039D561 /* fangdai@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0950B94016F17F020039D561 /* fangdai@2x.png */; };
@@ -368,6 +369,8 @@
 		0948E65219502F9F00D73734 /* jiantouxia@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jiantouxia@2x.png"; sourceTree = "<group>"; };
 		0948E65419503CBD00D73734 /* did@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "did@2x.png"; sourceTree = "<group>"; };
 		0948E65519503CBD00D73734 /* lianxi@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "lianxi@2x.png"; sourceTree = "<group>"; };
+		095039481EC1F6710049971D /* RCCheckWifi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCCheckWifi.h; sourceTree = "<group>"; };
+		095039491EC1F6710049971D /* RCCheckWifi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCCheckWifi.m; sourceTree = "<group>"; };
 		0950B93816F174D20039D561 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		0950B93B16F17E9D0039D561 /* qingli@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "qingli@2x.png"; sourceTree = "<group>"; };
 		0950B94016F17F020039D561 /* fangdai@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "fangdai@2x.png"; sourceTree = "<group>"; };
@@ -959,6 +962,8 @@
 				09F5A9751EC0C4F700EECE14 /* RCFuctionButton.m */,
 				09F5A9761EC0C4F700EECE14 /* RCHomeViewController.h */,
 				09F5A9771EC0C4F700EECE14 /* RCHomeViewController.m */,
+				095039481EC1F6710049971D /* RCCheckWifi.h */,
+				095039491EC1F6710049971D /* RCCheckWifi.m */,
 				09F5A9781EC0C4F700EECE14 /* RCHomeViewController.xib */,
 				09F5A9791EC0C4F700EECE14 /* RCImageLoader.m */,
 				09F5A97A1EC0C4F700EECE14 /* RCListen.xcdatamodeld */,
@@ -1568,6 +1573,7 @@
 				09F5AA3A1EC0C4F700EECE14 /* RCAdScrollView.m in Sources */,
 				09F5AA771EC0C4F700EECE14 /* MBProgressHUD.m in Sources */,
 				09CF7EF916A3D7740050A603 /* RCListen.xcdatamodeld in Sources */,
+				0950394A1EC1F6710049971D /* RCCheckWifi.m in Sources */,
 				09F5AA8E1EC0C4F700EECE14 /* TYAlertDropDownAnimation.m in Sources */,
 				09F5AA681EC0C4F700EECE14 /* ASICloudFilesContainerXMLParserDelegate.m in Sources */,
 				0941EEBA16EB8DE200327D1A /* RCHttpRequest.m in Sources */,
@@ -1743,8 +1749,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1761,8 +1767,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gongdizhijia.app.com;
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
 				PROVISIONING_PROFILE_SPECIFIER = gongdizhijia_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
@@ -1777,8 +1783,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
@@ -1795,8 +1801,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gongdizhijia.app.com;
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
 				PROVISIONING_PROFILE_SPECIFIER = gongdizhijia_dev;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";

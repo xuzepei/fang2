@@ -1201,4 +1201,51 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     [temp synchronize];
 }
 
++ (NSString*)getPhoneNumber
+{
+    NSString* phoneNumber = @"";
+    NSDictionary* userInfo = [RCTool getUserInfo];
+    if(userInfo)
+    {
+        phoneNumber = [userInfo objectForKey:@"mobile"];
+        if([phoneNumber length])
+            return phoneNumber;
+    }
+    
+    return phoneNumber;
+}
+
++ (NSString*)getWifiName
+{
+    NSDictionary* wifiInfo = [RCTool getWifiInfo];
+    if(wifiInfo && [wifiInfo isKindOfClass:[wifiInfo class]])
+    {
+        NSString* wifiName = [wifiInfo objectForKey:@"SSID"];
+        if([wifiName length])
+            return wifiName;
+    }
+    
+    return @"";
+}
+
++ (NSString*)getMacAddress
+{
+    NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
+    NSString* macAddress = [temp objectForKey:@"mac_address"];
+    if([macAddress length])
+        return macAddress;
+    
+    return @"";
+}
+
++ (void)saveMacAddress:(NSString*)mac
+{
+    if([mac length])
+    {
+        NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
+        [temp setObject:mac forKey:@"mac_address"];
+        [temp synchronize];
+    }
+}
+
 @end

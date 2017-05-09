@@ -16,7 +16,7 @@
 #import "UIView+TYAlertView.h"
 #import "OpenAppView.h"
 #import "RCSettingsViewController.h"
-
+#import "RCCheckWifi.h"
 
 #define AD_FRAME_HEIGHT 250.0
 #define SCROLL_LABEL_HEIGHT 60.0
@@ -42,8 +42,10 @@
         self.view.backgroundColor = BG_COLOR;
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting_button"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftBarButtonItem:)];
-   
         
+        self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+            [self checkWifiConnection];
+        }];
     }
     return self;
 }
@@ -106,24 +108,24 @@
         case ReachableViaWiFi:
         {
             NSLog(@"The internet is working via WIFI.");
-            self.isWifiConnected = YES;
+            //self.isWifiConnected = YES;
             break;
         }
         case NotReachable:
         {
             NSLog(@"The internet is down.");
-            self.isWifiConnected = NO;
+            //self.isWifiConnected = NO;
             break;
         }
         case ReachableViaWWAN:
         {
             NSLog(@"The internet is working via WWAN.");
-            self.isWifiConnected = NO;
+            //self.isWifiConnected = NO;
             break;
         }
     }
     
-    [self updateWifiConnectionStatus];
+    [self checkWifiConnection];
 }
 
 - (void)updateWifiConnectionStatus
@@ -335,7 +337,7 @@
     switch (tag) {
         case 500:
         {
-            [self checkWifiConnection];
+            [[RCCheckWifi sharedInstance] checkWifiConnection];
             break;
         }
         case 501:
@@ -438,6 +440,9 @@
 
 - (void)checkWifiConnection
 {
+    if(self.isChecking)
+        return;
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString* urlString = [@"http://www.baidu.com" stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString: urlString]];
@@ -452,7 +457,6 @@
     if (urlConnection)
     {
         self.isChecking = YES;
-        [RCTool showIndicator:@"检测中..."];
     }
     else
     {
@@ -471,6 +475,31 @@
 {
 }
 
+- (NSURLRequest *)connection:(NSURLConnection *)connection willSendRequest:(NSURLRequest *)request redirectResponse:(NSURLResponse *)response {
+    
+    NSLog(@"----will send request\n%@", [request URL]);
+    NSLog(@"----redirect response\n%@", [response URL]);
+    
+    NSString* redirectUrl = [response URL].absoluteString;
+    if(redirectUrl.length)
+    {
+        NSRange range =  [redirectUrl rangeOfString:@"wlanstamac"];
+        if(range.location != NSNotFound)
+        {
+            NSString* temp = [redirectUrl substringFromIndex:range.location+range.length+1];
+            range = [temp rangeOfString:@"&"];
+            if(range.location != NSNotFound)
+            {
+                NSString* macAddress = [temp substringToIndex:range.location];
+                if(macAddress.length)
+                    [RCTool saveMacAddress:macAddress];
+            }
+        }
+    }
+    
+    return request;
+}
+
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
     self.isChecking = NO;
@@ -480,35 +509,16 @@
     
     if(200 == self.httpStatusCode)
     {
-        NSString* wifiName = @"";
-        NSDictionary* wifiInfo = [RCTool getWifiInfo];
-        if(wifiInfo && [wifiInfo isKindOfClass:[wifiInfo class]])
+        //if([RCTool isReachableViaWiFi])
         {
-            wifiName = [wifiInfo objectForKey:@"SSID"];
+            self.isWifiConnected = YES;
+            [self updateWifiConnectionStatus];
         }
-        
-        if(0 == [wifiName length])
-            wifiName = @"";
-        
-        NSString* phoneNumber = @"";
-        NSDictionary* userInfo = [RCTool getUserInfo];
-        if(userInfo)
-        {
-            phoneNumber = [userInfo objectForKey:@"mobile"];
-        }
-        
-        if(0 == [phoneNumber length])
-            phoneNumber = @"";
-        
-        NSString* urlString = [NSString stringWithFormat:@"http://downapp.tfeyes.com:8081/home/index/onlinestatus.html?macaddress=%@&wifiname=%@&gdmobile=%@",@"",wifiName,phoneNumber];
-        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
-        temp.hidesBottomBarWhenPushed = YES;
-        [temp updateContent:urlString title:nil];
-        [self.navigationController pushViewController:temp animated:YES];
     }
     else
     {
-
+        self.isWifiConnected = NO;
+        [self updateWifiConnectionStatus];
     }
 }
 
@@ -518,88 +528,11 @@
     self.isChecking = NO;
     [RCTool hideIndicator];
     
-    NSLog(@"checkWifiConnection, fail:%d",self.httpStatusCode);
+    self.isWifiConnected = NO;
+    [self updateWifiConnectionStatus];
     
-    if(302 == self.httpStatusCode)
-    {
-    }
-    else
-    {
-        
-    }
-
+    NSLog(@"checkWifiConnection, fail:%d",self.httpStatusCode);
 }
-
-//- (void)clickedScanButton:(id)sender
-//{
-//    NSLog(@"clickedScanButton");
-//    
-//    // ADD: present a barcode reader that scans from the camera feed
-//    ZBarReaderViewController *reader = [ZBarReaderViewController new];
-//    reader.readerDelegate = self;
-//    reader.supportedOrientationsMask = ZBarOrientationMask(UIInterfaceOrientationPortrait);
-//    
-//    ZBarImageScanner *scanner = reader.scanner;
-//    // TODO: (optional) additional reader configuration here
-//    
-//    // EXAMPLE: disable rarely used I2/5 to improve performance
-//    [scanner setSymbology: ZBAR_I25
-//                   config: ZBAR_CFG_ENABLE
-//                       to: 0];
-//    
-//    // present and release the controller
-//    [self presentModalViewController: reader
-//                            animated: YES];
-//
-//}
-
-//- (void) imagePickerController: (UIImagePickerController*) reader
-// didFinishPickingMediaWithInfo: (NSDictionary*) info
-//{
-//    [RCTool playSound:@"done.caf"];
-//    // ADD: get the decode results
-//    id<NSFastEnumeration> results =
-//    [info objectForKey: ZBarReaderControllerResults];
-//    ZBarSymbol *symbol = nil;
-//    for(symbol in results)
-//        // EXAMPLE: just grab the first barcode
-//        break;
-//    
-//    NSLog(@"code:%@",symbol.data);
-//
-//    NSString* urlString = symbol.data;
-//    //    // EXAMPLE: do something useful with the barcode data
-//    //    resultText.text = symbol.data;
-//    //
-//    //    // EXAMPLE: do something useful with the barcode image
-//    //    resultImage.image =
-//    //    [info objectForKey: UIImagePickerControllerOriginalImage];
-//    
-//    // ADD: dismiss the controller (NB dismiss from the *reader*!)
-//    [reader dismissModalViewControllerAnimated: YES];
-//    
-//    if([urlString hasPrefix:@"http:"] || [urlString hasPrefix:@"https:"])
-//    {
-//        RCWebViewController* temp = [[RCWebViewController alloc] init:NO];
-//        temp.hidesBottomBarWhenPushed = YES;
-//        [temp updateContent:urlString title:nil];
-//        [self.navigationController pushViewController:temp animated:YES];
-//
-//    }
-//}
-
-
-//#pragma mark - Selection Area
-//
-//- (void)clickedSelectionButton:(id)sender
-//{
-//    NSLog(@"clickedSelectionButton");
-//
-//    RCCityTableViewController* temp = [[RCCityTableViewController alloc] initWithNibName:nil bundle:nil];
-//    temp.hidesBottomBarWhenPushed = YES;
-//    [temp updateContent:nil];
-//    [self.navigationController pushViewController:temp animated:YES];
-//}
 
 
 @end

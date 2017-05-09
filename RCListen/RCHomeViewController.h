@@ -25,6 +25,8 @@
 @property(nonatomic, assign)BOOL isWifiConnected;
 @property(nonatomic, assign)int httpStatusCode;
 @property(nonatomic, assign)BOOL isChecking;
+@property(nonatomic, assign)BOOL isClickedWifiButton;
+@property(nonatomic, strong)NSTimer* checkTimer;
 
 @property(nonatomic, strong)RCScrollLabel* scrollLabel;
 

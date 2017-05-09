@@ -21,11 +21,7 @@
 {
     [super viewWillAppear:animated];
     
-    NSDictionary* userInfo = [RCTool getUserInfo];
-    if(userInfo)
-    {
-        self.phoneNumber.text = [userInfo objectForKey:@"mobile"];
-    }
+    self.phoneNumber.text = [RCTool getPhoneNumber];
 }
 
 - (void)viewDidLoad {

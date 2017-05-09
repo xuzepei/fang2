@@ -236,19 +236,16 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     
 	[self updateToolbarItem];
     
-    NSString* phoneNumber = @"";
-    NSDictionary* userInfo = [RCTool getUserInfo];
-    if(userInfo)
-    {
-        phoneNumber = [userInfo objectForKey:@"mobile"];
-    }
+    NSString* wifiName = [RCTool getWifiName];
+    NSString* phoneNumber = [RCTool getPhoneNumber];
+    NSString* macAddress = [RCTool getMacAddress];
     
     if([phoneNumber length])
     {
         JSContext *context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
         if(context)
         {
-            [context[@"showPhoneNumber"] callWithArguments:@[phoneNumber]];
+            [context[@"userinfo"] callWithArguments:@[phoneNumber,macAddress,wifiName]];
         }
     }
 }
