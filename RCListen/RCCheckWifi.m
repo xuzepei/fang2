@@ -119,16 +119,19 @@
     }
     else if(302 == self.httpStatusCode)
     {
-        UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-        if([naviController.topViewController isKindOfClass:[RCWebViewController class]])
-            return;
-        
-        NSString* urlString = [NSString stringWithFormat:@"http://www.baidu.com"];
-        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
-        temp.hidesBottomBarWhenPushed = YES;
-        [temp updateContent:urlString title:nil];
-        
-        [naviController pushViewController:temp animated:YES];
+        if([RCTool isReachableViaWiFi])
+        {
+            UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+            if([naviController.topViewController isKindOfClass:[RCWebViewController class]])
+                return;
+            
+            NSString* urlString = [NSString stringWithFormat:@"http://www.baidu.com"];
+            RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+            temp.hidesBottomBarWhenPushed = YES;
+            [temp updateContent:urlString title:nil];
+            
+            [naviController pushViewController:temp animated:YES];
+        }
     }
 }
 
@@ -142,16 +145,19 @@
     
     if(302 == self.httpStatusCode)
     {
-        UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-        if([naviController.topViewController isKindOfClass:[RCWebViewController class]])
-            return;
-        
-        NSString* urlString = [NSString stringWithFormat:@"http://www.baidu.com"];
-        RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
-        temp.hidesBottomBarWhenPushed = YES;
-        [temp updateContent:urlString title:nil];
-        
-        [naviController pushViewController:temp animated:YES];
+        if([RCTool isReachableViaWiFi])
+        {
+            UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+            if([naviController.topViewController isKindOfClass:[RCWebViewController class]])
+                return;
+            
+            NSString* urlString = [NSString stringWithFormat:@"http://www.baidu.com"];
+            RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+            temp.hidesBottomBarWhenPushed = YES;
+            [temp updateContent:urlString title:nil];
+            
+            [naviController pushViewController:temp animated:YES];
+        }
     }
     else
     {

@@ -43,15 +43,20 @@
         
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"setting_button"] style:UIBarButtonItemStylePlain target:self action:@selector(clickedLeftBarButtonItem:)];
         
-        self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5 repeats:YES block:^(NSTimer * _Nonnull timer) {
-            [self checkWifiConnection];
-        }];
+//        self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5 repeats:YES block:^(NSTimer * _Nonnull timer) {
+//            [self checkWifiConnection];
+//        }];
+        
+        self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
+        [self.checkTimer fire];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [self.checkTimer invalidate];
+    self.checkTimer = nil;
     self.adScrollView = nil;
     self.tableView = nil;
     self.itemArray = nil;
@@ -88,15 +93,14 @@
     [self updateFunctions];
     [self updateHotNews];
     
-    if([RCTool isReachableViaWiFi])
-    {
-        self.isWifiConnected = YES;
-        [self updateWifiConnectionStatus];
-    }
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(checkNetworkStatus:) name:kReachabilityChangedNotification object:nil];
     self.internetReachable = [Reachability reachabilityForInternetConnection];
     [self.internetReachable startNotifier];
+}
+
+- (void)handleTimer:(NSTimer*)timer
+{
+    [self checkWifiConnection];
 }
 
 - (void)checkNetworkStatus:(NSNotification *)notice
@@ -423,21 +427,6 @@
     }];
 }
 
-- (void)clickedFirstButton
-{
-    if([RCTool isReachableViaWiFi])
-    {
-        if(self.isWifiConnected)
-        {
-            
-        }
-    }
-    else
-    {
-        
-    }
-}
-
 - (void)checkWifiConnection
 {
     if(self.isChecking)
@@ -509,7 +498,7 @@
     
     if(200 == self.httpStatusCode)
     {
-        //if([RCTool isReachableViaWiFi])
+        if([RCTool isReachableViaWiFi])
         {
             self.isWifiConnected = YES;
             [self updateWifiConnectionStatus];
