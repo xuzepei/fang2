@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO">
     <dependencies>
+        <deployment identifier="iOS"/>
         <development version="7000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
     </dependencies>
@@ -44,12 +45,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zcm-Fo-SmX">
-                    <rect key="frame" x="80.5" y="101" width="214" height="28"/>
+                    <rect key="frame" x="80.5" y="101" width="214" height="36"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="28" id="0qm-kS-Pna"/>
+                        <constraint firstAttribute="height" constant="36" id="0qm-kS-Pna"/>
                         <constraint firstAttribute="width" constant="214" id="qc0-VY-WWt"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="切换帐号" backgroundImage="button0.png">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -58,12 +59,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ogk-qv-KKr">
-                    <rect key="frame" x="80.5" y="155" width="214" height="28"/>
+                    <rect key="frame" x="80.5" y="163" width="214" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="214" id="7CH-Ys-JGZ"/>
-                        <constraint firstAttribute="height" constant="28" id="qX3-aV-atA"/>
+                        <constraint firstAttribute="height" constant="36" id="qX3-aV-atA"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="重置密码" backgroundImage="button1.png">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
@@ -72,12 +73,12 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bvj-0e-wfk">
-                    <rect key="frame" x="80.5" y="209" width="214" height="28"/>
+                    <rect key="frame" x="80.5" y="225" width="214" height="36"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="214" id="rra-b0-IaM"/>
-                        <constraint firstAttribute="height" constant="28" id="x6G-f7-SCw"/>
+                        <constraint firstAttribute="height" constant="36" id="x6G-f7-SCw"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="修改密码" backgroundImage="button1.png">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>

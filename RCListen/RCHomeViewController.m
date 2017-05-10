@@ -17,6 +17,7 @@
 #import "OpenAppView.h"
 #import "RCSettingsViewController.h"
 #import "RCCheckWifi.h"
+#import "UIView+Toast.h"
 
 #define AD_FRAME_HEIGHT 250.0
 #define SCROLL_LABEL_HEIGHT 60.0
@@ -138,11 +139,11 @@
     {
         if(self.isWifiConnected)
         {
-            [self.firstButton updateContent:@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"yilianjie"}];
+            [self.firstButton updateContent:@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"yilianjie",@"tag":@"500"}];
         }
         else
         {
-            [self.firstButton updateContent:@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"weilianjie"}];
+            [self.firstButton updateContent:@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"weilianjie",@"tag":@"500"}];
         }
     }
 }
@@ -280,7 +281,7 @@
     if(nil == _itemArray)
     {
         _itemArray = [[NSMutableArray alloc] init];
-        [_itemArray addObjectsFromArray:@[@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"weilianjie"},@{@"text":@"看电影",@"color":@"36bfe1",@"image":@"kandianying"},@{@"text":@"玩游戏",@"color":@"e3c623",@"image":@"wanyouxi"},@{@"text":@"充话费",@"color":@"ff4545",@"image":@"chonghuafei"},@{@"text":@"想家了",@"color":@"b089ff",@"image":@"xiangjiale"},@{@"text":@"买相因",@"color":@"ff7800",@"image":@"maixiangyin"},@{@"text":@"安全须知",@"color":@"6dcf1d",@"image":@"anquanxuzhi"}]];
+        [_itemArray addObjectsFromArray:@[@{@"text":@"上WiFi",@"color":@"36cd9d",@"image":@"weilianjie",@"tag":@"500"},@{@"text":@"看电影",@"color":@"36bfe1",@"image":@"kandianying",@"tag":@"501"},@{@"text":@"玩游戏",@"color":@"e3c623",@"image":@"wanyouxi",@"tag":@"502"},/*@{@"text":@"充话费",@"color":@"ff4545",@"image":@"chonghuafei",@"tag":@"503"},*/@{@"text":@"想家了",@"color":@"b089ff",@"image":@"xiangjiale",@"tag":@"504"},@{@"text":@"买相因",@"color":@"ff7800",@"image":@"maixiangyin",@"tag":@"505"},@{@"text":@"安全须知",@"color":@"6dcf1d",@"image":@"anquanxuzhi",@"tag":@"506"}]];
         
         [self initFunctionButtons];
     }
@@ -294,7 +295,7 @@
     CGFloat buttonWidth = (screenSize.width - offset_x*2 - 10*2)/3.0;
     CGFloat buttonHeight = 60;
     
-    for(int i = 0; i < 7; i++)
+    for(int i = 0; i < [self.itemArray count]; i++)
     {
         int column = i % 3;
         if(i > 0 && column == 0)
@@ -335,9 +336,9 @@
 {
     NSLog(@"clickedFuctionButton:%@",token);
     
-    int tag = button.tag;
-    NSDictionary* item = (NSDictionary*)token;
     
+    NSDictionary* item = (NSDictionary*)token;
+    int tag = [[item objectForKey:@"tag"] intValue];
     switch (tag) {
         case 500:
         {

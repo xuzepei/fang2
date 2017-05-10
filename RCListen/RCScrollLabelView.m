@@ -88,6 +88,7 @@
     CGPoint touchPoint = [[touches anyObject] locationInView:self];
     
     NSString* linkUrl = nil;
+    NSString* title = nil;
     if(CGRectContainsPoint(self.line0Rect, touchPoint))
     {
 //        if(self.delegate && [self.delegate respondsToSelector:@selector(clickedFuctionButton:token:)])
@@ -98,6 +99,7 @@
         if(self.line0)
         {
             linkUrl = [self.line0 objectForKey:@"linkurl"];
+            title = [self.line0 objectForKey:@"title"];
         }
         
         
@@ -107,6 +109,7 @@
         if(self.line1)
         {
             linkUrl = [self.line1 objectForKey:@"linkurl"];
+            title = [self.line1 objectForKey:@"title"];
         }
     }
     
@@ -114,7 +117,7 @@
     {
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;
-        [temp updateContent:linkUrl title:nil];
+        [temp updateContent:linkUrl title:title];
         
         UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
         [naviController pushViewController:temp animated:YES];

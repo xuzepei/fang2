@@ -8,6 +8,7 @@
 
 #import "RCCheckWifi.h"
 #import "RCWebViewController.h"
+#import "UIView+Toast.h"
 
 @implementation RCCheckWifi
 
@@ -59,6 +60,7 @@
     NSString* redirectUrl = [response URL].absoluteString;
     if(redirectUrl.length)
     {
+        [RCTool showText:[NSString stringWithFormat:@"重定向url：%@",redirectUrl]];
         NSRange range =  [redirectUrl rangeOfString:@"wlanstamac"];
         if(range.location != NSNotFound)
         {
@@ -68,7 +70,10 @@
             {
                 NSString* macAddress = [temp substringToIndex:range.location];
                 if(macAddress.length)
+                {
+                    [RCTool showText:[NSString stringWithFormat:@"获取到的mac：%@",redirectUrl]];
                     [RCTool saveMacAddress:macAddress];
+                }
             }
         }
     }
@@ -92,6 +97,8 @@
     [RCTool hideIndicator];
     
     NSLog(@"checkWifiConnection, finish:%d",self.httpStatusCode);
+    
+    [RCTool showText:[NSString stringWithFormat:@"访问baidu成功，HTTP状态码：%d",200]];
     
     if(200 == self.httpStatusCode)
     {
@@ -142,6 +149,8 @@
     [RCTool hideIndicator];
 
     NSLog(@"checkWifiConnection, fail:%d",self.httpStatusCode);
+    
+    [RCTool showText:[NSString stringWithFormat:@"访问baidu失败，HTTP状态码：%d",self.httpStatusCode]];
     
     if(302 == self.httpStatusCode)
     {

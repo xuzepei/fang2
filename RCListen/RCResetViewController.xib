@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="NO">
     <dependencies>
+        <deployment identifier="iOS"/>
         <development version="7000" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
     </dependencies>
@@ -65,12 +66,12 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZF0-MW-gdi">
-                    <rect key="frame" x="80.5" y="151" width="214" height="28"/>
+                    <rect key="frame" x="80.5" y="151" width="214" height="36"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="28" id="BRw-77-Gpn"/>
+                        <constraint firstAttribute="height" constant="36" id="BRw-77-Gpn"/>
                         <constraint firstAttribute="width" constant="214" id="eBF-lF-Yti"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <state key="normal" title="重置密码" backgroundImage="button1.png">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>

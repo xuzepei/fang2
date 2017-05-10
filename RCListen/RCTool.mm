@@ -15,6 +15,7 @@
 #include <ifaddrs.h>
 #include <arpa/inet.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
+#import "UIView+Toast.h"
 
 static int g_reachabilityType = -1;
 
@@ -1245,6 +1246,15 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
         NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
         [temp setObject:mac forKey:@"mac_address"];
         [temp synchronize];
+    }
+}
+
++ (void)showText:(NSString*)text
+{
+    UIView* rootView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
+    if(rootView && [text length])
+    {
+        [rootView makeToast:text];
     }
 }
 
