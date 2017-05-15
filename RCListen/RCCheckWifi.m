@@ -71,7 +71,7 @@
                 NSString* macAddress = [temp substringToIndex:range.location];
                 if(macAddress.length)
                 {
-                    [RCTool showText:[NSString stringWithFormat:@"获取到的mac：%@",redirectUrl]];
+                    [RCTool showText:[NSString stringWithFormat:@"获取到的mac：%@",macAddress]];
                     [RCTool saveMacAddress:macAddress];
                 }
             }
@@ -84,6 +84,8 @@
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     self.httpStatusCode = [(NSHTTPURLResponse*)response statusCode];
+    
+    [RCTool showText:[NSString stringWithFormat:@"-----，HTTP状态码：%d",self.httpStatusCode]];
     NSDictionary* header = [(NSHTTPURLResponse*)response allHeaderFields];
 }
 

@@ -458,6 +458,12 @@
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
     self.httpStatusCode = [(NSHTTPURLResponse*)response statusCode];
+    
+    if(self.httpStatusCode != 200)
+    {
+        [RCTool showText:[NSString stringWithFormat:@"+++++，HTTP状态码：%d",self.httpStatusCode]];
+    }
+    
     NSDictionary* header = [(NSHTTPURLResponse*)response allHeaderFields];
 }
 
@@ -473,6 +479,8 @@
     NSString* redirectUrl = [response URL].absoluteString;
     if(redirectUrl.length)
     {
+        [RCTool showText:[NSString stringWithFormat:@"++++重定向url：%@",redirectUrl]];
+        
         NSRange range =  [redirectUrl rangeOfString:@"wlanstamac"];
         if(range.location != NSNotFound)
         {
@@ -482,7 +490,10 @@
             {
                 NSString* macAddress = [temp substringToIndex:range.location];
                 if(macAddress.length)
+                {
+                    [RCTool showText:[NSString stringWithFormat:@"+++++获取到的mac：%@",macAddress]];
                     [RCTool saveMacAddress:macAddress];
+                }
             }
         }
     }
