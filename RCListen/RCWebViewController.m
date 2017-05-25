@@ -199,6 +199,9 @@
         _indicator.center = CGPointMake([RCTool getScreenSize].width/2.0, [RCTool getScreenSize].height/2.0- 40);
     }
     
+//    NSString* userAgent = [_webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+//    NSLog(@"userAgent:%@",userAgent);
+    
     [_webView addSubview: _indicator];
 }
 
@@ -245,7 +248,7 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
         JSContext *context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
         if(context)
         {
-            [context[@"userinfo"] callWithArguments:@[phoneNumber,macAddress,wifiName]];
+            [context[@"iosuserinfo"] callWithArguments:@[phoneNumber,macAddress,wifiName]];
         }
     }
 }

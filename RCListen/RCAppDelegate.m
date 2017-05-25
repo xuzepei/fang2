@@ -33,7 +33,20 @@
 //	 (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
 //    
 //    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    
+    //TFXQ_GDZJ, Changed user agent of webview
+    
+    UIWebView* webView = [[UIWebView alloc] initWithFrame:CGRectZero];
+    NSString* userAgent = [webView stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+    
+    NSMutableString* temp = [[NSMutableString alloc] init];
+    if(userAgent.length)
+        [temp appendFormat:@"%@ TFXQ_GDZJ",userAgent];
+    else
+        [temp appendString:@"TFXQ_GDZJ"];
 
+    NSDictionary *dictionary = @{@"UserAgent":temp};
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
