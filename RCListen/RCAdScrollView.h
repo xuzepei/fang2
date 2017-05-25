@@ -21,6 +21,7 @@
 @property(nonatomic,retain)UIPageControl* pageControl;
 @property(nonatomic,retain)NSTimer* timer;
 @property(assign)int currentIndex;
+@property(nonatomic,retain)NSMutableArray* adViews;
 
 
 - (void)updateContent:(NSArray*)itemArray;
