@@ -99,7 +99,7 @@
         if(self.line0)
         {
             linkUrl = [self.line0 objectForKey:@"linkurl"];
-            title = [self.line0 objectForKey:@"title"];
+            title = @"消息详情";//[self.line0 objectForKey:@"title"];
         }
         
         
@@ -109,7 +109,7 @@
         if(self.line1)
         {
             linkUrl = [self.line1 objectForKey:@"linkurl"];
-            title = [self.line1 objectForKey:@"title"];
+            title = @"消息详情";//[self.line1 objectForKey:@"title"];
         }
     }
     
@@ -117,6 +117,7 @@
     {
         RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
         temp.hidesBottomBarWhenPushed = YES;
+        temp.needToChangeTitle = YES;
         [temp updateContent:linkUrl title:title];
         
         UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;

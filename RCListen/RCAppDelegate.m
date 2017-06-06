@@ -9,8 +9,7 @@
 #import "RCAppDelegate.h"
 #import "RCTool.h"
 #import "RCHttpRequest.h"
-//#import "UMSocial.h"
-//#import "UMSocialWechatHandler.h"
+#import "UMMobClick/MobClick.h"
 
 #define UPDATE_TAG 122
 
@@ -27,12 +26,32 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    UIApplication* app = [UIApplication sharedApplication];
-//	app.applicationIconBadgeNumber = 0;
-//	[app registerForRemoteNotificationTypes:
-//	 (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
-//    
-//    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    UMConfigInstance.appKey = @"541bcfa8fd98c5b0ce075cd1";
+    UMConfigInstance.channelId = @"App Store";
+    //UMConfigInstance.eSType = E_UM_GAME; //仅适用于游戏场景，应用统计不用设置
+    [MobClick startWithConfigure:UMConfigInstance];//配置以上参数后调用此方法初始化SDK！
+    
+    if (NSClassFromString(@"UNUserNotificationCenter"))
+    {
+        UNUserNotificationCenter *notifiCenter = [UNUserNotificationCenter currentNotificationCenter];
+        notifiCenter.delegate = self;
+        [notifiCenter requestAuthorizationWithOptions:(UNAuthorizationOptionSound | UNAuthorizationOptionAlert | UNAuthorizationOptionBadge) completionHandler:^(BOOL granted, NSError * _Nullable error){
+            if( !error ){
+                [[UIApplication sharedApplication] registerForRemoteNotifications];
+            }
+        }];
+    }
+    else if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
+    {
+        //创建UIUserNotificationSettings，并设置消息的显示类类型
+        UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIRemoteNotificationTypeSound) categories:nil];
+        
+        [application registerUserNotificationSettings:notiSettings];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+        
+    } else{ // ios7
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge                                       |UIRemoteNotificationTypeSound                                      |UIRemoteNotificationTypeAlert)];
+    }
     
     //TFXQ_GDZJ, Changed user agent of webview
     
@@ -327,12 +346,21 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    UIApplication* app = [UIApplication sharedApplication];
-	app.applicationIconBadgeNumber = 0;
-	[app registerForRemoteNotificationTypes:
-	 (UIRemoteNotificationType)(UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeSound)];
+	application.applicationIconBadgeNumber = 0;
     
-    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
+    if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)])
+    {
+        //IOS8
+        //创建UIUserNotificationSettings，并设置消息的显示类类型
+        UIUserNotificationSettings *notiSettings = [UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge | UIUserNotificationTypeAlert | UIRemoteNotificationTypeSound) categories:nil];
+        
+        [application registerUserNotificationSettings:notiSettings];
+        
+    } else{ // ios7
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge                                       |UIRemoteNotificationTypeSound                                      |UIRemoteNotificationTypeAlert)];
+    }
+    
+    [application beginReceivingRemoteControlEvents];
     
     NSError *setCategoryErr = nil;
     NSError *activationErr  = nil;
@@ -457,15 +485,15 @@
     NSString* temp = [devToken description];
 	NSString* token = [temp stringByTrimmingCharactersInSet:
 					   [NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-	NSLog(@"token:%@",token);
+	NSLog(@"device-token:%@",token);
     
 	token = [token stringByReplacingOccurrencesOfString:@" " withString:@""];
     [RCTool setDeviceToken:token];
     
-    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=index&iostoken=%@",BASE_URL,APIID,PWD,token];
-    
-    RCHttpRequest* temp2 = [[RCHttpRequest alloc] init] ;
-    [temp2 request:urlString delegate:self resultSelector:nil token:nil];
+//    NSString* urlString = [NSString stringWithFormat:@"%@/ad.php?apiid=%@&apikey=%@&type=index&iostoken=%@",BASE_URL,APIID,PWD,token];
+//    
+//    RCHttpRequest* temp2 = [[RCHttpRequest alloc] init] ;
+//    [temp2 request:urlString delegate:self resultSelector:nil token:nil];
 }
 
 - (void)application:(UIApplication *)app didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)devToken
@@ -475,7 +503,7 @@
 
 - (void)application:(UIApplication *)app didFailToRegisterForRemoteNotificationsWithError:(NSError *)err
 {
-    NSLog(@"Error in registration. Error: %@", err);
+    NSLog(@"didFailToRegisterForRemoteNotificationsWithError. Error: %@", err);
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo
@@ -488,9 +516,9 @@
 	else
 	{
 		NSString* message = [userInfo valueForKeyPath:@"aps.alert"];
-		if([message length])
+		if(message && [message length])
 		{
-			UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"房管家"
+			UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"工地之家"
 															message: message delegate: self
 												  cancelButtonTitle: @"确定"
 												  otherButtonTitles: nil];

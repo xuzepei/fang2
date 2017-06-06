@@ -122,11 +122,12 @@
         if(self.item)
         {
             NSString* linkUrl = [self.item objectForKey:@"linkurl"];
-            NSString* title = [self.item objectForKey:@"title"];
+            NSString* title = @"消息详情";//[self.item objectForKey:@"title"];
             if([linkUrl length])
             {
                 RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
                 temp.hidesBottomBarWhenPushed = YES;
+                temp.needToChangeTitle = YES;
                 [temp updateContent:linkUrl title:title];
                 
                 UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;

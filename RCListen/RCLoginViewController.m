@@ -103,7 +103,7 @@
     }
     
     
-    NSString* urlString = [NSString stringWithFormat:@"%@?m=%@&c=%@&a=%@&t=%f&mobile=%@&password=%@",BASE_URL,@"api",@"user",@"login",[NSDate date].timeIntervalSince1970,self.phoneNumber.text,self.password.text];
+    NSString* urlString = [NSString stringWithFormat:@"%@?m=%@&c=%@&a=%@&t=%f&mobile=%@&password=%@&token=%@",BASE_URL,@"api",@"user",@"login",[NSDate date].timeIntervalSince1970,self.phoneNumber.text,self.password.text,[RCTool getDeviceToken]];
     
     
     RCHttpRequest* temp = [[RCHttpRequest alloc] init];

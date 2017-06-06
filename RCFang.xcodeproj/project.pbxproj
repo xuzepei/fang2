@@ -10,9 +10,12 @@
 		0900D8D41956703F00760212 /* quxdd_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0900D8D21956703F00760212 /* quxdd_on@2x.png */; };
 		0900D8D51956703F00760212 /* quxdd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0900D8D31956703F00760212 /* quxdd@2x.png */; };
 		0900D8D719567BB200760212 /* yifb@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0900D8D619567BB200760212 /* yifb@2x.png */; };
+		09040A4F1EE6DB6C00E19347 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09040A4D1EE6DB6C00E19347 /* UserNotifications.framework */; };
+		09040A501EE6DB6C00E19347 /* UserNotificationsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09040A4E1EE6DB6C00E19347 /* UserNotificationsUI.framework */; };
 		090507B619EE24820008AA3E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 090507B519EE24820008AA3E /* Images.xcassets */; };
 		09064E04170859AE00BA0258 /* RCLaunchAdView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09064E03170859AE00BA0258 /* RCLaunchAdView.m */; };
 		09073E8617335B4D00416E2D /* favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09073E8517335B4D00416E2D /* favorites@2x.png */; };
+		0907E7141EE70A2E00400507 /* UMMobClick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0907E7131EE70A2E00400507 /* UMMobClick.framework */; };
 		090E3C13170C5C8700217C33 /* launch_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 090E3C12170C5C8700217C33 /* launch_default@2x.png */; };
 		090F10C1194295CD0062A5B3 /* djt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 090F10B2194295CD0062A5B3 /* djt@2x.png */; };
 		090F10C2194295CD0062A5B3 /* login@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 090F10B3194295CD0062A5B3 /* login@2x.png */; };
@@ -152,6 +155,7 @@
 		09C678141EBADB1C006F250D /* zuixin@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678081EBADB1C006F250D /* zuixin@3x.png */; };
 		09C678161EBADB25006F250D /* anquanxuzhi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678151EBADB25006F250D /* anquanxuzhi@3x.png */; };
 		09C678181EBADB64006F250D /* login_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 09C678171EBADB64006F250D /* login_bg.png */; };
+		09CD85E11EE59266003CD19E /* RCFangTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 09CD85E01EE59266003CD19E /* RCFangTests.m */; };
 		09CF7EDE16A3D7740050A603 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CF7EDD16A3D7740050A603 /* UIKit.framework */; };
 		09CF7EE016A3D7740050A603 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CF7EDF16A3D7740050A603 /* Foundation.framework */; };
 		09CF7EE216A3D7740050A603 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09CF7EE116A3D7740050A603 /* CoreGraphics.framework */; };
@@ -294,14 +298,27 @@
 		09FF094B16EC54210083CE91 /* location_button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 09FF094A16EC54210083CE91 /* location_button@2x.png */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		09CD85E31EE59266003CD19E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 09CF7ED016A3D7740050A603 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 09CF7ED816A3D7740050A603;
+			remoteInfo = RCFang;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		0900D8D21956703F00760212 /* quxdd_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quxdd_on@2x.png"; sourceTree = "<group>"; };
 		0900D8D31956703F00760212 /* quxdd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "quxdd@2x.png"; sourceTree = "<group>"; };
 		0900D8D619567BB200760212 /* yifb@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "yifb@2x.png"; sourceTree = "<group>"; };
+		09040A4D1EE6DB6C00E19347 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		09040A4E1EE6DB6C00E19347 /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
 		090507B519EE24820008AA3E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = RCFang/Images.xcassets; sourceTree = SOURCE_ROOT; };
 		09064E02170859AE00BA0258 /* RCLaunchAdView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCLaunchAdView.h; sourceTree = "<group>"; };
 		09064E03170859AE00BA0258 /* RCLaunchAdView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCLaunchAdView.m; sourceTree = "<group>"; };
 		09073E8517335B4D00416E2D /* favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "favorites@2x.png"; sourceTree = "<group>"; };
+		0907E7131EE70A2E00400507 /* UMMobClick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMMobClick.framework; sourceTree = "<group>"; };
 		090E3C12170C5C8700217C33 /* launch_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "launch_default@2x.png"; sourceTree = "<group>"; };
 		090F10B2194295CD0062A5B3 /* djt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "djt@2x.png"; sourceTree = "<group>"; };
 		090F10B3194295CD0062A5B3 /* login@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login@2x.png"; sourceTree = "<group>"; };
@@ -449,6 +466,10 @@
 		09C678081EBADB1C006F250D /* zuixin@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "zuixin@3x.png"; sourceTree = "<group>"; };
 		09C678151EBADB25006F250D /* anquanxuzhi@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "anquanxuzhi@3x.png"; sourceTree = "<group>"; };
 		09C678171EBADB64006F250D /* login_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_bg.png; sourceTree = "<group>"; };
+		09CD85DE1EE59266003CD19E /* RCFangTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RCFangTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		09CD85E01EE59266003CD19E /* RCFangTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCFangTests.m; sourceTree = "<group>"; };
+		09CD85E21EE59266003CD19E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		09CD85E81EE5C79C003CD19E /* RCFang.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = RCFang.entitlements; path = RCFang/RCFang.entitlements; sourceTree = SOURCE_ROOT; };
 		09CF7ED916A3D7740050A603 /* RCFang.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RCFang.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09CF7EDD16A3D7740050A603 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		09CF7EDF16A3D7740050A603 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -684,10 +705,19 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		09CD85DB1EE59266003CD19E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09CF7ED616A3D7740050A603 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09040A4F1EE6DB6C00E19347 /* UserNotifications.framework in Frameworks */,
+				09040A501EE6DB6C00E19347 /* UserNotificationsUI.framework in Frameworks */,
 				0920238F172E38B5009EAB94 /* libz.dylib in Frameworks */,
 				09D1391E1A013C600090BEE2 /* libstdc++.dylib in Frameworks */,
 				09D1391C1A013C560090BEE2 /* CoreTelephony.framework in Frameworks */,
@@ -696,6 +726,7 @@
 				09CF7F2D16A3EAB30050A603 /* Security.framework in Frameworks */,
 				09CF7F2316A3EA810050A603 /* SystemConfiguration.framework in Frameworks */,
 				09DECFB4198E340D00B08941 /* OpenGLES.framework in Frameworks */,
+				0907E7141EE70A2E00400507 /* UMMobClick.framework in Frameworks */,
 				09CF7F2F16A3EAB90050A603 /* QuartzCore.framework in Frameworks */,
 				09CF7EE216A3D7740050A603 /* CoreGraphics.framework in Frameworks */,
 				0913C3C816F9537C00D74A27 /* CoreLocation.framework in Frameworks */,
@@ -904,12 +935,22 @@
 			path = Toast;
 			sourceTree = "<group>";
 		};
+		09CD85DF1EE59266003CD19E /* RCFangTests */ = {
+			isa = PBXGroup;
+			children = (
+				09CD85E01EE59266003CD19E /* RCFangTests.m */,
+				09CD85E21EE59266003CD19E /* Info.plist */,
+			);
+			path = RCFangTests;
+			sourceTree = "<group>";
+		};
 		09CF7ECE16A3D7740050A603 = {
 			isa = PBXGroup;
 			children = (
 				09FF094216EC50450083CE91 /* Icon@2x.png */,
 				09FF094016EC503A0083CE91 /* Icon.png */,
 				09CF7EE516A3D7740050A603 /* RCFang */,
+				09CD85DF1EE59266003CD19E /* RCFangTests */,
 				09CF7EDC16A3D7740050A603 /* Frameworks */,
 				09CF7EDA16A3D7740050A603 /* Products */,
 			);
@@ -919,6 +960,7 @@
 			isa = PBXGroup;
 			children = (
 				09CF7ED916A3D7740050A603 /* RCFang.app */,
+				09CD85DE1EE59266003CD19E /* RCFangTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -926,6 +968,8 @@
 		09CF7EDC16A3D7740050A603 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				09040A4D1EE6DB6C00E19347 /* UserNotifications.framework */,
+				09040A4E1EE6DB6C00E19347 /* UserNotificationsUI.framework */,
 				09D1391D1A013C600090BEE2 /* libstdc++.dylib */,
 				09D1391B1A013C560090BEE2 /* CoreTelephony.framework */,
 				09D139191A013C4F0090BEE2 /* libsqlite3.dylib */,
@@ -958,6 +1002,7 @@
 		09CF7EE516A3D7740050A603 /* RCFang */ = {
 			isa = PBXGroup;
 			children = (
+				09CD85E81EE5C79C003CD19E /* RCFang.entitlements */,
 				09F5A9651EC0C4F700EECE14 /* NSAttributedString+Attributes.h */,
 				09F5A9661EC0C4F700EECE14 /* NSAttributedString+Attributes.m */,
 				09F5A9671EC0C4F700EECE14 /* OpenAppView */,
@@ -1068,6 +1113,7 @@
 		09F5A9A71EC0C4F700EECE14 /* ThirdParty */ = {
 			isa = PBXGroup;
 			children = (
+				0907E7131EE70A2E00400507 /* UMMobClick.framework */,
 				09A357831EC34E7E00189440 /* Toast */,
 				09F5A9A81EC0C4F700EECE14 /* ASIHTTPRequest */,
 				09F5A9E31EC0C4F700EECE14 /* FGallery */,
@@ -1347,6 +1393,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		09CD85DD1EE59266003CD19E /* RCFangTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 09CD85E71EE59266003CD19E /* Build configuration list for PBXNativeTarget "RCFangTests" */;
+			buildPhases = (
+				09CD85DA1EE59266003CD19E /* Sources */,
+				09CD85DB1EE59266003CD19E /* Frameworks */,
+				09CD85DC1EE59266003CD19E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				09CD85E41EE59266003CD19E /* PBXTargetDependency */,
+			);
+			name = RCFangTests;
+			productName = RCFangTests;
+			productReference = 09CD85DE1EE59266003CD19E /* RCFangTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		09CF7ED816A3D7740050A603 /* RCFang */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09CF7EFC16A3D7740050A603 /* Build configuration list for PBXNativeTarget "RCFang" */;
@@ -1374,8 +1438,19 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = xuzepei;
 				TargetAttributes = {
+					09CD85DD1EE59266003CD19E = {
+						CreatedOnToolsVersion = 8.3.2;
+						DevelopmentTeam = P7FW4U6W4G;
+						ProvisioningStyle = Manual;
+						TestTargetID = 09CF7ED816A3D7740050A603;
+					};
 					09CF7ED816A3D7740050A603 = {
 						DevelopmentTeam = 86WCPL8Z9L;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1394,11 +1469,19 @@
 			projectRoot = "";
 			targets = (
 				09CF7ED816A3D7740050A603 /* RCFang */,
+				09CD85DD1EE59266003CD19E /* RCFangTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		09CD85DC1EE59266003CD19E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09CF7ED716A3D7740050A603 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1575,6 +1658,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		09CD85DA1EE59266003CD19E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				09CD85E11EE59266003CD19E /* RCFangTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		09CF7ED516A3D7740050A603 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1678,7 +1769,75 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		09CD85E41EE59266003CD19E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 09CF7ED816A3D7740050A603 /* RCFang */;
+			targetProxy = 09CD85E31EE59266003CD19E /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		09CD85E51EE59266003CD19E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: gongdizhijia.app.com";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: gongdizhijia.app.com";
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = P7FW4U6W4G;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = RCFangTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.poolparty.RCFangTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RCFang.app/RCFang";
+			};
+			name = Debug;
+		};
+		09CD85E61EE59266003CD19E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CODE_SIGN_IDENTITY = "Apple Development IOS Push Services: gongdizhijia.app.com";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "Apple Development IOS Push Services: gongdizhijia.app.com";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = RCFangTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.app.poolparty.RCFangTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RCFang.app/RCFang";
+			};
+			name = Release;
+		};
 		09CF7EFA16A3D7740050A603 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1763,11 +1922,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = RCFang/RCFang.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RCListen/ThirdParty",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RCListen/RCFang-Prefix.pch";
 				HEADER_SEARCH_PATHS = " $(SDKROOT)/usr/include/libxml2";
@@ -1781,9 +1944,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gongdizhijia.app.com;
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
-				PROVISIONING_PROFILE_SPECIFIER = gongdizhijia_dev;
+				PROVISIONING_PROFILE = "0906527b-148d-499f-adf7-05be7bf1364f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0906527b-148d-499f-adf7-05be7bf1364f";
+				PROVISIONING_PROFILE_SPECIFIER = gdzj_dev3;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1797,11 +1960,15 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CODE_SIGN_ENTITLEMENTS = RCFang/RCFang.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: YONGZHI QI (PYNC667T6K)";
 				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = NO;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/RCListen/ThirdParty",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RCListen/RCFang-Prefix.pch";
 				HEADER_SEARCH_PATHS = " $(SDKROOT)/usr/include/libxml2";
@@ -1815,9 +1982,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = gongdizhijia.app.com;
 				PRODUCT_NAME = RCFang;
-				PROVISIONING_PROFILE = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "6669cc04-5bfe-4e86-bb89-617b5018ebd8";
-				PROVISIONING_PROFILE_SPECIFIER = gongdizhijia_dev;
+				PROVISIONING_PROFILE = "0906527b-148d-499f-adf7-05be7bf1364f";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0906527b-148d-499f-adf7-05be7bf1364f";
+				PROVISIONING_PROFILE_SPECIFIER = gdzj_dev3;
 				TARGETED_DEVICE_FAMILY = 1;
 				VALID_ARCHS = "armv7 armv7s arm64";
 				WRAPPER_EXTENSION = app;
@@ -1827,6 +1994,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		09CD85E71EE59266003CD19E /* Build configuration list for PBXNativeTarget "RCFangTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				09CD85E51EE59266003CD19E /* Debug */,
+				09CD85E61EE59266003CD19E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		09CF7ED316A3D7740050A603 /* Build configuration list for PBXProject "RCFang" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

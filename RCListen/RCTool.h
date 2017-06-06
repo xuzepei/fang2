@@ -132,6 +132,9 @@
 + (NSString*)getMacAddress;
 + (void)saveMacAddress:(NSString*)mac;
 
++ (NSString*)getIPAddress;
++ (void)saveIPAddress:(NSString*)ip;
+
 + (void)showText:(NSString*)text;
 
 @end

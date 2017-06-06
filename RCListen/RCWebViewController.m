@@ -242,14 +242,21 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
     NSString* wifiName = [RCTool getWifiName];
     NSString* phoneNumber = [RCTool getPhoneNumber];
     NSString* macAddress = [RCTool getMacAddress];
+    NSString* userip = [RCTool getIPAddress];
     
     if([phoneNumber length])
     {
         JSContext *context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
         if(context)
         {
-            [context[@"iosuserinfo"] callWithArguments:@[phoneNumber,macAddress,wifiName]];
+            [context[@"iosuserinfo"] callWithArguments:@[phoneNumber,macAddress,wifiName,userip]];
         }
+    }
+    
+    if(self.needToChangeTitle)
+    {
+        NSString* title = [_webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+        self.title = title;
     }
 }
 

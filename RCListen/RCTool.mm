@@ -205,6 +205,20 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     return SSIDInfo;
 }
 
++ (NSString*)getIP {
+    
+    NSError *error;
+    NSURL *ipURL = [NSURL URLWithString:@"http://ipof.in/txt"];
+    NSString*ip = [NSString stringWithContentsOfURL:ipURL encoding:NSUTF8StringEncoding error:&error];
+    
+    if(error == nil)
+        return ip;
+    else
+        NSLog(@"getIP, error:%@",error.localizedDescription);
+    
+    return @"";
+}
+
 + (BOOL)saveImage:(NSData*)data path:(NSString*)path
 {
 	if(nil == data || 0 == [path length])
@@ -1133,14 +1147,14 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
         return;
     
     NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
-    [temp setObject:token forKey:@"token"];
+    [temp setObject:token forKey:@"device_token"];
     [temp synchronize];
 }
 
 + (NSString*)getDeviceToken
 {
     NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
-    NSString* token = [temp objectForKey:@"token"];
+    NSString* token = [temp objectForKey:@"device_token"];
     if([token length])
         return token;
     
@@ -1245,6 +1259,26 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     {
         NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
         [temp setObject:mac forKey:@"mac_address"];
+        [temp synchronize];
+    }
+}
+
++ (NSString*)getIPAddress
+{
+    NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
+    NSString* ipAddress = [temp objectForKey:@"ip_address"];
+    if([ipAddress length])
+        return ipAddress;
+    
+    return @"";
+}
+
++ (void)saveIPAddress:(NSString*)ip
+{
+    if([ip length])
+    {
+        NSUserDefaults* temp = [NSUserDefaults standardUserDefaults];
+        [temp setObject:ip forKey:@"ip_address"];
         [temp synchronize];
     }
 }

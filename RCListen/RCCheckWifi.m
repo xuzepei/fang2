@@ -60,19 +60,39 @@
     NSString* redirectUrl = [response URL].absoluteString;
     if(redirectUrl.length)
     {
-        [RCTool showText:[NSString stringWithFormat:@"重定向url：%@",redirectUrl]];
-        NSRange range =  [redirectUrl rangeOfString:@"wlanstamac"];
+        [RCTool showText:[NSString stringWithFormat:@"++++重定向url：%@",redirectUrl]];
+        
+        NSRange range =  [redirectUrl rangeOfString:@"&ip="];
         if(range.location != NSNotFound)
         {
-            NSString* temp = [redirectUrl substringFromIndex:range.location+range.length+1];
+            NSString* temp = [redirectUrl substringFromIndex:range.location+range.length];
             range = [temp rangeOfString:@"&"];
             if(range.location != NSNotFound)
             {
-                NSString* macAddress = [temp substringToIndex:range.location];
-                if(macAddress.length)
+                NSString* ipAddress = [temp substringToIndex:range.location];
+                if(ipAddress.length)
                 {
-                    [RCTool showText:[NSString stringWithFormat:@"获取到的mac：%@",macAddress]];
-                    [RCTool saveMacAddress:macAddress];
+                    [RCTool showText:[NSString stringWithFormat:@"+++++获取到的IP地址：%@",ipAddress]];
+                    [RCTool saveIPAddress:ipAddress];
+                }
+                
+                
+                //mac address
+                NSRange range = [temp rangeOfString:@"&mac="];
+                if(range.location != NSNotFound)
+                {
+                    temp = [temp substringFromIndex:range.location+range.length];
+                    
+                    range = [temp rangeOfString:@"&"];
+                    if(range.location != NSNotFound)
+                    {
+                        NSString* macAddress = [temp substringToIndex:range.location];
+                        if(macAddress.length)
+                        {
+                            [RCTool showText:[NSString stringWithFormat:@"+++++获取到的mac：%@",macAddress]];
+                            [RCTool saveMacAddress:macAddress];
+                        }
+                    }
                 }
             }
         }
@@ -80,6 +100,7 @@
     
     return request;
 }
+
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
@@ -116,7 +137,9 @@
             
             if([phoneNumber length])
             {
-                NSString* urlString = [NSString stringWithFormat:@"http://downapp.tfeyes.com:8081/home/index/onlinestatus.html?macaddress=%@&wifiname=%@&gdmobile=%@",@"",wifiName,phoneNumber];
+                //NSString* urlString = [NSString stringWithFormat:@"http://downapp.tfeyes.com:8081/home/index/onlinestatus.html?macaddress=%@&wifiname=%@&gdmobile=%@",@"",wifiName,phoneNumber];
+                
+                NSString* urlString = [NSString stringWithFormat:@"http://downapp.tfeyes.com:8081/auth/wifidogAuth/portal.html"];
                 RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
                 temp.hidesBottomBarWhenPushed = YES;
                 [temp updateContent:urlString title:nil];

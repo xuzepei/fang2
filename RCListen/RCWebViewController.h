@@ -18,6 +18,7 @@
 @property(nonatomic,retain)UIBarButtonItem* backwardItem;
 @property(nonatomic,retain)UIBarButtonItem* forwardItem;
 @property(nonatomic,assign)BOOL hideToolbar;
+@property(nonatomic,assign)BOOL needToChangeTitle;
 
 
 - (id)init:(BOOL)hideToolbar;

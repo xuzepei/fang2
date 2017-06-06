@@ -462,7 +462,14 @@
     if(self.httpStatusCode != 200)
     {
         [RCTool showText:[NSString stringWithFormat:@"+++++，HTTP状态码：%d",self.httpStatusCode]];
+        
+        if(self.httpStatusCode == 302)
+        {
+            self.isWifiConnected = NO;
+            [self updateWifiConnectionStatus];
+        }
     }
+
     
     NSDictionary* header = [(NSHTTPURLResponse*)response allHeaderFields];
 }
@@ -481,18 +488,37 @@
     {
         [RCTool showText:[NSString stringWithFormat:@"++++重定向url：%@",redirectUrl]];
         
-        NSRange range =  [redirectUrl rangeOfString:@"wlanstamac"];
+        NSRange range =  [redirectUrl rangeOfString:@"&ip="];
         if(range.location != NSNotFound)
         {
-            NSString* temp = [redirectUrl substringFromIndex:range.location+range.length+1];
+            NSString* temp = [redirectUrl substringFromIndex:range.location+range.length];
             range = [temp rangeOfString:@"&"];
             if(range.location != NSNotFound)
             {
-                NSString* macAddress = [temp substringToIndex:range.location];
-                if(macAddress.length)
+                NSString* ipAddress = [temp substringToIndex:range.location];
+                if(ipAddress.length)
                 {
-                    [RCTool showText:[NSString stringWithFormat:@"+++++获取到的mac：%@",macAddress]];
-                    [RCTool saveMacAddress:macAddress];
+                    [RCTool showText:[NSString stringWithFormat:@"+++++获取到的IP地址：%@",ipAddress]];
+                    [RCTool saveIPAddress:ipAddress];
+                }
+                
+                
+                //mac address
+                NSRange range = [temp rangeOfString:@"&mac="];
+                if(range.location != NSNotFound)
+                {
+                    temp = [temp substringFromIndex:range.location+range.length];
+                    
+                    range = [temp rangeOfString:@"&"];
+                    if(range.location != NSNotFound)
+                    {
+                        NSString* macAddress = [temp substringToIndex:range.location];
+                        if(macAddress.length)
+                        {
+                            [RCTool showText:[NSString stringWithFormat:@"+++++获取到的mac：%@",macAddress]];
+                            [RCTool saveMacAddress:macAddress];
+                        }
+                    }
                 }
             }
         }

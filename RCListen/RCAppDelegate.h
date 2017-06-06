@@ -11,8 +11,9 @@
 #import <AVFoundation/AVFoundation.h>
 #import "RCLaunchAdView.h"
 #import <StoreKit/StoreKit.h>
+#import <UserNotifications/UserNotifications.h>
 
-@interface RCAppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate,SKStoreProductViewControllerDelegate>
+@interface RCAppDelegate : UIResponder <UIApplicationDelegate,UIAlertViewDelegate,SKStoreProductViewControllerDelegate, UNUserNotificationCenterDelegate>
 {
     UIBackgroundTaskIdentifier _bgTask;
 }
