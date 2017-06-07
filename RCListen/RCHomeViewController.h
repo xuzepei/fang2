@@ -27,6 +27,7 @@
 @property(nonatomic, assign)BOOL isChecking;
 @property(nonatomic, assign)BOOL isClickedWifiButton;
 @property(nonatomic, strong)NSTimer* checkTimer;
+@property(nonatomic, assign)BOOL isRedirected;
 
 @property(nonatomic, strong)RCScrollLabel* scrollLabel;
 

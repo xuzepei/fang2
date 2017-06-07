@@ -433,6 +433,8 @@
     if(self.isChecking)
         return;
     
+    self.isRedirected = NO;
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString* urlString = [@"http://www.baidu.com" stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString: urlString]];
@@ -482,7 +484,7 @@
     
     NSLog(@"----will send request\n%@", [request URL]);
     NSLog(@"----redirect response\n%@", [response URL]);
-    
+
     NSString* redirectUrl = [response URL].absoluteString;
     if(redirectUrl.length)
     {
@@ -524,6 +526,14 @@
         }
     }
     
+    if(302 == [(NSHTTPURLResponse*)response statusCode] || redirectUrl.length)
+    {
+        self.isRedirected = YES;
+        self.isWifiConnected = NO;
+        [self updateWifiConnectionStatus];
+        return nil;
+    }
+    
     return request;
 }
 
@@ -536,7 +546,7 @@
     
     if(200 == self.httpStatusCode)
     {
-        if([RCTool isReachableViaWiFi])
+        if([RCTool isReachableViaWiFi] && self.isRedirected == NO)
         {
             self.isWifiConnected = YES;
             [self updateWifiConnectionStatus];
