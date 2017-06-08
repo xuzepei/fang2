@@ -29,6 +29,8 @@
     if(self.isChecking)
         return;
     
+    self.isRedirected = NO;
+    
     NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
     NSString* urlString = [@"http://www.baidu.com" stringByAddingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
     [request setURL:[NSURL URLWithString: urlString]];
@@ -98,6 +100,12 @@
         }
     }
     
+    if(302 == [(NSHTTPURLResponse*)response statusCode] || redirectUrl.length)
+    {
+        self.isRedirected = YES;
+        return nil;
+    }
+    
     return request;
 }
 
@@ -120,50 +128,25 @@
     [RCTool hideIndicator];
     
     NSLog(@"checkWifiConnection, finish:%d",self.httpStatusCode);
-    
-    [RCTool showText:[NSString stringWithFormat:@"访问baidu成功，HTTP状态码：%d",200]];
-    
-    if(200 == self.httpStatusCode)
+
+    if(/*200 == self.httpStatusCode &&*/ [RCTool isReachableViaWiFi] && self.isRedirected == NO) //已连接
     {
-        if([RCTool isReachableViaWiFi])
-        {
-            NSString* wifiName = [RCTool getWifiName];
-            NSString* phoneNumber = [RCTool getPhoneNumber];
-            
             UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
             
             if([naviController.topViewController isKindOfClass:[RCWebViewController class]])
                 return;
             
-            if([phoneNumber length])
-            {
-                //NSString* urlString = [NSString stringWithFormat:@"http://downapp.tfeyes.com:8081/home/index/onlinestatus.html?macaddress=%@&wifiname=%@&gdmobile=%@",@"",wifiName,phoneNumber];
-                
-                NSString* urlString = [NSString stringWithFormat:@"http://downapp.tfeyes.com:8081/auth/wifidogAuth/portal.html"];
-                RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
-                temp.hidesBottomBarWhenPushed = YES;
-                [temp updateContent:urlString title:nil];
-                
-                UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-                [naviController pushViewController:temp animated:YES];
-            }
-        }
-    }
-    else if(302 == self.httpStatusCode)
-    {
-        if([RCTool isReachableViaWiFi])
-        {
-            UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-            if([naviController.topViewController isKindOfClass:[RCWebViewController class]])
-                return;
-            
-            NSString* urlString = [NSString stringWithFormat:@"http://www.baidu.com"];
+            NSString* urlString = [NSString stringWithFormat:@"http://downapp.tfeyes.com:8081/auth/wifidogAuth/portal.html"];
             RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+            temp.needToChangeTitle = YES;
             temp.hidesBottomBarWhenPushed = YES;
-            [temp updateContent:urlString title:nil];
+            [temp updateContent:urlString title:@"上WiFi"];
             
             [naviController pushViewController:temp animated:YES];
-        }
+    }
+    else
+    {
+        [self goToBaidu];
     }
 }
 
@@ -177,27 +160,23 @@
     
     [RCTool showText:[NSString stringWithFormat:@"访问baidu失败，HTTP状态码：%d",self.httpStatusCode]];
     
-    if(302 == self.httpStatusCode)
-    {
-        if([RCTool isReachableViaWiFi])
-        {
-            UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
-            if([naviController.topViewController isKindOfClass:[RCWebViewController class]])
-                return;
-            
-            NSString* urlString = [NSString stringWithFormat:@"http://www.baidu.com"];
-            RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
-            temp.hidesBottomBarWhenPushed = YES;
-            [temp updateContent:urlString title:nil];
-            
-            [naviController pushViewController:temp animated:YES];
-        }
-    }
-    else
-    {
-        
-    }
+
+    [self goToBaidu];
+
+}
+
+- (void)goToBaidu
+{
+    UINavigationController* naviController = (UINavigationController*)[UIApplication sharedApplication].keyWindow.rootViewController;
+    if([naviController.topViewController isKindOfClass:[RCWebViewController class]])
+        return;
     
+    NSString* urlString = [NSString stringWithFormat:@"http://www.baidu.com"];
+    RCWebViewController* temp = [[RCWebViewController alloc] init:YES];
+    temp.hidesBottomBarWhenPushed = YES;
+    [temp updateContent:urlString title:@"上WiFi"];
+    
+    [naviController pushViewController:temp animated:YES];
 }
 
 @end

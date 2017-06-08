@@ -12,6 +12,7 @@
 
 @property(nonatomic,assign)BOOL isChecking;
 @property(nonatomic,assign)int httpStatusCode;
+@property(nonatomic,assign)BOOL isRedirected;
 
 + (RCCheckWifi*)sharedInstance;
 

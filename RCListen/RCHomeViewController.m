@@ -544,13 +544,10 @@
     
     NSLog(@"checkWifiConnection, finish:%d",self.httpStatusCode);
     
-    if(200 == self.httpStatusCode)
+    if(/*200 == self.httpStatusCode &&*/ [RCTool isReachableViaWiFi] && self.isRedirected == NO) //已连接
     {
-        if([RCTool isReachableViaWiFi] && self.isRedirected == NO)
-        {
-            self.isWifiConnected = YES;
-            [self updateWifiConnectionStatus];
-        }
+        self.isWifiConnected = YES;
+        [self updateWifiConnectionStatus];
     }
     else
     {

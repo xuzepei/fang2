@@ -249,7 +249,11 @@ shouldStartLoadWithRequest:(NSURLRequest *)request
         JSContext *context=[webView valueForKeyPath:@"documentView.webView.mainFrame.javaScriptContext"];
         if(context)
         {
-            [context[@"iosuserinfo"] callWithArguments:@[phoneNumber,macAddress,wifiName,userip]];
+            NSArray* array = @[phoneNumber,macAddress,wifiName,userip];
+            
+            //[RCTool showText:[NSString stringWithFormat:@"userinfo:%@",array]];
+            
+            [context[@"userinfo"] callWithArguments:array];
         }
     }
     
