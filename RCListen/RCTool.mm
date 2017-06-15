@@ -1288,7 +1288,7 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     UIView* rootView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
     if(rootView && [text length])
     {
-        [rootView makeToast:text];
+        //[rootView makeToast:text];
     }
 }
 

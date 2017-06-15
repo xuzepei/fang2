@@ -76,6 +76,12 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     
     if(nil == [RCTool getUserInfo])
         [self goToLoginViewController];
@@ -484,9 +490,11 @@
     
     NSLog(@"----will send request\n%@", [request URL]);
     NSLog(@"----redirect response\n%@", [response URL]);
+    
+    self.httpStatusCode = [(NSHTTPURLResponse*)response statusCode];
 
     NSString* redirectUrl = [response URL].absoluteString;
-    if(redirectUrl.length)
+    if(self.httpStatusCode == 302 && redirectUrl.length)
     {
         [RCTool showText:[NSString stringWithFormat:@"++++重定向url：%@",redirectUrl]];
         
@@ -523,16 +531,22 @@
                     }
                 }
             }
+            
+            self.isRedirected = YES;
+            self.isWifiConnected = NO;
+            [self updateWifiConnectionStatus];
+            return nil;
+            
         }
     }
     
-    if(302 == [(NSHTTPURLResponse*)response statusCode] || redirectUrl.length)
-    {
-        self.isRedirected = YES;
-        self.isWifiConnected = NO;
-        [self updateWifiConnectionStatus];
-        return nil;
-    }
+//    if(302 == [(NSHTTPURLResponse*)response statusCode] && redirectUrl.length)
+//    {
+//        self.isRedirected = YES;
+//        self.isWifiConnected = NO;
+//        [self updateWifiConnectionStatus];
+//        return nil;
+//    }
     
     return request;
 }

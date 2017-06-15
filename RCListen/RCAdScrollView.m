@@ -174,6 +174,9 @@
 
 - (void)rearrangeAdViews
 {
+    if([self.adViews count] < 3)
+        return;
+    
     for(UIView* subView in self.scrollView.subviews)
     {
         if([subView isKindOfClass:[RCAdView class]])
@@ -216,6 +219,9 @@
 
 - (void)handleTimer:(NSTimer*)timer
 {
+    if(0 == [self.itemArray count])
+        return;
+    
     if(self.pageControl.currentPage + 1 < [self.itemArray count])
         self.pageControl.currentPage = self.pageControl.currentPage + 1;
     else
