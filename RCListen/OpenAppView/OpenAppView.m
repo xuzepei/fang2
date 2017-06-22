@@ -116,15 +116,17 @@
 
 - (void)openAppStore:(NSString*)appleId
 {
-    SKStoreProductViewController *storeController = [[SKStoreProductViewController alloc] init];
-    storeController.delegate = [UIApplication sharedApplication].delegate;
-    NSDictionary *productParameters = @{ SKStoreProductParameterITunesItemIdentifier : appleId };
-    [storeController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError *error) {
-        //Handle response
-    }];
-
-    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
-    [vc presentViewController:storeController animated:YES completion:nil];
+//    SKStoreProductViewController *storeController = [[SKStoreProductViewController alloc] init];
+//    storeController.delegate = [UIApplication sharedApplication].delegate;
+//    NSDictionary *productParameters = @{ SKStoreProductParameterITunesItemIdentifier : appleId };
+//    [storeController loadProductWithParameters:productParameters completionBlock:^(BOOL result, NSError *error) {
+//        //Handle response
+//    }];
+//
+//    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+//    [vc presentViewController:storeController animated:YES completion:nil];
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://itunes.apple.com/app/id%@",appleId]]];
 }
 
 

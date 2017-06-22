@@ -366,7 +366,16 @@
         {
             OpenAppView* temp = [OpenAppView createViewFromNib];
             temp.titleLabel.text = [item objectForKey:@"text"];
-            [temp updateContent:@[@{@"name":@"玩游戏",@"image":@"wanyouxi.jpg",@"url":@"http://wap.189store.com/game/game?f=0"}]];
+            
+            if([RCTool isOpenAll])
+            {
+                [temp updateContent:@[@{@"name":@"玩游戏",@"image":@"wanyouxi.jpg",@"url":@"http://wap.189store.com/game/game?f=0"}]];
+            }
+            else
+            {
+                [temp updateContent:@[@{@"name":@"玩游戏",@"image":@"wanyouxi.jpg",@"url":@"",@"apple_id":@"403941510"}]];
+            }
+            
             
             TYAlertController *alertController = [TYAlertController alertControllerWithAlertView:temp preferredStyle:TYAlertControllerStyleAlert];
             [self presentViewController:alertController animated:YES completion:nil];

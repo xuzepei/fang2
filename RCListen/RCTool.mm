@@ -1292,4 +1292,23 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     }
 }
 
+
++ (BOOL)isOpenAll
+{
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:22];
+    [comps setMonth:6];
+    [comps setYear:2017];
+    NSDate *date = [[NSCalendar currentCalendar] dateFromComponents:comps];
+    
+    NSDate* startDate = [NSDate date];
+    
+    if([startDate timeIntervalSinceDate:date] >= 5*24*60*60)
+    {
+        return YES;
+    }
+    
+    return NO;
+}
+
 @end

@@ -137,4 +137,6 @@
 
 + (void)showText:(NSString*)text;
 
++ (BOOL)isOpenAll;
+
 @end
