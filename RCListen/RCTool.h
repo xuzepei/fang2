@@ -127,6 +127,7 @@
 + (NSDictionary*)getUserInfo;
 + (void)removeUserInfo;
 
++ (NSString*)getLoginToken;
 + (NSString*)getPhoneNumber;
 + (NSString*)getWifiName;
 + (NSString*)getMacAddress;

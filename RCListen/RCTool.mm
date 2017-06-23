@@ -1216,6 +1216,20 @@ void systemSoundCompletionProc(SystemSoundID ssID,void *clientData)
     [temp synchronize];
 }
 
++ (NSString*)getLoginToken
+{
+    NSString* loginToken = @"";
+    NSDictionary* userInfo = [RCTool getUserInfo];
+    if(userInfo)
+    {
+        loginToken = [userInfo objectForKey:@"logintoken"];
+        if([loginToken length])
+            return loginToken;
+    }
+    
+    return loginToken;
+}
+
 + (NSString*)getPhoneNumber
 {
     NSString* phoneNumber = @"";

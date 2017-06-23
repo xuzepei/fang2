@@ -50,6 +50,9 @@
         
         self.checkTimer = [NSTimer scheduledTimerWithTimeInterval:5 target:self selector:@selector(handleTimer:) userInfo:nil repeats:YES];
         [self.checkTimer fire];
+        
+        
+        [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(checkLogin:) userInfo:nil repeats:YES];
     }
     return self;
 }
@@ -108,6 +111,49 @@
 - (void)handleTimer:(NSTimer*)timer
 {
     [self checkWifiConnection];
+}
+
+- (void)checkLogin:(NSTimer*)timer
+{
+    NSDictionary* userInfo = [RCTool getUserInfo];
+    if(userInfo)
+    {
+        NSString* urlString = [NSString stringWithFormat:@"%@?m=%@&c=%@&a=%@&mobile=%@&logintoken=%@&t=%f",BASE_URL,@"api",@"user",@"checklogintoken",[RCTool getPhoneNumber],[RCTool getLoginToken], [NSDate date].timeIntervalSince1970];
+        
+        RCHttpRequest* temp = [[RCHttpRequest alloc] init];
+        [temp request:urlString delegate:self resultSelector:@selector(finishedCheckLoginRequest:) token:nil];
+    }
+}
+
+- (void)finishedCheckLoginRequest:(NSString*)jsonString
+{
+    NSDictionary* result = [RCTool parseToDictionary: jsonString];
+    if(result && [result isKindOfClass:[NSDictionary class]])
+    {
+        NSNumber* code = [result objectForKey:@"code"];
+        
+        if(code.intValue == 200)
+        {
+        }
+        else if(code.intValue == -210)
+        {
+            NSString* msg = [result objectForKey:@"msg"];
+            [RCTool showAlert:@"提示" message:msg];
+            
+            [RCTool removeUserInfo];
+            [self goToLoginViewController];
+            
+            return;
+        }
+        else
+        {
+            NSString* msg = [result objectForKey:@"msg"];
+            [RCTool showAlert:@"提示" message:msg];
+            return;
+        }
+    }
+    
+    [self performSelector:@selector(updateAd) withObject:nil afterDelay:5];
 }
 
 - (void)checkNetworkStatus:(NSNotification *)notice
